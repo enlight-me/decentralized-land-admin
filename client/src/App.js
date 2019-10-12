@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import {
+  FlatButton,
+  AppBar,
+  RaisedButton
+} from 'material-ui';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import CryptoSpatialCoordinateContract from "./contracts/CryptoSpatialCoordinate.json";
 import getWeb3 from "./utils/getWeb3";
 
@@ -14,7 +21,7 @@ class App extends Component {
    *   this.handleClick = this.handleClick.bind(this);
    }*/
 
-  state = { storageValue: 0, web3: null, accounts: null, contractCSC : null };
+  state = { storageValue: 0, web3: null, accounts: null, contractCSC: null };
 
   componentDidMount = async () => {
     try {
@@ -33,8 +40,8 @@ class App extends Component {
         deployedCSC && deployedCSC.address,
       );
 
-      
-       
+
+
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts, contractCSC: instanceCSC });
@@ -55,8 +62,8 @@ class App extends Component {
 
     const geoHash = web3.utils.toHex("My location coordinates geoHash2")
 
-    const result  = await contractCSC.methods.addCSCIndexedEntity(geoHash).send({ from: accounts[0] });
-  
+    const result = await contractCSC.methods.addCSCIndexedEntity(geoHash).send({ from: accounts[0] });
+
     //const logAccountCSCIndex = result.logs[0].args.cscIndex
     console.log(result)
 
@@ -70,18 +77,29 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <h1>Good to Go!</h1>
-        <p>Your Truffle Box is installed and ready.</p>
-        <h2>Smart Contract Example</h2>
-        <p>
-          If your contracts compiled and migrated successfully, below will show
-          a stored value of 5 (by default).
+
+        <MuiThemeProvider>
+          <AppBar
+            title="SOLA Chain"
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            iconElementRight={<FlatButton label="Save" />}
+            />
+            
+
+          <h1>Good to Go!</h1>
+          <p> Your Truffle Box is installed and ready.</p>
+          <h2>Smart Contract Example</h2>
+          <p>
+            If your contracts compiled and migrated successfully, below will show
+            a stored value of 5 (by default).
         </p>
-        <p>
-          Try changing the value stored on <strong>line 40</strong> of App.js.
+          <p>
+            Try changing the value stored on <strong>line 40</strong> of App.js.
         </p>
-        <div>The stored value is: {this.state.storageValue}</div>
-        <button onClick={this.addCSCIndex.bind(this)}>Add CSC Index</button>
+          <div>The stored value is: {this.state.storageValue}</div>
+          <RaisedButton label="Add CSC Index" onClick={this.addCSCIndex.bind(this)}></RaisedButton>
+
+        </MuiThemeProvider>
       </div>
     );
   }

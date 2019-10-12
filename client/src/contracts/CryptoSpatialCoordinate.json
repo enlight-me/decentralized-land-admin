@@ -3155,10 +3155,58 @@
       "links": {},
       "address": "0x3BBaEd9B86530269276a4DDC20aD1868e7686AA1",
       "transactionHash": "0x5c6ad1572d01783836b2219629c8eafa6b8e2edd6c60b9b5eb89c4f27643cc82"
+    },
+    "1570913594934": {
+      "events": {
+        "0x5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "cscIndex",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "geoHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "LogCSCIndexedEntityAdded",
+          "type": "event",
+          "signature": "0x5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b"
+        },
+        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Deposit",
+          "type": "event",
+          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
+        }
+      },
+      "links": {},
+      "address": "0xf02C4BEb06b451F11b6B9D061577b9121102870A",
+      "transactionHash": "0xee6df3c368eed99c4fd78b1e14b96aaca80f2394ab5d6fca035826d8aebbf0d3"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-12T19:30:36.682Z",
+  "updatedAt": "2019-10-12T21:29:32.042Z",
   "devdoc": {
     "methods": {
       "addCSCIndexedEntity(bytes32)": {
