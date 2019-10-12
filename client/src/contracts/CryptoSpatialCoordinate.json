@@ -1,0 +1,3198 @@
+{
+  "contractName": "CryptoSpatialCoordinate",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "cscIndex",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "geoHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "LogCSCIndexedEntityAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposit",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_geoHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "addCSCIndexedEntity",
+      "outputs": [
+        {
+          "name": "cscIndex",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "name": "_geoHash",
+          "type": "bytes32"
+        },
+        {
+          "name": "_cscIndex",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isValidCSCIndex",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_geoHash",
+          "type": "bytes32"
+        },
+        {
+          "name": "_cscIndex",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isMyCSCIndex",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"},{\"name\":\"_geoHash\",\"type\":\"bytes32\"},{\"name\":\"_cscIndex\",\"type\":\"bytes32\"}],\"name\":\"isValidCSCIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_geoHash\",\"type\":\"bytes32\"},{\"name\":\"_cscIndex\",\"type\":\"bytes32\"}],\"name\":\"isMyCSCIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_geoHash\",\"type\":\"bytes32\"}],\"name\":\"addCSCIndexedEntity\",\"outputs\":[{\"name\":\"cscIndex\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"cscIndex\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"geoHash\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"LogCSCIndexedEntityAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"addCSCIndexedEntity(bytes32)\":{\"params\":{\"_geoHash\":\"geoHash of the geospatialy referenced entity\"}},\"isMyCSCIndex(bytes32,bytes32)\":{\"params\":{\"_cscIndex\":\"the CSC Index\",\"_geoHash\":\"geoHash of the geospatialy referenced entity\"}},\"isValidCSCIndex(address,bytes32,bytes32)\":{\"params\":{\"_cscIndex\":\"the CSC Index\",\"_geoHash\":\"geoHash of the geospatialy referenced entity\",\"_owner\":\"the owner of the entity\"}}}},\"userdoc\":{\"methods\":{\"addCSCIndexedEntity(bytes32)\":{\"notice\":\"addCSCIndexedEntity\"},\"constructor\":\"constuctor\",\"isMyCSCIndex(bytes32,bytes32)\":{\"notice\":\"isMyCSCIndex\"},\"isValidCSCIndex(address,bytes32,bytes32)\":{\"notice\":\"isCSCIndex\"}}}},\"settings\":{\"compilationTarget\":{\"/home/ali/EthProjects/sola-chain/contracts/CryptoSpatialCoordinate.sol\":\"CryptoSpatialCoordinate\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ali/EthProjects/sola-chain/contracts/CryptoSpatialCoordinate.sol\":{\"keccak256\":\"0xc60987e57540f34b1a124de8605e3068b96eeab2e203004f59326ea1ec9829ac\",\"urls\":[\"bzzr://136cc62fa85953bcef9aad65031849e2a72164c48c6eb0dfc9843727499a9e55\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061032a806100606000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80631c7d3caa146100515780634dfc19c3146100c15780638da5cb5b14610111578063c182b9b51461015b575b600080fd5b6100a76004803603606081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019092919050505061019d565b604051808215151515815260200191505060405180910390f35b6100f7600480360360408110156100d757600080fd5b8101908080359060200190929190803590602001909291905050506101b4565b604051808215151515815260200191505060405180910390f35b6101196101ca565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101876004803603602081101561017157600080fd5b81019080803590602001909291905050506101ef565b6040518082815260200191505060405180910390f35b60006101a98484610296565b821490509392505050565b60006101c03384610296565b8214905092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006101fb3383610296565b90507f5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b81836000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808481526020018381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001935050505060405180910390a1919050565b60008282604051602001808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b8152601401828152602001925050506040516020818303038152906040528051906020012090509291505056fea165627a7a72305820b0c7029ef87d62c9cb5bc726101e3adb280ddadf3c7c111bbf7afa850a8601d60029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80631c7d3caa146100515780634dfc19c3146100c15780638da5cb5b14610111578063c182b9b51461015b575b600080fd5b6100a76004803603606081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019092919050505061019d565b604051808215151515815260200191505060405180910390f35b6100f7600480360360408110156100d757600080fd5b8101908080359060200190929190803590602001909291905050506101b4565b604051808215151515815260200191505060405180910390f35b6101196101ca565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101876004803603602081101561017157600080fd5b81019080803590602001909291905050506101ef565b6040518082815260200191505060405180910390f35b60006101a98484610296565b821490509392505050565b60006101c03384610296565b8214905092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006101fb3383610296565b90507f5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b81836000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808481526020018381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001935050505060405180910390a1919050565b60008282604051602001808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b8152601401828152602001925050506040516020818303038152906040528051906020012090509291505056fea165627a7a72305820b0c7029ef87d62c9cb5bc726101e3adb280ddadf3c7c111bbf7afa850a8601d60029",
+  "sourceMap": "252:1878:0:-;;;708:55;8:9:-1;5:2;;;30:1;27;20:12;5:2;708:55:0;746:10;738:5;;:18;;;;;;;;;;;;;;;;;;252:1878;;;;;;",
+  "deployedSourceMap": "252:1878:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;252:1878:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1643:177;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1643:177:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1965:162;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1965:162:0;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;328:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;874:210;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;874:210:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1643:177;1746:4;1781:31;1795:6;1803:8;1781:12;:31::i;:::-;1768:9;:44;1760:53;;1643:177;;;;;:::o;1965:162::-;2049:4;2084:35;2098:10;2110:8;2084:12;:35::i;:::-;2071:9;:48;2063:57;;1965:162;;;;:::o;328:20::-;;;;;;;;;;;;;:::o;874:210::-;941:16;978:35;992:10;1004:8;978:12;:35::i;:::-;967:46;;1026:51;1051:8;1061;1071:5;;;;;;;;;;;1026:51;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;874:210;;;:::o;1289:164::-;1377:7;1428:6;1436:8;1411:34;;;;;;;;;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;1411:34:0;;;1401:45;;;;;;1394:52;;1289:164;;;;:::o",
+  "source": "/**\n * @title CryptoSpatialCoordinate\n * @dev standard Crypto Spatial Coordinate library\n * @notice This contract implement the Crypto Spatial Coordinate\n *  as described by the FOAM protocole\n * Requirements:\n * - ....\n *\n*/\n\npragma solidity ^0.5.0;\n\ncontract CryptoSpatialCoordinate {\n    //\n    // State variables\n    //\n    address public owner;\n\n    struct CSCIndex {\n    address owner;\n    bytes32 geoHash;\n    bytes32 cscIndex;\n    }\n\n    //\n    // Events - publicize actions to external listeners\n    //\n    event LogCSCIndexedEntityAdded(bytes32 cscIndex, bytes32 geoHash, address owner);\n    event Deposit(address sender, uint value);\n    //\n    // Functions\n    //\n\n    /// @notice constuctor\n    constructor () public {\n      owner = msg.sender;\n    }\n\n    /// @notice addCSCIndexedEntity\n    /// @param _geoHash geoHash of the geospatialy referenced entity\n    function addCSCIndexedEntity(bytes32 _geoHash)\n    public returns (bytes32 cscIndex) {\n      cscIndex = calcCSCIndex (msg.sender, _geoHash);\n      emit LogCSCIndexedEntityAdded(cscIndex, _geoHash, owner);\n    }\n\n    /**\n    * @dev calculate the CSC Index using ...\n    * @notice calcCSCIndex\n    * @param _owner the owner of the CSC\n    * @param _geoHash the geoHash of the geospatialy referenced entity\n    */\n    function calcCSCIndex (address _owner, bytes32 _geoHash)\n    internal pure\n    returns (bytes32) {\n      return keccak256(abi.encodePacked(_owner, _geoHash));\n    }\n\n    /// @notice isCSCIndex\n    /// @param  _owner the owner of the entity\n    /// @param  _geoHash geoHash of the geospatialy referenced entity\n    /// @param  _cscIndex the CSC Index\n    function isValidCSCIndex(address _owner, bytes32 _geoHash, bytes32 _cscIndex)\n    public pure returns (bool) {\n      return (_cscIndex == calcCSCIndex (_owner, _geoHash));\n    }\n\n    /// @notice isMyCSCIndex\n    /// @param  _geoHash geoHash of the geospatialy referenced entity\n    /// @param  _cscIndex the CSC Index\n    function isMyCSCIndex(bytes32 _geoHash, bytes32 _cscIndex)\n    public view returns (bool) {\n      return (_cscIndex == calcCSCIndex (msg.sender, _geoHash));\n    }\n\n}\n",
+  "sourcePath": "/home/ali/EthProjects/sola-chain/contracts/CryptoSpatialCoordinate.sol",
+  "ast": {
+    "absolutePath": "/home/ali/EthProjects/sola-chain/contracts/CryptoSpatialCoordinate.sol",
+    "exportedSymbols": {
+      "CryptoSpatialCoordinate": [
+        113
+      ]
+    },
+    "id": 114,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "227:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 113,
+        "linearizedBaseContracts": [
+          113
+        ],
+        "name": "CryptoSpatialCoordinate",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 3,
+            "name": "owner",
+            "nodeType": "VariableDeclaration",
+            "scope": 113,
+            "src": "328:20:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "328:7:0",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "CryptoSpatialCoordinate.CSCIndex",
+            "id": 10,
+            "members": [
+              {
+                "constant": false,
+                "id": 5,
+                "name": "owner",
+                "nodeType": "VariableDeclaration",
+                "scope": 10,
+                "src": "377:13:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "377:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7,
+                "name": "geoHash",
+                "nodeType": "VariableDeclaration",
+                "scope": 10,
+                "src": "396:15:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 6,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "396:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 9,
+                "name": "cscIndex",
+                "nodeType": "VariableDeclaration",
+                "scope": 10,
+                "src": "417:16:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 8,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "417:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "CSCIndex",
+            "nodeType": "StructDefinition",
+            "scope": 113,
+            "src": "355:85:0",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 18,
+            "name": "LogCSCIndexedEntityAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12,
+                  "indexed": false,
+                  "name": "cscIndex",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18,
+                  "src": "547:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 11,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "547:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14,
+                  "indexed": false,
+                  "name": "geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18,
+                  "src": "565:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "565:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "indexed": false,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18,
+                  "src": "582:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "582:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "546:50:0"
+            },
+            "src": "516:81:0"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 24,
+            "name": "Deposit",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 23,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20,
+                  "indexed": false,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24,
+                  "src": "616:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 19,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "616:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 22,
+                  "indexed": false,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24,
+                  "src": "632:10:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "632:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "615:28:0"
+            },
+            "src": "602:42:0"
+          },
+          {
+            "body": {
+              "id": 32,
+              "nodeType": "Block",
+              "src": "730:33:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 30,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 27,
+                      "name": "owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3,
+                      "src": "738:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 28,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 208,
+                        "src": "746:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 29,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "746:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "738:18:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 31,
+                  "nodeType": "ExpressionStatement",
+                  "src": "738:18:0"
+                }
+              ]
+            },
+            "documentation": "@notice constuctor",
+            "id": 33,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 25,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "720:2:0"
+            },
+            "returnParameters": {
+              "id": 26,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "730:0:0"
+            },
+            "scope": 113,
+            "src": "708:55:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 54,
+              "nodeType": "Block",
+              "src": "959:125:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 46,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 40,
+                      "name": "cscIndex",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 38,
+                      "src": "967:8:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 42,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 208,
+                            "src": "992:3:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 43,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "992:10:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 44,
+                          "name": "_geoHash",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 35,
+                          "src": "1004:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          },
+                          {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        ],
+                        "id": 41,
+                        "name": "calcCSCIndex",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 73,
+                        "src": "978:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
+                          "typeString": "function (address,bytes32) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 45,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "978:35:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "src": "967:46:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "id": 47,
+                  "nodeType": "ExpressionStatement",
+                  "src": "967:46:0"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 49,
+                        "name": "cscIndex",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 38,
+                        "src": "1051:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 50,
+                        "name": "_geoHash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 35,
+                        "src": "1061:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 51,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3,
+                        "src": "1071:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 48,
+                      "name": "LogCSCIndexedEntityAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 18,
+                      "src": "1026:24:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes32_$_t_address_$returns$__$",
+                        "typeString": "function (bytes32,bytes32,address)"
+                      }
+                    },
+                    "id": 52,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1026:51:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 53,
+                  "nodeType": "EmitStatement",
+                  "src": "1021:56:0"
+                }
+              ]
+            },
+            "documentation": "@notice addCSCIndexedEntity\n @param _geoHash geoHash of the geospatialy referenced entity",
+            "id": 55,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addCSCIndexedEntity",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 36,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 35,
+                  "name": "_geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 55,
+                  "src": "903:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 34,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "903:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "902:18:0"
+            },
+            "returnParameters": {
+              "id": 39,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 38,
+                  "name": "cscIndex",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 55,
+                  "src": "941:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 37,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "941:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "940:18:0"
+            },
+            "scope": 113,
+            "src": "874:210:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 72,
+              "nodeType": "Block",
+              "src": "1386:67:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 67,
+                            "name": "_owner",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 57,
+                            "src": "1428:6:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 68,
+                            "name": "_geoHash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 59,
+                            "src": "1436:8:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes32",
+                              "typeString": "bytes32"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            },
+                            {
+                              "typeIdentifier": "t_bytes32",
+                              "typeString": "bytes32"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 65,
+                            "name": "abi",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 195,
+                            "src": "1411:3:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_abi",
+                              "typeString": "abi"
+                            }
+                          },
+                          "id": 66,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "encodePacked",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1411:16:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                            "typeString": "function () pure returns (bytes memory)"
+                          }
+                        },
+                        "id": 69,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1411:34:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      ],
+                      "id": 64,
+                      "name": "keccak256",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 202,
+                      "src": "1401:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                        "typeString": "function (bytes memory) pure returns (bytes32)"
+                      }
+                    },
+                    "id": 70,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1401:45:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "functionReturnParameters": 63,
+                  "id": 71,
+                  "nodeType": "Return",
+                  "src": "1394:52:0"
+                }
+              ]
+            },
+            "documentation": "@dev calculate the CSC Index using ...\n@notice calcCSCIndex\n@param _owner the owner of the CSC\n@param _geoHash the geoHash of the geospatialy referenced entity",
+            "id": 73,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "calcCSCIndex",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 60,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 57,
+                  "name": "_owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 73,
+                  "src": "1312:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 56,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1312:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 59,
+                  "name": "_geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 73,
+                  "src": "1328:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 58,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1328:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1311:34:0"
+            },
+            "returnParameters": {
+              "id": 63,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 62,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 73,
+                  "src": "1377:7:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 61,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1377:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1376:9:0"
+            },
+            "scope": 113,
+            "src": "1289:164:0",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 92,
+              "nodeType": "Block",
+              "src": "1752:68:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        "id": 89,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 84,
+                          "name": "_cscIndex",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 79,
+                          "src": "1768:9:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 86,
+                              "name": "_owner",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 75,
+                              "src": "1795:6:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "id": 87,
+                              "name": "_geoHash",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 77,
+                              "src": "1803:8:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "id": 85,
+                            "name": "calcCSCIndex",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 73,
+                            "src": "1781:12:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
+                              "typeString": "function (address,bytes32) pure returns (bytes32)"
+                            }
+                          },
+                          "id": 88,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1781:31:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "src": "1768:44:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 90,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1767:46:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 83,
+                  "id": 91,
+                  "nodeType": "Return",
+                  "src": "1760:53:0"
+                }
+              ]
+            },
+            "documentation": "@notice isCSCIndex\n @param  _owner the owner of the entity\n @param  _geoHash geoHash of the geospatialy referenced entity\n @param  _cscIndex the CSC Index",
+            "id": 93,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isValidCSCIndex",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 80,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 75,
+                  "name": "_owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 93,
+                  "src": "1668:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 74,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1668:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 77,
+                  "name": "_geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 93,
+                  "src": "1684:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 76,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1684:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 79,
+                  "name": "_cscIndex",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 93,
+                  "src": "1702:17:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 78,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1702:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1667:53:0"
+            },
+            "returnParameters": {
+              "id": 83,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 82,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 93,
+                  "src": "1746:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 81,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1746:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1745:6:0"
+            },
+            "scope": 113,
+            "src": "1643:177:0",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 111,
+              "nodeType": "Block",
+              "src": "2055:72:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        "id": 108,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 102,
+                          "name": "_cscIndex",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 97,
+                          "src": "2071:9:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 104,
+                                "name": "msg",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 208,
+                                "src": "2098:3:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_message",
+                                  "typeString": "msg"
+                                }
+                              },
+                              "id": 105,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "sender",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": null,
+                              "src": "2098:10:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "id": 106,
+                              "name": "_geoHash",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 95,
+                              "src": "2110:8:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              },
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "id": 103,
+                            "name": "calcCSCIndex",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 73,
+                            "src": "2084:12:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
+                              "typeString": "function (address,bytes32) pure returns (bytes32)"
+                            }
+                          },
+                          "id": 107,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2084:35:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "src": "2071:48:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 109,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "2070:50:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 101,
+                  "id": 110,
+                  "nodeType": "Return",
+                  "src": "2063:57:0"
+                }
+              ]
+            },
+            "documentation": "@notice isMyCSCIndex\n @param  _geoHash geoHash of the geospatialy referenced entity\n @param  _cscIndex the CSC Index",
+            "id": 112,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isMyCSCIndex",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 98,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 95,
+                  "name": "_geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 112,
+                  "src": "1987:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 94,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1987:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 97,
+                  "name": "_cscIndex",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 112,
+                  "src": "2005:17:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 96,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2005:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1986:37:0"
+            },
+            "returnParameters": {
+              "id": 101,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 100,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 112,
+                  "src": "2049:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 99,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2049:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2048:6:0"
+            },
+            "scope": 113,
+            "src": "1965:162:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 114,
+        "src": "252:1878:0"
+      }
+    ],
+    "src": "227:1904:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/ali/EthProjects/sola-chain/contracts/CryptoSpatialCoordinate.sol",
+    "exportedSymbols": {
+      "CryptoSpatialCoordinate": [
+        113
+      ]
+    },
+    "id": 114,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "227:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 113,
+        "linearizedBaseContracts": [
+          113
+        ],
+        "name": "CryptoSpatialCoordinate",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 3,
+            "name": "owner",
+            "nodeType": "VariableDeclaration",
+            "scope": 113,
+            "src": "328:20:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "328:7:0",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "CryptoSpatialCoordinate.CSCIndex",
+            "id": 10,
+            "members": [
+              {
+                "constant": false,
+                "id": 5,
+                "name": "owner",
+                "nodeType": "VariableDeclaration",
+                "scope": 10,
+                "src": "377:13:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "377:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7,
+                "name": "geoHash",
+                "nodeType": "VariableDeclaration",
+                "scope": 10,
+                "src": "396:15:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 6,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "396:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 9,
+                "name": "cscIndex",
+                "nodeType": "VariableDeclaration",
+                "scope": 10,
+                "src": "417:16:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 8,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "417:7:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "CSCIndex",
+            "nodeType": "StructDefinition",
+            "scope": 113,
+            "src": "355:85:0",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 18,
+            "name": "LogCSCIndexedEntityAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 17,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12,
+                  "indexed": false,
+                  "name": "cscIndex",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18,
+                  "src": "547:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 11,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "547:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 14,
+                  "indexed": false,
+                  "name": "geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18,
+                  "src": "565:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "565:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 16,
+                  "indexed": false,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 18,
+                  "src": "582:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 15,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "582:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "546:50:0"
+            },
+            "src": "516:81:0"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 24,
+            "name": "Deposit",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 23,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 20,
+                  "indexed": false,
+                  "name": "sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24,
+                  "src": "616:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 19,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "616:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 22,
+                  "indexed": false,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 24,
+                  "src": "632:10:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 21,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "632:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "615:28:0"
+            },
+            "src": "602:42:0"
+          },
+          {
+            "body": {
+              "id": 32,
+              "nodeType": "Block",
+              "src": "730:33:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 30,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 27,
+                      "name": "owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3,
+                      "src": "738:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 28,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 208,
+                        "src": "746:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 29,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "746:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "738:18:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 31,
+                  "nodeType": "ExpressionStatement",
+                  "src": "738:18:0"
+                }
+              ]
+            },
+            "documentation": "@notice constuctor",
+            "id": 33,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 25,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "720:2:0"
+            },
+            "returnParameters": {
+              "id": 26,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "730:0:0"
+            },
+            "scope": 113,
+            "src": "708:55:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 54,
+              "nodeType": "Block",
+              "src": "959:125:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 46,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 40,
+                      "name": "cscIndex",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 38,
+                      "src": "967:8:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 42,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 208,
+                            "src": "992:3:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 43,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "992:10:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 44,
+                          "name": "_geoHash",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 35,
+                          "src": "1004:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          },
+                          {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        ],
+                        "id": 41,
+                        "name": "calcCSCIndex",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 73,
+                        "src": "978:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
+                          "typeString": "function (address,bytes32) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 45,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "978:35:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "src": "967:46:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "id": 47,
+                  "nodeType": "ExpressionStatement",
+                  "src": "967:46:0"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 49,
+                        "name": "cscIndex",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 38,
+                        "src": "1051:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 50,
+                        "name": "_geoHash",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 35,
+                        "src": "1061:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 51,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3,
+                        "src": "1071:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 48,
+                      "name": "LogCSCIndexedEntityAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 18,
+                      "src": "1026:24:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes32_$_t_address_$returns$__$",
+                        "typeString": "function (bytes32,bytes32,address)"
+                      }
+                    },
+                    "id": 52,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1026:51:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 53,
+                  "nodeType": "EmitStatement",
+                  "src": "1021:56:0"
+                }
+              ]
+            },
+            "documentation": "@notice addCSCIndexedEntity\n @param _geoHash geoHash of the geospatialy referenced entity",
+            "id": 55,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addCSCIndexedEntity",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 36,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 35,
+                  "name": "_geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 55,
+                  "src": "903:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 34,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "903:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "902:18:0"
+            },
+            "returnParameters": {
+              "id": 39,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 38,
+                  "name": "cscIndex",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 55,
+                  "src": "941:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 37,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "941:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "940:18:0"
+            },
+            "scope": 113,
+            "src": "874:210:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 72,
+              "nodeType": "Block",
+              "src": "1386:67:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 67,
+                            "name": "_owner",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 57,
+                            "src": "1428:6:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 68,
+                            "name": "_geoHash",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 59,
+                            "src": "1436:8:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes32",
+                              "typeString": "bytes32"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            },
+                            {
+                              "typeIdentifier": "t_bytes32",
+                              "typeString": "bytes32"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 65,
+                            "name": "abi",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 195,
+                            "src": "1411:3:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_abi",
+                              "typeString": "abi"
+                            }
+                          },
+                          "id": 66,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "encodePacked",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1411:16:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                            "typeString": "function () pure returns (bytes memory)"
+                          }
+                        },
+                        "id": 69,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1411:34:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      ],
+                      "id": 64,
+                      "name": "keccak256",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 202,
+                      "src": "1401:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                        "typeString": "function (bytes memory) pure returns (bytes32)"
+                      }
+                    },
+                    "id": 70,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1401:45:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "functionReturnParameters": 63,
+                  "id": 71,
+                  "nodeType": "Return",
+                  "src": "1394:52:0"
+                }
+              ]
+            },
+            "documentation": "@dev calculate the CSC Index using ...\n@notice calcCSCIndex\n@param _owner the owner of the CSC\n@param _geoHash the geoHash of the geospatialy referenced entity",
+            "id": 73,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "calcCSCIndex",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 60,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 57,
+                  "name": "_owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 73,
+                  "src": "1312:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 56,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1312:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 59,
+                  "name": "_geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 73,
+                  "src": "1328:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 58,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1328:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1311:34:0"
+            },
+            "returnParameters": {
+              "id": 63,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 62,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 73,
+                  "src": "1377:7:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 61,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1377:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1376:9:0"
+            },
+            "scope": 113,
+            "src": "1289:164:0",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 92,
+              "nodeType": "Block",
+              "src": "1752:68:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        "id": 89,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 84,
+                          "name": "_cscIndex",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 79,
+                          "src": "1768:9:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 86,
+                              "name": "_owner",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 75,
+                              "src": "1795:6:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "id": 87,
+                              "name": "_geoHash",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 77,
+                              "src": "1803:8:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "id": 85,
+                            "name": "calcCSCIndex",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 73,
+                            "src": "1781:12:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
+                              "typeString": "function (address,bytes32) pure returns (bytes32)"
+                            }
+                          },
+                          "id": 88,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1781:31:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "src": "1768:44:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 90,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1767:46:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 83,
+                  "id": 91,
+                  "nodeType": "Return",
+                  "src": "1760:53:0"
+                }
+              ]
+            },
+            "documentation": "@notice isCSCIndex\n @param  _owner the owner of the entity\n @param  _geoHash geoHash of the geospatialy referenced entity\n @param  _cscIndex the CSC Index",
+            "id": 93,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isValidCSCIndex",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 80,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 75,
+                  "name": "_owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 93,
+                  "src": "1668:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 74,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1668:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 77,
+                  "name": "_geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 93,
+                  "src": "1684:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 76,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1684:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 79,
+                  "name": "_cscIndex",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 93,
+                  "src": "1702:17:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 78,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1702:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1667:53:0"
+            },
+            "returnParameters": {
+              "id": 83,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 82,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 93,
+                  "src": "1746:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 81,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1746:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1745:6:0"
+            },
+            "scope": 113,
+            "src": "1643:177:0",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 111,
+              "nodeType": "Block",
+              "src": "2055:72:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        },
+                        "id": 108,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 102,
+                          "name": "_cscIndex",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 97,
+                          "src": "2071:9:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 104,
+                                "name": "msg",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 208,
+                                "src": "2098:3:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_message",
+                                  "typeString": "msg"
+                                }
+                              },
+                              "id": 105,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "sender",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": null,
+                              "src": "2098:10:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "id": 106,
+                              "name": "_geoHash",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 95,
+                              "src": "2110:8:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address_payable",
+                                "typeString": "address payable"
+                              },
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "id": 103,
+                            "name": "calcCSCIndex",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 73,
+                            "src": "2084:12:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
+                              "typeString": "function (address,bytes32) pure returns (bytes32)"
+                            }
+                          },
+                          "id": 107,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2084:35:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "src": "2071:48:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "id": 109,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "2070:50:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 101,
+                  "id": 110,
+                  "nodeType": "Return",
+                  "src": "2063:57:0"
+                }
+              ]
+            },
+            "documentation": "@notice isMyCSCIndex\n @param  _geoHash geoHash of the geospatialy referenced entity\n @param  _cscIndex the CSC Index",
+            "id": 112,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isMyCSCIndex",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 98,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 95,
+                  "name": "_geoHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 112,
+                  "src": "1987:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 94,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1987:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 97,
+                  "name": "_cscIndex",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 112,
+                  "src": "2005:17:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 96,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2005:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1986:37:0"
+            },
+            "returnParameters": {
+              "id": 101,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 100,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 112,
+                  "src": "2049:4:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 99,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2049:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2048:6:0"
+            },
+            "scope": 113,
+            "src": "1965:162:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 114,
+        "src": "252:1878:0"
+      }
+    ],
+    "src": "227:1904:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {
+        "0x5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "cscIndex",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "geoHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "LogCSCIndexedEntityAdded",
+          "type": "event",
+          "signature": "0x5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b"
+        },
+        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Deposit",
+          "type": "event",
+          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
+        }
+      },
+      "links": {},
+      "address": "0x0a9F57f1Ab3eBeb7E8D5Fa8Dea208d47E9321f3b",
+      "transactionHash": "0xde21160978bab9a87f4f35d1bd594f55af6c6cb5c0c66959512f826eddc681c6"
+    },
+    "1570904072105": {
+      "events": {
+        "0x5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "cscIndex",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "geoHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "LogCSCIndexedEntityAdded",
+          "type": "event",
+          "signature": "0x5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b"
+        },
+        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Deposit",
+          "type": "event",
+          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
+        }
+      },
+      "links": {},
+      "address": "0x3BBaEd9B86530269276a4DDC20aD1868e7686AA1",
+      "transactionHash": "0x5c6ad1572d01783836b2219629c8eafa6b8e2edd6c60b9b5eb89c4f27643cc82"
+    }
+  },
+  "schemaVersion": "3.0.16",
+  "updatedAt": "2019-10-12T19:30:36.682Z",
+  "devdoc": {
+    "methods": {
+      "addCSCIndexedEntity(bytes32)": {
+        "params": {
+          "_geoHash": "geoHash of the geospatialy referenced entity"
+        }
+      },
+      "isMyCSCIndex(bytes32,bytes32)": {
+        "params": {
+          "_cscIndex": "the CSC Index",
+          "_geoHash": "geoHash of the geospatialy referenced entity"
+        }
+      },
+      "isValidCSCIndex(address,bytes32,bytes32)": {
+        "params": {
+          "_cscIndex": "the CSC Index",
+          "_geoHash": "geoHash of the geospatialy referenced entity",
+          "_owner": "the owner of the entity"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "addCSCIndexedEntity(bytes32)": {
+        "notice": "addCSCIndexedEntity"
+      },
+      "constructor": "constuctor",
+      "isMyCSCIndex(bytes32,bytes32)": {
+        "notice": "isMyCSCIndex"
+      },
+      "isValidCSCIndex(address,bytes32,bytes32)": {
+        "notice": "isCSCIndex"
+      }
+    }
+  }
+}
