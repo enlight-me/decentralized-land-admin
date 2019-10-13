@@ -3,6 +3,7 @@
  * 
 */
 
+let catchRevert = require("./exceptionHelpers").catchRevert
 var CryptoSpatialCoordinate = artifacts.require("./CryptoSpatialCoordinate.sol")
 
 contract('CryptoSpatialCoordinate', function(accounts) {
@@ -28,5 +29,12 @@ contract('CryptoSpatialCoordinate', function(accounts) {
     //   console.log(result.logs[0])
       assert.equal(expectedEventResult.cscIndex, logAccountCSCIndex, "LogCSCIndexedEntityAdded event cscIndex property not emitted, check deposit method");
     })
+
+  //  Have no sense, just for learning purposes
+  //   it("shouldn't run out of gas ", async() => {
+  //     const result  = await instance.addCSCIndexedEntity(geoHash)
+
+  //     await catchRevert(instance.addCSCIndexedEntity(geoHash))
+  //  })
  
   })
