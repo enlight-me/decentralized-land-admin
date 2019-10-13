@@ -11,4 +11,7 @@ A Blockchain implementation of the Solutions for Open Land Administration
 
 [ISO 19152:2012 Geographic information — Land Administration Domain Model (LADM)](https://www.iso.org/standard/51206.html)
 
-[LandChain mobile app from https://www.dallotech.com/](https://www.youtube.com/watch?v=amdCohmyTp4)
+[LandChain mobile app from ](https://www.youtube.com/watch?v=amdCohmyTp4) https://www.dallotech.com/
+
+[H3 Geodesic Discrete Global Grid Systems](http://webpages.sou.edu/~sahrk/sqspc/pubs/gdggs03.pdf)
+[H3 Resolution table](https://uber.github.io/h3/#/documentation/core-library/resolution-table)
