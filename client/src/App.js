@@ -1,14 +1,7 @@
 import React, { Component } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
-import Grid from '@material-ui/core/Grid';
+import { Button, Card, Text, Heading, Box, Flex } from 'rimble-ui';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Map, TileLayer, GeoJSON } from "react-leaflet";
 
 import { geoToH3 } from "h3-js";
 
@@ -19,15 +12,45 @@ import "./App.css";
 
 class App extends Component {
 
-  /* TODO add constructor 
-   * constructor(props) {
-   *   super(props);
-   *  // N’appelez pas `this.setState()` ici !
-   *   this.state = { counter: 0 };
-   *   this.handleClick = this.handleClick.bind(this);
-   }*/
+  state = {
+    storageValue: 0,
+    h3Index : 0,
+    web3: null,
+    accounts: null,
+    contract: null,
+    lat: 0.00,
+    lng: 3.00,
+    zoom: 2,
+    features: [],
+  }
 
-  state = { storageValue: 0, web3: null, accounts: null, contractCSC: null };
+  geoJSONStyle() {
+    return {
+      radius: 8,
+      fillColor: "#ff7800",
+      color: "#000",
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8
+    }
+  }
+
+  onEachFeature(feature, layer) {
+    const popupContent = ` <Popup><p>Informations</p><pre>geoHash: ${feature.properties.geohash}</pre></Popup>`
+    layer.bindPopup(popupContent)
+  }
+
+  constructor(props) {
+    super(props);
+    // N’appelez pas `this.setState()` ici !
+    // this.state = { counter: 0 };
+    fetch('http://localhost:4000/')
+      .then(res => {
+        return res.json();
+      }).then(data => {
+        this.state.features = data;
+      });
+  }
 
   componentDidMount = async () => {
 
@@ -67,7 +90,7 @@ class App extends Component {
   convertToH3 = async (event) => {
     // Convert a lat/lng point to a hexagon index at resolution 7
     const h3Index = geoToH3(37.3615593, -122.0553238, 15);
-    this.setState({ storageValue: h3Index });
+    this.setState({ h3Index });
   }
 
   addCSCIndex = async (event) => {
@@ -86,50 +109,44 @@ class App extends Component {
     this.setState({ storageValue: result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex });
   };
 
-
-
   render() {
+    const position = [this.state.lat, this.state.lng];
 
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
       <div className="App">
+        <Heading m={4}>Onchain Solutions for Open Land Administration</Heading>
+        <Flex flexWrap="wrap">
+        <Card width={"620px"} mx={"auto"} px={4}>
+          <Heading.h3>
+            The Crypto-Spatial Index value is:
+          </Heading.h3>
+          <Box><Text  textAlign="centre" mb={2}> {this.state.storageValue} </Text></Box>
+          <Button mb={4} onClick={this.addCSCIndex.bind(this)}>Add CSC Index</Button>
+      
+          <Heading.h3>
+            The H3 Hex (DGGS compliant) value is:
+          </Heading.h3>
+          <Box><Text textAlign="centre" mb={2}> {this.state.h3Index} </Text></Box>
+          <Button onClick={this.convertToH3.bind(this)}>Convert to H3</Button>
+        </Card>
 
-        <MuiThemeProvider>
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton edge="start" color="inherit" aria-label="menu">
-                
-              </IconButton>
-              <Typography variant="h6">
-                SOLA Chain
-          </Typography>
-              <Button color="inherit">Login</Button>
-            </Toolbar>
-          </AppBar>
-
-          <h1>Good to Go!</h1>
-          <p> Your Truffle Box is installed and ready.</p>
-          <h2>Smart Contract Example</h2>
-          <p>
-            If your contracts compiled and migrated successfully, below will show
-            a stored value of 5 (by default).
-        </p>
-          <p>
-            Try changing the value stored on <strong>line 40</strong> of App.js.
-        </p>
-          <div>The stored value is: {this.state.storageValue}</div>
-
-          <Grid container spacing={3} direction="column" alignItems="center">
-            <Grid item>
-              <Button variant="contained" onClick={this.addCSCIndex.bind(this)}>Add CSC Index</Button>
-            </Grid>
-            <Grid item>
-              <Button variant="contained" onClick={this.convertToH3.bind(this)}>Convert to H3</Button>
-            </Grid>
-          </Grid>
-        </MuiThemeProvider>
+        <Card width={"700px"} mx={"auto"} px={4}>
+          <Map center={position} zoom={this.state.zoom}>
+            <TileLayer
+              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <GeoJSON
+              data={this.state.features}
+              style={this.geoJSONStyle}
+              onEachFeature={this.onEachFeature}
+            />
+          </Map>
+        </Card>
+        </Flex>
       </div>
     );
   }

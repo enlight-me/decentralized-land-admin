@@ -1,15 +1,17 @@
 {
-  "name": "client",
+  "name": "sola-chain-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.5.1",
     "ajv": "^6.10.2",
     "h3-js": "^3.6.1",
-    "material-ui": "^0.20.2",
+    "leaflet": "^1.5.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-leaflet": "^2.4.0",
     "react-scripts": "^3.2.0",
+    "rimble-ui": "^0.10.0",
+    "styled-components": "^4.4.0",
     "typescript": "^3.6.4",
     "web3": "^1.2.1"
   },

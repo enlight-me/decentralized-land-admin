@@ -40,6 +40,7 @@ contract CryptoSpatialCoordinate {
     /// @param _geoHash geoHash of the geospatialy referenced entity
     function addCSCIndexedEntity(bytes32 _geoHash)
     public returns (bytes32 cscIndex) {
+      // TODO Check validity of external input
       cscIndex = calcCSCIndex (msg.sender, _geoHash);
       emit LogCSCIndexedEntityAdded(cscIndex, _geoHash, owner);
     }
@@ -71,6 +72,10 @@ contract CryptoSpatialCoordinate {
     function isMyCSCIndex(bytes32 _geoHash, bytes32 _cscIndex)
     public view returns (bool) {
       return (_cscIndex == calcCSCIndex (msg.sender, _geoHash));
+    }
+
+      function () external {
+      revert("this contract should never have a balance");
     }
 
 }
