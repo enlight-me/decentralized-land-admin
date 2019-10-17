@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  a(href='/getindexes') Get CSCIndexes
+  |
+  |
+  a(href='/addindex?geohash=0xfffffffffffffff&owner=0x000&cscindex=0x0000')  Add CSC Index

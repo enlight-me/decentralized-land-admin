@@ -44,7 +44,7 @@ class App extends Component {
     super(props);
     // N’appelez pas `this.setState()` ici !
     // this.state = { counter: 0 };
-    fetch('http://localhost:4000/')
+    fetch('http://localhost:4000/getindexes')
       .then(res => {
         return res.json();
       }).then(data => {
