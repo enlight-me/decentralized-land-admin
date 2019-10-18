@@ -1,0 +1,23 @@
+@startuml
+
+class CSCStruct {
+    geoHash
+    adsress
+    csc
+}
+
+class CryptoSpatialCoordinate   {
+
+    +address owner
+    {field}+mapping(address->csc) Crypto-Spatial Coordinate
+    +event LogCSCIndexedEntityAdded(cscIndex,geoHash,Owner)
+    +event Deposit(sender, value)
+    +constructor () 
+    +function addCSCIndexedEntity( _geoHash) returns ( cscIndex) 
+    ~function calcCSCIndex ( _owner,  _geoHash) returns () 
+    +function isValidCSCIndex( _owner,  _geoHash,  _cscIndex) returns (bool) 
+    +function isMyCSCIndex( _geoHash,  _cscIndex) returns (bool)     
+    +function () external 
+}
+
+@enduml
