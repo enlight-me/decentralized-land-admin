@@ -18,14 +18,14 @@ contract CryptoSpatialCoordinate {
 
     struct CSCIndex {
     address owner;
-    bytes32 geoHash;
+    bytes15 geoHash;
     bytes32 cscIndex;
     }
 
     //
     // Events - publicize actions to external listeners
     //
-    event LogCSCIndexedEntityAdded(bytes32 cscIndex, bytes32 geoHash, address owner);
+    event LogCSCIndexedEntityAdded(bytes32 cscIndex, bytes15 geoHash, address owner);
     event Deposit(address sender, uint value);
     //
     // Functions
@@ -38,7 +38,7 @@ contract CryptoSpatialCoordinate {
 
     /// @notice addCSCIndexedEntity
     /// @param _geoHash geoHash of the geospatialy referenced entity
-    function addCSCIndexedEntity(bytes32 _geoHash)
+    function addCSCIndexedEntity(bytes15 _geoHash)
     public returns (bytes32 cscIndex) {
       // TODO Check validity of external input
       cscIndex = calcCSCIndex (msg.sender, _geoHash);
@@ -51,7 +51,7 @@ contract CryptoSpatialCoordinate {
     * @param _owner the owner of the CSC
     * @param _geoHash the geoHash of the geospatialy referenced entity
     */
-    function calcCSCIndex (address _owner, bytes32 _geoHash)
+    function calcCSCIndex (address _owner, bytes15 _geoHash)
     internal pure
     returns (bytes32) {
       return keccak256(abi.encodePacked(_owner, _geoHash));
@@ -61,7 +61,7 @@ contract CryptoSpatialCoordinate {
     /// @param  _owner the owner of the entity
     /// @param  _geoHash geoHash of the geospatialy referenced entity
     /// @param  _cscIndex the CSC Index
-    function isValidCSCIndex(address _owner, bytes32 _geoHash, bytes32 _cscIndex)
+    function isValidCSCIndex(address _owner, bytes15 _geoHash, bytes32 _cscIndex)
     public pure returns (bool) {
       return (_cscIndex == calcCSCIndex (_owner, _geoHash));
     }
@@ -69,7 +69,7 @@ contract CryptoSpatialCoordinate {
     /// @notice isMyCSCIndex
     /// @param  _geoHash geoHash of the geospatialy referenced entity
     /// @param  _cscIndex the CSC Index
-    function isMyCSCIndex(bytes32 _geoHash, bytes32 _cscIndex)
+    function isMyCSCIndex(bytes15 _geoHash, bytes32 _cscIndex)
     public view returns (bool) {
       return (_cscIndex == calcCSCIndex (msg.sender, _geoHash));
     }

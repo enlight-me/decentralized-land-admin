@@ -13,7 +13,7 @@ import "./App.css";
 class App extends Component {
 
   state = {
-    storageValue: 0,
+    cscIndex: 0,
     h3Index : 0,
     web3: null,
     accounts: null,
@@ -22,6 +22,7 @@ class App extends Component {
     lng: 3.00,
     zoom: 2,
     features: [],
+    transactionHash : null 
   }
 
   geoJSONStyle() {
@@ -69,10 +70,12 @@ class App extends Component {
         CryptoSpatialCoordinateContract.abi,
         deployedCSC && deployedCSC.address,
       );
-      instanceCSC.events.LogCSCIndexedEntityAdded((err, events) => {
-        console.log(events.returnValues)
-      })
-        .on('error', console.error);
+
+      // instanceCSC.events.LogCSCIndexedEntityAdded((err, events) => {
+      //   console.log(events.returnValues.geoHash);
+      // }).on('error', console.error);
+
+      instanceCSC.events.LogCSCIndexedEntityAdded((err, events) => this.cscIndexAdded(err, events)).on('error', console.error);
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
@@ -87,6 +90,23 @@ class App extends Component {
     }
   };
 
+  cscIndexAdded (err, events) {
+    const owner = events.returnValues.owner;
+    const index = events.returnValues.cscIndex;
+    const geoHash= events.returnValues.geoHash;
+    const transactionHash = events.transactionHash;
+    const addFeatureURL = 'http://localhost:4000/collections/cscindex/addFeature?'; 
+
+    fetch(addFeatureURL+'geohash='+geoHash+'&owner='+owner+'&index='+index+'&transactionHash='+transactionHash);
+      // .then(res => {
+      //   return res.json();
+      // }).then(data => {
+      //   console.log(data);
+      // });
+
+    // console.log(events);
+  }
+
   convertToH3 = async (event) => {
     // Convert a lat/lng point to a hexagon index at resolution 7
     const h3Index = geoToH3(37.3615593, -122.0553238, 15);
@@ -98,7 +118,9 @@ class App extends Component {
     // Get network provider and web3 instance.
     const web3 = this.state.web3;
 
-    const geoHash = web3.utils.toHex("My location coordinates geoHash2")
+    // const geoHash = web3.utils.toHex("My location coordinates geoHash2");
+
+    const geoHash = web3.utils.toHex(geoToH3(Math.random()*50, Math.random()*50, 15));
 
     const result = await contractCSC.methods.addCSCIndexedEntity(geoHash).send({ from: accounts[0] });
 
@@ -106,7 +128,7 @@ class App extends Component {
     // console.log(result)
 
     // Update state with the result.
-    this.setState({ storageValue: result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex });
+    this.setState({ cscIndex: result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex });
   };
 
   render() {
@@ -123,7 +145,8 @@ class App extends Component {
           <Heading.h3>
             The Crypto-Spatial Index value is:
           </Heading.h3>
-          <Box><Text  textAlign="centre" mb={2}> {this.state.storageValue} </Text></Box>
+          <Box><Text  textAlign="centre" mb={2}> Store value : {this.state.cscIndex} </Text></Box>
+          <Box><Text  textAlign="centre" mb={2}> Transaction hash :{this.state.transactionHash} </Text></Box>
           <Button mb={4} onClick={this.addCSCIndex.bind(this)}>Add CSC Index</Button>
       
           <Heading.h3>

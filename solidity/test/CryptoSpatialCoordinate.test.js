@@ -11,7 +11,8 @@ contract('CryptoSpatialCoordinate', function(accounts) {
     const owner = accounts[0]
     const alice = accounts[1]
     const bob = accounts[2]
-    const geoHashText = "My location coordinates geoHash2" // must be 32 bytes
+    // const geoHashText = "My location coordinates geoHash2" // must be 32 bytes
+    const geoHashText = "8f283470d921c65" // must be 15 bytes
     const geoHash = web3.utils.toHex(geoHashText)
   
     beforeEach(async () => {

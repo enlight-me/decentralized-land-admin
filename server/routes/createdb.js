@@ -13,6 +13,7 @@ const QUERY_CREATE_CSCIndex_TABLE = "CREATE TABLE IF NOT EXISTS cscindex (\
                                             id INTEGER NOT NULL PRIMARY KEY,\
                                             geohash TEXT,\
                                             owner TEXT,\
+                                            transhash TEXT,\
                                             cscindex TEXT);"
 
 const QUERY_CREATE_AddGeomColumn_TABLE = "SELECT AddGeometryColumn('cscindex','geometry', 3785, 'POINT', '2');"

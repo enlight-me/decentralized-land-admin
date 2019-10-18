@@ -37,7 +37,7 @@
         {
           "indexed": false,
           "name": "geoHash",
-          "type": "bytes32"
+          "type": "bytes15"
         },
         {
           "indexed": false,
@@ -70,7 +70,7 @@
       "inputs": [
         {
           "name": "_geoHash",
-          "type": "bytes32"
+          "type": "bytes15"
         }
       ],
       "name": "addCSCIndexedEntity",
@@ -93,7 +93,7 @@
         },
         {
           "name": "_geoHash",
-          "type": "bytes32"
+          "type": "bytes15"
         },
         {
           "name": "_cscIndex",
@@ -116,7 +116,7 @@
       "inputs": [
         {
           "name": "_geoHash",
-          "type": "bytes32"
+          "type": "bytes15"
         },
         {
           "name": "_cscIndex",
@@ -135,15 +135,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"},{\"name\":\"_geoHash\",\"type\":\"bytes32\"},{\"name\":\"_cscIndex\",\"type\":\"bytes32\"}],\"name\":\"isValidCSCIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_geoHash\",\"type\":\"bytes32\"},{\"name\":\"_cscIndex\",\"type\":\"bytes32\"}],\"name\":\"isMyCSCIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_geoHash\",\"type\":\"bytes32\"}],\"name\":\"addCSCIndexedEntity\",\"outputs\":[{\"name\":\"cscIndex\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"fallback\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"cscIndex\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"geoHash\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"LogCSCIndexedEntityAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"addCSCIndexedEntity(bytes32)\":{\"params\":{\"_geoHash\":\"geoHash of the geospatialy referenced entity\"}},\"isMyCSCIndex(bytes32,bytes32)\":{\"params\":{\"_cscIndex\":\"the CSC Index\",\"_geoHash\":\"geoHash of the geospatialy referenced entity\"}},\"isValidCSCIndex(address,bytes32,bytes32)\":{\"params\":{\"_cscIndex\":\"the CSC Index\",\"_geoHash\":\"geoHash of the geospatialy referenced entity\",\"_owner\":\"the owner of the entity\"}}}},\"userdoc\":{\"methods\":{\"addCSCIndexedEntity(bytes32)\":{\"notice\":\"addCSCIndexedEntity\"},\"constructor\":\"constuctor\",\"isMyCSCIndex(bytes32,bytes32)\":{\"notice\":\"isMyCSCIndex\"},\"isValidCSCIndex(address,bytes32,bytes32)\":{\"notice\":\"isCSCIndex\"}}}},\"settings\":{\"compilationTarget\":{\"/home/ali/EthProjects/sola-chain/solidity/contracts/CryptoSpatialCoordinate.sol\":\"CryptoSpatialCoordinate\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ali/EthProjects/sola-chain/solidity/contracts/CryptoSpatialCoordinate.sol\":{\"keccak256\":\"0xa1d734c0206effd7475deb11e6cde61f98c52bd3b81cb8f864b7e6e9d3280637\",\"urls\":[\"bzzr://085c9b96d24fcdfd7fa4df2494e4b77bf79c5c58db11245bea7a48b8f3b82292\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061039f806100606000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80631c7d3caa1461009d5780634dfc19c31461010d5780638da5cb5b1461015d578063c182b9b5146101a7575b6040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602981526020018061034b6029913960400191505060405180910390fd5b6100f3600480360360608110156100b357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803590602001909291905050506101e9565b604051808215151515815260200191505060405180910390f35b6101436004803603604081101561012357600080fd5b810190808035906020019092919080359060200190929190505050610200565b604051808215151515815260200191505060405180910390f35b610165610216565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101d3600480360360208110156101bd57600080fd5b810190808035906020019092919050505061023b565b6040518082815260200191505060405180910390f35b60006101f584846102e2565b821490509392505050565b600061020c33846102e2565b8214905092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600061024733836102e2565b90507f5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b81836000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808481526020018381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001935050505060405180910390a1919050565b60008282604051602001808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b8152601401828152602001925050506040516020818303038152906040528051906020012090509291505056fe7468697320636f6e74726163742073686f756c64206e65766572206861766520612062616c616e6365a165627a7a723058207026b05bc740c40c7f0339a6a13538ef012247ab93db3405b2f2fb54a59556000029",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80631c7d3caa1461009d5780634dfc19c31461010d5780638da5cb5b1461015d578063c182b9b5146101a7575b6040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602981526020018061034b6029913960400191505060405180910390fd5b6100f3600480360360608110156100b357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190803590602001909291905050506101e9565b604051808215151515815260200191505060405180910390f35b6101436004803603604081101561012357600080fd5b810190808035906020019092919080359060200190929190505050610200565b604051808215151515815260200191505060405180910390f35b610165610216565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101d3600480360360208110156101bd57600080fd5b810190808035906020019092919050505061023b565b6040518082815260200191505060405180910390f35b60006101f584846102e2565b821490509392505050565b600061020c33846102e2565b8214905092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600061024733836102e2565b90507f5ffa3237b49190cc10e059eb8d37521224a37ad77d1baad6e5f635e289816c3b81836000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808481526020018381526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001935050505060405180910390a1919050565b60008282604051602001808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b8152601401828152602001925050506040516020818303038152906040528051906020012090509291505056fe7468697320636f6e74726163742073686f756c64206e65766572206861766520612062616c616e6365a165627a7a723058207026b05bc740c40c7f0339a6a13538ef012247ab93db3405b2f2fb54a59556000029",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"_geoHash\",\"type\":\"bytes15\"},{\"name\":\"_cscIndex\",\"type\":\"bytes32\"}],\"name\":\"isMyCSCIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_owner\",\"type\":\"address\"},{\"name\":\"_geoHash\",\"type\":\"bytes15\"},{\"name\":\"_cscIndex\",\"type\":\"bytes32\"}],\"name\":\"isValidCSCIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_geoHash\",\"type\":\"bytes15\"}],\"name\":\"addCSCIndexedEntity\",\"outputs\":[{\"name\":\"cscIndex\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"fallback\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"cscIndex\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"geoHash\",\"type\":\"bytes15\"},{\"indexed\":false,\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"LogCSCIndexedEntityAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"addCSCIndexedEntity(bytes15)\":{\"params\":{\"_geoHash\":\"geoHash of the geospatialy referenced entity\"}},\"isMyCSCIndex(bytes15,bytes32)\":{\"params\":{\"_cscIndex\":\"the CSC Index\",\"_geoHash\":\"geoHash of the geospatialy referenced entity\"}},\"isValidCSCIndex(address,bytes15,bytes32)\":{\"params\":{\"_cscIndex\":\"the CSC Index\",\"_geoHash\":\"geoHash of the geospatialy referenced entity\",\"_owner\":\"the owner of the entity\"}}}},\"userdoc\":{\"methods\":{\"addCSCIndexedEntity(bytes15)\":{\"notice\":\"addCSCIndexedEntity\"},\"constructor\":\"constuctor\",\"isMyCSCIndex(bytes15,bytes32)\":{\"notice\":\"isMyCSCIndex\"},\"isValidCSCIndex(address,bytes15,bytes32)\":{\"notice\":\"isCSCIndex\"}}}},\"settings\":{\"compilationTarget\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/CryptoSpatialCoordinate.sol\":\"CryptoSpatialCoordinate\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/CryptoSpatialCoordinate.sol\":{\"keccak256\":\"0xba19e16207e11081f99edde570b802a27cbe7df359516a4c1a383fe5ed96fa35\",\"urls\":[\"bzzr://b3313c774f5ccf26e7ba6c8764aa0b3a76c16f398fbbf70b99406a7362b4ad98\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061042b806100606000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80631a0420131461009d5780633ee796251461010157806385f82407146101855780638da5cb5b146101db575b6040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260298152602001806103d76029913960400191505060405180910390fd5b6100e7600480360360408110156100b357600080fd5b81019080803570ffffffffffffffffffffffffffffffffff1916906020019092919080359060200190929190505050610225565b604051808215151515815260200191505060405180910390f35b61016b6004803603606081101561011757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803570ffffffffffffffffffffffffffffffffff191690602001909291908035906020019092919050505061023b565b604051808215151515815260200191505060405180910390f35b6101c56004803603602081101561019b57600080fd5b81019080803570ffffffffffffffffffffffffffffffffff19169060200190929190505050610252565b6040518082815260200191505060405180910390f35b6101e3610321565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60006102313384610346565b8214905092915050565b60006102478484610346565b821490509392505050565b600061025e3383610346565b90507fb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb81836000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808481526020018370ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff191681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001935050505060405180910390a1919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008282604051602001808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b81526014018270ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff19168152600f01925050506040516020818303038152906040528051906020012090509291505056fe7468697320636f6e74726163742073686f756c64206e65766572206861766520612062616c616e6365a165627a7a723058202c1bf02cd6bf0e598b1f8edf8f10c8a4d2e5d0bfeeae0bcded32b76bee553b670029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80631a0420131461009d5780633ee796251461010157806385f82407146101855780638da5cb5b146101db575b6040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260298152602001806103d76029913960400191505060405180910390fd5b6100e7600480360360408110156100b357600080fd5b81019080803570ffffffffffffffffffffffffffffffffff1916906020019092919080359060200190929190505050610225565b604051808215151515815260200191505060405180910390f35b61016b6004803603606081101561011757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803570ffffffffffffffffffffffffffffffffff191690602001909291908035906020019092919050505061023b565b604051808215151515815260200191505060405180910390f35b6101c56004803603602081101561019b57600080fd5b81019080803570ffffffffffffffffffffffffffffffffff19169060200190929190505050610252565b6040518082815260200191505060405180910390f35b6101e3610321565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60006102313384610346565b8214905092915050565b60006102478484610346565b821490509392505050565b600061025e3383610346565b90507fb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb81836000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808481526020018370ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff191681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001935050505060405180910390a1919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008282604051602001808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b81526014018270ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff19168152600f01925050506040516020818303038152906040528051906020012090509291505056fe7468697320636f6e74726163742073686f756c64206e65766572206861766520612062616c616e6365a165627a7a723058202c1bf02cd6bf0e598b1f8edf8f10c8a4d2e5d0bfeeae0bcded32b76bee553b670029",
   "sourceMap": "252:2020:0:-;;;708:55;8:9:-1;5:2;;;30:1;27;20:12;5:2;708:55:0;746:10;738:5;;:18;;;;;;;;;;;;;;;;;;252:2020;;;;;;",
-  "deployedSourceMap": "252:2020:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;252:2020:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2211:51;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1690:177;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1690:177:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2012:162;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2012:162:0;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;328:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;874:257;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;874:257:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1690:177;1793:4;1828:31;1842:6;1850:8;1828:12;:31::i;:::-;1815:9;:44;1807:53;;1690:177;;;;;:::o;2012:162::-;2096:4;2131:35;2145:10;2157:8;2131:12;:35::i;:::-;2118:9;:48;2110:57;;2012:162;;;;:::o;328:20::-;;;;;;;;;;;;;:::o;874:257::-;941:16;1025:35;1039:10;1051:8;1025:12;:35::i;:::-;1014:46;;1073:51;1098:8;1108;1118:5;;;;;;;;;;;1073:51;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;874:257;;;:::o;1336:164::-;1424:7;1475:6;1483:8;1458:34;;;;;;;;;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;1458:34:0;;;1448:45;;;;;;1441:52;;1336:164;;;;:::o",
-  "source": "/**\n * @title CryptoSpatialCoordinate\n * @dev standard Crypto Spatial Coordinate library\n * @notice This contract implement the Crypto Spatial Coordinate\n *  as described by the FOAM protocole\n * Requirements:\n * - ....\n *\n*/\n\npragma solidity ^0.5.0;\n\ncontract CryptoSpatialCoordinate {\n    //\n    // State variables\n    //\n    address public owner;\n\n    struct CSCIndex {\n    address owner;\n    bytes32 geoHash;\n    bytes32 cscIndex;\n    }\n\n    //\n    // Events - publicize actions to external listeners\n    //\n    event LogCSCIndexedEntityAdded(bytes32 cscIndex, bytes32 geoHash, address owner);\n    event Deposit(address sender, uint value);\n    //\n    // Functions\n    //\n\n    /// @notice constuctor\n    constructor () public {\n      owner = msg.sender;\n    }\n\n    /// @notice addCSCIndexedEntity\n    /// @param _geoHash geoHash of the geospatialy referenced entity\n    function addCSCIndexedEntity(bytes32 _geoHash)\n    public returns (bytes32 cscIndex) {\n      // TODO Check validity of external input\n      cscIndex = calcCSCIndex (msg.sender, _geoHash);\n      emit LogCSCIndexedEntityAdded(cscIndex, _geoHash, owner);\n    }\n\n    /**\n    * @dev calculate the CSC Index using ...\n    * @notice calcCSCIndex\n    * @param _owner the owner of the CSC\n    * @param _geoHash the geoHash of the geospatialy referenced entity\n    */\n    function calcCSCIndex (address _owner, bytes32 _geoHash)\n    internal pure\n    returns (bytes32) {\n      return keccak256(abi.encodePacked(_owner, _geoHash));\n    }\n\n    /// @notice isCSCIndex\n    /// @param  _owner the owner of the entity\n    /// @param  _geoHash geoHash of the geospatialy referenced entity\n    /// @param  _cscIndex the CSC Index\n    function isValidCSCIndex(address _owner, bytes32 _geoHash, bytes32 _cscIndex)\n    public pure returns (bool) {\n      return (_cscIndex == calcCSCIndex (_owner, _geoHash));\n    }\n\n    /// @notice isMyCSCIndex\n    /// @param  _geoHash geoHash of the geospatialy referenced entity\n    /// @param  _cscIndex the CSC Index\n    function isMyCSCIndex(bytes32 _geoHash, bytes32 _cscIndex)\n    public view returns (bool) {\n      return (_cscIndex == calcCSCIndex (msg.sender, _geoHash));\n    }\n\n      function () external {\n      revert(\"this contract should never have a balance\");\n    }\n\n}\n",
-  "sourcePath": "/home/ali/EthProjects/sola-chain/solidity/contracts/CryptoSpatialCoordinate.sol",
+  "deployedSourceMap": "252:2020:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;252:2020:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2211:51;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2012:162;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2012:162:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1690:177;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1690:177:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;874:257;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;874:257:0;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;328:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;2012:162;2096:4;2131:35;2145:10;2157:8;2131:12;:35::i;:::-;2118:9;:48;2110:57;;2012:162;;;;:::o;1690:177::-;1793:4;1828:31;1842:6;1850:8;1828:12;:31::i;:::-;1815:9;:44;1807:53;;1690:177;;;;;:::o;874:257::-;941:16;1025:35;1039:10;1051:8;1025:12;:35::i;:::-;1014:46;;1073:51;1098:8;1108;1118:5;;;;;;;;;;;1073:51;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;874:257;;;:::o;328:20::-;;;;;;;;;;;;;:::o;1336:164::-;1424:7;1475:6;1483:8;1458:34;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;1458:34:0;;;1448:45;;;;;;1441:52;;1336:164;;;;:::o",
+  "source": "/**\n * @title CryptoSpatialCoordinate\n * @dev standard Crypto Spatial Coordinate library\n * @notice This contract implement the Crypto Spatial Coordinate\n *  as described by the FOAM protocole\n * Requirements:\n * - ....\n *\n*/\n\npragma solidity ^0.5.0;\n\ncontract CryptoSpatialCoordinate {\n    //\n    // State variables\n    //\n    address public owner;\n\n    struct CSCIndex {\n    address owner;\n    bytes15 geoHash;\n    bytes32 cscIndex;\n    }\n\n    //\n    // Events - publicize actions to external listeners\n    //\n    event LogCSCIndexedEntityAdded(bytes32 cscIndex, bytes15 geoHash, address owner);\n    event Deposit(address sender, uint value);\n    //\n    // Functions\n    //\n\n    /// @notice constuctor\n    constructor () public {\n      owner = msg.sender;\n    }\n\n    /// @notice addCSCIndexedEntity\n    /// @param _geoHash geoHash of the geospatialy referenced entity\n    function addCSCIndexedEntity(bytes15 _geoHash)\n    public returns (bytes32 cscIndex) {\n      // TODO Check validity of external input\n      cscIndex = calcCSCIndex (msg.sender, _geoHash);\n      emit LogCSCIndexedEntityAdded(cscIndex, _geoHash, owner);\n    }\n\n    /**\n    * @dev calculate the CSC Index using ...\n    * @notice calcCSCIndex\n    * @param _owner the owner of the CSC\n    * @param _geoHash the geoHash of the geospatialy referenced entity\n    */\n    function calcCSCIndex (address _owner, bytes15 _geoHash)\n    internal pure\n    returns (bytes32) {\n      return keccak256(abi.encodePacked(_owner, _geoHash));\n    }\n\n    /// @notice isCSCIndex\n    /// @param  _owner the owner of the entity\n    /// @param  _geoHash geoHash of the geospatialy referenced entity\n    /// @param  _cscIndex the CSC Index\n    function isValidCSCIndex(address _owner, bytes15 _geoHash, bytes32 _cscIndex)\n    public pure returns (bool) {\n      return (_cscIndex == calcCSCIndex (_owner, _geoHash));\n    }\n\n    /// @notice isMyCSCIndex\n    /// @param  _geoHash geoHash of the geospatialy referenced entity\n    /// @param  _cscIndex the CSC Index\n    function isMyCSCIndex(bytes15 _geoHash, bytes32 _cscIndex)\n    public view returns (bool) {\n      return (_cscIndex == calcCSCIndex (msg.sender, _geoHash));\n    }\n\n      function () external {\n      revert(\"this contract should never have a balance\");\n    }\n\n}\n",
+  "sourcePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/CryptoSpatialCoordinate.sol",
   "ast": {
-    "absolutePath": "/home/ali/EthProjects/sola-chain/solidity/contracts/CryptoSpatialCoordinate.sol",
+    "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/CryptoSpatialCoordinate.sol",
     "exportedSymbols": {
       "CryptoSpatialCoordinate": [
         121
@@ -244,17 +244,17 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_bytes32",
-                  "typeString": "bytes32"
+                  "typeIdentifier": "t_bytes15",
+                  "typeString": "bytes15"
                 },
                 "typeName": {
                   "id": 6,
-                  "name": "bytes32",
+                  "name": "bytes15",
                   "nodeType": "ElementaryTypeName",
                   "src": "396:7:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   }
                 },
                 "value": null,
@@ -341,17 +341,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 13,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "565:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -625,8 +625,8 @@
                           "referencedDeclaration": 35,
                           "src": "1051:8:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_bytes32",
-                            "typeString": "bytes32"
+                            "typeIdentifier": "t_bytes15",
+                            "typeString": "bytes15"
                           }
                         }
                       ],
@@ -637,8 +637,8 @@
                             "typeString": "address payable"
                           },
                           {
-                            "typeIdentifier": "t_bytes32",
-                            "typeString": "bytes32"
+                            "typeIdentifier": "t_bytes15",
+                            "typeString": "bytes15"
                           }
                         ],
                         "id": 41,
@@ -648,8 +648,8 @@
                         "referencedDeclaration": 73,
                         "src": "1025:12:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
-                          "typeString": "function (address,bytes32) pure returns (bytes32)"
+                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes15_$returns$_t_bytes32_$",
+                          "typeString": "function (address,bytes15) pure returns (bytes32)"
                         }
                       },
                       "id": 45,
@@ -702,8 +702,8 @@
                         "referencedDeclaration": 35,
                         "src": "1108:8:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
+                          "typeIdentifier": "t_bytes15",
+                          "typeString": "bytes15"
                         }
                       },
                       {
@@ -727,8 +727,8 @@
                           "typeString": "bytes32"
                         },
                         {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
+                          "typeIdentifier": "t_bytes15",
+                          "typeString": "bytes15"
                         },
                         {
                           "typeIdentifier": "t_address",
@@ -742,8 +742,8 @@
                       "referencedDeclaration": 18,
                       "src": "1073:24:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes32_$_t_address_$returns$__$",
-                        "typeString": "function (bytes32,bytes32,address)"
+                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes15_$_t_address_$returns$__$",
+                        "typeString": "function (bytes32,bytes15,address)"
                       }
                     },
                     "id": 52,
@@ -787,17 +787,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 34,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "903:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -880,8 +880,8 @@
                             "referencedDeclaration": 59,
                             "src": "1483:8:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_bytes32",
-                              "typeString": "bytes32"
+                              "typeIdentifier": "t_bytes15",
+                              "typeString": "bytes15"
                             }
                           }
                         ],
@@ -892,8 +892,8 @@
                               "typeString": "address"
                             },
                             {
-                              "typeIdentifier": "t_bytes32",
-                              "typeString": "bytes32"
+                              "typeIdentifier": "t_bytes15",
+                              "typeString": "bytes15"
                             }
                           ],
                           "expression": {
@@ -1025,17 +1025,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 58,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "1375:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -1144,8 +1144,8 @@
                               "referencedDeclaration": 77,
                               "src": "1850:8:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_bytes32",
-                                "typeString": "bytes32"
+                                "typeIdentifier": "t_bytes15",
+                                "typeString": "bytes15"
                               }
                             }
                           ],
@@ -1156,8 +1156,8 @@
                                 "typeString": "address"
                               },
                               {
-                                "typeIdentifier": "t_bytes32",
-                                "typeString": "bytes32"
+                                "typeIdentifier": "t_bytes15",
+                                "typeString": "bytes15"
                               }
                             ],
                             "id": 85,
@@ -1167,8 +1167,8 @@
                             "referencedDeclaration": 73,
                             "src": "1828:12:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
-                              "typeString": "function (address,bytes32) pure returns (bytes32)"
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes15_$returns$_t_bytes32_$",
+                              "typeString": "function (address,bytes15) pure returns (bytes32)"
                             }
                           },
                           "id": 88,
@@ -1260,17 +1260,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 76,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "1731:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -1421,8 +1421,8 @@
                               "referencedDeclaration": 95,
                               "src": "2157:8:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_bytes32",
-                                "typeString": "bytes32"
+                                "typeIdentifier": "t_bytes15",
+                                "typeString": "bytes15"
                               }
                             }
                           ],
@@ -1433,8 +1433,8 @@
                                 "typeString": "address payable"
                               },
                               {
-                                "typeIdentifier": "t_bytes32",
-                                "typeString": "bytes32"
+                                "typeIdentifier": "t_bytes15",
+                                "typeString": "bytes15"
                               }
                             ],
                             "id": 103,
@@ -1444,8 +1444,8 @@
                             "referencedDeclaration": 73,
                             "src": "2131:12:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
-                              "typeString": "function (address,bytes32) pure returns (bytes32)"
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes15_$returns$_t_bytes32_$",
+                              "typeString": "function (address,bytes15) pure returns (bytes32)"
                             }
                           },
                           "id": 107,
@@ -1510,17 +1510,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 94,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "2034:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -1697,7 +1697,7 @@
     "src": "227:2046:0"
   },
   "legacyAST": {
-    "absolutePath": "/home/ali/EthProjects/sola-chain/solidity/contracts/CryptoSpatialCoordinate.sol",
+    "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/CryptoSpatialCoordinate.sol",
     "exportedSymbols": {
       "CryptoSpatialCoordinate": [
         121
@@ -1798,17 +1798,17 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_bytes32",
-                  "typeString": "bytes32"
+                  "typeIdentifier": "t_bytes15",
+                  "typeString": "bytes15"
                 },
                 "typeName": {
                   "id": 6,
-                  "name": "bytes32",
+                  "name": "bytes15",
                   "nodeType": "ElementaryTypeName",
                   "src": "396:7:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   }
                 },
                 "value": null,
@@ -1895,17 +1895,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 13,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "565:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -2179,8 +2179,8 @@
                           "referencedDeclaration": 35,
                           "src": "1051:8:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_bytes32",
-                            "typeString": "bytes32"
+                            "typeIdentifier": "t_bytes15",
+                            "typeString": "bytes15"
                           }
                         }
                       ],
@@ -2191,8 +2191,8 @@
                             "typeString": "address payable"
                           },
                           {
-                            "typeIdentifier": "t_bytes32",
-                            "typeString": "bytes32"
+                            "typeIdentifier": "t_bytes15",
+                            "typeString": "bytes15"
                           }
                         ],
                         "id": 41,
@@ -2202,8 +2202,8 @@
                         "referencedDeclaration": 73,
                         "src": "1025:12:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
-                          "typeString": "function (address,bytes32) pure returns (bytes32)"
+                          "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes15_$returns$_t_bytes32_$",
+                          "typeString": "function (address,bytes15) pure returns (bytes32)"
                         }
                       },
                       "id": 45,
@@ -2256,8 +2256,8 @@
                         "referencedDeclaration": 35,
                         "src": "1108:8:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
+                          "typeIdentifier": "t_bytes15",
+                          "typeString": "bytes15"
                         }
                       },
                       {
@@ -2281,8 +2281,8 @@
                           "typeString": "bytes32"
                         },
                         {
-                          "typeIdentifier": "t_bytes32",
-                          "typeString": "bytes32"
+                          "typeIdentifier": "t_bytes15",
+                          "typeString": "bytes15"
                         },
                         {
                           "typeIdentifier": "t_address",
@@ -2296,8 +2296,8 @@
                       "referencedDeclaration": 18,
                       "src": "1073:24:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes32_$_t_address_$returns$__$",
-                        "typeString": "function (bytes32,bytes32,address)"
+                        "typeIdentifier": "t_function_event_nonpayable$_t_bytes32_$_t_bytes15_$_t_address_$returns$__$",
+                        "typeString": "function (bytes32,bytes15,address)"
                       }
                     },
                     "id": 52,
@@ -2341,17 +2341,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 34,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "903:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -2434,8 +2434,8 @@
                             "referencedDeclaration": 59,
                             "src": "1483:8:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_bytes32",
-                              "typeString": "bytes32"
+                              "typeIdentifier": "t_bytes15",
+                              "typeString": "bytes15"
                             }
                           }
                         ],
@@ -2446,8 +2446,8 @@
                               "typeString": "address"
                             },
                             {
-                              "typeIdentifier": "t_bytes32",
-                              "typeString": "bytes32"
+                              "typeIdentifier": "t_bytes15",
+                              "typeString": "bytes15"
                             }
                           ],
                           "expression": {
@@ -2579,17 +2579,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 58,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "1375:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -2698,8 +2698,8 @@
                               "referencedDeclaration": 77,
                               "src": "1850:8:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_bytes32",
-                                "typeString": "bytes32"
+                                "typeIdentifier": "t_bytes15",
+                                "typeString": "bytes15"
                               }
                             }
                           ],
@@ -2710,8 +2710,8 @@
                                 "typeString": "address"
                               },
                               {
-                                "typeIdentifier": "t_bytes32",
-                                "typeString": "bytes32"
+                                "typeIdentifier": "t_bytes15",
+                                "typeString": "bytes15"
                               }
                             ],
                             "id": 85,
@@ -2721,8 +2721,8 @@
                             "referencedDeclaration": 73,
                             "src": "1828:12:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
-                              "typeString": "function (address,bytes32) pure returns (bytes32)"
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes15_$returns$_t_bytes32_$",
+                              "typeString": "function (address,bytes15) pure returns (bytes32)"
                             }
                           },
                           "id": 88,
@@ -2814,17 +2814,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 76,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "1731:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -2975,8 +2975,8 @@
                               "referencedDeclaration": 95,
                               "src": "2157:8:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_bytes32",
-                                "typeString": "bytes32"
+                                "typeIdentifier": "t_bytes15",
+                                "typeString": "bytes15"
                               }
                             }
                           ],
@@ -2987,8 +2987,8 @@
                                 "typeString": "address payable"
                               },
                               {
-                                "typeIdentifier": "t_bytes32",
-                                "typeString": "bytes32"
+                                "typeIdentifier": "t_bytes15",
+                                "typeString": "bytes15"
                               }
                             ],
                             "id": 103,
@@ -2998,8 +2998,8 @@
                             "referencedDeclaration": 73,
                             "src": "2131:12:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes32_$returns$_t_bytes32_$",
-                              "typeString": "function (address,bytes32) pure returns (bytes32)"
+                              "typeIdentifier": "t_function_internal_pure$_t_address_$_t_bytes15_$returns$_t_bytes32_$",
+                              "typeString": "function (address,bytes15) pure returns (bytes32)"
                             }
                           },
                           "id": 107,
@@ -3064,17 +3064,17 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bytes32",
-                    "typeString": "bytes32"
+                    "typeIdentifier": "t_bytes15",
+                    "typeString": "bytes15"
                   },
                   "typeName": {
                     "id": 94,
-                    "name": "bytes32",
+                    "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "2034:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_bytes32",
-                      "typeString": "bytes32"
+                      "typeIdentifier": "t_bytes15",
+                      "typeString": "bytes15"
                     }
                   },
                   "value": null,
@@ -3297,11 +3297,34 @@
           "name": "Deposit",
           "type": "event",
           "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
+        },
+        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "cscIndex",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "geoHash",
+              "type": "bytes15"
+            },
+            {
+              "indexed": false,
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "LogCSCIndexedEntityAdded",
+          "type": "event",
+          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
         }
       },
       "links": {},
-      "address": "0xe03a62c2B9918d406943BbDfE6D842e23862c73b",
-      "transactionHash": "0x2cef5146e2bc0a2efc3685e3ca9b1e7b0de9bd38b74e6581b2c288dddc497993"
+      "address": "0x40af5042bD52B682db537090f2a1e5A386fe7115",
+      "transactionHash": "0xaf924b3c68d07e7a047112cb92f819575c51815b8c7f06b69df1966f552f2901"
     },
     "1570904072105": {
       "events": {
@@ -3545,21 +3568,21 @@
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-17T20:35:08.885Z",
+  "updatedAt": "2019-10-18T22:53:45.092Z",
   "devdoc": {
     "methods": {
-      "addCSCIndexedEntity(bytes32)": {
+      "addCSCIndexedEntity(bytes15)": {
         "params": {
           "_geoHash": "geoHash of the geospatialy referenced entity"
         }
       },
-      "isMyCSCIndex(bytes32,bytes32)": {
+      "isMyCSCIndex(bytes15,bytes32)": {
         "params": {
           "_cscIndex": "the CSC Index",
           "_geoHash": "geoHash of the geospatialy referenced entity"
         }
       },
-      "isValidCSCIndex(address,bytes32,bytes32)": {
+      "isValidCSCIndex(address,bytes15,bytes32)": {
         "params": {
           "_cscIndex": "the CSC Index",
           "_geoHash": "geoHash of the geospatialy referenced entity",
@@ -3570,14 +3593,14 @@
   },
   "userdoc": {
     "methods": {
-      "addCSCIndexedEntity(bytes32)": {
+      "addCSCIndexedEntity(bytes15)": {
         "notice": "addCSCIndexedEntity"
       },
       "constructor": "constuctor",
-      "isMyCSCIndex(bytes32,bytes32)": {
+      "isMyCSCIndex(bytes15,bytes32)": {
         "notice": "isMyCSCIndex"
       },
-      "isValidCSCIndex(address,bytes32,bytes32)": {
+      "isValidCSCIndex(address,bytes15,bytes32)": {
         "notice": "isCSCIndex"
       }
     }

@@ -9,7 +9,7 @@ contract TestCryptoSpatialCoordinate {
     CryptoSpatialCoordinate meta = CryptoSpatialCoordinate(DeployedAddresses.CryptoSpatialCoordinate());
 
     bytes32 geoHashText = "My location coordinates geoHash2";
-    bytes32 geoHash = bytes32(geoHashText);
+    bytes15 geoHash = bytes15(geoHashText);
     bytes32 CSCIndex = keccak256(abi.encodePacked(this, geoHash));
 
     Assert.equal(meta.addCSCIndexedEntity(geoHash), CSCIndex, "CSC Index is correctlly calculated");

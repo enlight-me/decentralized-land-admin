@@ -17,4 +17,5 @@ A Blockchain implementation of the Solutions for Open Land Administration
 [H3 Resolution table](https://uber.github.io/h3/#/documentation/core-library/resolution-table)
 
 [OGC API - Features - Part 1 : Core](http://docs.opengeospatial.org/is/17-069r3/17-069r3.pdf)
+
 [ArcGIS REST API Feature Service](https://developers.arcgis.com/rest/services-reference/feature-feature-service-.htm)
