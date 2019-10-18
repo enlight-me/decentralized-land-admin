@@ -15,3 +15,6 @@ A Blockchain implementation of the Solutions for Open Land Administration
 
 [H3 Geodesic Discrete Global Grid Systems](http://webpages.sou.edu/~sahrk/sqspc/pubs/gdggs03.pdf)
 [H3 Resolution table](https://uber.github.io/h3/#/documentation/core-library/resolution-table)
+
+[OGC API - Features - Part 1 : Core](http://docs.opengeospatial.org/is/17-069r3/17-069r3.pdf)
+[ArcGIS REST API Feature Service](https://developers.arcgis.com/rest/services-reference/feature-feature-service-.htm)
