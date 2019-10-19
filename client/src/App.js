@@ -118,9 +118,12 @@ class App extends Component {
     // Get network provider and web3 instance.
     const web3 = this.state.web3;
 
-    // const geoHash = web3.utils.toHex("My location coordinates geoHash2");
+    // const geoHash = web3.utils.toHex("My location coordinates geoHash2"); // byte32
+    // const geoHash = web3.utils.toHex("8f283470d921c65"); 
+    const h3Index = geoToH3(Math.random()*50, Math.random()*50, 15);
+    const geoHash = web3.utils.toHex(h3Index);
 
-    const geoHash = web3.utils.toHex(geoToH3(Math.random()*50, Math.random()*50, 15));
+    console.log(h3Index);
 
     const result = await contractCSC.methods.addCSCIndexedEntity(geoHash).send({ from: accounts[0] });
 

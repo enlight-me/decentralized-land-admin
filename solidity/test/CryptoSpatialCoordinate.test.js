@@ -21,7 +21,7 @@ contract('CryptoSpatialCoordinate', function(accounts) {
   
     it("should log a deposit event when a CSCIndex is added", async() => {
       const index  = web3.utils.soliditySha3({ type : 'address', value : owner}, 
-                                             { type : 'bytes32', value : geoHash})
+                                             { type : 'bytes15', value : geoHash})
       const result  = await instance.addCSCIndexedEntity(geoHash)
       
       const expectedEventResult = {cscIndex : index}

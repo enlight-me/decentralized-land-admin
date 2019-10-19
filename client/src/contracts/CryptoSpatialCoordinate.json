@@ -3323,8 +3323,8 @@
         }
       },
       "links": {},
-      "address": "0x40af5042bD52B682db537090f2a1e5A386fe7115",
-      "transactionHash": "0xaf924b3c68d07e7a047112cb92f819575c51815b8c7f06b69df1966f552f2901"
+      "address": "0x5aD9d0884c6bcB9027aD7aEb8fA84E92bA0e33a2",
+      "transactionHash": "0xaf671c68efb87b225e00479bd14e694e18bf8f47ebb9f9970b151862fe0f2b29"
     },
     "1570904072105": {
       "events": {
@@ -3568,7 +3568,7 @@
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-18T22:53:45.092Z",
+  "updatedAt": "2019-10-19T00:06:30.193Z",
   "devdoc": {
     "methods": {
       "addCSCIndexedEntity(bytes15)": {
