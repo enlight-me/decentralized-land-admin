@@ -15,6 +15,7 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pug": "^2.0.4",
-    "spatialite": "^0.1.0"
+    "spatialite": "^0.1.0",
+    "web3": "^1.2.1"
   }
 }

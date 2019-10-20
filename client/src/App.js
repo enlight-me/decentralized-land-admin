@@ -3,7 +3,7 @@ import { Button, Card, Text, Heading, Box, Flex } from 'rimble-ui';
 
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 
-import { geoToH3 } from "h3-js";
+import { geoToH3, h3ToGeo } from "h3-js";
 
 import CryptoSpatialCoordinateContract from "./contracts/CryptoSpatialCoordinate.json";
 import getWeb3 from "./utils/getWeb3";
@@ -51,6 +51,7 @@ class App extends Component {
       }).then(data => {
         this.state.features = data;
       });
+      this.geoJsonLayer = React.createRef();
   }
 
   componentDidMount = async () => {
@@ -97,14 +98,20 @@ class App extends Component {
     const transactionHash = events.transactionHash;
     const addFeatureURL = 'http://localhost:4000/collections/cscindex/addFeature?'; 
 
-    fetch(addFeatureURL+'geohash='+geoHash+'&owner='+owner+'&index='+index+'&transactionHash='+transactionHash);
-      // .then(res => {
-      //   return res.json();
-      // }).then(data => {
-      //   console.log(data);
-      // });
+    fetch(addFeatureURL+'geohash='+geoHash+'&owner='+owner+'&index='+index+'&transactionHash='+transactionHash)
+      .then(res => {
+        return res.json();
+      }).then(data => {
 
-    // console.log(events);
+        fetch('http://localhost:4000/collections/cscindex')
+        .then(res => {
+          return res.json();
+        }).then(data => {
+          this.setState({features : data });
+          this.geoJsonLayer.current.leafletElement.clearLayers().addData(data);
+          console.log(this.state.features);
+        });
+      });     
   }
 
   convertToH3 = async (event) => {
@@ -118,20 +125,14 @@ class App extends Component {
     // Get network provider and web3 instance.
     const web3 = this.state.web3;
 
-    // const geoHash = web3.utils.toHex("My location coordinates geoHash2"); // byte32
-    // const geoHash = web3.utils.toHex("8f283470d921c65"); 
-    const h3Index = geoToH3(Math.random()*50, Math.random()*50, 15);
-    const geoHash = web3.utils.toHex(h3Index);
+    /// TODO the coordinates should be input by the user directly from the map
+    const h3Index = geoToH3((Math.random()*180.0)-90.0, (Math.random()*180.0)-90.0, 15);
+    const geoHash = web3.utils.asciiToHex(h3Index);
 
-    console.log(h3Index);
-
-    const result = await contractCSC.methods.addCSCIndexedEntity(geoHash).send({ from: accounts[0] });
-
-    //const logAccountCSCIndex = result.logs[0].args.cscIndex
-    // console.log(result)
+    const result = await contractCSC.methods.addCSCIndexedEntity(geoHash).send({ from: accounts[0] }).on('error', console.error);
 
     // Update state with the result.
-    this.setState({ cscIndex: result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex });
+    this.setState({ cscIndex: result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex });   
   };
 
   render() {
@@ -160,12 +161,13 @@ class App extends Component {
         </Card>
 
         <Card width={"700px"} mx={"auto"} px={4}>
-          <Map center={position} zoom={this.state.zoom}>
+          <Map center={position} zoom={this.state.zoom} ref="CSCMap">
             <TileLayer
               attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <GeoJSON
+              ref={this.geoJsonLayer}             
               data={this.state.features}
               style={this.geoJSONStyle}
               onEachFeature={this.onEachFeature}
