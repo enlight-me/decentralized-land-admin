@@ -45,6 +45,7 @@ Since the project is developped using the [truffle framework](https://www.truffl
 
 Compile and migrate the solidity contracts to your local EVM.
 ```
+cd solidity 
 truffle migrate --reset
 ```
 

@@ -36,6 +36,7 @@ class App extends Component {
     }
   }
 
+  /// TODO use transaction hash instead of geohash
   onEachFeature(feature, layer) {
     const popupContent = ` <Popup><p>Informations</p><pre>geoHash: ${feature.properties.geohash}</pre></Popup>`
     layer.bindPopup(popupContent)
