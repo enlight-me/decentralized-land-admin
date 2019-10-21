@@ -3,7 +3,7 @@ import { Button, Card, Text, Heading, Box, Flex } from 'rimble-ui';
 
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 
-import { geoToH3, h3ToGeo } from "h3-js";
+import { geoToH3 } from "h3-js";
 
 import CryptoSpatialCoordinateContract from "./contracts/CryptoSpatialCoordinate.json";
 import getWeb3 from "./utils/getWeb3";
@@ -114,12 +114,14 @@ class App extends Component {
       });     
   }
 
+  // TODO to be deleted after final tests
   convertToH3 = async (event) => {
     // Convert a lat/lng point to a hexagon index at resolution 7
     const h3Index = geoToH3(37.3615593, -122.0553238, 15);
     this.setState({ h3Index });
   }
 
+  // TODO duplicated - to be deleted after final tests
   addCSCIndex = async (event) => {
     const { accounts, contractCSC } = this.state;
     // Get network provider and web3 instance.
@@ -134,6 +136,21 @@ class App extends Component {
     // Update state with the result.
     this.setState({ cscIndex: result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex });   
   };
+
+  handleMapClick = async (e) => {
+    const { accounts, contractCSC } = this.state;
+    // Get network provider and web3 instance.
+    const web3 = this.state.web3;
+
+    /// TODO the coordinates should be input by the user directly from the map
+    const h3Index = geoToH3(e.latlng.lat, e.latlng.lng);
+    const geoHash = web3.utils.asciiToHex(h3Index);
+
+    const result = await contractCSC.methods.addCSCIndexedEntity(geoHash).send({ from: accounts[0] }).on('error', console.error);
+
+    // Update state with the result.
+    this.setState({ cscIndex: result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex });   
+  }
 
   render() {
     const position = [this.state.lat, this.state.lng];
@@ -161,7 +178,11 @@ class App extends Component {
         </Card>
 
         <Card width={"700px"} mx={"auto"} px={4}>
-          <Map center={position} zoom={this.state.zoom} ref="CSCMap">
+          <Map 
+            center={position} 
+            zoom={this.state.zoom} 
+            onClick={this.handleMapClick}
+            ref="CSCMap">
             <TileLayer
               attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
