@@ -9,13 +9,13 @@ This project is challenging because it implements geospatial data management fea
 
 # Implementation details
 
-The FOAM protocole, developped by [FOAM space](https://foam.space/) was implemented using the [White Paper](https://foam.space/publicAssets/FOAM_Whitepaper.pdf) with a set of solidity smart contracts and a client/server applications for the spatial index management and visualisation, with some modifications to explore the alternatives suggested by the [OGC discussion paper ($7.5)](http://docs.opengeospatial.org/dp/18-041r1/18-041r1.html)
+The FOAM protocole, developped by [FOAM space](https://foam.space/) was implemented using the [White Paper](https://foam.space/publicAssets/FOAM_Whitepaper.pdf) with a set of solidity smart contracts and a client/server applications for the spatial index management and visualisation. Some modifications was implemented to explore the alternatives suggested by the [OGC discussion paper ($7.5)](http://docs.opengeospatial.org/dp/18-041r1/18-041r1.html)
 
 For the Crypto-Spatial Coordinates, the javascript interface of the [H3 library](https://uber.github.io/h3/) was used with the [resolution 15](https://uber.github.io/h3/#/documentation/core-library/resolution-table). This library implements the [Geodesic Discrete Global Grid Systems](http://webpages.sou.edu/~sahrk/sqspc/pubs/gdggs03.pdf) OGC standard.
 
-For the spatial index backend the [OGC API - Features - Part 1 : Core](http://docs.opengeospatial.org/is/17-069r3/17-069r3.pdf) and the [ArcGIS REST API Feature Service](https://developers.arcgis.com/rest/services-reference/feature-feature-service-.htm) was used as a standarized REST API dedicated to manage geospatial data objects. The geospatial datas are stored in a [Spatialite database](https://www.gaia-gis.it/fossil/libspatialite).
+For the spatial index backend the [OGC API - Features - Part 1 : Core](http://docs.opengeospatial.org/is/17-069r3/17-069r3.pdf) and the [ArcGIS REST API Feature Service](https://developers.arcgis.com/rest/services-reference/feature-feature-service-.htm) was used as a standarized REST API dedicated to manage geospatial data objects. The geospatial data are stored in a [Spatialite database](https://www.gaia-gis.it/fossil/libspatialite).
 
-For the Frontend the [Leaflet](https://leafletjs.com/), instead of library is used to display a map with a markers representing the added indexes.
+For the Frontend the [Leaflet](https://leafletjs.com/) library is used to display a map with a markers representing the added indexes.
 
 **Comparison with the FOAM protocole implementation**
 - Spatialite -> PostgreSQL/PostGIS, redis
