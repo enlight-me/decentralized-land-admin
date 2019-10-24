@@ -9,7 +9,7 @@
 
 pragma solidity ^0.5.0;
 
-import './CryptoSpatialGeometry.sol';
+import './SpatialFeature.sol';
 
 contract SpatialFeatureRegistry {
     //
@@ -21,7 +21,7 @@ contract SpatialFeatureRegistry {
     //
     // Events - publicize actions to external listeners
     //
-    event LogNewFeatureAdded(bytes32 cscIndex, bytes15 geoHash, address owner);
+    event LogNewFeatureAdded(bytes32 cscIndex, bytes15 dggsIndex, address owner);
 
     //
     // Functions
@@ -33,19 +33,19 @@ contract SpatialFeatureRegistry {
     }
 
     /// @notice addCSCIndexedEntity
-    /// @param _geoHash geoHash of the geospatialy referenced entity
-    function addCSCIndexedEntity(bytes15 _geoHash)
+    /// @param _dggsIndex dggsIndex of the geospatialy referenced entity
+    function addCSCIndexedEntity(bytes15 _dggsIndex)
     public returns (bytes32 cscIndex) {
       // TODO Check validity of external input
     //   cscIndex = calcCSCIndex (msg.sender, _geoHash);
-      emit LogNewFeatureAdded(cscIndex, _geoHash, owner);
+      emit LogNewFeatureAdded(cscIndex, _dggsIndex, owner);
     }
 
     ///@notice registerFeature
     function registerFeature() public returns (bool);
 
     ///@notice getFeature
-    function getFeature() public view returns (CryptoSpatialGeometry);
+    function getFeature() public view returns (SpatialFeature);
 
 
   /* @title callback function

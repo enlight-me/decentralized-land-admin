@@ -12,7 +12,7 @@ pragma solidity ^0.5.0;
 
 library CSC {
 
-    struct CSCStruct {
+    struct CryptoGeometry {
     address owner;
     bytes15 dggsIndex;
     }
@@ -23,7 +23,7 @@ library CSC {
     * @param cscData a record holding the owner of the CSC
     *         and the dggsIndex of the geospatialy referenced entity
     */
-    function computeCSCIndex (CSCStruct storage cscData)
+    function computeCSCIndex (CryptoGeometry storage cscData)
     public
     returns (bytes32) {
       require(cscData.owner != address(0), "Empty address");
@@ -36,7 +36,7 @@ library CSC {
     *         and the dggsIndex of the geospatialy referenced entity
     * @param  _cscIndex the CSC Index
     */
-    function isValidCSCIndex(CSCStruct storage cscData, bytes32 _cscIndex)
+    function isValidCSCIndex(CryptoGeometry storage cscData, bytes32 _cscIndex)
     public
     returns (bool) {
       return (_cscIndex == computeCSCIndex(cscData));

@@ -1,5 +1,5 @@
 /**
- * @title CryptoSpatialGeometry
+ * @title CryptoSpatialFeature
  * @dev an abstract contract that implement a Geospatial Features Geometry type
  * on the etherurm blockchain
  *
@@ -19,19 +19,19 @@ pragma solidity ^0.5.0;
 
 import './CSC.sol';
 
-contract CryptoSpatialGeometry {
+contract SpatialFeature {
 
-    struct CSCStruct {
+    struct CryptoGeometry {
     address owner;
     bytes15 dggsIndex;
     }
 
-    using CSC for CSC.CSCStruct;
+    using CSC for CSC.CryptoGeometry;
     //
     // State variables
     //
 
-    CSC.CSCStruct public cscData;
+    CSC.CryptoGeometry public cscData;
     bytes32 public cscIndex;
 
     //
