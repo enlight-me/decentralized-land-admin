@@ -1,0 +1,74 @@
+@startuml
+title Property selling sequence 
+participant OwnerBank
+actor Owner
+participant RealEstateAgent
+collections LandLegder
+participant LandOffice
+actor Buyer
+participant BuyerBank
+' participant GovernmentAgencies (Stats / Central Bank)
+' participant public property agencies 
+
+== Initialization ==
+Owner -> LandLegder : Check Ownership
+LandLegder -> Owner : Ownership Infos + RRR (Rights/Restrictions/Responsibilities)
+Owner -> RealEstateAgent : Request commission to sell
+RealEstateAgent -> LandLegder : Check RRR 
+LandLegder -> RealEstateAgent : RRR infos 
+RealEstateAgent -> RealEstateAgent : Evaluate Offer
+RealEstateAgent -> Owner : Notify Acceptance
+Owner -> RealEstateAgent : Commission to Sell
+RealEstateAgent -> RealEstateAgent : Market property
+Buyer -> BuyerBank : Request loan commitment
+BuyerBank -> BuyerBank : Check credit rating
+BuyerBank -> Buyer : Approve loan
+Buyer -> RealEstateAgent : Make offer
+== Selling process ==
+RealEstateAgent -> Buyer : Notify If highest bid
+Buyer -> BuyerBank : Initial enquiry for credit options of the property
+BuyerBank -> LandLegder : Check property 
+LandLegder -> BuyerBank : Property infos
+BuyerBank -> Buyer : Provide initial approval
+BuyerBank -> RealEstateAgent : Notify initial approval
+RealEstateAgent -> LandLegder : Fetch property infos
+LandLegder -> RealEstateAgent : Property infos
+RealEstateAgent -> RealEstateAgent : Create contract
+RealEstateAgent -> Owner : Request signature
+RealEstateAgent -> Buyer : Request signature
+Buyer -> RealEstateAgent : Notify siganture
+Owner -> RealEstateAgent : Notify siganture
+RealEstateAgent -> RealEstateAgent : Check IDs
+RealEstateAgent -> LandLegder : Register contract
+LandLegder -> LandLegder : Notify contract
+' LandOffice -> GovernmentAgencies : informations
+LandOffice -> LandLegder : Register pending title
+LandLegder -> LandLegder : Notify pending title
+BuyerBank -> Buyer : Request credit documents signature
+Buyer -> BuyerBank : Sign and Request payment order
+BuyerBank -> BuyerBank : Check ID
+BuyerBank -> Buyer : Notify payment
+BuyerBank -> RealEstateAgent : Notify payment
+Buyer -> Buyer : Inspect property
+Buyer -> RealEstateAgent : Notify agrement
+== Closure ==
+RealEstateAgent -> RealEstateAgent : Create a bill of sale
+RealEstateAgent -> Owner : Request signature
+RealEstateAgent -> Buyer : Request signature
+Buyer -> RealEstateAgent : Notify siganture
+Owner -> RealEstateAgent : Notify siganture
+RealEstateAgent -> RealEstateAgent : Check IDs
+RealEstateAgent -> RealEstateAgent : Deduce fees
+RealEstateAgent -> Owner : Pay down payment
+RealEstateAgent -> LandLegder : Register bill of sale
+LandLegder -> BuyerBank : Notify bill of sale
+LandLegder -> LandLegder : Anyone can check the contract
+BuyerBank -> OwnerBank : Made transfer
+BuyerBank -> LandLegder : Register mortgage deed request  
+LandLegder -> LandOffice : Notify mortgage request
+LandOffice -> LandLegder : Grant mortgage deed
+LandOffice -> RealEstateAgent : Request charges and stamp duty
+RealEstateAgent -> LandOffice : Pay charges and stamp duty
+LandOffice -> LandLegder : Register property title
+LandLegder -> LandLegder : Notify property transfer to :\n Owner/OwnerBank/BuyerBank/Buyer\n/OwnerBank/RealEstateAgent
+@enduml
