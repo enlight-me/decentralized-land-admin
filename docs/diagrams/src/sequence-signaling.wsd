@@ -1,0 +1,8 @@
+@startuml
+title Signaling process
+participant OLAdmin
+participant CommunityActors
+
+CommunityActors -> OLAdmin : need for Land parcels to Amdinister
+' use mobile application for parcels survey  
+@enduml

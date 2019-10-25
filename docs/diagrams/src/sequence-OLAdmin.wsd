@@ -1,0 +1,20 @@
+@startuml
+title The Onchain Land Administration Sequence
+actor user
+participant OLAdmin
+participant CommunityActors
+
+user -> OLAdmin : Claim ownership of a parcel
+note left : Parcel is identified by the DGGS(H3) \nof the centroid of the surface representing \n the parcel in the map 
+alt parcel not registred
+	OLAdmin -> user : Register ownership
+else already registred parcel
+    OLAdmin -> user : Dispute
+    OLAdmin -> OLAdmin : Ask for proof challenge
+    user -> CommunityActors : Send proofs 
+    CommunityActors -> CommunityActors : Check proofs \n(and approve using multisignature/Tokens)
+    CommunityActors -> OLAdmin : Results 
+end 
+
+
+@enduml

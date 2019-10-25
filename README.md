@@ -44,6 +44,12 @@ Table of contents
 
 Project Setup
 ============
+The Onchain Land Administration is a Decentrelized Application (dApp) built for the Ethereum blockchain. It comprises 03 components :
+1. The smart contracts written in Solidity
+1. The frontend web application built with react.js
+1. The backend application implementing a REST API to interact with the parcels map
+
+To run this dApp, follow the instruction below.
 
 Clone this GitHub repository. 
 ``` 
