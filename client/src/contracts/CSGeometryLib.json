@@ -1256,12 +1256,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xEbDAdbD0b0e5D8839b786dB639B9c84cfeF3e1aB",
-      "transactionHash": "0x8a3f815d5518bdc3fda24e248aacffb70a5ee3a2a3d5585757250a3dedce1d21"
+      "address": "0x8F351d8AD270cebdda448A90c1b137cb31dee505",
+      "transactionHash": "0x594db25c188dc338ff930c8719fcb6e51d46fe21873b77f1082f20af7c819f0c"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-27T21:03:12.563Z",
+  "updatedAt": "2019-10-27T21:49:00.710Z",
   "devdoc": {
     "methods": {
       "computeCSCIndex(address,bytes15)": {

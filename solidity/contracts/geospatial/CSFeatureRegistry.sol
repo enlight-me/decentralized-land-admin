@@ -19,8 +19,7 @@ contract CSFeatureRegistry {
   string public name;       // display name of the registry
   string public srs;       // Spatial Reference System
 
-  mapping(bytes32 => CSFeature) features; // Mapping CSC => Features
-  CSGeometryLib.CSGeometryType internal geomteryType; // geometry type
+  // mapping(bytes32 => CSFeature) features; // Mapping CSC => Features
 
   //
   // Events - publicize actions to external listeners
@@ -47,23 +46,17 @@ contract CSFeatureRegistry {
   * @param wkbHash Well Known Binary Hash
   * @return the Crypto-Spatial Coordinate (CSC) of the feature
   */
-  function addFeature(bytes15 dggsIndex,bytes32 wkbHash)
-  public returns (bytes32 csc) {
-    // TODO Check validity of external input
+  modifier addFeature(bytes15 dggsIndex,bytes32 wkbHash)
+   {
     require(dggsIndex.length != 0, "Empty dggsIndex");
     require(wkbHash.length != 0, "Empty wkbHash");
-    csc = CSGeometryLib.computeCSCIndex(msg.sender, dggsIndex);
+    bytes32 csc = CSGeometryLib.computeCSCIndex(msg.sender, dggsIndex);
 
-    features[csc] = new CSFeature(dggsIndex,wkbHash, h3Resolution);
+    // features[csc] = new CSFeature(dggsIndex,wkbHash, h3Resolution);
+
+    _;
 
     emit LogNewFeatureAdded(name, dggsIndex, csc, msg.sender);
-  }
-
-  /**
-  * @notice getFeature
-  */
-  function getFeature(bytes32 csc) public view returns (CSFeature){
-    return features[csc];
   }
 
 
@@ -71,8 +64,7 @@ contract CSFeatureRegistry {
   * @notice callback function
   */
 
-function () external {
+  function () external {
     revert("this contract should never have a balance");
   }
-
 }

@@ -3300,12 +3300,12 @@
         }
       },
       "links": {},
-      "address": "0x4c99421cc41C4A915de989950576cEbCc12F2dC1",
-      "transactionHash": "0x84ea816e85b1ce91d0e72329f940e989f7b6a174f23204aaf522cfc1d58f7a36"
+      "address": "0x7F9500427A23308436a665b32c6a9648229dD2F7",
+      "transactionHash": "0x48d937d7fa9f1e70771fd2c07bb987d4d5b8acb0d0a3963b4f81cab8098f497e"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-27T21:03:13.016Z",
+  "updatedAt": "2019-10-27T21:49:01.083Z",
   "devdoc": {
     "methods": {
       "addCSCIndexedEntity(bytes15)": {
