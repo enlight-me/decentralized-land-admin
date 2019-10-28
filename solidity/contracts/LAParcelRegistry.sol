@@ -16,7 +16,9 @@ contract LAParcelRegistry is CSFeatureRegistry {
   // State variables
   //
 
-  mapping(bytes32 => LAParcel) parcels; // Mapping CSC => Parcels
+  address public lastAddress; // TODO remove
+
+  // mapping(bytes32 => LAParcel) parcels; // Mapping CSC => Parcels
 
   //
   // Events - publicize actions to external listeners
@@ -27,36 +29,31 @@ contract LAParcelRegistry is CSFeatureRegistry {
   //
 
   /// @notice constuctor
-  constructor (uint _h3Resolution, string memory _name, string memory _srs) public
-  CSFeatureRegistry(_h3Resolution,_name,_srs) {
+  constructor (string memory _name, uint _h3Resolution, string memory _srs) public
+  CSFeatureRegistry(_name,_h3Resolution,_srs) {
     name = "Parcel Registry";
   }
 
   /**
-  * @notice addFeature
+  * @notice addFeature modifier
   * @param dggsIndex dggsIndex of the feature
   * @param wkbHash Well Known Binary Hash
-  * @param _addr External Address ID
-  * @param _lbl Parcel label
-  * @param _area Parcel Area
+  * @param addr External Address ID
+  * @param lbl Parcel label
+  * @param area Parcel Area
   * @return the Crypto-Spatial Coordinate (CSC) of the feature
   */
-  function claimParcel(bytes15 dggsIndex,bytes32 wkbHash, string memory _addr, string memory _lbl, uint _area)
+  function claimParcel(bytes15 dggsIndex, bytes32 wkbHash, string memory addr, string memory lbl, uint area)
   public addFeature( dggsIndex, wkbHash)
-  returns (bytes32 csc) {
+  returns (bytes32) {
     LAParcel parcel = new LAParcel(dggsIndex,wkbHash, h3Resolution);
-    parcel.setExtAddressId(_addr);
-    parcel.setLabel(_lbl);
-    parcel.setArea(_area);
-    parcels[csc] = parcel;
+    bytes32 csc = parcel.csc();
+    parcel.setExtAddressId(addr);
+    parcel.setLabel(lbl);
+    parcel.setArea(area);
+    features[csc] = address(parcel);
+    lastAddress = features[csc]; // temp
+    return csc;
   }
-
-  /**
-  * @notice getFeature
-  */
-  function getFeature(bytes32 csc) public view returns (LAParcel){
-    return parcels[csc];
-  }
-
 
 }

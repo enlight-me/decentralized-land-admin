@@ -50,7 +50,7 @@ contract LAParcel is CSSurface {
      * @param _lbl the parcel label
      *
      */function setLabel(string memory _lbl) public {
-         extAddressId = _lbl;
+         label = _lbl;
      }
 
      /**
