@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.5.2",
+    "@material-ui/icons": "^4.5.1",
     "ajv": "^6.10.2",
     "h3-js": "^3.6.1",
     "leaflet": "^1.5.1",
