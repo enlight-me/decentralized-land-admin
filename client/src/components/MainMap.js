@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
-import { geoToH3 } from "h3-js";
+import { Map, TileLayer, GeoJSON } from "react-leaflet";
+// import { geoToH3 } from "h3-js";
 
 export default class MainMap extends Component {
 
@@ -12,7 +12,7 @@ export default class MainMap extends Component {
     lat: 37.00,
     lng: 3.00,
     zoom: 7,
-    features: [],
+    features: []
   };
 
   /**
@@ -42,10 +42,9 @@ export default class MainMap extends Component {
       .then(res => {
         return res.json();
       }).then(data => {
-        this.state.features = data;
+        this.state.features = data;        
       });
     this.geoJsonLayer = React.createRef();
-    console.log(this.state.features); ///----------------- do not work
   }
 
   /**
@@ -55,6 +54,7 @@ export default class MainMap extends Component {
    */
 
   onEachFeature(feature, layer) {
+    console.log(feature);
     const popupContent = ` <Popup><p>Informations</p><pre>geoHash: ${feature.properties.csc}</pre></Popup>`
     layer.bindPopup(popupContent)
   }
@@ -89,11 +89,35 @@ export default class MainMap extends Component {
   }
 
   /**
+   * @notice updateFeatureIndex fetch the spatialite database and update the displayed markers
+   */
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+  
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
+
+  updateFeatureIndex(){
+    fetch('http://localhost:4000/collections/cscindex')
+    .then(res => {
+      return res.json();
+    }).then(data => {
+      this.setState({ features: data });
+      this.geoJsonLayer.current.leafletElement.clearLayers().addData(data);
+      console.log(this.state.features);
+    });
+  }
+
+  /**
    * @notice Render the component
    */
   render() {
 
     const position = [this.state.lat, this.state.lng];
+    console.log(this.state.features);
+
     return (
 
       <Map
