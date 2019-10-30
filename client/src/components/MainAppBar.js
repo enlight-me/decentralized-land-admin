@@ -108,7 +108,7 @@ export default function MainAppBar(props) {
                         <UpdateIcon />
                     </Badge>
                 </IconButton>
-                <p>Update map</p>
+                <p onClick={props.updateFeatureIndex}>Update map</p>
             </MenuItem>
             <MenuItem>
                 <IconButton aria-label="show 11 new notifications" color="inherit">
