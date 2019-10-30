@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import FormLabel from '@material-ui/core/FormLabel';
 import Paper from '@material-ui/core/Paper';
 
+import FeaturesUpdateButtons from './FeaturesUpdateButtons'
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -17,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function MainDrawerContainer() {
+export default function MainDrawerContainer(props) {
   const classes = useStyles();
 
   return (
@@ -26,14 +28,14 @@ export default function MainDrawerContainer() {
         <Paper className={classes.control}>
           <Grid container>
             <Grid item>
-              <FormLabel>spacing</FormLabel>              
+              <FeaturesUpdateButtons addFeature={props.addFeature}/>
             </Grid>
           </Grid>
         </Paper>
         <Paper className={classes.control}>
           <Grid container>
             <Grid item>
-              <FormLabel>333333</FormLabel>
+              <FormLabel>spacing</FormLabel>              
               
             </Grid>
           </Grid>

@@ -54,42 +54,26 @@ export default class MainMap extends Component {
    */
 
   onEachFeature(feature, layer) {
-    console.log(feature);
     const popupContent = ` <Popup><p>Informations</p><pre>geoHash: ${feature.properties.csc}</pre></Popup>`
     layer.bindPopup(popupContent)
   }
 
   /**
-   * @notice smart contract event handler for New Add Feature 
-   * @param {*} err 
-   * @param {*} events 
+   * @notice updateFeatureIndex fetch the spatialite database and update the displayed markers
    */
-  
-  handleNewFeatureAdded(err, events) {
-    const owner = events.returnValues.owner;
-    const index = events.returnValues.cscIndex;
-    const geoHash = events.returnValues.geoHash;
-    const transactionHash = events.transactionHash;
-    const addFeatureURL = 'http://localhost:4000/collections/cscindex/addFeature?';
 
-    fetch(addFeatureURL + 'geohash=' + geoHash + '&owner=' + owner + '&index=' + index + '&transactionHash=' + transactionHash)
-      .then(res => {
-        return res.json();
-      }).then(data => {
-
-        fetch('http://localhost:4000/collections/cscindex')
-          .then(res => {
-            return res.json();
-          }).then(data => {
-            this.setState({ features: data });
-            this.geoJsonLayer.current.leafletElement.clearLayers().addData(data);
-            console.log(this.state.features);
-          });
-      });
+  updateFeatureIndex(){
+    fetch('http://localhost:4000/collections/cscindex')
+    .then(res => {
+      return res.json();
+    }).then(data => {
+      this.setState({ features: data });
+      this.geoJsonLayer.current.leafletElement.clearLayers().addData(data);
+    });
   }
 
   /**
-   * @notice updateFeatureIndex fetch the spatialite database and update the displayed markers
+   * @notice to handle calls for map updates
    */
   componentDidMount() {
     this.props.onRef(this)
@@ -99,31 +83,19 @@ export default class MainMap extends Component {
     this.props.onRef(undefined)
   }
 
-  updateFeatureIndex(){
-    fetch('http://localhost:4000/collections/cscindex')
-    .then(res => {
-      return res.json();
-    }).then(data => {
-      this.setState({ features: data });
-      this.geoJsonLayer.current.leafletElement.clearLayers().addData(data);
-      console.log(this.state.features);
-    });
-  }
-
   /**
    * @notice Render the component
    */
   render() {
 
     const position = [this.state.lat, this.state.lng];
-    console.log(this.state.features);
 
     return (
 
       <Map
         center={position}
         zoom={this.state.zoom}
-        // onClick={this.handleMapClick}
+        onClick={(e)=>this.props.addFeature(e.latlng.lat, e.latlng.lng)}
         ref="CSCMap">
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

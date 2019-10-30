@@ -16,12 +16,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function FeaturesUpdateButtons() {
+export default function FeaturesUpdateButtons(props) {
   const classes = useStyles();
-
+  
   return (
-    <div style={{display: 'flex',  justifyContent:'right', alignItems:'end', height: '80vh'}}>
-      <Fab color="primary" aria-label="add" className={classes.fab}>
+    <div style={{display: 'flex',  justifyContent:'right', alignItems:'end'}}>
+      <Fab color="primary" aria-label="add" className={classes.fab}
+           onClick={props.addFeature}
+           >
         <AddIcon />
       </Fab>
       <Fab color="secondary" aria-label="edit" className={classes.fab}>

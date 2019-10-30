@@ -72,10 +72,6 @@ export default function MainAppBar(props) {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
-    const handleUpdateSpatialIndex = event => {
-        alert('hello');
-        // handleUpdateSpatialIndex
-    };
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (

@@ -3,12 +3,12 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from "@material-ui/core";
 
 import getWeb3 from "./utils/getWeb3";
+import { geoToH3 } from 'h3-js';
 import CryptoSpatialCoordinateContract from "./contracts/CryptoSpatialCoordinate.json";
 
 import MainAppBar from './components/MainAppBar';
-import MainMap from './components/MainMap';
 import MainDrawer from './components/MainDrawer';
-
+import MainMap from './components/MainMap';
 
 const theme = createMuiTheme({
   palette: {
@@ -52,6 +52,8 @@ class App extends Component {
         deployedCSC && deployedCSC.address,
       );
 
+      instanceCSC.events.LogCSCIndexedEntityAdded((err, events) => this.cscIndexAdded(err, events)).on('error', console.error);
+
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts, contract: instanceCSC });
@@ -64,6 +66,53 @@ class App extends Component {
       console.error(error);
     }
   };
+
+  /**
+   * @notice handle ethereum events from CSC smart contract
+   * @TODO move this code to the backend server  
+   * @param {*} err error 
+   * @param {*} events 
+   */
+
+  cscIndexAdded(err, events) {
+    const owner = events.returnValues.owner;
+    const index = events.returnValues.cscIndex;
+    const geoHash = events.returnValues.geoHash;
+    const transactionHash = events.transactionHash;
+    const addFeatureURL = 'http://localhost:4000/collections/cscindex/addFeature?';
+
+    fetch(addFeatureURL + 'geohash=' + geoHash + '&owner=' + owner + '&index=' + index + '&transactionHash=' + transactionHash)
+      .then(res => {
+        return res.json();
+      }).then(data => {
+        this.mainMap.updateFeatureIndex();
+      });      
+  }
+
+  /**
+   * @notice handleAddFeatureClick //// Unused
+   */
+
+  handleAddFeatureClick = async (evt) => {
+    alert('Button Add clicked');
+  }
+
+  /**
+   * @notice AddFeatureToBlockChain
+   */
+
+  AddFeatureToBlockChain = async (lat, lng) => {
+    const { accounts, contract } = this.state;
+   // Get network provider and web3 instance.
+    const web3 = this.state.web3;
+    
+    const h3Index = geoToH3(lng, lat, 15);
+    const h3IndexHex = web3.utils.asciiToHex(h3Index);
+
+    const result = await contract.methods.addCSCIndexedEntity(h3IndexHex).send({ from: accounts[0] }).on('error', console.error);
+
+    // console.log(result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex );
+  }
 
   /**
    * @notice openDrawer
@@ -91,10 +140,10 @@ class App extends Component {
    * @notice updateFeatureIndex
    */
 
-  updateFeatureIndex = (evt) => {
+  updateMapFeatureIndex = (evt) => {
     this.mainMap.updateFeatureIndex();
   };
-
+  
   /** 
    * @notice render the component 
    */
@@ -106,11 +155,16 @@ class App extends Component {
           <CssBaseline/>
           <MainDrawer drawerOpen={this.state.drawerOpen}
             closeDrawer={this.closeDrawer}
+            addFeature={this.handleAddFeatureClick}
           />
           <MainAppBar toggleDrawer={this.toggleDrawer} 
-                      updateFeatureIndex={this.updateFeatureIndex}
+                      updateFeatureIndex={this.updateMapFeatureIndex}
                       />
-          <MainMap  onRef={ref => (this.mainMap = ref)} />
+          <MainMap onRef={ref => (this.mainMap = ref)} 
+                   addFeature={this.AddFeatureToBlockChain} 
+                    />
+
+          {/* <FeaturesUpdateButtons/> */}
         
         </ThemeProvider>
       </div>

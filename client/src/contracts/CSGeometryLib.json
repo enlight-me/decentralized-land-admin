@@ -1270,10 +1270,22 @@
       "links": {},
       "address": "0x7eE6992A7135Ad4A51680Bc2953a447Bd47d16Ed",
       "transactionHash": "0xcabf8491c04eaf1b7b0f27f4a9fa6c76d3554c228a0f3d2b400ac2ee5a13cc9e"
+    },
+    "1572461380654": {
+      "events": {},
+      "links": {},
+      "address": "0x9e009fd6c9bfBB26fF6Ee4b2D31CE26218aa8FC8",
+      "transactionHash": "0x04a800bd148cce66c2862acef16fc6889a4d088ff0d051696add65773ca313b1"
+    },
+    "1572472628085": {
+      "events": {},
+      "links": {},
+      "address": "0xDf46d5e4Ea34f1c79CA2cAeC5859fa0986622E21",
+      "transactionHash": "0x75c08513e4ffd38ea00b767e8ffe1a747e7d3717b82cca9e162bb7f4370397ec"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-29T18:54:32.595Z",
+  "updatedAt": "2019-10-30T22:01:13.927Z",
   "devdoc": {
     "methods": {
       "computeCSCIndex(address,bytes15)": {
