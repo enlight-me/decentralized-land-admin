@@ -1282,10 +1282,16 @@
       "links": {},
       "address": "0xDf46d5e4Ea34f1c79CA2cAeC5859fa0986622E21",
       "transactionHash": "0x75c08513e4ffd38ea00b767e8ffe1a747e7d3717b82cca9e162bb7f4370397ec"
+    },
+    "1572550611748": {
+      "events": {},
+      "links": {},
+      "address": "0xB28b45028E68E44F910a2402F8d3485B1E97cC4D",
+      "transactionHash": "0x7868a41891f212a2369b07c94e6ac49362ce440ca526ea10d8be622ec954d2bc"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-30T22:01:13.927Z",
+  "updatedAt": "2019-10-31T21:14:17.718Z",
   "devdoc": {
     "methods": {
       "computeCSCIndex(address,bytes15)": {

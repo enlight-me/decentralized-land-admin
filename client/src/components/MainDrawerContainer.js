@@ -1,14 +1,18 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Paper from '@material-ui/core/Paper';
 
 import FeaturesUpdateButtons from './FeaturesUpdateButtons'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1,    
   },
   paper: {
     height: 140,
@@ -17,6 +21,13 @@ const useStyles = makeStyles(theme => ({
   control: {
     padding: theme.spacing(3),
   },
+  expansion :{
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
 }));
 
 export default function MainDrawerContainer(props) {
@@ -24,19 +35,24 @@ export default function MainDrawerContainer(props) {
 
   return (
     <Grid container className={classes.root} spacing={2}>
-       <Grid item xs={12}>
+      <ExpansionPanel className={classes.expansion}>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header">
+          <Typography className={classes.heading}>Claims</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <FeaturesUpdateButtons addFeature={props.addFeature} />
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+      <Grid item xs={12}>
         <Paper className={classes.control}>
           <Grid container>
             <Grid item>
-              <FeaturesUpdateButtons addFeature={props.addFeature}/>
-            </Grid>
-          </Grid>
-        </Paper>
-        <Paper className={classes.control}>
-          <Grid container>
-            <Grid item>
-              <FormLabel>spacing</FormLabel>              
-              
+            <Typography>
+            Hello
+          </Typography>
             </Grid>
           </Grid>
         </Paper>

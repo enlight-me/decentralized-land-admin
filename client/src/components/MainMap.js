@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 // import { geoToH3 } from "h3-js";
+// import FeaturesUpdateButtons from './FeaturesUpdateButtons'
 
 export default class MainMap extends Component {
 
@@ -107,6 +108,7 @@ export default class MainMap extends Component {
           style={this.geoJSONStyle}
           onEachFeature={this.onEachFeature}
         />
+        {/* <FeaturesUpdateButtons/> */}
       </Map>
 
     );
