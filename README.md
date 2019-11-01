@@ -90,4 +90,14 @@ You can trigger a transaction simply by clicking on the map or by firing the 'Ad
 
 Further Reading
 ============
-- [???](https://)
+## Proof of Location on blockchain
+- [FOAM Space Public Research](https://github.com/f-o-a-m/public-research)
+- [dPoL: A Peer-to-Peer Digital Location System](https://medium.com/@kierstenJ/dpol-a-peer-to-peer-digital-location-system-af623f4e0a10)
+- [Blockchain Consensus Encyclopedia / Proof of Location](https://github.com/cedricwalter/blockchain-consensus/blob/master/chain-based-proof-of-capacity-space/dynamic-proof-of-location.md)
+- [Platin Proof of Location on the Blockchain](https://youtu.be/Wx2cCUYbQuE)
+- [How to Enable a Smart Contract to Get Real-World Location Data](https://www.howtotoken.com/for-developers/enable-a-smart-contract-to-get-real-world-location-data/)
+- [XYO Network : An open, secure crypto-location oracle network](https://github.com/XYOracleNetwork)
+
+## Blockchain business models
+- [McKinsey : Blockchain beyond the hype: What is the strategic business value?](https://www.mckinsey.com/business-functions/mckinsey-digital/our-insights/blockchain-beyond-the-hype-what-is-the-strategic-business-value#)
+- [Top 7 Blockchain Business Models That You Should Know About](https://101blockchains.com/blockchain-business-models/)
