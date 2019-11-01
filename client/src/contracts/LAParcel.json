@@ -200,7 +200,7 @@
         "id": 124,
         "nodeType": "ImportDirective",
         "scope": 179,
-        "sourceUnit": 701,
+        "sourceUnit": 714,
         "src": "234:36:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -214,10 +214,10 @@
               "id": 125,
               "name": "CSSurface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 700,
+              "referencedDeclaration": 713,
               "src": "293:9:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CSSurface_$700",
+                "typeIdentifier": "t_contract$_CSSurface_$713",
                 "typeString": "contract CSSurface"
               }
             },
@@ -228,7 +228,7 @@
         ],
         "contractDependencies": [
           457,
-          700
+          713
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -236,7 +236,7 @@
         "id": 178,
         "linearizedBaseContracts": [
           178,
-          700,
+          713,
           457
         ],
         "name": "LAParcel",
@@ -381,10 +381,10 @@
                   "name": "CSSurface",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 700,
+                  "referencedDeclaration": 713,
                   "src": "626:9:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_CSSurface_$700_$",
+                    "typeIdentifier": "t_type$_t_contract$_CSSurface_$713_$",
                     "typeString": "type(contract CSSurface)"
                   }
                 },
@@ -843,7 +843,7 @@
         "id": 124,
         "nodeType": "ImportDirective",
         "scope": 179,
-        "sourceUnit": 701,
+        "sourceUnit": 714,
         "src": "234:36:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -857,10 +857,10 @@
               "id": 125,
               "name": "CSSurface",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 700,
+              "referencedDeclaration": 713,
               "src": "293:9:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CSSurface_$700",
+                "typeIdentifier": "t_contract$_CSSurface_$713",
                 "typeString": "contract CSSurface"
               }
             },
@@ -871,7 +871,7 @@
         ],
         "contractDependencies": [
           457,
-          700
+          713
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -879,7 +879,7 @@
         "id": 178,
         "linearizedBaseContracts": [
           178,
-          700,
+          713,
           457
         ],
         "name": "LAParcel",
@@ -1024,10 +1024,10 @@
                   "name": "CSSurface",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 700,
+                  "referencedDeclaration": 713,
                   "src": "626:9:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_CSSurface_$700_$",
+                    "typeIdentifier": "t_type$_t_contract$_CSSurface_$713_$",
                     "typeString": "type(contract CSSurface)"
                   }
                 },
@@ -1465,7 +1465,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-28T22:43:58.651Z",
+  "updatedAt": "2019-11-01T19:20:51.357Z",
   "devdoc": {
     "methods": {
       "constructor": {

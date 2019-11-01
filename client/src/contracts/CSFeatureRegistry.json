@@ -4547,82 +4547,9 @@
     "name": "solc",
     "version": "0.5.8+commit.23d335f2.Emscripten.clang"
   },
-  "networks": {
-    "5777": {
-      "events": {
-        "0xa5cf6dbd2290a757b4596c73c307c2c5c84e2098e1d8d6e089b7c0a3144d3b8b": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "name",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "name": "dggsIndex",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "csc",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogNewFeatureAdded",
-          "type": "event",
-          "signature": "0xa5cf6dbd2290a757b4596c73c307c2c5c84e2098e1d8d6e089b7c0a3144d3b8b"
-        }
-      },
-      "links": {
-        "CSGeometryLib": "0x8F351d8AD270cebdda448A90c1b137cb31dee505"
-      },
-      "address": "0xFAE1923773BcEdfA8108d6C622b2a932ec405c98",
-      "transactionHash": "0x6d4cd3569fdd85d181afcec68a4f2520703b5bf54c2a1c85ef76796c56ee0a17"
-    },
-    "1572289564481": {
-      "events": {
-        "0xa5cf6dbd2290a757b4596c73c307c2c5c84e2098e1d8d6e089b7c0a3144d3b8b": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "name",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "name": "dggsIndex",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "csc",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogNewFeatureAdded",
-          "type": "event",
-          "signature": "0xa5cf6dbd2290a757b4596c73c307c2c5c84e2098e1d8d6e089b7c0a3144d3b8b"
-        }
-      },
-      "links": {},
-      "address": "0x78ae5514BDc01F16B307f3b7B1A090990317E5Ec",
-      "transactionHash": "0x00c76b745231d0ae9732a44181b9d2f813575617f0ba460cf9669adfde9457d0"
-    }
-  },
+  "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-29T18:54:30.682Z",
+  "updatedAt": "2019-11-01T19:20:51.372Z",
   "devdoc": {
     "methods": {
       "getFeature(bytes32)": {

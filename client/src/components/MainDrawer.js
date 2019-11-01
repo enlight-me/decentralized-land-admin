@@ -119,8 +119,7 @@ export default function MainDrawer(props) {
       </div>
       <Divider />
 
-      <MainDrawerContainer addFeature={props.addFeature} 
-                           features={props.features}/>
+      <MainDrawerContainer features={props.features}/>
 
     </Drawer>
 

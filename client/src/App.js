@@ -70,6 +70,33 @@ class App extends Component {
     this.updateFeatureIndex();
   };
 
+    /**
+   * @notice updateFeatureIndex Button on the AppBar
+   * @todo replace it with a button directly on the map
+   *        the mainmap should use the features state variable of this Component 'App'
+   *        like the DrawerList
+   *        This will allow to avoid using OnRef (this.mainMap.)
+   */
+
+  updateMapFeatureIndex = (evt) => {
+    this.mainMap.updateFeatureIndex();
+  };
+
+  /**
+   * TODO merge with the previous fucntion
+   */
+  
+  updateFeatureIndex = async () => {
+      fetch('http://localhost:4000/collections/cscindex')
+        .then(res => {
+          return res.json();
+        }).then(data => {
+          this.setState({features : data});
+        });
+        this.mainMap.updateFeatureIndex(); // will be deleted after main map routed to this.state.features
+    }
+
+
   /**
    * @notice handle ethereum events from CSC smart contract
    * @TODO move this code to the backend server  
@@ -78,26 +105,8 @@ class App extends Component {
    */
 
   cscIndexAdded(err, events) {
-    const owner = events.returnValues.owner;
-    const index = events.returnValues.cscIndex;
-    const geoHash = events.returnValues.geoHash;
-    const transactionHash = events.transactionHash;
-    const addFeatureURL = 'http://localhost:4000/collections/cscindex/addFeature?';
-
-    fetch(addFeatureURL + 'geohash=' + geoHash + '&owner=' + owner + '&index=' + index + '&transactionHash=' + transactionHash)
-      .then(res => {
-        return res.json();
-      }).then(data => {
-        this.mainMap.updateFeatureIndex();
-      });      
-  }
-
-  /**
-   * @notice handleAddFeatureClick //// Unused
-   */
-
-  handleAddFeatureClick = async (evt) => {
-    alert('Button Add clicked');
+    // console.log(events.returnValues.owner);
+      this.updateFeatureIndex();
   }
 
   /**
@@ -114,9 +123,10 @@ class App extends Component {
 
     const result = await contract.methods.addCSCIndexedEntity(h3IndexHex).send({ from: accounts[0] }).on('error', console.error);
 
-    this.updateFeatureIndex();
+    // this.updateFeatureIndex();
     // console.log(result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex );
   }
+
 
   /**
    * @notice openDrawer
@@ -140,27 +150,6 @@ class App extends Component {
     this.setState({ drawerOpen: !this.state.drawerOpen });
   };
 
-  /**
-   * @notice updateFeatureIndex 
-   */
-
-  updateMapFeatureIndex = (evt) => {
-    this.mainMap.updateFeatureIndex();
-  };
-
-  /**
-   * TODO merge with the previous fucntion
-   */
-  
-  updateFeatureIndex = async () => {
-      fetch('http://localhost:4000/collections/cscindex')
-        .then(res => {
-          return res.json();
-        }).then(data => {
-          this.setState({features : data});
-        });
-    };
-
   /** 
    * @notice render the component 
    */
@@ -172,7 +161,6 @@ class App extends Component {
           <CssBaseline/>
           <MainDrawer drawerOpen={this.state.drawerOpen}
             closeDrawer={this.closeDrawer}
-            addFeature={this.handleAddFeatureClick}
             features={this.state.features}
           />
           <MainAppBar color={Cyan} // do not work ???

@@ -8,7 +8,11 @@ var indexRouter = require('./routes/index');
 var getCSCIndexesRouter = require('./routes/getindexes');
 var addCSCIndexesRouter = require('./routes/addindex');
 
+var initializeContractsEventHandlers =require('./src/initializeContractsEventHandlers');
+
 var app = express();
+
+initializeContractsEventHandlers();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

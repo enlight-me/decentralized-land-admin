@@ -2856,7 +2856,7 @@
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-01T18:49:37.419Z",
+  "updatedAt": "2019-11-01T19:20:51.365Z",
   "devdoc": {
     "methods": {
       "claimParcel(bytes15,bytes32,string,string,uint256)": {
