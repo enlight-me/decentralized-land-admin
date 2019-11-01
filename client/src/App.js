@@ -9,7 +9,6 @@ import CryptoSpatialCoordinateContract from "./contracts/CryptoSpatialCoordinate
 import MainAppBar from './components/MainAppBar';
 import MainDrawer from './components/MainDrawer';
 import MainMap from './components/MainMap';
-// import FeaturesUpdateButtons from './components/FeaturesUpdateButtons'
 
 const theme = createMuiTheme({
   palette: {
@@ -27,7 +26,7 @@ class App extends Component {
     web3: null,
     accounts: null,
     contract: null,
-    drawerOpen: true,
+    drawerOpen: false,
   }
 
   /**
@@ -163,10 +162,8 @@ class App extends Component {
                       />
           <MainMap onRef={ref => (this.mainMap = ref)} 
                    addFeature={this.AddFeatureToBlockChain} 
-                    />
-
-          {/* <FeaturesUpdateButtons/> */}
-        
+                    />      
+            
         </ThemeProvider>
       </div>
     );

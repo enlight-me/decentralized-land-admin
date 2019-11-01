@@ -8,8 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Paper from '@material-ui/core/Paper';
 
-import FeaturesUpdateButtons from './FeaturesUpdateButtons'
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,    
@@ -43,7 +41,7 @@ export default function MainDrawerContainer(props) {
           <Typography className={classes.heading}>Claims</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <FeaturesUpdateButtons addFeature={props.addFeature} />
+          {/* <FeaturesUpdateButtons addFeature={props.addFeature} /> */}
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <Grid item xs={12}>

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
+import Control from "react-leaflet-control";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import MapIcon from '@material-ui/icons/Map';
+
 // import { geoToH3 } from "h3-js";
-// import FeaturesUpdateButtons from './FeaturesUpdateButtons'
 
 export default class MainMap extends Component {
 
@@ -13,7 +17,8 @@ export default class MainMap extends Component {
     lat: 37.00,
     lng: 3.00,
     zoom: 7,
-    features: []
+    features: [],
+    addMode: false
   };
 
   /**
@@ -43,9 +48,10 @@ export default class MainMap extends Component {
       .then(res => {
         return res.json();
       }).then(data => {
-        this.state.features = data;        
+        this.state.features = data;
       });
     this.geoJsonLayer = React.createRef();
+    
   }
 
   /**
@@ -63,14 +69,14 @@ export default class MainMap extends Component {
    * @notice updateFeatureIndex fetch the spatialite database and update the displayed markers
    */
 
-  updateFeatureIndex(){
+  updateFeatureIndex() {
     fetch('http://localhost:4000/collections/cscindex')
-    .then(res => {
-      return res.json();
-    }).then(data => {
-      this.setState({ features: data });
-      this.geoJsonLayer.current.leafletElement.clearLayers().addData(data);
-    });
+      .then(res => {
+        return res.json();
+      }).then(data => {
+        this.setState({ features: data });
+        this.geoJsonLayer.current.leafletElement.clearLayers().addData(data);
+      });
   }
 
   /**
@@ -79,7 +85,7 @@ export default class MainMap extends Component {
   componentDidMount() {
     this.props.onRef(this)
   }
-  
+
   componentWillUnmount() {
     this.props.onRef(undefined)
   }
@@ -88,7 +94,7 @@ export default class MainMap extends Component {
    * @notice Render the component
    */
   render() {
-
+ 
     const position = [this.state.lat, this.state.lng];
 
     return (
@@ -96,7 +102,7 @@ export default class MainMap extends Component {
       <Map
         center={position}
         zoom={this.state.zoom}
-        onClick={(e)=>this.props.addFeature(e.latlng.lat, e.latlng.lng)}
+        onClick={(e) => {if(this.state.addMode) {this.props.addFeature(e.latlng.lat, e.latlng.lng)}}}
         ref="CSCMap">
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -108,7 +114,16 @@ export default class MainMap extends Component {
           style={this.geoJSONStyle}
           onEachFeature={this.onEachFeature}
         />
-        {/* <FeaturesUpdateButtons/> */}
+        <Control>
+          <Fab color={this.state.addMode ?  "secondary": "primary"}
+               aria-label={this.state.addMode ?  "Add": "View"}
+            //  onClick={props.addFeature}
+            // onClick={() => this.setState({ bounds: [51.3, 0.7] })}
+            onClick={() => this.setState({addMode : !this.state.addMode})}
+          >
+            {this.state.addMode ?  <AddIcon /> : <MapIcon /> }
+          </Fab>
+        </Control>
       </Map>
 
     );
