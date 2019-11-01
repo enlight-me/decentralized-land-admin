@@ -2816,10 +2816,47 @@
       },
       "address": "0x20ad7825b41FC3f0b4B3C7aaD6AE00Ed0dE3701b",
       "transactionHash": "0x9aa6096329934fb29e2e294dfa81902c6ffb48d58486babdeecba012f6fca5ec"
+    },
+    "1572634125675": {
+      "events": {
+        "0xa5cf6dbd2290a757b4596c73c307c2c5c84e2098e1d8d6e089b7c0a3144d3b8b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "dggsIndex",
+              "type": "bytes15"
+            },
+            {
+              "indexed": false,
+              "name": "csc",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewFeatureAdded",
+          "type": "event",
+          "signature": "0xa5cf6dbd2290a757b4596c73c307c2c5c84e2098e1d8d6e089b7c0a3144d3b8b"
+        }
+      },
+      "links": {
+        "CSGeometryLib": "0xc026C2FB23A233939659dA62Bc62A29DD4263F7C"
+      },
+      "address": "0xBEa56d7575fc29fFF76D59aC0f3913DC1dD9f29D",
+      "transactionHash": "0x83cb1704fa448563135130237281d1aa838fd03a149557770411e1c298294a84"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-01T13:15:03.911Z",
+  "updatedAt": "2019-11-01T18:49:37.419Z",
   "devdoc": {
     "methods": {
       "claimParcel(bytes15,bytes32,string,string,uint256)": {

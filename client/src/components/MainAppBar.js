@@ -148,7 +148,7 @@ export default function MainAppBar(props) {
                     </IconButton>
 
                     <Typography className={classes.title} variant="h6" noWrap>
-                            Decentralized Land Administration
+                            DeLA : Decentralized Crowd Sourcing Land Administration
                     </Typography>
 
                     <div className={classes.grow} />

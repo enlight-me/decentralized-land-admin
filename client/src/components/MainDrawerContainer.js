@@ -7,19 +7,19 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Paper from '@material-ui/core/Paper';
+import ClaimsList from './ClaimsList';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,    
+    flexGrow: 1,
   },
   paper: {
-    height: 140,
     width: 100,
   },
   control: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
   },
-  expansion :{
+  expansion: {
     width: '100%',
   },
   heading: {
@@ -32,29 +32,31 @@ export default function MainDrawerContainer(props) {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.root} spacing={2}>
-      <ExpansionPanel className={classes.expansion}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header">
-          <Typography className={classes.heading}>Claims</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          {/* <FeaturesUpdateButtons addFeature={props.addFeature} /> */}
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+    <Grid container className={classes.root} spacing={1}>
+      <Grid item xs={12}>
+        <ExpansionPanel className={classes.expansion}>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header">
+            <Typography className={classes.heading}>Feaures</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+              <ClaimsList features={props.features}/>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </Grid>
       <Grid item xs={12}>
         <Paper className={classes.control}>
           <Grid container>
             <Grid item>
-            <Typography>
-            Hello
+              <Typography>
+                Hello
           </Typography>
             </Grid>
           </Grid>
         </Paper>
       </Grid>
-    </Grid>
+    </Grid >
   );
 }

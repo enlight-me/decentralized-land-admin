@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from "@material-ui/core";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import Cyan from '@material-ui/core/colors/cyan';
 
 import getWeb3 from "./utils/getWeb3";
 import { geoToH3 } from 'h3-js';
@@ -12,7 +13,7 @@ import MainMap from './components/MainMap';
 
 const theme = createMuiTheme({
   palette: {
-    type: 'light', // dark
+    type: 'dark', // dark : light    
   },
 });
 
@@ -27,6 +28,7 @@ class App extends Component {
     accounts: null,
     contract: null,
     drawerOpen: false,
+    features: []
   }
 
   /**
@@ -65,6 +67,7 @@ class App extends Component {
       );
       console.error(error);
     }
+    this.updateFeatureIndex();
   };
 
   /**
@@ -111,6 +114,7 @@ class App extends Component {
 
     const result = await contract.methods.addCSCIndexedEntity(h3IndexHex).send({ from: accounts[0] }).on('error', console.error);
 
+    this.updateFeatureIndex();
     // console.log(result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex );
   }
 
@@ -137,13 +141,26 @@ class App extends Component {
   };
 
   /**
-   * @notice updateFeatureIndex
+   * @notice updateFeatureIndex 
    */
 
   updateMapFeatureIndex = (evt) => {
     this.mainMap.updateFeatureIndex();
   };
+
+  /**
+   * TODO merge with the previous fucntion
+   */
   
+  updateFeatureIndex = async () => {
+      fetch('http://localhost:4000/collections/cscindex')
+        .then(res => {
+          return res.json();
+        }).then(data => {
+          this.setState({features : data});
+        });
+    };
+
   /** 
    * @notice render the component 
    */
@@ -156,8 +173,10 @@ class App extends Component {
           <MainDrawer drawerOpen={this.state.drawerOpen}
             closeDrawer={this.closeDrawer}
             addFeature={this.handleAddFeatureClick}
+            features={this.state.features}
           />
-          <MainAppBar toggleDrawer={this.toggleDrawer} 
+          <MainAppBar color={Cyan} // do not work ???
+                      toggleDrawer={this.toggleDrawer} 
                       updateFeatureIndex={this.updateMapFeatureIndex}
                       />
           <MainMap onRef={ref => (this.mainMap = ref)} 
