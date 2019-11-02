@@ -22,6 +22,8 @@ contract LAParcel is CSSurface {
     string public label;
     uint public area;
 
+    //TODO add  parcelType :  Building, Agriculture, Industrial, ...
+
     //
     // Functions
     //

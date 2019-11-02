@@ -37,12 +37,14 @@ Table of contents
 <!--ts-->
    * [Project Setup](#project-setup)
    * [Usage](#Usage)
-   * Related documentation 
-      * [Security](./docs/avoiding_common_attacks.md)
-      * [Blockchain for geospatial](./docs/blockchain-for-geospatial.md)
-      * [Blockchain use cases](./docs/blockchain-use-cases.md)
+   * Project related documentation 
+      * [User stories](./docs/user_stories.md)
       * [Deployed addresses](./docs/deployed_addresses.txt)
       * [Design pattern decisions](./docs/design_pattern_decisions.md)
+      * [Security](./docs/avoiding_common_attacks.md)
+   * Miscellanious 
+      * [Blockchain for geospatial](./docs/blockchain-for-geospatial.md)
+      * [Blockchain use cases](./docs/blockchain-use-cases.md)
    * [Other existing similar Blockchain solutions](#other-existing-similar-blockchain-solutions)
    * [Further Reading](#further-reading)
 <!--te-->
