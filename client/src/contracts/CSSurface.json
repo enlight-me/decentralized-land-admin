@@ -2,6 +2,20 @@
   "contractName": "CSSurface",
   "abi": [
     {
+      "constant": false,
+      "inputs": [],
+      "name": "getGeometryType",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "constant": true,
       "inputs": [],
       "name": "h3Resolution",
@@ -82,25 +96,25 @@
       "type": "fallback"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"h3Resolution\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"csc\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"dggsIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes15\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"wkbHash\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_dggsIndex\",\"type\":\"bytes15\"},{\"name\":\"_wkbHash\",\"type\":\"bytes32\"},{\"name\":\"_h3Resolution\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"fallback\"}],\"devdoc\":{\"methods\":{\"constructor\":{\"details\":\"initialize state variables    \"}}},\"userdoc\":{\"methods\":{\"constructor\":\"constuctor\"}}},\"settings\":{\"compilationTarget\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSSurface.sol\":\"CSSurface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeature.sol\":{\"keccak256\":\"0x74816f9b5bb14028b4ff62fb612c47da783a71494e25a225ca9d6bf98c46612e\",\"urls\":[\"bzzr://4bb5b274e9b26e318956f9237a4e22b856efc075639fb653fb9bb3dfc736f681\"]},\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol\":{\"keccak256\":\"0xbb355bfe7d4dd322b78b0ef29d17641ecd30e3f8880fb743d22351184b56eb47\",\"urls\":[\"bzzr://752f5973ea91e303f7139a85e66a2fe7bc73c3ba6438397055f18639b998fd0c\"]},\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSSurface.sol\":{\"keccak256\":\"0x90dab35cabb0cad4d7e523904b94d5bb9e88bc2759b911009be88ebb2abe9d04\",\"urls\":[\"bzzr://189824d7044ebe0ed8e3425b99da14fafb05923334d08ab8178c3de53bd723f7\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060405160608061057b8339810180604052606081101561003057600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050828282600081101580156100695750601081105b6100be576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252603c81526020018061053f603c913960400191505060405180910390fd5b6000600360009054906101000a905050600f60ff161415610147576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600f8152602001807f456d7074792064676773496e646578000000000000000000000000000000000081525060200191505060405180910390fd5b6000602060ff1614156101c2576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f456d70747920776b62486173680000000000000000000000000000000000000081525060200191505060405180910390fd5b6000339050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508260028190555083600360006101000a8154816effffffffffffffffffffffffffffff021916908360881c02179055506000600560006101000a81548160ff0219169083600281111561025657fe5b02179055508160048190555073__CSGeometryLib_________________________637834a61282866040518363ffffffff1660e01b8152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018270ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff191681526020019250505060206040518083038186803b15801561030d57600080fd5b505af4158015610321573d6000803e3d6000fd5b505050506040513d602081101561033757600080fd5b8101908080519060200190929190505050600181905550505050506002600560006101000a81548160ff0219169083600281111561037157fe5b02179055505050506101b7806103886000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80637e9c00fc1461009d578063d55c3ca3146100bb578063df1ed5e8146100d9578063ecd9fa4a1461011f575b6040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260298152602001806101636029913960400191505060405180910390fd5b6100a561013d565b6040518082815260200191505060405180910390f35b6100c3610143565b6040518082815260200191505060405180910390f35b6100e1610149565b604051808270ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b61012761015c565b6040518082815260200191505060405180910390f35b60045481565b60015481565b600360009054906101000a900460881b81565b6002548156fe7468697320636f6e74726163742073686f756c64206e65766572206861766520612062616c616e6365a165627a7a72305820a9a0e0fd3ffb8a4f5c5ce6a3bf4ac44d25279c162d554757c7ca97062af44db500294833205265736f6c7574696f6e206d757374206265205f68335265736f6c7574696f6e203e3d30202626205f68335265736f6c7574696f6e203c3136",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80637e9c00fc1461009d578063d55c3ca3146100bb578063df1ed5e8146100d9578063ecd9fa4a1461011f575b6040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260298152602001806101636029913960400191505060405180910390fd5b6100a561013d565b6040518082815260200191505060405180910390f35b6100c3610143565b6040518082815260200191505060405180910390f35b6100e1610149565b604051808270ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b61012761015c565b6040518082815260200191505060405180910390f35b60045481565b60015481565b600360009054906101000a900460881b81565b6002548156fe7468697320636f6e74726163742073686f756c64206e65766572206861766520612062616c616e6365a165627a7a72305820a9a0e0fd3ffb8a4f5c5ce6a3bf4ac44d25279c162d554757c7ca97062af44db50029",
-  "sourceMap": "299:397:9:-;;;493:200;8:9:-1;5:2;;;30:1;27;20:12;5:2;493:200:9;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;493:200:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;585:10;597:8;607:13;1117:1:5;1100:13;:18;;:40;;;;;1138:2;1122:13;:18;1100:40;1091:115;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1242:1;1222:9;;;;;;;;;;:16;:21;;;;1214:49;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1298:1;1279:15;:20;;;;1271:46;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1325:14;1342:10;1325:27;;1413:6;1405:5;;:14;;;;;;;;;;;;;;;;;;1437:8;1427:7;:18;;;;1465:10;1453:9;;:22;;;;;;;;;;;;;;;;;;1498:37;1483:12;;:52;;;;;;;;;;;;;;;;;;;;;;;;1558:13;1543:12;:28;;;;1585:13;:29;1615:6;1623:10;1585:49;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1585:49:5;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1585:49:5;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1585:49:5;;;;;;;;;;;;;;;;1579:3;:55;;;;1005:636;;;;647:39:9;632:12;;:54;;;;;;;;;;;;;;;;;;;;;;;;493:200;;;299:397;;;;;;",
-  "deployedSourceMap": "299:397:9:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;299:397:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1674:51:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;733:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;534:18;;;:::i;:::-;;;;;;;;;;;;;;;;;;;653:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;595:22;;;:::i;:::-;;;;;;;;;;;;;;;;;;;733:24;;;;:::o;534:18::-;;;;:::o;653:24::-;;;;;;;;;;;;;:::o;595:22::-;;;;:::o",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"getGeometryType\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"h3Resolution\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"csc\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"dggsIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes15\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"wkbHash\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_dggsIndex\",\"type\":\"bytes15\"},{\"name\":\"_wkbHash\",\"type\":\"bytes32\"},{\"name\":\"_h3Resolution\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"fallback\"}],\"devdoc\":{\"methods\":{\"constructor\":{\"details\":\"initialize state variables    \"},\"getGeometryType()\":{\"details\":\"getGeometryType\"}}},\"userdoc\":{\"methods\":{\"constructor\":\"constuctor\"}}},\"settings\":{\"compilationTarget\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSSurface.sol\":\"CSSurface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeature.sol\":{\"keccak256\":\"0x08935d6ae5d2c12caaef88a380cbffa254b43a46bfeb9194d86486fd156bd954\",\"urls\":[\"bzzr://0b346ae3b65cf896a3601b7b1a47eedec023ad9ba97bc145007c8fcd1f9d0970\"]},\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol\":{\"keccak256\":\"0x0dd5966b293497f36525c72ef4b2c0d1f9bde9269f2c7658566f9168127919e1\",\"urls\":[\"bzzr://0fadf02de9e313fc96437c8840395cf25b1b49bcf2ad76f6cf2fd4d1f0d77824\"]},\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol\":{\"keccak256\":\"0xbb355bfe7d4dd322b78b0ef29d17641ecd30e3f8880fb743d22351184b56eb47\",\"urls\":[\"bzzr://752f5973ea91e303f7139a85e66a2fe7bc73c3ba6438397055f18639b998fd0c\"]},\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSSurface.sol\":{\"keccak256\":\"0x90dab35cabb0cad4d7e523904b94d5bb9e88bc2759b911009be88ebb2abe9d04\",\"urls\":[\"bzzr://189824d7044ebe0ed8e3425b99da14fafb05923334d08ab8178c3de53bd723f7\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516060806105c98339810180604052606081101561003057600080fd5b81019080805190602001909291908051906020019092919080519060200190929190505050828282600081101580156100695750601081105b6100be576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252603c81526020018061058d603c913960400191505060405180910390fd5b6000600360009054906101000a905050600f60ff161415610147576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600f8152602001807f456d7074792064676773496e646578000000000000000000000000000000000081525060200191505060405180910390fd5b6000602060ff1614156101c2576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252600d8152602001807f456d70747920776b62486173680000000000000000000000000000000000000081525060200191505060405180910390fd5b6000339050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508260028190555083600360006101000a8154816effffffffffffffffffffffffffffff021916908360881c02179055506000600560006101000a81548160ff0219169083600281111561025657fe5b02179055508160048190555073__CSGeometryLib_________________________637834a61282866040518363ffffffff1660e01b8152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018270ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff191681526020019250505060206040518083038186803b15801561030d57600080fd5b505af4158015610321573d6000803e3d6000fd5b505050506040513d602081101561033757600080fd5b8101908080519060200190929190505050600181905550505050506002600560006101000a81548160ff0219169083600281111561037157fe5b0217905550505050610205806103886000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c806317e17809146100a85780637e9c00fc146100d4578063d55c3ca3146100f2578063df1ed5e814610110578063ecd9fa4a14610156575b6040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260298152602001806101b16029913960400191505060405180910390fd5b6100b0610174565b604051808260028111156100c057fe5b60ff16815260200191505060405180910390f35b6100dc61018b565b6040518082815260200191505060405180910390f35b6100fa610191565b6040518082815260200191505060405180910390f35b610118610197565b604051808270ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b61015e6101aa565b6040518082815260200191505060405180910390f35b6000600560009054906101000a900460ff16905090565b60045481565b60015481565b600360009054906101000a900460881b81565b6002548156fe7468697320636f6e74726163742073686f756c64206e65766572206861766520612062616c616e6365a165627a7a72305820edd16eb0de9936cc34730408d59949a8f66d6d47e529459b78cb9682db49619800294833205265736f6c7574696f6e206d757374206265205f68335265736f6c7574696f6e203e3d30202626205f68335265736f6c7574696f6e203c3136",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100575760003560e01c806317e17809146100a85780637e9c00fc146100d4578063d55c3ca3146100f2578063df1ed5e814610110578063ecd9fa4a14610156575b6040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260298152602001806101b16029913960400191505060405180910390fd5b6100b0610174565b604051808260028111156100c057fe5b60ff16815260200191505060405180910390f35b6100dc61018b565b6040518082815260200191505060405180910390f35b6100fa610191565b6040518082815260200191505060405180910390f35b610118610197565b604051808270ffffffffffffffffffffffffffffffffff191670ffffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b61015e6101aa565b6040518082815260200191505060405180910390f35b6000600560009054906101000a900460ff16905090565b60045481565b60015481565b600360009054906101000a900460881b81565b6002548156fe7468697320636f6e74726163742073686f756c64206e65766572206861766520612062616c616e6365a165627a7a72305820edd16eb0de9936cc34730408d59949a8f66d6d47e529459b78cb9682db4961980029",
+  "sourceMap": "299:397:10:-;;;493:200;8:9:-1;5:2;;;30:1;27;20:12;5:2;493:200:10;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;493:200:10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;585:10;597:8;607:13;1059:1:5;1042:13;:18;;:40;;;;;1080:2;1064:13;:18;1042:40;1033:115;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1184:1;1164:9;;;;;;;;;;:16;:21;;;;1156:49;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1240:1;1221:15;:20;;;;1213:46;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1267:14;1284:10;1267:27;;1355:6;1347:5;;:14;;;;;;;;;;;;;;;;;;1379:8;1369:7;:18;;;;1407:10;1395:9;;:22;;;;;;;;;;;;;;;;;;1440:37;1425:12;;:52;;;;;;;;;;;;;;;;;;;;;;;;1500:13;1485:12;:28;;;;1527:13;:29;1557:6;1565:10;1527:49;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1527:49:5;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1527:49:5;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1527:49:5;;;;;;;;;;;;;;;;1521:3;:55;;;;947:636;;;;647:39:10;632:12;;:54;;;;;;;;;;;;;;;;;;;;;;;;493:200;;;299:397;;;;;;",
+  "deployedSourceMap": "299:397:10:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;299:397:10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1762:51:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1625:105;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;675:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;476:18;;;:::i;:::-;;;;;;;;;;;;;;;;;;;595:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;537:22;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1625:105;1670:28;1713:12;;;;;;;;;;;1706:19;;1625:105;:::o;675:24::-;;;;:::o;476:18::-;;;;:::o;595:24::-;;;;;;;;;;;;;:::o;537:22::-;;;;:::o",
   "source": "/**\n * @title CryptoSpatialSurface\n * @author BENAHMED DAHO Ali\n * @notice an abstract contract that implement a Spatial Surface Feature (Polygon)\n * on the etherurm blockchain\n *\n * @dev GM_CURVE (ISO 19107)\n *\n*/\n\npragma solidity ^0.5.0;\n\n\nimport './CSGeometryLib.sol';\nimport './CSFeature.sol';\n\ncontract CSSurface is CSFeature {\n\n    //\n    // State variables\n    //\n\n\n    //\n    // Functions\n    //\n\n    /**\n    * @notice constuctor\n    * @dev initialize state variables\n    *\n    */\n    constructor (bytes15 _dggsIndex, bytes32 _wkbHash, uint _h3Resolution) public\n    CSFeature(_dggsIndex, _wkbHash, _h3Resolution){\n         geomteryType = CSGeometryLib.CSGeometryType.GM_SURFACE;\n    }\n\n}\n",
   "sourcePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSSurface.sol",
   "ast": {
     "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSSurface.sol",
     "exportedSymbols": {
       "CSSurface": [
-        712
+        745
       ]
     },
-    "id": 713,
+    "id": 746,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 686,
+        "id": 719,
         "literals": [
           "solidity",
           "^",
@@ -108,27 +122,27 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "216:23:9"
+        "src": "216:23:10"
       },
       {
         "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol",
         "file": "./CSGeometryLib.sol",
-        "id": 687,
+        "id": 720,
         "nodeType": "ImportDirective",
-        "scope": 713,
-        "sourceUnit": 663,
-        "src": "242:29:9",
+        "scope": 746,
+        "sourceUnit": 696,
+        "src": "242:29:10",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeature.sol",
         "file": "./CSFeature.sol",
-        "id": 688,
+        "id": 721,
         "nodeType": "ImportDirective",
-        "scope": 713,
-        "sourceUnit": 458,
-        "src": "272:25:9",
+        "scope": 746,
+        "sourceUnit": 484,
+        "src": "272:25:10",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -138,59 +152,61 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 689,
+              "id": 722,
               "name": "CSFeature",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 457,
-              "src": "321:9:9",
+              "referencedDeclaration": 483,
+              "src": "321:9:10",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CSFeature_$457",
+                "typeIdentifier": "t_contract$_CSFeature_$483",
                 "typeString": "contract CSFeature"
               }
             },
-            "id": 690,
+            "id": 723,
             "nodeType": "InheritanceSpecifier",
-            "src": "321:9:9"
+            "src": "321:9:10"
           }
         ],
         "contractDependencies": [
-          457
+          483,
+          492
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 712,
+        "id": 745,
         "linearizedBaseContracts": [
-          712,
-          457
+          745,
+          483,
+          492
         ],
         "name": "CSSurface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 710,
+              "id": 743,
               "nodeType": "Block",
-              "src": "621:72:9",
+              "src": "621:72:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 708,
+                    "id": 741,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 704,
+                      "id": 737,
                       "name": "geomteryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 375,
-                      "src": "632:12:9",
+                      "referencedDeclaration": 393,
+                      "src": "632:12:10",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_CSGeometryType_$626",
+                        "typeIdentifier": "t_enum$_CSGeometryType_$659",
                         "typeString": "enum CSGeometryLib.CSGeometryType"
                       }
                     },
@@ -202,32 +218,32 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 705,
+                          "id": 738,
                           "name": "CSGeometryLib",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 662,
-                          "src": "647:13:9",
+                          "referencedDeclaration": 695,
+                          "src": "647:13:10",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_CSGeometryLib_$662_$",
+                            "typeIdentifier": "t_type$_t_contract$_CSGeometryLib_$695_$",
                             "typeString": "type(library CSGeometryLib)"
                           }
                         },
-                        "id": 706,
+                        "id": 739,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "CSGeometryType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 626,
-                        "src": "647:28:9",
+                        "referencedDeclaration": 659,
+                        "src": "647:28:10",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_CSGeometryType_$626_$",
+                          "typeIdentifier": "t_type$_t_enum$_CSGeometryType_$659_$",
                           "typeString": "type(enum CSGeometryLib.CSGeometryType)"
                         }
                       },
-                      "id": 707,
+                      "id": 740,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -235,26 +251,26 @@
                       "memberName": "GM_SURFACE",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "647:39:9",
+                      "src": "647:39:10",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_CSGeometryType_$626",
+                        "typeIdentifier": "t_enum$_CSGeometryType_$659",
                         "typeString": "enum CSGeometryLib.CSGeometryType"
                       }
                     },
-                    "src": "632:54:9",
+                    "src": "632:54:10",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_CSGeometryType_$626",
+                      "typeIdentifier": "t_enum$_CSGeometryType_$659",
                       "typeString": "enum CSGeometryLib.CSGeometryType"
                     }
                   },
-                  "id": 709,
+                  "id": 742,
                   "nodeType": "ExpressionStatement",
-                  "src": "632:54:9"
+                  "src": "632:54:10"
                 }
               ]
             },
             "documentation": "@notice constuctor\n@dev initialize state variables\n    ",
-            "id": 711,
+            "id": 744,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -262,12 +278,12 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 699,
+                    "id": 732,
                     "name": "_dggsIndex",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 692,
-                    "src": "585:10:9",
+                    "referencedDeclaration": 725,
+                    "src": "585:10:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes15",
                       "typeString": "bytes15"
@@ -275,12 +291,12 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 700,
+                    "id": 733,
                     "name": "_wkbHash",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 694,
-                    "src": "597:8:9",
+                    "referencedDeclaration": 727,
+                    "src": "597:8:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -288,49 +304,49 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 701,
+                    "id": 734,
                     "name": "_h3Resolution",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 696,
-                    "src": "607:13:9",
+                    "referencedDeclaration": 729,
+                    "src": "607:13:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   }
                 ],
-                "id": 702,
+                "id": 735,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 698,
+                  "id": 731,
                   "name": "CSFeature",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 457,
-                  "src": "575:9:9",
+                  "referencedDeclaration": 483,
+                  "src": "575:9:10",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_CSFeature_$457_$",
+                    "typeIdentifier": "t_type$_t_contract$_CSFeature_$483_$",
                     "typeString": "type(contract CSFeature)"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "575:46:9"
+                "src": "575:46:10"
               }
             ],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 697,
+              "id": 730,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 692,
+                  "id": 725,
                   "name": "_dggsIndex",
                   "nodeType": "VariableDeclaration",
-                  "scope": 711,
-                  "src": "506:18:9",
+                  "scope": 744,
+                  "src": "506:18:10",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -338,10 +354,10 @@
                     "typeString": "bytes15"
                   },
                   "typeName": {
-                    "id": 691,
+                    "id": 724,
                     "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
-                    "src": "506:7:9",
+                    "src": "506:7:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes15",
                       "typeString": "bytes15"
@@ -352,11 +368,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 694,
+                  "id": 727,
                   "name": "_wkbHash",
                   "nodeType": "VariableDeclaration",
-                  "scope": 711,
-                  "src": "526:16:9",
+                  "scope": 744,
+                  "src": "526:16:10",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -364,10 +380,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 693,
+                    "id": 726,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "526:7:9",
+                    "src": "526:7:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -378,11 +394,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 696,
+                  "id": 729,
                   "name": "_h3Resolution",
                   "nodeType": "VariableDeclaration",
-                  "scope": 711,
-                  "src": "544:18:9",
+                  "scope": 744,
+                  "src": "544:18:10",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -390,10 +406,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 695,
+                    "id": 728,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "544:4:9",
+                    "src": "544:4:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -403,39 +419,39 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "505:58:9"
+              "src": "505:58:10"
             },
             "returnParameters": {
-              "id": 703,
+              "id": 736,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "621:0:9"
+              "src": "621:0:10"
             },
-            "scope": 712,
-            "src": "493:200:9",
+            "scope": 745,
+            "src": "493:200:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 713,
-        "src": "299:397:9"
+        "scope": 746,
+        "src": "299:397:10"
       }
     ],
-    "src": "216:481:9"
+    "src": "216:481:10"
   },
   "legacyAST": {
     "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSSurface.sol",
     "exportedSymbols": {
       "CSSurface": [
-        712
+        745
       ]
     },
-    "id": 713,
+    "id": 746,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 686,
+        "id": 719,
         "literals": [
           "solidity",
           "^",
@@ -443,27 +459,27 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "216:23:9"
+        "src": "216:23:10"
       },
       {
         "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol",
         "file": "./CSGeometryLib.sol",
-        "id": 687,
+        "id": 720,
         "nodeType": "ImportDirective",
-        "scope": 713,
-        "sourceUnit": 663,
-        "src": "242:29:9",
+        "scope": 746,
+        "sourceUnit": 696,
+        "src": "242:29:10",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeature.sol",
         "file": "./CSFeature.sol",
-        "id": 688,
+        "id": 721,
         "nodeType": "ImportDirective",
-        "scope": 713,
-        "sourceUnit": 458,
-        "src": "272:25:9",
+        "scope": 746,
+        "sourceUnit": 484,
+        "src": "272:25:10",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -473,59 +489,61 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 689,
+              "id": 722,
               "name": "CSFeature",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 457,
-              "src": "321:9:9",
+              "referencedDeclaration": 483,
+              "src": "321:9:10",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CSFeature_$457",
+                "typeIdentifier": "t_contract$_CSFeature_$483",
                 "typeString": "contract CSFeature"
               }
             },
-            "id": 690,
+            "id": 723,
             "nodeType": "InheritanceSpecifier",
-            "src": "321:9:9"
+            "src": "321:9:10"
           }
         ],
         "contractDependencies": [
-          457
+          483,
+          492
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 712,
+        "id": 745,
         "linearizedBaseContracts": [
-          712,
-          457
+          745,
+          483,
+          492
         ],
         "name": "CSSurface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 710,
+              "id": 743,
               "nodeType": "Block",
-              "src": "621:72:9",
+              "src": "621:72:10",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 708,
+                    "id": 741,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 704,
+                      "id": 737,
                       "name": "geomteryType",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 375,
-                      "src": "632:12:9",
+                      "referencedDeclaration": 393,
+                      "src": "632:12:10",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_CSGeometryType_$626",
+                        "typeIdentifier": "t_enum$_CSGeometryType_$659",
                         "typeString": "enum CSGeometryLib.CSGeometryType"
                       }
                     },
@@ -537,32 +555,32 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 705,
+                          "id": 738,
                           "name": "CSGeometryLib",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 662,
-                          "src": "647:13:9",
+                          "referencedDeclaration": 695,
+                          "src": "647:13:10",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_CSGeometryLib_$662_$",
+                            "typeIdentifier": "t_type$_t_contract$_CSGeometryLib_$695_$",
                             "typeString": "type(library CSGeometryLib)"
                           }
                         },
-                        "id": 706,
+                        "id": 739,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "CSGeometryType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 626,
-                        "src": "647:28:9",
+                        "referencedDeclaration": 659,
+                        "src": "647:28:10",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_CSGeometryType_$626_$",
+                          "typeIdentifier": "t_type$_t_enum$_CSGeometryType_$659_$",
                           "typeString": "type(enum CSGeometryLib.CSGeometryType)"
                         }
                       },
-                      "id": 707,
+                      "id": 740,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -570,26 +588,26 @@
                       "memberName": "GM_SURFACE",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "647:39:9",
+                      "src": "647:39:10",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_CSGeometryType_$626",
+                        "typeIdentifier": "t_enum$_CSGeometryType_$659",
                         "typeString": "enum CSGeometryLib.CSGeometryType"
                       }
                     },
-                    "src": "632:54:9",
+                    "src": "632:54:10",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_CSGeometryType_$626",
+                      "typeIdentifier": "t_enum$_CSGeometryType_$659",
                       "typeString": "enum CSGeometryLib.CSGeometryType"
                     }
                   },
-                  "id": 709,
+                  "id": 742,
                   "nodeType": "ExpressionStatement",
-                  "src": "632:54:9"
+                  "src": "632:54:10"
                 }
               ]
             },
             "documentation": "@notice constuctor\n@dev initialize state variables\n    ",
-            "id": 711,
+            "id": 744,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -597,12 +615,12 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 699,
+                    "id": 732,
                     "name": "_dggsIndex",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 692,
-                    "src": "585:10:9",
+                    "referencedDeclaration": 725,
+                    "src": "585:10:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes15",
                       "typeString": "bytes15"
@@ -610,12 +628,12 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 700,
+                    "id": 733,
                     "name": "_wkbHash",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 694,
-                    "src": "597:8:9",
+                    "referencedDeclaration": 727,
+                    "src": "597:8:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -623,49 +641,49 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 701,
+                    "id": 734,
                     "name": "_h3Resolution",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 696,
-                    "src": "607:13:9",
+                    "referencedDeclaration": 729,
+                    "src": "607:13:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   }
                 ],
-                "id": 702,
+                "id": 735,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 698,
+                  "id": 731,
                   "name": "CSFeature",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 457,
-                  "src": "575:9:9",
+                  "referencedDeclaration": 483,
+                  "src": "575:9:10",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_CSFeature_$457_$",
+                    "typeIdentifier": "t_type$_t_contract$_CSFeature_$483_$",
                     "typeString": "type(contract CSFeature)"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "575:46:9"
+                "src": "575:46:10"
               }
             ],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 697,
+              "id": 730,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 692,
+                  "id": 725,
                   "name": "_dggsIndex",
                   "nodeType": "VariableDeclaration",
-                  "scope": 711,
-                  "src": "506:18:9",
+                  "scope": 744,
+                  "src": "506:18:10",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -673,10 +691,10 @@
                     "typeString": "bytes15"
                   },
                   "typeName": {
-                    "id": 691,
+                    "id": 724,
                     "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
-                    "src": "506:7:9",
+                    "src": "506:7:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes15",
                       "typeString": "bytes15"
@@ -687,11 +705,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 694,
+                  "id": 727,
                   "name": "_wkbHash",
                   "nodeType": "VariableDeclaration",
-                  "scope": 711,
-                  "src": "526:16:9",
+                  "scope": 744,
+                  "src": "526:16:10",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -699,10 +717,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 693,
+                    "id": 726,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "526:7:9",
+                    "src": "526:7:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -713,11 +731,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 696,
+                  "id": 729,
                   "name": "_h3Resolution",
                   "nodeType": "VariableDeclaration",
-                  "scope": 711,
-                  "src": "544:18:9",
+                  "scope": 744,
+                  "src": "544:18:10",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -725,10 +743,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 695,
+                    "id": 728,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "544:4:9",
+                    "src": "544:4:10",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -738,26 +756,26 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "505:58:9"
+              "src": "505:58:10"
             },
             "returnParameters": {
-              "id": 703,
+              "id": 736,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "621:0:9"
+              "src": "621:0:10"
             },
-            "scope": 712,
-            "src": "493:200:9",
+            "scope": 745,
+            "src": "493:200:10",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 713,
-        "src": "299:397:9"
+        "scope": 746,
+        "src": "299:397:10"
       }
     ],
-    "src": "216:481:9"
+    "src": "216:481:10"
   },
   "compiler": {
     "name": "solc",
@@ -765,11 +783,14 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-02T21:17:02.747Z",
+  "updatedAt": "2019-11-03T22:19:40.959Z",
   "devdoc": {
     "methods": {
       "constructor": {
         "details": "initialize state variables    "
+      },
+      "getGeometryType()": {
+        "details": "getGeometryType"
       }
     }
   },

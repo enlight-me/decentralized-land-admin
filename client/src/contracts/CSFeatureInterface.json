@@ -1,0 +1,255 @@
+{
+  "contractName": "CSFeatureInterface",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "getGeometryType",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"getGeometryType\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol\":\"CSFeatureInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol\":{\"keccak256\":\"0x0dd5966b293497f36525c72ef4b2c0d1f9bde9269f2c7658566f9168127919e1\",\"urls\":[\"bzzr://0fadf02de9e313fc96437c8840395cf25b1b49bcf2ad76f6cf2fd4d1f0d77824\"]},\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol\":{\"keccak256\":\"0xbb355bfe7d4dd322b78b0ef29d17641ecd30e3f8880fb743d22351184b56eb47\",\"urls\":[\"bzzr://752f5973ea91e303f7139a85e66a2fe7bc73c3ba6438397055f18639b998fd0c\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/**\n * @title CryptoSpatialFeature Interface\n * @author BENAHMED DAHO Ali\n * @notice an Interface contract that specify the Spatial Feature\n *\n * @dev GM_Primitive (ISO 19107)\n *\n * TODO :\n *\n*/\n\npragma solidity ^0.5.0;\n\n\nimport './CSGeometryLib.sol';\n\ninterface CSFeatureInterface {\n\n    //\n    // Functions\n    //\n\n    function getGeometryType() external returns (CSGeometryLib.CSGeometryType);\n\n}\n",
+  "sourcePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol",
+  "ast": {
+    "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol",
+    "exportedSymbols": {
+      "CSFeatureInterface": [
+        492
+      ]
+    },
+    "id": 493,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 485,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "196:23:6"
+      },
+      {
+        "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol",
+        "file": "./CSGeometryLib.sol",
+        "id": 486,
+        "nodeType": "ImportDirective",
+        "scope": 493,
+        "sourceUnit": 696,
+        "src": "222:29:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 492,
+        "linearizedBaseContracts": [
+          492
+        ],
+        "name": "CSFeatureInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 491,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGeometryType",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 487,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "345:2:6"
+            },
+            "returnParameters": {
+              "id": 490,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 489,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 491,
+                  "src": "366:28:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CSGeometryType_$659",
+                    "typeString": "enum CSGeometryLib.CSGeometryType"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 488,
+                    "name": "CSGeometryLib.CSGeometryType",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 659,
+                    "src": "366:28:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CSGeometryType_$659",
+                      "typeString": "enum CSGeometryLib.CSGeometryType"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "365:30:6"
+            },
+            "scope": 492,
+            "src": "321:75:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 493,
+        "src": "253:146:6"
+      }
+    ],
+    "src": "196:204:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol",
+    "exportedSymbols": {
+      "CSFeatureInterface": [
+        492
+      ]
+    },
+    "id": 493,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 485,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "196:23:6"
+      },
+      {
+        "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol",
+        "file": "./CSGeometryLib.sol",
+        "id": 486,
+        "nodeType": "ImportDirective",
+        "scope": 493,
+        "sourceUnit": 696,
+        "src": "222:29:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 492,
+        "linearizedBaseContracts": [
+          492
+        ],
+        "name": "CSFeatureInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 491,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGeometryType",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 487,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "345:2:6"
+            },
+            "returnParameters": {
+              "id": 490,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 489,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 491,
+                  "src": "366:28:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_CSGeometryType_$659",
+                    "typeString": "enum CSGeometryLib.CSGeometryType"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 488,
+                    "name": "CSGeometryLib.CSGeometryType",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 659,
+                    "src": "366:28:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_CSGeometryType_$659",
+                      "typeString": "enum CSGeometryLib.CSGeometryType"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "365:30:6"
+            },
+            "scope": 492,
+            "src": "321:75:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 493,
+        "src": "253:146:6"
+      }
+    ],
+    "src": "196:204:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.16",
+  "updatedAt": "2019-11-03T22:19:40.952Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

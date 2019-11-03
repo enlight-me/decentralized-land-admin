@@ -30,8 +30,8 @@ contract CSCurve is CSFeature {
     * @dev initialize state variables
     *
     */
-    constructor (bytes15 _dggsIndex, bytes32 _wkbHash, uint _h3Resolution) public
-    CSFeature(_dggsIndex, _wkbHash, _h3Resolution){
+    constructor (bytes15 _dggsIndex, bytes32 _wkbHash, address _owner, uint _h3Resolution) public
+    CSFeature(_dggsIndex, _wkbHash, _owner,  _h3Resolution){
          geomteryType = CSGeometryLib.CSGeometryType.GM_CURVE;
     }
 

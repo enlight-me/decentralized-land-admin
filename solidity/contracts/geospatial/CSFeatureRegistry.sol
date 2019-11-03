@@ -8,6 +8,7 @@
 
 pragma solidity ^0.5.0;
 
+import './CSFeatureInterface.sol';
 import './CSFeature.sol';
 import './CSGeometryLib.sol';
 
@@ -18,7 +19,7 @@ contract CSFeatureRegistry {
   uint public h3Resolution; // H3 resolution (H3 is a compliant DGGS library)
   string public name;       // display name of the registry
   string public srs;        // Spatial Reference System
-  uint256 faturesCount = 0; // Counter of the added features
+  uint256 featuresCount = 0; // Counter of the added features
 
 
   mapping(bytes32 => address) internal features; // Mapping CSC => Features contract address
@@ -26,7 +27,7 @@ contract CSFeatureRegistry {
   //
   // Events - publicize actions to external listeners
   //
-  event LogNewFeatureAdded(string name, bytes15 dggsIndex, bytes32 csc, address owner);
+  event LogNewFeatureAdded(string name, bytes32 csc, bytes15 dggsIndex, bytes32 wkbHash, address owner);
 
   //
   // Functions
@@ -40,7 +41,7 @@ contract CSFeatureRegistry {
     h3Resolution = _h3Resolution;
     name = _name;
     srs = _srs;
-    faturesCount = 0;
+    featuresCount = 0;
   }
 
   /**
@@ -49,22 +50,34 @@ contract CSFeatureRegistry {
   * @param wkbHash Well Known Binary Hash
   * @return the Crypto-Spatial Coordinate (CSC) of the feature
   */
-  modifier addFeature(bytes15 dggsIndex,bytes32 wkbHash)
+  modifier addFeature(bytes15 dggsIndex, bytes32 wkbHash, address _sender)
    {
     require(dggsIndex.length != 0, "Empty dggsIndex");
     require(wkbHash.length != 0, "Empty wkbHash");
-    bytes32 csc = CSGeometryLib.computeCSCIndex(msg.sender, dggsIndex);
-    faturesCount += 1; // TODO use SafeMath
-    emit LogNewFeatureAdded(name, dggsIndex, csc, msg.sender);
-     _;
+
+    _;
+
+    bytes32 csc = CSGeometryLib.computeCSCIndex(_sender, dggsIndex);
+    emit LogNewFeatureAdded(name, csc, dggsIndex, wkbHash, _sender);
+    featuresCount += 1; // TODO use SafeMath
   }
+
+  // modifier addFeature(bytes15 dggsIndex,bytes32 wkbHash)
+  //  {
+  //   require(dggsIndex.length != 0, "Empty dggsIndex");
+  //   require(wkbHash.length != 0, "Empty wkbHash");
+  //   bytes32 csc = CSGeometryLib.computeCSCIndex(msg.sender, dggsIndex);
+  //   faturesCount += 1; // TODO use SafeMath
+  //   emit LogNewFeatureAdded(name, dggsIndex, csc, msg.sender);
+  //    _;
+  // }
 
  /**
   * @notice getFeatureCount
   * @return the count of the features added to the registry
   */
   function getFeatureCount() public view returns (uint256) {
-    return faturesCount;
+    return featuresCount;
   }
 
   /**

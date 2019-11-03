@@ -23,7 +23,7 @@ contract LAParcelRegistry is CSFeatureRegistry {
   //
 
   event LogParcelClaimed(bytes32 csc, bytes15 dggsIndex, bytes32 wkbHash, string addr, string lbl, uint area);
-  
+
   //
   // Functions
   //
@@ -43,10 +43,17 @@ contract LAParcelRegistry is CSFeatureRegistry {
   * @param area Parcel Area
   * @return the Crypto-Spatial Coordinate (CSC) of the feature
   */
-  function claimParcel(bytes15 dggsIndex, bytes32 wkbHash, string memory addr, string memory lbl, uint area)
-  public addFeature( dggsIndex, wkbHash)
+  function claimParcel(bytes15 dggsIndex,
+                       bytes32 wkbHash,
+                       string memory addr,
+                       string memory lbl,
+                       uint area)
+  public addFeature( dggsIndex, wkbHash, msg.sender)
   returns (bytes32) {
-    LAParcel parcel = new LAParcel(dggsIndex,wkbHash, h3Resolution);
+
+    // TODO check inputs
+
+    LAParcel parcel = new LAParcel(dggsIndex,wkbHash, msg.sender, h3Resolution);
     bytes32 csc = parcel.csc();
     parcel.setExtAddressId(addr);
     parcel.setLabel(lbl);
@@ -55,5 +62,4 @@ contract LAParcelRegistry is CSFeatureRegistry {
     emit LogParcelClaimed(csc, dggsIndex, wkbHash, addr, lbl, area);
     return csc;
   }
-
 }
