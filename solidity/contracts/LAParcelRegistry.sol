@@ -16,14 +16,14 @@ contract LAParcelRegistry is CSFeatureRegistry {
   // State variables
   //
 
-  address public lastAddress; // TODO remove
-
   // mapping(bytes32 => LAParcel) parcels; // Mapping CSC => Parcels
 
   //
   // Events - publicize actions to external listeners
   //
 
+  event LogParcelClaimed(bytes32 csc, bytes15 dggsIndex, bytes32 wkbHash, string addr, string lbl, uint area);
+  
   //
   // Functions
   //
@@ -52,7 +52,7 @@ contract LAParcelRegistry is CSFeatureRegistry {
     parcel.setLabel(lbl);
     parcel.setArea(area);
     features[csc] = address(parcel);
-    lastAddress = features[csc]; // temp
+    emit LogParcelClaimed(csc, dggsIndex, wkbHash, addr, lbl, area);
     return csc;
   }
 

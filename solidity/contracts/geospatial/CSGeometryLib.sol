@@ -32,7 +32,7 @@ library CSGeometryLib {
   function computeCSCIndex (address owner, bytes15 dggsIndex)
   external pure returns (bytes32) {
     require(owner != address(0), "Empty address");
-    require(dggsIndex[0] != 0, "Empty dggsIndex");
+    require(dggsIndex.length != 0, "Empty dggsIndex");
     return keccak256(abi.encodePacked(owner, dggsIndex));
   }
 

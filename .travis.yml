@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "10"
+
+before_script:
+  - npm install -g ganache-cli
+  - npm install -g truffle@5.0.0
+
+script:
+  - git clone https://github.com/allilou/onchain-land-administration.git
+  - rm ./test/*
+  - mv ./onchain-land-administration/* ./test/
+  - ganache-cli &
+  - sleep 5
+  - truffle test

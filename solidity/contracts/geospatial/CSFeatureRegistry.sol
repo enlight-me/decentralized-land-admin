@@ -21,7 +21,7 @@ contract CSFeatureRegistry {
   uint256 faturesCount = 0; // Counter of the added features
 
 
-  mapping(bytes32 => address) features; // Mapping CSC => Features contract address
+  mapping(bytes32 => address) internal features; // Mapping CSC => Features contract address
 
   //
   // Events - publicize actions to external listeners
@@ -73,9 +73,8 @@ contract CSFeatureRegistry {
   * @return the address of the feature deployed contract
   */
   function getFeature(bytes32 csc) public view returns (address){
-    address featureAddress = features[csc];
-    require (featureAddress != address(0), "Feature does not exist in the registry");
-    return  featureAddress;
+    require (features[csc] != address(0), "Feature does not exist in the registry");
+    return  features[csc];
   }
 
   /**
