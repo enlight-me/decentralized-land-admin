@@ -12,7 +12,9 @@ import './CSFeatureInterface.sol';
 import './CSFeature.sol';
 import './CSGeometryLib.sol';
 
-contract CSFeatureRegistry {
+import '@openzeppelin/contracts/lifecycle/Pausable.sol';
+
+contract CSFeatureRegistry is Pausable {
   //
   // State variables
   //
@@ -52,6 +54,7 @@ contract CSFeatureRegistry {
   */
   modifier addFeature(bytes15 dggsIndex, bytes32 wkbHash, address _sender)
    {
+    require(!paused(), "Contract is paused");
     require(dggsIndex.length != 0, "Empty dggsIndex");
     require(wkbHash.length != 0, "Empty wkbHash");
 
@@ -61,16 +64,6 @@ contract CSFeatureRegistry {
     emit LogNewFeatureAdded(name, csc, dggsIndex, wkbHash, _sender);
     featuresCount += 1; // TODO use SafeMath
   }
-
-  // modifier addFeature(bytes15 dggsIndex,bytes32 wkbHash)
-  //  {
-  //   require(dggsIndex.length != 0, "Empty dggsIndex");
-  //   require(wkbHash.length != 0, "Empty wkbHash");
-  //   bytes32 csc = CSGeometryLib.computeCSCIndex(msg.sender, dggsIndex);
-  //   faturesCount += 1; // TODO use SafeMath
-  //   emit LogNewFeatureAdded(name, dggsIndex, csc, msg.sender);
-  //    _;
-  // }
 
  /**
   * @notice getFeatureCount

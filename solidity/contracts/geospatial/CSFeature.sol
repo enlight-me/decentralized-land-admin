@@ -16,14 +16,14 @@ pragma solidity ^0.5.0;
 
 import './CSGeometryLib.sol';
 import './CSFeatureInterface.sol';
+import '@openzeppelin/contracts/ownership/Ownable.sol';
 
-contract CSFeature is CSFeatureInterface {
+contract CSFeature is CSFeatureInterface, Ownable {
 
     //
     // State variables
     //
 
-    address public owner;       // owner
     bytes32 public csc;         // Crypto-Spatial Coordinate
     bytes32 public wkbHash;     // Well Known Binary Hash
     bytes15 public dggsIndex;   // DGGS (Disrcete Global Geodetic System) index
@@ -43,13 +43,13 @@ contract CSFeature is CSFeatureInterface {
       require((_h3Resolution >= 0 && _h3Resolution < 16), "H3 Resolution must be _h3Resolution >=0 && _h3Resolution <16");
       require(dggsIndex.length != 0, "Empty dggsIndex");
       require(_wkbHash.length != 0, "Empty wkbHash");
-      address _owner = __owner; // TODO change after inheriting from Ownable
-      owner = _owner;
+
+      transferOwnership(__owner);
       wkbHash = _wkbHash;
       dggsIndex = _dggsIndex;
       geomteryType = CSGeometryLib.CSGeometryType.GM_POINT;
       h3Resolution = _h3Resolution;
-      csc = CSGeometryLib.computeCSCIndex(_owner, _dggsIndex);
+      csc = CSGeometryLib.computeCSCIndex(__owner, _dggsIndex);
     }
 
   /**
