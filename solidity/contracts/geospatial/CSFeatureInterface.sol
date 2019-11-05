@@ -22,4 +22,44 @@ interface CSFeatureInterface {
 
     function getGeometryType() external returns (CSGeometryLib.CSGeometryType);
 
+/**
+  * from Simple Feature Access - Part 1: Common Architecture
+  * https://www.opengeospatial.org/standards/sfa
+  * may be interesting to use oracles
+  */
+/*
++ dimension() : Integer
++ coordinateDimension() : Integer
++ spatialDimension() : Integer
++ geometry Ty pe() : String
++ SRID() : Integer
++ env elope() : Geometry
++ asText() : String
++ asBinary () : Binary
++ isEmpty () : Boolean
++ isSimple() : Boolean
++ is3D() : Boolean
++ isMeasured()() : Boolean
++ boundary () : Geometry
+query
++ equals(another :Geometry ) : Boolean
++ disjoint(another :Geometry ) : Boolean
++ intersects(another :Geometry ) : Boolean
++ touches(another :Geometry ) : Boolean
++ crosses(another :Geometry ) : Boolean
++ within(another :Geometry ) : Boolean
++ contains(another :Geometry ) : Boolean
++ ov erlaps(another :Geometry ) : Boolean
++ relate(another :Geometry , matrix :String) : Boolean
++ locateAlong(mValue :Double) : Geometry
++ locateBetween(mStart :Double, mEnd :Double) : Geometry
+analy sis
++ distance(another :Geometry ) : Distance
++ buf f er(distance :Distance) : Geometry
++ conv exHull() : Geometry
++ intersection(another :Geometry ) : Geometry
++ union(another :Geometry ) : Geometry
++ dif f erence(another :Geometry ) : Geometry
++ sy mDif f erence(another :Geometry ) : Geometry
+*/
 }

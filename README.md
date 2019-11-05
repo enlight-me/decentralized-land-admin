@@ -108,3 +108,7 @@ Further Reading
 ## Blockchain business models
 - [McKinsey : Blockchain beyond the hype: What is the strategic business value?](https://www.mckinsey.com/business-functions/mckinsey-digital/our-insights/blockchain-beyond-the-hype-what-is-the-strategic-business-value#)
 - [Top 7 Blockchain Business Models That You Should Know About](https://101blockchains.com/blockchain-business-models/)
+
+## Land administration challenges
+- [landportal.org - Open Land Data in the Fight Against Corruption - Discussion Report](https://landportal.org/file/47749/download)
+
