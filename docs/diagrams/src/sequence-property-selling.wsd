@@ -1,4 +1,4 @@
-@startuml
+@startuml seq-property-selling
 title Property selling sequence 
 participant OwnerBank
 actor Owner

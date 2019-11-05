@@ -1,0 +1,25 @@
+@startuml seq-dela-global
+title Sequence : Decentralized Land Administration - DeLA
+actor user
+participant DeLA
+actor CommunityActors
+
+user -> DeLA : Claim ownership of a parcel
+note left : Parcel is identified by the DGGS Index (H3) \nof the centroid of the surface representing \n the parcel in the map 
+alt parcel not registred
+	DeLA -> user : Register ownership
+else already registred parcel
+    DeLA -> user : Dispute
+    DeLA -> DeLA : Ask for proof challenge
+    user -> CommunityActors : Send proofs (docuemnts)
+    CommunityActors -> CommunityActors : Check proofs
+    CommunityActors -> DeLA : Vote 
+        alt Single owner confirmed
+            DeLA -> user : Assign Ownership
+        else multiple owners
+            DeLA -> user : Create multi-signature ownership 
+        end
+end 
+
+
+@enduml

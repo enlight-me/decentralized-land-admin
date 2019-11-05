@@ -42,6 +42,7 @@ Table of contents
       * [Deployed addresses](./docs/deployed_addresses.txt)
       * [Design pattern decisions](./docs/design_pattern_decisions.md)
       * [Security](./docs/avoiding_common_attacks.md)
+      * [Business model](./docs/business-model.md)
    * Miscellanious 
       * [Blockchain for geospatial](./docs/blockchain-for-geospatial.md)
       * [Blockchain use cases](./docs/blockchain-use-cases.md)
@@ -51,7 +52,7 @@ Table of contents
 
 Project Setup
 ============
-The Onchain Land Administration is a Decentrelized Application (dApp) built for the Ethereum blockchain. It comprises 03 components :
+DeLA plateform is a Decentrelized Application (dApp) for Land Administration built for the Ethereum blockchain. It comprises 03 components :
 1. The smart contracts written in Solidity
 1. The frontend web application built with react.js
 1. The backend application implementing a REST API to interact with the parcels map
@@ -64,13 +65,29 @@ git clone https://github.com/allilou/onchain-land-administration.git
 ```
 Since the project is developped using the [truffle framework](https://www.trufflesuite.com/), you should check the network configuration in `solidity/truffle-config.js` before continuing.
 
-Compile and migrate the solidity contracts to your local EVM.
+If you haven't yet setup developpement envirenment :
+
+```
+npm install -g ganache-cli
+npm install -g truffle
+```
+
+Launch etheruem local developpement node :
+
+```
+ganche-cli
+```
+
+Install smart contracts dependecies (OpenZeppelin libraries) and migrate the solidity contracts to your local EVM.
+
 ```
 cd solidity 
+npm install
 truffle migrate --reset
 ```
 
 Install dependiencies and compile Node.js/Express backend server.
+
 ```
 cd server
 npm install
@@ -79,17 +96,24 @@ npm start
 
 Install dependiencies and compile React/Web3 frontend web application.
 
+
 ```
 cd client
 npm install
 npm start
 ```
+
 ## Usage 
-The following sequence diagram illustrate the interaction between the diffrent components.
+The following sequence diagram illustrate the overall process that will be implemented in the DeLA project .
 
-![](./docs/diagrams/exports/sequence-foam/sequence-foam.png)
+![](./docs/diagrams/exports/sequence-dela-global/seq-dela-global.png)
 
-You can trigger a transaction simply by clicking on the map or by firing the 'Add CSC Index' button. A marker with the 'Transaction Hash' will be added at the clicked position on the map. 
+To manage geospatial data transactions and visualisation, the FOAM protocole, described y he diaram below, is used. One can trigger a transaction simply by clicking on the map or by firing the 'Add CSC Index' button. A marker with the 'Transaction Hash' will be added at the clicked position on the map. 
+![](./docs/diagrams/exports/sequence-foam/seq-foam.png)
+
+As a broader vision, the DeLA platform will alow a signaling process, described by the diagram bellow, to incentivize cartographers to add features to the Features Index. Those featues are necessary to allow basic users, with minimum knowledge on webmapping, to identify directly the features they own on the displayed map. 
+
+![](./docs/diagrams/exports/sequence-signaling/seq-signaling.png)
 
 ## Other existing similar Blockchain solutions:
 
