@@ -1,0 +1,62 @@
+@startuml deploy-crypto-spatial-lib
+title deploiment : Crypto-Spatial Library and its applications 
+scale 10 width
+scale 2000 height
+
+node Ethereum {
+    folder Crypto-Spatial-Lib {
+        artifact CSFeature
+        artifact CSPoint
+        artifact CSCurve
+        artifact CSSurface
+        CSPoint -up-|> CSFeature 
+        CSCurve -up-|> CSFeature 
+        CSSurface -up-|> CSFeature 
+        artifact CSFeatureRegistry
+        CSFeatureRegistry "0" -right- "*" CSFeature
+    }
+    package UserSmartContracts {                
+        artifact UserFeatureSurface
+        UserFeatureSurface -up-|> CSSurface
+        artifact UserFeatureCurve
+        UserFeatureCurve -up-|> CSCurve
+        artifact UserFeaturePoint
+        UserFeaturePoint -up-|> CSPoint
+        artifact UserFeatureRegitry
+        UserFeatureRegitry -up-|> CSFeatureRegistry  
+        UserFeatureRegitry "0" -right- "*" UserFeaturePoint     
+        UserFeatureRegitry "0" -up- "*" UserFeatureSurface     
+        UserFeatureRegitry "0" -up- "*" UserFeatureCurve            
+    }
+}    
+
+frame CryptoSpatialPlatform {
+    node Backend {
+        database FeatureIndexDB     
+        component WebMappingServer
+        component CryptoFeaturesServer
+        FeatureIndexDB "insert" <-down-> "fetch" CryptoFeaturesServer
+        FeatureIndexDB -down-> "fetch" WebMappingServer
+        WMS_WFS -up- WebMappingServer
+        OpenAPI -up- CryptoFeaturesServer
+        CSFeatureRegistry ...> CryptoFeaturesServer : events
+    }
+
+    node Frontend {
+        component MappingLibrary
+        note right : "Leaflet/OpenLayers"
+        component Dashboard
+        WMS_WFS -down- Dashboard
+        OpenAPI -down- Dashboard    
+    }
+}
+
+node UserNode {
+    component UserApplication
+    note left : "Ex : Land Parcel Administration"
+    WMS_WFS .. UserApplication
+    OpenAPI .. UserApplication 
+    UserFeatureRegitry <-- UserApplication : Ledger   
+}
+
+@enduml

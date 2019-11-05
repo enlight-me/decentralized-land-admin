@@ -1,4 +1,4 @@
-@startuml
+@startuml class-contracts-csc-deprecated
 
 class CSCStruct <<Struct >> {
     geoHash

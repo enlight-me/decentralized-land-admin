@@ -1,8 +1,17 @@
-@startuml
-title Signaling process
-participant OLAdmin
-participant CommunityActors
+@startuml seq-signaling
+title sequence : Signaling process
+actor User
+actor CommunityActors
+participant DeLA
+database ParcelsIndex
 
-CommunityActors -> OLAdmin : need for Land parcels to Amdinister
-' use mobile application for parcels survey  
+
+CommunityActors -> DeLA : Offering incentives for land parcels surveying 
+DeLA -> DeLA : Mine tokens for \nsignaling round  
+DeLA -> User : Notify signaled area
+User -> ParcelsIndex : Use mobile application for parcels survey 
+ParcelsIndex -> DeLA : Register User contribution
+DeLA -> User : Reward
+DeLA -> CommunityActors : Notify contribution
+
 @enduml

@@ -1,16 +1,19 @@
-@startuml
-actor user
-participant web3App
-participant ethereum
-participant backend
-database indexes
+@startuml seq-foam
+title sequence : FOAM protocole
+actor User
+participant Web3App
+participant CSCSmartContract
+participant Backend
+database FeaturesIndex
 
-user -> web3App : Add Index
-web3App -> ethereum : Call CSC smart contract
-ethereum -> web3App : Log Add CSC index event
-web3App -> backend : Add the Index to the database
-backend -> indexes : Create a new record
-web3App -> backend : Fetch indexes 
-backend -> web3App : Return saved indexes
-web3App -> user : Show indexes on a map
+User -> Web3App : Add Feature
+Web3App -> CSCSmartContract : Call CSC smart contract
+CSCSmartContract -> Web3App : Log Add CSC Feature event
+CSCSmartContract -> Backend : Log Add CSC Feature event
+Backend -> FeaturesIndex : Add the Feature to the Index
+Web3App -> Backend : Fetch Features Index 
+Backend -> FeaturesIndex : Fetch Features Index 
+FeaturesIndex -> Backend : List of Features 
+Backend -> Web3App : Return saved Features
+Web3App -> User : Show FeaturesIndex on a map
 @enduml
