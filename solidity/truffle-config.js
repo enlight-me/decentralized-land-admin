@@ -21,13 +21,12 @@
 // const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const fs = require('fs');
+const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 const path = require("path");
 var HDWalletProvider = require("@truffle/hdwallet-provider");
 
-var mnemonic = "laugh typical uncle stamp warrior section verify nut height deliver cotton denial";
 var infura = "https://rinkeby.infura.io/v3/3c9549d659c6477b9bbc86808f828119";
 
 module.exports = {
