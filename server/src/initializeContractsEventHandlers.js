@@ -9,7 +9,12 @@ var CryptoSpatialCoordinateContract = require('../../client/src/contracts/Crypto
 
 initializeContractsEventHandlers = async () => {
   try {
-    web3 = new Web3(new Web3.providers.WebsocketProvider('http://127.0.0.1:8545'));
+    // for the Rinkeby testnet 
+    web3 = new Web3(new Web3.providers.WebsocketProvider('https://rinkeby.infura.io/v3/3c9549d659c6477b9bbc86808f828119'));
+    
+    // for the local ganache-cli network 
+    // web3 = new Web3(new Web3.providers.WebsocketProvider('http://127.0.0.1:8545'));
+    
     // Get the contract instance.
     const networkId = await web3.eth.net.getId();
 

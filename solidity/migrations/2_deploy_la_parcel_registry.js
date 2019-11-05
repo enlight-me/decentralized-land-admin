@@ -1,7 +1,6 @@
 const LAParcelRegistry = artifacts.require("./LAParcelRegistry");
 const CSGeometryLib = artifacts.require("./geospatial/CSGeometryLib");
 
-
 module.exports = function(deployer) {
   deployer.deploy(CSGeometryLib);
   deployer.link(CSGeometryLib, LAParcelRegistry);

@@ -55,7 +55,7 @@ Project Setup
 DeLA plateform is a Decentrelized Application (dApp) for Land Administration built for the Ethereum blockchain. It comprises 03 components :
 1. The smart contracts written in Solidity
 1. The frontend web application built with react.js
-1. The backend application implementing a REST API to interact with the parcels map
+1. The backend application implementing a REST API to interact with the parcels map.
 
 To run this dApp, follow the instruction below.
 
@@ -63,6 +63,7 @@ Clone this GitHub repository.
 ``` 
 git clone https://github.com/allilou/onchain-land-administration.git
 ```
+
 Since the project is developped using the [truffle framework](https://www.trufflesuite.com/), you should check the network configuration in `solidity/truffle-config.js` before continuing.
 
 If you haven't yet setup developpement envirenment :
@@ -83,7 +84,13 @@ Install smart contracts dependecies (OpenZeppelin libraries) and migrate the sol
 ```
 cd solidity 
 npm install
-truffle migrate --reset
+truffle migrate --reset --network develop
+```
+
+For the rinkeby testnet :
+
+```
+truffle migrate --network rinkeby
 ```
 
 Install dependiencies and compile Node.js/Express backend server.
@@ -108,10 +115,10 @@ The following sequence diagram illustrate the overall process that will be imple
 
 ![](./docs/diagrams/exports/sequence-dela-global/seq-dela-global.png)
 
-To manage geospatial data transactions and visualisation, the FOAM protocole, described y he diaram below, is used. One can trigger a transaction simply by clicking on the map or by firing the 'Add CSC Index' button. A marker with the 'Transaction Hash' will be added at the clicked position on the map. 
+To manage geospatial data transactions and visualisation, the FOAM protocole, described by the diaram below, is used. One can trigger a transaction simply by switching to editing mode and clicking on the map. A marker with the 'Transaction Hash' will be added at the clicked position on the map. 
 ![](./docs/diagrams/exports/sequence-foam/seq-foam.png)
 
-As a broader vision, the DeLA platform will alow a signaling process, described by the diagram bellow, to incentivize cartographers to add features to the Features Index. Those featues are necessary to allow basic users, with minimum knowledge on webmapping, to identify directly the features they own on the displayed map. 
+As a broader vision, the DeLA platform will alow a signaling process, described by the diagram bellow, to incentivize cartographers to add features to the Feature Index database. Those featuers are necessary to allow basic users, with minimum knowledge on webmapping, to identify directly the features they own on the displayed map. 
 
 ![](./docs/diagrams/exports/sequence-signaling/seq-signaling.png)
 
@@ -134,5 +141,5 @@ Further Reading
 - [Top 7 Blockchain Business Models That You Should Know About](https://101blockchains.com/blockchain-business-models/)
 
 ## Land administration challenges
-- [landportal.org - Open Land Data in the Fight Against Corruption - Discussion Report](https://landportal.org/file/47749/download)
+- [Open Land Data in the Fight Against Corruption - Discussion Report - landportal.org](https://landportal.org/file/47749/download)
 

@@ -25,6 +25,10 @@
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 const path = require("path");
+var HDWalletProvider = require("@truffle/hdwallet-provider");
+
+var mnemonic = "laugh typical uncle stamp warrior section verify nut height deliver cotton denial";
+var infura = "https://rinkeby.infura.io/v3/3c9549d659c6477b9bbc86808f828119";
 
 module.exports = {
 
@@ -59,6 +63,12 @@ module.exports = {
       port: 8545,
       network_id: "*"
     },
+    
+    rinkeby: {
+      provider: new HDWalletProvider(mnemonic, infura),
+      network_id: "4",
+      gas: 4500000
+    }
  
      // Another network with more advanced options...
      // advanced: {

@@ -1,0 +1,197 @@
+05/11/2019
+truffle migrate --reset --network rinkeby
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'rinkeby-fork'
+> Network id:      4
+> Block gas limit: 0x6aeaa8
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > block number:        5389776
+   > block timestamp:     1572985795
+   > account:             0x88de7E4C2FcBC388D83C1F129804503dded5ADbd
+   > balance:             2.999507214
+   > gas used:            246393
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000492786 ETH
+
+   -------------------------------------
+   > Total cost:         0.000492786 ETH
+
+
+2_deploy_csc.js
+===============
+
+   Deploying 'CryptoSpatialCoordinate'
+   -----------------------------------
+   > block number:        5389778
+   > block timestamp:     1572985812
+   > account:             0x88de7E4C2FcBC388D83C1F129804503dded5ADbd
+   > balance:             2.998758066
+   > gas used:            347551
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000695102 ETH
+
+   -------------------------------------
+   > Total cost:         0.000695102 ETH
+
+
+2_deploy_la_parcel_registry.js
+==============================
+
+   Deploying 'CSGeometryLib'
+   -------------------------
+   > block number:        5389780
+   > block timestamp:     1572985828
+   > account:             0x88de7E4C2FcBC388D83C1F129804503dded5ADbd
+   > balance:             2.99826084
+   > gas used:            221590
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00044318 ETH
+
+
+   Linking
+   -------
+   * Contract: LAParcelRegistry <--> Library: CSGeometryLib 
+
+   Deploying 'LAParcelRegistry'
+   ----------------------------
+   > block number:        5389781
+   > block timestamp:     1572985845
+   > account:             0x88de7E4C2FcBC388D83C1F129804503dded5ADbd
+   > balance:             2.994464268
+   > gas used:            1898286
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.003796572 ETH
+
+   -------------------------------------
+   > Total cost:         0.004239752 ETH
+
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.00542764 ETH
+
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 0x6adadc
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x1ae1d3f53f60a2c2eec84ba45f106eac0829b40b2272f9a38785242a4872fd4e
+   > Blocks: 3            Seconds: 45
+   > contract address:    0xe0c2cdc557F82cf874EA4aaBC1aFC5Ae0F0a7E23
+   > block number:        5389785
+   > block timestamp:     1572985905
+   > account:             0x88de7E4C2FcBC388D83C1F129804503dded5ADbd
+   > balance:             2.99477214
+   > gas used:            261393
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00522786 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00522786 ETH
+
+
+2_deploy_csc.js
+===============
+
+   Deploying 'CryptoSpatialCoordinate'
+   -----------------------------------
+   > transaction hash:    0xb6b3279883db381eca208c25019526b17a7aecd6d4c7bd8d2fca0b1d2016ff2f
+   > Blocks: 1            Seconds: 20
+   > contract address:    0x072f9f7Ee59142F483076017358d7D1BcD91EFeC
+   > block number:        5389790
+   > block timestamp:     1572985980
+   > account:             0x88de7E4C2FcBC388D83C1F129804503dded5ADbd
+   > balance:             2.98668066
+   > gas used:            362551
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00725102 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00725102 ETH
+
+
+2_deploy_la_parcel_registry.js
+==============================
+
+   Deploying 'CSGeometryLib'
+   -------------------------
+   > transaction hash:    0x71a1e9d964e27c38f0026f719bf1b420bcabde04c2e5e2419734fdcb735a4c26
+   > Blocks: 2            Seconds: 50
+   > contract address:    0x02a1d71Fd17F1353BdB10f3DE9F55D55A9608765
+   > block number:        5389795
+   > block timestamp:     1572986055
+   > account:             0x88de7E4C2FcBC388D83C1F129804503dded5ADbd
+   > balance:             2.9817084
+   > gas used:            221590
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0044318 ETH
+
+
+   Linking
+   -------
+   * Contract: LAParcelRegistry <--> Library: CSGeometryLib (at address: 0x02a1d71Fd17F1353BdB10f3DE9F55D55A9608765)
+
+   Deploying 'LAParcelRegistry'
+   ----------------------------
+   > transaction hash:    0x8978aab2867bc4a7edfa8f1b678259c8da858a05d34dbf82747c13056c3fd920
+   > Blocks: 2            Seconds: 27
+   > contract address:    0x50ddbE7985D262F0898260Fa2541c354afb12B4C
+   > block number:        5389797
+   > block timestamp:     1572986085
+   > account:             0x88de7E4C2FcBC388D83C1F129804503dded5ADbd
+   > balance:             2.94194268
+   > gas used:            1988286
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.03976572 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.04419752 ETH
+
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.0566764 ETH

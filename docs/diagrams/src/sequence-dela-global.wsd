@@ -11,7 +11,7 @@ alt parcel not registred
 else already registred parcel
     DeLA -> user : Dispute
     DeLA -> DeLA : Ask for proof challenge
-    user -> CommunityActors : Send proofs (docuemnts)
+    user -> CommunityActors : Send proofs (docuements)
     CommunityActors -> CommunityActors : Check proofs
     CommunityActors -> DeLA : Vote 
         alt Single owner confirmed
