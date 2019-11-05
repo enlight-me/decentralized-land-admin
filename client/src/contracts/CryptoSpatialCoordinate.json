@@ -497,7 +497,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 483,
+                        "referencedDeclaration": 781,
                         "src": "746:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -595,7 +595,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 483,
+                            "referencedDeclaration": 781,
                             "src": "1039:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -902,7 +902,7 @@
                             "name": "abi",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 470,
+                            "referencedDeclaration": 768,
                             "src": "1458:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_abi",
@@ -949,7 +949,7 @@
                       "name": "keccak256",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 477,
+                      "referencedDeclaration": 775,
                       "src": "1448:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
@@ -1391,7 +1391,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 483,
+                                "referencedDeclaration": 781,
                                 "src": "2145:3:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -1634,10 +1634,10 @@
                       "name": "revert",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        488,
-                        489
+                        786,
+                        787
                       ],
-                      "referencedDeclaration": 489,
+                      "referencedDeclaration": 787,
                       "src": "2211:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
@@ -2051,7 +2051,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 483,
+                        "referencedDeclaration": 781,
                         "src": "746:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -2149,7 +2149,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 483,
+                            "referencedDeclaration": 781,
                             "src": "1039:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -2456,7 +2456,7 @@
                             "name": "abi",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 470,
+                            "referencedDeclaration": 768,
                             "src": "1458:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_abi",
@@ -2503,7 +2503,7 @@
                       "name": "keccak256",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 477,
+                      "referencedDeclaration": 775,
                       "src": "1448:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
@@ -2945,7 +2945,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 483,
+                                "referencedDeclaration": 781,
                                 "src": "2145:3:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -3188,10 +3188,10 @@
                       "name": "revert",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        488,
-                        489
+                        786,
+                        787
                       ],
-                      "referencedDeclaration": 489,
+                      "referencedDeclaration": 787,
                       "src": "2211:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
@@ -3300,444 +3300,12 @@
         }
       },
       "links": {},
-      "address": "0x072f9f7Ee59142F483076017358d7D1BcD91EFeC",
-      "transactionHash": "0xb6b3279883db381eca208c25019526b17a7aecd6d4c7bd8d2fca0b1d2016ff2f"
-    },
-    "5777": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0x7F9500427A23308436a665b32c6a9648229dD2F7",
-      "transactionHash": "0x48d937d7fa9f1e70771fd2c07bb987d4d5b8acb0d0a3963b4f81cab8098f497e"
-    },
-    "1572289564481": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0x5830e2A6f874Fba16615783bdff170272a1B0914",
-      "transactionHash": "0xc2a8b437737531e3218dd21d076ecd9b4848ed689ecab40e8a912d62780a31d8"
-    },
-    "1572375243952": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0xdD518c0092e43d6B2a8acE139Bb4660d3d2c4a66",
-      "transactionHash": "0x2bde9c40de5a4ee95cefeb54c6ad946cbf1913515f0eb958276c7ffe431c4386"
-    },
-    "1572461380654": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0xd870633Be8b93f4C39b06684DCE2C08B2d436112",
-      "transactionHash": "0xe421e95caa8b286edc3c36fca3ad3b61f23982655dae193edc7bb2728700d347"
-    },
-    "1572472628085": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0xabB5e21718FAe0ABFCC7A5777902566676a11c00",
-      "transactionHash": "0x54186ce45eadec5e1d06605e3ea148c718f263ddd244ddb0c597a3c37004dbe3"
-    },
-    "1572550611748": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0xc8AF7490209Ec5168024c9224Bc16ce082693487",
-      "transactionHash": "0x30607075be72708ff15355da9d580a8a8b56eabb4c81bb2f9cdb53c6d3a3a258"
-    },
-    "1572614053629": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0xa3De27DcE4Bc22d14Ad6A54104a24a2a33430b85",
-      "transactionHash": "0xd799b4836c64332336e34e38066fb1c36f8ffc9e6139b81ac39e6b5fbe9614da"
-    },
-    "1572634125675": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0xc3E7DB783aD93Be6A100702814A35De1E2653601",
-      "transactionHash": "0x5775f76fbdb1a2d51b1471e3525350516071e0ba4f23f0e59155fb9cfa26056b"
-    },
-    "1572980014818": {
-      "events": {
-        "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "cscIndex",
-              "type": "bytes32"
-            },
-            {
-              "indexed": false,
-              "name": "geoHash",
-              "type": "bytes15"
-            },
-            {
-              "indexed": false,
-              "name": "owner",
-              "type": "address"
-            }
-          ],
-          "name": "LogCSCIndexedEntityAdded",
-          "type": "event",
-          "signature": "0xb59e8a98658f85fe6223b59f974b1a61635c82f55eea463ad76615c68a4955eb"
-        },
-        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "sender",
-              "type": "address"
-            },
-            {
-              "indexed": false,
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "name": "Deposit",
-          "type": "event",
-          "signature": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c"
-        }
-      },
-      "links": {},
-      "address": "0xFa00e0B099533f71Eda851FaaB7A2722371B2a6c",
-      "transactionHash": "0x976122df1b837d7a771a899afbde4ec07120b79d779c10b998fc552e395f60fe"
+      "address": "0xAd66e3B61658A9e5e5b3F9b0611229a4a2481EE0",
+      "transactionHash": "0x22030150f08ac3d9e4350635ab944a7ebe5760337947ecefc9bc802fddb0c28c"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-05T20:33:15.365Z",
+  "updatedAt": "2019-11-05T21:34:16.349Z",
   "devdoc": {
     "methods": {
       "addCSCIndexedEntity(bytes15)": {

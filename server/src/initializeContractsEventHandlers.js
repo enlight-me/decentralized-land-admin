@@ -10,14 +10,25 @@ var CryptoSpatialCoordinateContract = require('../../client/src/contracts/Crypto
 initializeContractsEventHandlers = async () => {
   try {
     // for the Rinkeby testnet 
-    web3 = new Web3(new Web3.providers.WebsocketProvider('https://rinkeby.infura.io/v3/3c9549d659c6477b9bbc86808f828119'));
-    
+    const providerPath = `wss://rinkeby.infura.io/ws`
+    web3 = new Web3() 
+    const eventProvider = new Web3.providers.WebsocketProvider(providerPath)
+
+    //listen for disconnects
+    eventProvider.on('error', e => handleDisconnects(e));
+    eventProvider.on('end', e => handleDisconnects(e))
+
+    web3.setProvider(eventProvider)
+
+    function handleDisconnects(e) {
+      console.log("error",e);
+    }
+
     // for the local ganache-cli network 
     // web3 = new Web3(new Web3.providers.WebsocketProvider('http://127.0.0.1:8545'));
     
     // Get the contract instance.
     const networkId = await web3.eth.net.getId();
-
     const deployedCSC = CryptoSpatialCoordinateContract.networks[networkId];
      instanceCSC = new web3.eth.Contract(
       CryptoSpatialCoordinateContract.abi,
