@@ -37,6 +37,7 @@ Table of contents
 <!--ts-->
    * [Project Setup](#project-setup)
    * [Usage](#Usage)
+   * [Singaling](#Singaling)
    * Project related documentation 
       * [User stories](./docs/user_stories.md)
       * [Deployed addresses](./docs/deployed_addresses.txt)
@@ -118,6 +119,7 @@ The following sequence diagram illustrate the overall process that will be imple
 To manage geospatial data transactions and visualisation, the FOAM protocole, described by the diaram below, is used. One can trigger a transaction simply by switching to editing mode and clicking on the map. A marker with the 'Transaction Hash' will be added at the clicked position on the map. 
 ![](./docs/diagrams/exports/sequence-foam/seq-foam.png)
 
+## Singaling
 As a broader vision, the DeLA platform will alow a signaling process, described by the diagram bellow, to incentivize cartographers to add features to the Feature Index database. Those featuers are necessary to allow basic users, with minimum knowledge on webmapping, to identify directly the features they own on the displayed map. 
 
 ![](./docs/diagrams/exports/sequence-signaling/seq-signaling.png)

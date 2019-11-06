@@ -13,15 +13,14 @@
 1. Digital court files (justice) 
 1. Property registery
 1. Social aids registry
-1. Vote
-1.  
+1. Vote  
 
-## dApps that may be geospatialy enabled
+## dApps that may be geospatially enabled
 1. Land Registration system
 1. Borders administration
 1. Sensors / IoT
 1. Ride sharing
 1. Control panel for Supply chain management
 1. Real Estate
-1. Mobility (trasnport)
+1. Mobility (transport)
 1. Location based games
