@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control";
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
 import MapIcon from '@material-ui/icons/Map';
 
 // import { geoToH3 } from "h3-js";
@@ -116,12 +116,10 @@ export default class MainMap extends Component {
         />
         <Control>
           <Fab color={this.state.addMode ?  "secondary": "primary"}
-               aria-label={this.state.addMode ?  "Add": "View"}
-            //  onClick={props.addFeature}
-            // onClick={() => this.setState({ bounds: [51.3, 0.7] })}
+               aria-label={this.state.addMode ?  "Add": "View"}            
             onClick={() => this.setState({addMode : !this.state.addMode})}
           >
-            {this.state.addMode ?  <AddIcon /> : <MapIcon /> }
+            {this.state.addMode ?  <EditIcon /> : <MapIcon /> }
           </Fab>
         </Control>
       </Map>
