@@ -18,11 +18,10 @@ contract LAParcel is CSSurface {
     // State variables
     //
 
-    string public extAddressId;
-    string public label;
-    uint public area;
-
-    //TODO add  parcelType :  Building, Agriculture, Industrial, ...
+    string internal extAddressId; // Parcel external real world address ID
+    string internal label;        // Parcel label
+    uint internal area;           // Cadastral area of the parcel
+    string internal parcelType;   // may be : Building, Agriculture, Industrial, ...
 
     //
     // Functions
@@ -31,27 +30,27 @@ contract LAParcel is CSSurface {
     /**
     * @notice constuctor
     * @dev initialize state variables
-    *
     */
+
     constructor (bytes15 _dggsIndex, bytes32 _wkbHash, address _owner, uint _h3Resolution) public
     CSSurface(_dggsIndex, _wkbHash, _owner, _h3Resolution){
-        //  geomteryType = CSGeometryLib.CSGeometryType.GM_CURVE;
     }
 
     /**
      * @notice set extAddressId state variable
      * @param _addrId the external address ID
-     *
      */
-     function setExtAddressId(string memory _addrId) public {
+
+     function setExtAddressId(string calldata _addrId) external {  // ?? onlyOwner()
          extAddressId = _addrId;
      }
 
      /**
      * @notice set label state variable
      * @param _lbl the parcel label
-     *
-     */function setLabel(string memory _lbl) public {
+     */
+     
+     function setLabel(string calldata _lbl) external {  // ?? onlyOwner()
          label = _lbl;
      }
 
@@ -59,7 +58,28 @@ contract LAParcel is CSSurface {
      * @notice set area state variable
      * @param _area the area of the parcel
      *
-     */function setArea(uint _area) public {
+     */
+     function setArea(uint _area) external {  // ?? onlyOwner()
          area = _area;
      }
+
+    /**
+     * @notice set setParcelType state variable
+     * @param _parcelType the Parcel Type of the parcel
+     *
+     */
+     function setParcelType(string calldata _parcelType) external {  // ?? onlyOwner()
+         parcelType = _parcelType;
+     }
+
+     /**
+      * @dev returns all the state values of the Parcel
+      */
+     function fetchParcel() public view
+     returns (string memory , string memory , uint , string memory ) {
+         return (extAddressId, label, area, parcelType);
+
+     }
+
+
 }

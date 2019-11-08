@@ -24,10 +24,10 @@ contract CSFeature is CSFeatureInterface, Ownable {
     // State variables
     //
 
-    bytes32 public csc;         // Crypto-Spatial Coordinate
-    bytes32 public wkbHash;     // Well Known Binary Hash
-    bytes15 public dggsIndex;   // DGGS (Disrcete Global Geodetic System) index
-    uint public h3Resolution;   // H3 resolution (H3 is a compliant DGGS library)
+    bytes32 internal csc;         // Crypto-Spatial Coordinate
+    bytes32 internal wkbHash;     // Well Known Binary Hash
+    bytes15 internal dggsIndex;   // DGGS (Disrcete Global Geodetic System) index
+    uint internal h3Resolution;   // H3 resolution (H3 is a compliant DGGS library)
     CSGeometryLib.CSGeometryType internal geomteryType; // geometry type
 
     //
@@ -58,6 +58,34 @@ contract CSFeature is CSFeatureInterface, Ownable {
   function getGeometryType() external returns (CSGeometryLib.CSGeometryType) {
     return geomteryType;
   }
+  /**
+   */
+  function getFeatureCSC() public view
+      returns (bytes32 _csc) {
+      return (csc);
+
+    }
+  /**
+   * @dev returns all the values of the feature
+   */
+  function fetchFeature() public view
+      returns (bytes32 _csc, bytes15 _dggsIndex, bytes32 _wkbHash, address __owner, uint _h3Resolution,
+                CSGeometryLib.CSGeometryType _geomteryType) {
+      return (csc,dggsIndex, wkbHash, owner(), h3Resolution, geomteryType);
+
+    }
+  /**
+   * @dev update the Well Known Binary Hash of the feature
+   */
+  function setWkbHash(bytes32 _wkbHash) external onlyOwner()
+      returns (bytes32 _wkbHashValue) {
+    require(_wkbHash.length != 0, "Empty wkbHash");
+    wkbHash = _wkbHash;
+    return _wkbHash;
+  }
+  /**
+   * @dev callback function
+   */
   function () external {
       revert("this contract should never have a balance");
     }

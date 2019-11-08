@@ -24,6 +24,7 @@ export default function DraggableDialog(props) {
             To claim this parcel, please fill-in the following informations.
           </DialogContentText>
           <TextField
+            required
             autoFocus
             margin="dense"
             id="label"
@@ -32,12 +33,33 @@ export default function DraggableDialog(props) {
             onChange={props.handleLabelChange}
           />
             <TextField
+            required
             autoFocus
             margin="dense"
             id="address"
             label="External Address ID"
             fullWidth
             onChange={props.handleAddressChange}
+          />
+            <TextField
+            autoFocus
+            required
+            margin="dense"
+            id="area"
+            type="number"
+            label="Area"
+            fullWidth
+            onChange={props.handleAreaChange}
+          />
+          {/* // TODO Replace with a list  */}
+          <TextField
+            autoFocus
+            error
+            margin="dense"
+            id="type"
+            label="Type (Building, Agriculture, Industrial, ...)"
+            fullWidth
+            onChange={props.handleTypeChange}
           />
         </DialogContent>
         <DialogActions>

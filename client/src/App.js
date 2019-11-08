@@ -3,15 +3,16 @@ import { CssBaseline } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import Link from '@material-ui/core/Link';
+import { geoToH3 } from 'h3-js';
 
 import getWeb3 from "./utils/getWeb3";
-import { geoToH3 } from 'h3-js';
-import LAParcelRegistry from "./contracts/LAParcelRegistry.json";
-
 import MainAppBar from './components/MainAppBar';
 import MainDrawer from './components/MainDrawer';
 import MainMap from './components/MainMap';
 import AddFeatureDialog from './components/AddFeatureDialog';
+
+import LAParcelRegistry from "./contracts/LAParcelRegistry.json";
+import LAParcel from "./contracts/LAParcel.json";
 
 const theme = createMuiTheme({
   palette: {
@@ -31,12 +32,15 @@ class App extends Component {
     contractParcelReg: null,
     drawerOpen: false,
     features: [],
+    parcels: [],
     addFeatureOpen: false,
     lat: 0.0,
     lng: 0.0,
-    transactionHash: "",
-    parcelLabel: "",
-    parcelAddressId: "",
+    transactionHash: null,
+    parcelLabel: null,
+    parcelAddressId: null,
+    parcelArea: 0, 
+    parcelType: null
   }
 
   /**
@@ -83,7 +87,7 @@ class App extends Component {
  *        This will allow to avoid using OnRef (this.mainMap.)
  */
 
-  updateMapFeatureIndex = (evt) => {
+  updateMapFeatureIndex = async (evt) => {
     this.mainMap.updateFeatureIndex();
   };
 
@@ -108,7 +112,7 @@ class App extends Component {
    * @param {*} events 
    */
 
-  cscIndexAdded(err, events) {
+  cscIndexAdded = async (err, events) => {
     // console.log(events.returnValues.owner);
     this.updateFeatureIndex();
   }
@@ -119,12 +123,12 @@ class App extends Component {
   /*************** Add Parcel Dialog events **************************** */
 
   /**
-  * @notice AddFeatureToBlockChain
+  * @notice addFeatureToBlockChain
   */
 
-  AddFeatureToBlockChain = async (lat, lng) => {
+  addFeatureToBlockChain = async (lat, lng) => {
     this.setState({ addFeatureOpen: true, lng, lat });
-  }
+  };
 
   handleAddressChange = (evt) => {
     this.setState({ parcelAddressId: evt.target.value });
@@ -134,27 +138,52 @@ class App extends Component {
     this.setState({ parcelLabel: evt.target.value });
   };
 
+  handleAreaChange = (evt) => {
+    this.setState({ parcelArea: evt.target.value });
+  };
+
+  handleTypeChange = (evt) => {
+    this.setState({ parcelType: evt.target.value });
+  };
+
   claimParcel = async (evt) => {
+    const { accounts, contractParcelReg, parcelLabel, parcelAddressId, parcelArea, parcelType } = this.state;
+    // if (parcelAddressId ==="")
     this.setState({ addFeatureOpen: false });
-    const { accounts, contractParcelReg, parcelLabel, parcelAddressId } = this.state;
     // Get network provider and web3 instance.
     const web3 = this.state.web3;
 
     const h3Index = geoToH3(this.state.lng, this.state.lat, 15);
     const h3IndexHex = web3.utils.asciiToHex(h3Index);
     const wkbHash = web3.utils.asciiToHex("wkbHash");
-
+    const area = Number(parcelArea);
+    
     const result = await contractParcelReg.methods.claimParcel( h3IndexHex,
                                                                 wkbHash,
                                                                 parcelAddressId,
-                                                                parcelLabel,
-                                                                0)
+                                                                parcelLabel,                                                                
+                                                                area, 
+                                                                parcelType)
                                               .send({ from: accounts[0] })
                                               .on('error', console.error);
 
     this.setState({ snackbarOpen: true , transactionHash : result.events.LogParcelClaimed.transactionHash });
-    // console.log(result.events.LogCSCIndexedEntityAdded.transactionHash );
-    // console.log(result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex );
+  };
+
+  updateParcelsList = async () => {
+    console.log("-----------------------------", this.state.features);
+    var parcels =[];
+    const instance = this.state.contractParcelReg;
+    const web3 = this.state.web3;
+
+    this.state.features.map( async(value) => {
+          const featureAddress = await instance.methods.getFeature(value.properties.csc).call();
+          const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+          const parcelValues = await parcel.methods.fetchParcel().call();
+          parcels.push(parcelValues);          
+        });
+    this.setState({ parcels });
+    console.log(this.state.parcels);
   };
 
   handleAddFeatureDialogClose = () => {
@@ -204,13 +233,14 @@ class App extends Component {
           <MainDrawer drawerOpen={this.state.drawerOpen}
             closeDrawer={this.closeDrawer}
             features={this.state.features}
+            parcels={this.state.parcels}
           />
           <MainAppBar toggleDrawer={this.toggleDrawer}
             updateFeatureIndex={this.updateMapFeatureIndex}
           />
 
           <MainMap onRef={ref => (this.mainMap = ref)}
-            addFeature={this.AddFeatureToBlockChain}
+            addFeature={this.addFeatureToBlockChain}
             contractParcelReg={this.state.contractParcelReg}
             accounts={this.state.accounts}
             web3={this.state.web3}
@@ -220,6 +250,8 @@ class App extends Component {
             handleAddFeatureDialogClose={this.handleAddFeatureDialogClose}
             handleLabelChange={this.handleLabelChange}
             handleAddressChange={this.handleAddressChange}
+            handleAreaChange = {this.handleAreaChange}
+            handleTypeChange = {this.handleTypeChange}
             claimParcel={this.claimParcel}
           />
 

@@ -42,7 +42,8 @@ export default function MainDrawerContainer(props) {
             <Typography className={classes.heading}>Feaures</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-              <ClaimsList features={props.features}/>
+              <ClaimsList features={props.features} 
+                          parcels={props.parcels}/>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </Grid>

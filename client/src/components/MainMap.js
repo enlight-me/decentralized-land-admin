@@ -65,16 +65,31 @@ export default class MainMap extends Component {
   onEachFeature = async (feature, layer) => {
     //  h3Resolution;  name;  srs; featuresCount
     const instance = this.props.contractParcelReg;
-    const featureAddress = await instance.methods.getFeature(feature.properties.csc).call();
+    // console.log(instance);
+    const featureAddress = await instance.methods.getFeature(feature.properties.csc)
+                                                 .call({from: this.props.accounts[0]}, (error, result) => {
+                                                            if (error) console.log( error);
+                                                          });
 
     const web3 = this.props.web3;
-    var parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
-    const label = await parcel.methods.label().call();
-    console.log(label);
-
-    const popupContent = ` <Popup><p>Informations</p><pre>dggsIndex: ${feature.properties.dggsIndex} <br/>${label}</pre></Popup>`
-    // const popupContent = (<ParcelMapPopup/>);
-    layer.bindPopup(popupContent)
+    const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+    const parcelValues = await parcel.methods.fetchParcel().call();
+    
+    const Content = ` <Popup >
+          <div style=" width:20%x; height:150px; marginTop:10px">
+          <h1 style="text-align:center; font-size:22px">Parcel informations</h1>
+          <table style="width:100%; text-align:left; font-size:15px;border-collapse:collapse;">
+          <tr style="border-bottom: 1px solid #ddd;"><td>Label: </td><td> ${parcelValues[1]}</td></tr>
+          <tr style="border-bottom: 1px solid #ddd;"><td>External address: </td><td>${parcelValues[0]} </td></tr>
+          <tr style="border-bottom: 1px solid #ddd;"><td>Area: </td><td>${parcelValues[3]} </td></tr>
+          <tr style="border-bottom: 1px solid #ddd;"><td>Type: </td><td>${parcelValues[4]} </td></tr>
+          </table></div>
+          <div style = “text-align:justify;”>
+          <a href="#" class="myButton" >Update</a>
+          <a href="#" class="myButton" style="margin-left:10px;">Deny</a>
+          </div></Popup>`;
+          
+          layer.bindPopup(Content)
   }
 
   /**
@@ -116,6 +131,7 @@ export default class MainMap extends Component {
         zoom={this.state.zoom}
         onClick={(e) => {if(this.state.addMode) {this.props.addFeature(e.latlng.lat, e.latlng.lng)}}}
         ref="CSCMap">
+         
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

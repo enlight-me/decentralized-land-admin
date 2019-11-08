@@ -22,7 +22,7 @@ contract LAParcelRegistry is CSFeatureRegistry {
   // Events - publicize actions to external listeners
   //
 
-  event LogParcelClaimed(bytes32 csc, bytes15 dggsIndex, bytes32 wkbHash, string addr, string lbl, uint area);
+  event LogParcelClaimed(bytes32 csc, bytes15 dggsIndex, bytes32 wkbHash, string addr, string lbl, uint area, string parcelType);
 
   //
   // Functions
@@ -47,19 +47,21 @@ contract LAParcelRegistry is CSFeatureRegistry {
                        bytes32 wkbHash,
                        string memory addr,
                        string memory lbl,
-                       uint area)
+                       uint area,
+                       string memory parcelType)
   public addFeature( dggsIndex, wkbHash, msg.sender)
   returns (bytes32) {
 
     // TODO check inputs
 
     LAParcel parcel = new LAParcel(dggsIndex,wkbHash, msg.sender, h3Resolution);
-    bytes32 csc = parcel.csc();
+    bytes32 csc = parcel.getFeatureCSC();
     parcel.setExtAddressId(addr);
     parcel.setLabel(lbl);
     parcel.setArea(area);
+    parcel.setParcelType(parcelType);
     features[csc] = address(parcel);
-    emit LogParcelClaimed(csc, dggsIndex, wkbHash, addr, lbl, area);
+    emit LogParcelClaimed(csc, dggsIndex, wkbHash, addr, lbl, area, parcelType);
     return csc;
   }
 }

@@ -13,8 +13,13 @@ import './CSFeature.sol';
 import './CSGeometryLib.sol';
 
 import '@openzeppelin/contracts/lifecycle/Pausable.sol';
+import '@openzeppelin/contracts/math/SafeMath.sol';
 
 contract CSFeatureRegistry is Pausable {
+
+  // Use safe math for featureCount;
+  using SafeMath for uint256;
+
   //
   // State variables
   //
@@ -22,7 +27,6 @@ contract CSFeatureRegistry is Pausable {
   string public name;       // display name of the registry
   string public srs;        // Spatial Reference System
   uint256 featuresCount = 0; // Counter of the added features
-
 
   mapping(bytes32 => address) internal features; // Mapping CSC => Features contract address
 
@@ -52,6 +56,7 @@ contract CSFeatureRegistry is Pausable {
   * @param wkbHash Well Known Binary Hash
   * @return the Crypto-Spatial Coordinate (CSC) of the feature
   */
+
   modifier addFeature(bytes15 dggsIndex, bytes32 wkbHash, address _sender)
    {
     require(!paused(), "Contract is paused");
@@ -60,9 +65,9 @@ contract CSFeatureRegistry is Pausable {
 
     _;
 
-    bytes32 csc = CSGeometryLib.computeCSCIndex(_sender, dggsIndex);
+    bytes32 csc = CSGeometryLib.computeCSCIndex(_sender, dggsIndex); // TODO chek for gas overburn
     emit LogNewFeatureAdded(name, csc, dggsIndex, wkbHash, _sender);
-    featuresCount += 1; // TODO use SafeMath
+    featuresCount = featuresCount.add(1); // TODO chek for gas overburn
   }
 
  /**

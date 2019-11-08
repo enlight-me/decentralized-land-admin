@@ -27,14 +27,14 @@
     "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol",
     "exportedSymbols": {
       "CSFeatureInterface": [
-        500
+        477
       ]
     },
-    "id": 501,
+    "id": 478,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 493,
+        "id": 470,
         "literals": [
           "solidity",
           "^",
@@ -42,16 +42,16 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "196:23:6"
+        "src": "196:23:5"
       },
       {
         "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol",
         "file": "./CSGeometryLib.sol",
-        "id": 494,
+        "id": 471,
         "nodeType": "ImportDirective",
-        "scope": 501,
-        "sourceUnit": 718,
-        "src": "222:29:6",
+        "scope": 478,
+        "sourceUnit": 702,
+        "src": "222:29:5",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -61,9 +61,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 500,
+        "id": 477,
         "linearizedBaseContracts": [
-          500
+          477
         ],
         "name": "CSFeatureInterface",
         "nodeType": "ContractDefinition",
@@ -71,44 +71,44 @@
           {
             "body": null,
             "documentation": null,
-            "id": 499,
+            "id": 476,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getGeometryType",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 495,
+              "id": 472,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "345:2:6"
+              "src": "345:2:5"
             },
             "returnParameters": {
-              "id": 498,
+              "id": 475,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 497,
+                  "id": 474,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 499,
-                  "src": "366:28:6",
+                  "scope": 476,
+                  "src": "366:28:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_CSGeometryType_$681",
+                    "typeIdentifier": "t_enum$_CSGeometryType_$665",
                     "typeString": "enum CSGeometryLib.CSGeometryType"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 496,
+                    "id": 473,
                     "name": "CSGeometryLib.CSGeometryType",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 681,
-                    "src": "366:28:6",
+                    "referencedDeclaration": 665,
+                    "src": "366:28:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_CSGeometryType_$681",
+                      "typeIdentifier": "t_enum$_CSGeometryType_$665",
                       "typeString": "enum CSGeometryLib.CSGeometryType"
                     }
                   },
@@ -116,33 +116,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "365:30:6"
+              "src": "365:30:5"
             },
-            "scope": 500,
-            "src": "321:75:6",
+            "scope": 477,
+            "src": "321:75:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 501,
-        "src": "253:1416:6"
+        "scope": 478,
+        "src": "253:1416:5"
       }
     ],
-    "src": "196:1474:6"
+    "src": "196:1474:5"
   },
   "legacyAST": {
     "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol",
     "exportedSymbols": {
       "CSFeatureInterface": [
-        500
+        477
       ]
     },
-    "id": 501,
+    "id": 478,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 493,
+        "id": 470,
         "literals": [
           "solidity",
           "^",
@@ -150,16 +150,16 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "196:23:6"
+        "src": "196:23:5"
       },
       {
         "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol",
         "file": "./CSGeometryLib.sol",
-        "id": 494,
+        "id": 471,
         "nodeType": "ImportDirective",
-        "scope": 501,
-        "sourceUnit": 718,
-        "src": "222:29:6",
+        "scope": 478,
+        "sourceUnit": 702,
+        "src": "222:29:5",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -169,9 +169,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 500,
+        "id": 477,
         "linearizedBaseContracts": [
-          500
+          477
         ],
         "name": "CSFeatureInterface",
         "nodeType": "ContractDefinition",
@@ -179,44 +179,44 @@
           {
             "body": null,
             "documentation": null,
-            "id": 499,
+            "id": 476,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getGeometryType",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 495,
+              "id": 472,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "345:2:6"
+              "src": "345:2:5"
             },
             "returnParameters": {
-              "id": 498,
+              "id": 475,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 497,
+                  "id": 474,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 499,
-                  "src": "366:28:6",
+                  "scope": 476,
+                  "src": "366:28:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_CSGeometryType_$681",
+                    "typeIdentifier": "t_enum$_CSGeometryType_$665",
                     "typeString": "enum CSGeometryLib.CSGeometryType"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 496,
+                    "id": 473,
                     "name": "CSGeometryLib.CSGeometryType",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 681,
-                    "src": "366:28:6",
+                    "referencedDeclaration": 665,
+                    "src": "366:28:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_CSGeometryType_$681",
+                      "typeIdentifier": "t_enum$_CSGeometryType_$665",
                       "typeString": "enum CSGeometryLib.CSGeometryType"
                     }
                   },
@@ -224,20 +224,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "365:30:6"
+              "src": "365:30:5"
             },
-            "scope": 500,
-            "src": "321:75:6",
+            "scope": 477,
+            "src": "321:75:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 501,
-        "src": "253:1416:6"
+        "scope": 478,
+        "src": "253:1416:5"
       }
     ],
-    "src": "196:1474:6"
+    "src": "196:1474:5"
   },
   "compiler": {
     "name": "solc",
@@ -245,7 +245,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-07T20:11:41.143Z",
+  "updatedAt": "2019-11-08T13:37:51.496Z",
   "devdoc": {
     "methods": {}
   },
