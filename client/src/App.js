@@ -6,7 +6,7 @@ import Link from '@material-ui/core/Link';
 
 import getWeb3 from "./utils/getWeb3";
 import { geoToH3 } from 'h3-js';
-import CryptoSpatialCoordinateContract from "./contracts/CryptoSpatialCoordinate.json";
+import LAParcelRegistry from "./contracts/LAParcelRegistry.json";
 
 import MainAppBar from './components/MainAppBar';
 import MainDrawer from './components/MainDrawer';
@@ -28,13 +28,15 @@ class App extends Component {
   state = {
     web3: null,
     accounts: null,
-    contract: null,
+    contractParcelReg: null,
     drawerOpen: false,
     features: [],
     addFeatureOpen: false,
     lat: 0.0,
     lng: 0.0,
     transactionHash: "",
+    parcelLabel: "",
+    parcelAddressId: "",
   }
 
   /**
@@ -52,17 +54,16 @@ class App extends Component {
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
 
-      const deployedCSC = CryptoSpatialCoordinateContract.networks[networkId];
-      const instanceCSC = new web3.eth.Contract(
-        CryptoSpatialCoordinateContract.abi,
-        deployedCSC && deployedCSC.address,
-      );
-
-      instanceCSC.events.LogCSCIndexedEntityAdded((err, events) => this.cscIndexAdded(err, events)).on('error', console.error);
+      const deployedParcelReg = LAParcelRegistry.networks[networkId];
+      const contractParcelReg = new web3.eth.Contract(
+        LAParcelRegistry.abi,
+        deployedParcelReg && deployedParcelReg.address,
+      );      
+      contractParcelReg.events.LogParcelClaimed((err, events) => this.parcelClaimed(err, events)).on('error', console.error);
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instanceCSC });
+      this.setState({ web3, accounts, contractParcelReg });
 
     } catch (error) {
       // Catch any errors for any of the above operations.
@@ -91,7 +92,7 @@ class App extends Component {
    */
 
   updateFeatureIndex = async () => {
-    fetch('http://localhost:4000/collections/cscindex')
+    fetch('http://localhost:4000/collections/features')
       .then(res => {
         return res.json();
       }).then(data => {
@@ -112,6 +113,9 @@ class App extends Component {
     this.updateFeatureIndex();
   }
 
+  parcelClaimed(err, events) {
+    this.updateFeatureIndex();
+  }
   /*************** Add Parcel Dialog events **************************** */
 
   /**
@@ -124,26 +128,31 @@ class App extends Component {
 
   handleAddressChange = (evt) => {
     this.setState({ parcelAddressId: evt.target.value });
-    console.log(this.state.parcelAddressId);
   };
 
   handleLabelChange = (evt) => {
     this.setState({ parcelLabel: evt.target.value });
-    console.log(this.state.parcelLabel);
   };
 
   claimParcel = async (evt) => {
     this.setState({ addFeatureOpen: false });
-    const { accounts, contract } = this.state;
+    const { accounts, contractParcelReg, parcelLabel, parcelAddressId } = this.state;
     // Get network provider and web3 instance.
     const web3 = this.state.web3;
 
     const h3Index = geoToH3(this.state.lng, this.state.lat, 15);
     const h3IndexHex = web3.utils.asciiToHex(h3Index);
+    const wkbHash = web3.utils.asciiToHex("wkbHash");
 
-    const result = await contract.methods.addCSCIndexedEntity(h3IndexHex).send({ from: accounts[0] }).on('error', console.error);
+    const result = await contractParcelReg.methods.claimParcel( h3IndexHex,
+                                                                wkbHash,
+                                                                parcelAddressId,
+                                                                parcelLabel,
+                                                                0)
+                                              .send({ from: accounts[0] })
+                                              .on('error', console.error);
 
-    this.setState({ snackbarOpen: true , transactionHash : result.events.LogCSCIndexedEntityAdded.transactionHash });
+    this.setState({ snackbarOpen: true , transactionHash : result.events.LogParcelClaimed.transactionHash });
     // console.log(result.events.LogCSCIndexedEntityAdded.transactionHash );
     // console.log(result.events.LogCSCIndexedEntityAdded.returnValues.cscIndex );
   };
@@ -187,7 +196,6 @@ class App extends Component {
   render() {
     const vertical = 'bottom';
     const horizontal = 'right';
-    const preventDefault = event => event.preventDefault();
 
     return (
       <div className="App">
@@ -203,6 +211,9 @@ class App extends Component {
 
           <MainMap onRef={ref => (this.mainMap = ref)}
             addFeature={this.AddFeatureToBlockChain}
+            contractParcelReg={this.state.contractParcelReg}
+            accounts={this.state.accounts}
+            web3={this.state.web3}
           />
 
           <AddFeatureDialog addFeatureOpen={this.state.addFeatureOpen}
@@ -223,7 +234,6 @@ class App extends Component {
             }}
             message={<span id="message-id">
               <Link href={"https://rinkeby.etherscan.io/tx/"+this.state.transactionHash} 
-                    // onClick={preventDefault}
                     target="_blank" 
                     rel="noopener">
 

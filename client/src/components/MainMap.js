@@ -5,7 +5,9 @@ import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import MapIcon from '@material-ui/icons/Map';
 
-// import { geoToH3 } from "h3-js";
+
+import LAParcel from "../contracts/LAParcel.json";
+// import ParcelMapPopup from './ParcelMapPopup';
 
 export default class MainMap extends Component {
 
@@ -44,7 +46,7 @@ export default class MainMap extends Component {
   constructor(props) {
     super(props);
 
-    fetch('http://localhost:4000/collections/cscindex')
+    fetch('http://localhost:4000/collections/features')
       .then(res => {
         return res.json();
       }).then(data => {
@@ -60,8 +62,18 @@ export default class MainMap extends Component {
    * @param {*} layer 
    */
 
-  onEachFeature(feature, layer) {
-    const popupContent = ` <Popup><p>Informations</p><pre>geoHash: ${feature.properties.csc}</pre></Popup>`
+  onEachFeature = async (feature, layer) => {
+    //  h3Resolution;  name;  srs; featuresCount
+    const instance = this.props.contractParcelReg;
+    const featureAddress = await instance.methods.getFeature(feature.properties.csc).call();
+
+    const web3 = this.props.web3;
+    var parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+    const label = await parcel.methods.label().call();
+    console.log(label);
+
+    const popupContent = ` <Popup><p>Informations</p><pre>dggsIndex: ${feature.properties.dggsIndex} <br/>${label}</pre></Popup>`
+    // const popupContent = (<ParcelMapPopup/>);
     layer.bindPopup(popupContent)
   }
 
@@ -70,7 +82,7 @@ export default class MainMap extends Component {
    */
 
   updateFeatureIndex() {
-    fetch('http://localhost:4000/collections/cscindex')
+    fetch('http://localhost:4000/collections/features')
       .then(res => {
         return res.json();
       }).then(data => {

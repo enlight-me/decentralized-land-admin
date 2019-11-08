@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var getCSCIndexesRouter = require('./routes/getindexes');
+var getFeaturesRouter = require('./routes/getFeatures');
 var addCSCIndexesRouter = require('./routes/addindex');
 
 var initializeContractsEventHandlers =require('./src/initializeContractsEventHandlers');
@@ -25,8 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/collections/cscindex/', getCSCIndexesRouter);
-app.use('/collections/cscindex/addFeature', addCSCIndexesRouter);
+app.use('/collections/features/', getFeaturesRouter);
+app.use('/collections/features/addFeature', addCSCIndexesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

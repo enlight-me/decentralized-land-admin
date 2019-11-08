@@ -17,12 +17,12 @@ export default class ClaimsList extends React.Component {
           {/* {this.state.features.map(value => ( */}
           {this.props.features.map(value => (
             <ListItem button
-                key={value.properties.geohash}
+                key={value.properties.csc}
               >
                 <ListItemIcon>
                   <DraftsIcon />
                 </ListItemIcon>
-                <ListItemText primary={value.properties.geohash} />
+                <ListItemText primary={value.properties.csc} />
               </ListItem>
             ))
           }
