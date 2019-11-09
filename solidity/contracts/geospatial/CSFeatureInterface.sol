@@ -20,7 +20,23 @@ interface CSFeatureInterface {
     // Functions
     //
 
-    function getGeometryType() external returns (CSGeometryLib.CSGeometryType);
+  function getGeometryType() external returns (CSGeometryLib.CSGeometryType);
+
+  function getFeatureCSC() external view returns (bytes32 _csc);
+
+  function getFeatureDGGSIndex() external view returns (bytes15);
+
+  function fetchFeature() external view returns (bytes32 _csc,
+                                                bytes15 _dggsIndex,
+                                                bytes32 _wkbHash,
+                                                address __owner,
+                                                uint _h3Resolution,
+                                                CSGeometryLib.CSGeometryType _geomteryType);
+
+  function setWkbHash(bytes32 _wkbHash) external returns (bytes32 _wkbHashValue);
+
+  function kill() external;
+}
 
 /**
   * from Simple Feature Access - Part 1: Common Architecture
@@ -62,4 +78,4 @@ analy sis
 + dif f erence(another :Geometry ) : Geometry
 + sy mDif f erence(another :Geometry ) : Geometry
 */
-}
+

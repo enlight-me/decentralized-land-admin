@@ -13,9 +13,10 @@ import './CSFeature.sol';
 import './CSGeometryLib.sol';
 
 import '@openzeppelin/contracts/lifecycle/Pausable.sol';
+import '@openzeppelin/contracts/ownership/Ownable.sol';
 import '@openzeppelin/contracts/math/SafeMath.sol';
 
-contract CSFeatureRegistry is Pausable {
+contract CSFeatureRegistry is Pausable, Ownable {
 
   // Use safe math for featureCount;
   using SafeMath for uint256;
@@ -35,7 +36,8 @@ contract CSFeatureRegistry is Pausable {
   //
   // Events - publicize actions to external listeners
   //
-  event LogNewFeatureAdded(string name, bytes32 csc, bytes15 dggsIndex, bytes32 wkbHash, address owner);
+  event LogNewFeatureAdded(string indexed name, bytes32 indexed csc, bytes15 indexed dggsIndex, bytes32 wkbHash, address owner);
+  event LogFeatureRemoved(string indexed name, bytes32 indexed csc, bytes15 indexed dggsIndex, address killer);
 
   //
   // Functions
@@ -97,21 +99,33 @@ contract CSFeatureRegistry is Pausable {
   * @dev dggsIndexExist : check if dggs allready exit in the registry
   * @param _dggsIndex the index to check
   */
-  
+
   function dggsIndexExist(bytes15 _dggsIndex) public view returns (bool) {
     return ((addedIndexes[_dggsIndex] == true));
-  // mapping(bytes15 => address) internal indexOwner)
   }
 
  /**
   * @dev dggsIndexOwner : return the address of the dggsIndex Owner
   * @param _dggsIndex the index to fetch
   */
-  
+
   function dggsIndexOwner(bytes15 _dggsIndex) public view returns (address) {
     return (indexOwner[_dggsIndex]);
-  // mapping(bytes15 => address) internal indexOwner)
   }
+
+  /**
+   * @dev remove permanently the feature from the registry
+   */
+  function removeFeature(bytes32 csc) external onlyOwner() {
+    CSFeatureInterface feature = CSFeatureInterface(getFeature(csc));
+    bytes15 dggsIndex = feature.getFeatureDGGSIndex();
+    addedIndexes[dggsIndex] = false;
+    indexOwner[dggsIndex] = address(0);
+    featuresCount = featuresCount.sub(1); // TODO chek for gas overburn
+    feature.kill();
+    emit LogFeatureRemoved(name, csc, dggsIndex, msg.sender);
+  }
+
 
   /**
   * @notice callback function

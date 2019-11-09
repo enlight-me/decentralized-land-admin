@@ -22,7 +22,8 @@ contract LAParcelRegistry is CSFeatureRegistry {
   // Events - publicize actions to external listeners
   //
 
-  event LogParcelClaimed(bytes32 csc, bytes15 dggsIndex, bytes32 wkbHash, string addr, string lbl, uint area, string parcelType);
+  event LogParcelClaimed(bytes32 indexed csc, bytes15 indexed dggsIndex, bytes32 wkbHash,
+                          string addr, string lbl, uint area, string indexed parcelType);
 
   //
   // Functions

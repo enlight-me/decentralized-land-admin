@@ -1242,12 +1242,12 @@
     "1573301388103": {
       "events": {},
       "links": {},
-      "address": "0x6a70Dc668e3fDbf035843168B8287Ccc01dc9946",
-      "transactionHash": "0xb58cd86373f59309193b475e077536f87f365668578cfbbceb4e6d433d35b4a4"
+      "address": "0xf9B29137320dD34cE6BE594479ab6A263fBf043a",
+      "transactionHash": "0x06c6393a805f10debf4caa4dd5fcf0c93d3e29a133be770a2d906bb26f9f9319"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-09T12:11:05.170Z",
+  "updatedAt": "2019-11-09T17:03:43.110Z",
   "devdoc": {
     "methods": {
       "computeCSCIndex(address,bytes15)": {
