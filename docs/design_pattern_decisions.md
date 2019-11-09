@@ -69,4 +69,13 @@ contract CSFeature is CSFeatureInterface, Ownable {
 
   # Inheritance
 
+Add admin accounts to Registry
+Make state variables private 
+  CircuitBreaker
+dd import "./Roles.sol" to LAParcel
+ add CircuitBreaker to LARegistry
+ add killer to LAParcel
+
+ Design Pattern : inherit CSFeature from Openzeppelin Ownable/Roles
+
   

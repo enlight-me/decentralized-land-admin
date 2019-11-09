@@ -1,6 +1,6 @@
 
 var Web3 = require('web3');
-const h3 = require("h3-js");
+const h3 = require('h3-js');
 const spatialite = require('spatialite').verbose();
 const db = new spatialite.Database('db.sqlite');
 
@@ -64,24 +64,23 @@ initializeContractsEventHandlers = async () => {
 cscIndexAdded = async (err, events) => {
     // LogNewFeatureAdded(string name, bytes32 csc, bytes15 dggsIndex, bytes32 wkbHash, address owner);
 
-
     if (err) console.log("error" + err);
 
-    const dggsIndex = web3.utils.hexToAscii(events.returnValues.dggsIndex);
+    const dggsIndex = web3.utils.hexToUtf8(events.returnValues.dggsIndex);
     const hexCenterCoordinates = h3.h3ToGeo(dggsIndex);
-    const position = ""+hexCenterCoordinates[0]+" "+hexCenterCoordinates[1];
+    const position = ""+hexCenterCoordinates[1]+" "+hexCenterCoordinates[0];
   
-    const ADD_QUERY = "INSERT INTO features  (reg_name, dggs_index, owner, csc, wkb_hash, transhash, geometry) \
-                      VALUES ('"+events.returnValues.name   +"', '"
-                                +events.returnValues.dggsIndex+"', '"
-                                +events.returnValues.owner  +"', '"
-                                +events.returnValues.csc      +"', '"
-                                +events.returnValues.wkbHash+"', '"
-                                +events.transactionHash       +"'"
-                                +", GeomFromText('POINT("+position+")', 4326))";
+    const ADD_QUERY = `INSERT INTO features  (reg_name, dggs_index, owner, csc, wkb_hash, transhash, geometry)
+                      VALUES ('${events.returnValues.name}',
+                              '${dggsIndex}',
+                              '${events.returnValues.owner}',
+                              '${events.returnValues.csc}',
+                              '${events.returnValues.wkbHash}',
+                              '${events.transactionHash}',
+                              GeomFromText('POINT(${position})', 4326))`;
 
     // console.log(ADD_QUERY);
-    console.log("Event added new feature with CSC = "+ events.returnValues.csc);
+    console.log("Event added new feature at position :" + position +"\n CSC = "+ events.returnValues.csc);
   
     db.spatialite(function(err) {
       db.run(ADD_QUERY, (err, rows) => {

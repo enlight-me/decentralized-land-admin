@@ -152,9 +152,9 @@ class App extends Component {
     this.setState({ addFeatureOpen: false });
     // Get network provider and web3 instance.
     const web3 = this.state.web3;
-
-    const h3Index = geoToH3(this.state.lng, this.state.lat, 15);
-    const h3IndexHex = web3.utils.asciiToHex(h3Index);
+    
+    const h3Index = geoToH3(this.state.lat, this.state.lng, 15);
+    const h3IndexHex = web3.utils.utf8ToHex(h3Index);
     const wkbHash = web3.utils.asciiToHex("wkbHash");
     const area = Number(parcelArea);
     
@@ -169,6 +169,10 @@ class App extends Component {
 
     this.setState({ snackbarOpen: true , transactionHash : result.events.LogParcelClaimed.transactionHash });
   };
+
+  /**
+   * 
+   */
 
   updateParcelsList = async () => {
     console.log("-----------------------------", this.state.features);

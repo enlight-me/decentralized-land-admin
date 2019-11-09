@@ -81,8 +81,8 @@ export default class MainMap extends Component {
           <table style="width:100%; text-align:left; font-size:15px;border-collapse:collapse;">
           <tr style="border-bottom: 1px solid #ddd;"><td>Label: </td><td> ${parcelValues[1]}</td></tr>
           <tr style="border-bottom: 1px solid #ddd;"><td>External address: </td><td>${parcelValues[0]} </td></tr>
-          <tr style="border-bottom: 1px solid #ddd;"><td>Area: </td><td>${parcelValues[3]} </td></tr>
-          <tr style="border-bottom: 1px solid #ddd;"><td>Type: </td><td>${parcelValues[4]} </td></tr>
+          <tr style="border-bottom: 1px solid #ddd;"><td>Area: </td><td>${parcelValues[2]} </td></tr>
+          <tr style="border-bottom: 1px solid #ddd;"><td>Type: </td><td>${parcelValues[3]} </td></tr>
           </table></div>
           <div style = “text-align:justify;”>
           <a href="#" class="myButton" >Update</a>

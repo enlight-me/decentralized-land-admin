@@ -9,7 +9,7 @@ export default class ClaimsList extends React.Component {
   
   render() {    
     var parcels = this.props.parcels;
-    console.log(parcels, typeof(parcels));
+    // console.log(parcels, typeof(parcels));
     // const p = Object.values(parcels);
     // console.log(p);
     // parcels.map((value) => console.log(value));
