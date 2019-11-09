@@ -39,7 +39,7 @@ contract CSFeature is CSFeatureInterface, Ownable {
     * @dev initialize state variables
     *
     */
-    constructor (bytes15 _dggsIndex, bytes32 _wkbHash, address __owner, uint _h3Resolution) public {
+    constructor (bytes15 _dggsIndex, bytes32 _wkbHash, address __owner, uint _h3Resolution) public Ownable() {
       require((_h3Resolution >= 0 && _h3Resolution < 16), "H3 Resolution must be _h3Resolution >=0 && _h3Resolution <16");
       require(dggsIndex.length != 0, "Empty dggsIndex");
       require(_wkbHash.length != 0, "Empty wkbHash");

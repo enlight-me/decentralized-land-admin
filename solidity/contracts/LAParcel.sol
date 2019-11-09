@@ -41,7 +41,7 @@ contract LAParcel is CSSurface {
      * @param _addrId the external address ID
      */
 
-     function setExtAddressId(string calldata _addrId) external {  // ?? onlyOwner()
+     function setExtAddressId(string calldata _addrId) external  {  // ?? onlyOwner()
          extAddressId = _addrId;
      }
 

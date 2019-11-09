@@ -28,7 +28,9 @@ contract CSFeatureRegistry is Pausable {
   string public srs;        // Spatial Reference System
   uint256 featuresCount = 0; // Counter of the added features
 
-  mapping(bytes32 => address) internal features; // Mapping CSC => Features contract address
+  mapping(bytes32 => address) internal features;  // Mapping CSC => Features contract address
+  mapping(bytes15 => bool) internal addedIndexes; // Mapping to keep trace of added indexes
+  mapping(bytes15 => address) internal indexOwner;// Mapping to keep trace of DGGS indexes owners
 
   //
   // Events - publicize actions to external listeners
@@ -61,10 +63,13 @@ contract CSFeatureRegistry is Pausable {
    {
     require(!paused(), "Contract is paused");
     require(dggsIndex.length != 0, "Empty dggsIndex");
+    require(addedIndexes[dggsIndex] == false, "DGGS Index already exist");
     require(wkbHash.length != 0, "Empty wkbHash");
 
     _;
 
+    addedIndexes[dggsIndex] = true;
+    indexOwner[dggsIndex] = _sender;
     bytes32 csc = CSGeometryLib.computeCSCIndex(_sender, dggsIndex); // TODO chek for gas overburn
     emit LogNewFeatureAdded(name, csc, dggsIndex, wkbHash, _sender);
     featuresCount = featuresCount.add(1); // TODO chek for gas overburn
@@ -86,6 +91,26 @@ contract CSFeatureRegistry is Pausable {
   function getFeature(bytes32 csc) public view returns (address){
     require (features[csc] != address(0), "Feature does not exist in the registry");
     return  features[csc];
+  }
+
+ /**
+  * @dev dggsIndexExist : check if dggs allready exit in the registry
+  * @param _dggsIndex the index to check
+  */
+  
+  function dggsIndexExist(bytes15 _dggsIndex) public view returns (bool) {
+    return ((addedIndexes[_dggsIndex] == true));
+  // mapping(bytes15 => address) internal indexOwner)
+  }
+
+ /**
+  * @dev dggsIndexOwner : return the address of the dggsIndex Owner
+  * @param _dggsIndex the index to fetch
+  */
+  
+  function dggsIndexOwner(bytes15 _dggsIndex) public view returns (address) {
+    return (indexOwner[_dggsIndex]);
+  // mapping(bytes15 => address) internal indexOwner)
   }
 
   /**
