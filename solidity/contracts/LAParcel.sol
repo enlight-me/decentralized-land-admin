@@ -76,8 +76,8 @@ contract LAParcel is CSSurface {
       * @dev returns all the state values of the Parcel
       */
      function fetchParcel() public view
-     returns (string memory , string memory , uint , string memory ) {
-         return (extAddressId, label, area, parcelType);
+     returns (bytes32, string memory, string memory, uint, string memory ) {
+         return (csc, extAddressId, label, area, parcelType);
 
      }
 

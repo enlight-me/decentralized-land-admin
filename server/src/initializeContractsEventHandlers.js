@@ -67,11 +67,12 @@ cscIndexAdded = async (err, events) => {
     if (err) console.log("error" + err);
 
     const dggsIndex = web3.utils.hexToUtf8(events.returnValues.dggsIndex);
+    const regName = web3.utils.hexToUtf8(events.returnValues.name);
     const hexCenterCoordinates = h3.h3ToGeo(dggsIndex);
     const position = ""+hexCenterCoordinates[1]+" "+hexCenterCoordinates[0];
   
     const ADD_QUERY = `INSERT INTO features  (reg_name, dggs_index, owner, csc, wkb_hash, transhash, geometry)
-                      VALUES ('${events.returnValues.name}',
+                      VALUES ('${regName}',
                               '${dggsIndex}',
                               '${events.returnValues.owner}',
                               '${events.returnValues.csc}',

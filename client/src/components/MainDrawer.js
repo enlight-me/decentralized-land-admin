@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
@@ -6,8 +6,11 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/Button';
 
 import MainDrawerContainer from './MainDrawerContainer';
+import DelaContext from '../context/dela-context';
+
 
 const drawerWidth = 340;
 
@@ -86,6 +89,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function MainDrawer(props) {
   const classes = useStyles();
+  const context = useContext(DelaContext);
 
   return (
 
@@ -118,6 +122,9 @@ export default function MainDrawer(props) {
         </IconButton>
       </div>
       <Divider />
+      <Button variant="contained" color="primary" onClick={context.updateFeatures}>
+              Update list
+            </Button>
 
       <MainDrawerContainer features={props.features}
                            parcels={props.parcels}
