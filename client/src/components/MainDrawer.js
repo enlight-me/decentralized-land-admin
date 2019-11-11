@@ -11,7 +11,9 @@ import Button from '@material-ui/core/Button';
 import MainDrawerContainer from './MainDrawerContainer';
 import DelaContext from '../context/dela-context';
 
-
+/**
+ * @notice Styles
+ */
 const drawerWidth = 340;
 
 const useStyles = makeStyles(theme => ({
@@ -87,6 +89,10 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
+/**
+ * @dev React functional component 
+ */
+
 export default function MainDrawer(props) {
   const classes = useStyles();
   const context = useContext(DelaContext);
@@ -97,7 +103,7 @@ export default function MainDrawer(props) {
       className={classes.drawer}
       variant="persistent"
       anchor="left"
-      open={props.drawerOpen}
+      open={context.drawerOpen}
       classes={{
         paper: classes.drawerPaper,
       }}
@@ -117,7 +123,7 @@ export default function MainDrawer(props) {
             inputProps={{ 'aria-label': 'search' }}
           />
         </div>
-        <IconButton onClick={props.closeDrawer}>
+        <IconButton onClick={context.toggleDrawer}>
           <CloseIcon />
         </IconButton>
       </div>
@@ -126,9 +132,7 @@ export default function MainDrawer(props) {
               Update list
             </Button>
 
-      <MainDrawerContainer features={props.features}
-                           parcels={props.parcels}
-                           />
+      <MainDrawerContainer />
 
     </Drawer>
 

@@ -7,5 +7,12 @@ export default React.createContext({
     features: [],
     parcels: [],
     updateFeatures: () => {},
-    updateParcels: () => {}
+    updateParcels: () => {},
+            
+    addFeatureDialogOpen: false,
+    openAddFeatureDialog : () => {},
+    closeAddFeatureDialog : () => {},
+
+    drawerOpen: false,
+    toggleDrawer: () => {}
 });
