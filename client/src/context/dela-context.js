@@ -6,6 +6,7 @@ export default React.createContext({
     contractParcelReg: null,
     features: [],
     parcels: [],
+    claimParcel: (lat, lng, wkbHash, parcelArea, parcelAddressId, parcelLabel, parcelType) => {},
     updateFeatures: () => {},
     updateParcels: () => {},
             

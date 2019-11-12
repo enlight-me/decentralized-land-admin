@@ -12,7 +12,7 @@ import MainMap from './components/MainMap';
  */
 const theme = createMuiTheme({
   palette: {
-    type: 'light', // dark : light    
+    type: 'dark', // dark : light    
   },
 });
 

@@ -66,8 +66,9 @@ cscIndexAdded = async (err, events) => {
 
     if (err) console.log("error" + err);
 
+
     const dggsIndex = web3.utils.hexToUtf8(events.returnValues.dggsIndex);
-    const regName = web3.utils.hexToUtf8(events.returnValues.name);
+    const regName = events.returnValues.name; //web3.utils.hexToUtf8(events.returnValues.name);
     const hexCenterCoordinates = h3.h3ToGeo(dggsIndex);
     const position = ""+hexCenterCoordinates[1]+" "+hexCenterCoordinates[0];
   

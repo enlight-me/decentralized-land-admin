@@ -7,7 +7,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 
-import { geoToH3 } from 'h3-js';
 
 import DelaContext from '../context/dela-context';
 import AppSnackbar from './AppSnackbar';
@@ -21,53 +20,34 @@ export default function AddFeatureDialog(props) {
   const [parcelArea, setParcelArea] = useState("");
   const [parcelType, setParcelType] = useState("");
 
+  const [formValid, setFormValid] = useState(true)
+
   const [transactionHash, setTransactionHash] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const context = useContext(DelaContext);
 
+
   /**
-   * @dev send a claim parcel transaction and handle results
+   * @dev Claim Parcel onClick event handler
    */
 
-  const claimParcel = async () => {
-    const accounts = context.accounts;
-    const contractParcelReg = context.contractParcelReg;
-    const web3 = context.web3;
-    const lat = 37.0;
-    const lng = 3.0;
+  const handleClaimParcel = async () => {
+    if (parcelArea === "" || parcelArea < 0 || parcelLabel === "" || parcelType === "" || setParcelAddressId === "") {
+      setFormValid(false);
+    }
+    else {
+      const lat = props.latlng.lat;
+      const lng = props.latlng.lng;
+      const result = await context.claimParcel(lat, lng, "wkbHash",
+                                              parcelArea, parcelAddressId, 
+                                              parcelLabel, parcelType);
 
-    const h3Index = geoToH3(lat, lng, 15);
-    const h3IndexHex = web3.utils.utf8ToHex(h3Index);
-    const wkbHash = web3.utils.asciiToHex("wkbHash");
-    const area = Number(parcelArea);
-
-    try {
-      const result = await contractParcelReg.methods.claimParcel(h3IndexHex,
-        wkbHash,
-        parcelAddressId,
-        parcelLabel,
-        area,
-        parcelType)
-        .send({ from: accounts[0] });
-
-      setTransactionHash(result.events.LogParcelClaimed.transactionHash);
+      setTransactionHash(result);
       setSnackbarOpen(true);
-      props.addFeatureDialogClose();
+      context.closeAddFeatureDialog();
     }
-    catch (error) {
-      if (error.code === 4001) {
-        // handle the "error" as a rejection
-        alert(`Transaction cancelled by the user.`);
-      } else {
-        // Catch any errors for any of the above operations.
-        alert(`Failed to send Claim transaction for unknown reason, please check the console log.`,
-        );
-      }
-      console.error(error);
-    }
-  };
-
+  }
 
   /**
    * @dev rendering
@@ -89,6 +69,7 @@ export default function AddFeatureDialog(props) {
           <TextField
             required
             autoFocus
+            error={parcelLabel === "" && !formValid}
             margin="dense"
             id="label"
             label="Label"
@@ -98,6 +79,7 @@ export default function AddFeatureDialog(props) {
           <TextField
             required
             autoFocus
+            error={parcelAddressId === "" && !formValid}
             margin="dense"
             id="address"
             label="External Address ID"
@@ -106,6 +88,7 @@ export default function AddFeatureDialog(props) {
           />
           <TextField
             autoFocus
+            error={(parcelArea === "" && !formValid) || Number(parcelArea) < 0}
             required
             margin="dense"
             id="area"
@@ -117,7 +100,7 @@ export default function AddFeatureDialog(props) {
 
           <TextField
             autoFocus
-            error
+            error={parcelType === "" && !formValid}
             margin="dense"
             id="type"
             label="Type (Building, Agriculture, Industrial, ...)"
@@ -129,12 +112,12 @@ export default function AddFeatureDialog(props) {
           <Button autoFocus onClick={context.closeAddFeatureDialog} color="secondary">
             Cancel
           </Button>
-          <Button onClick={claimParcel} color="primary">
+          <Button onClick={handleClaimParcel} color="primary">
             Claim
           </Button>
         </DialogActions>
       </Dialog>
-      <AppSnackbar snackbarOpen={snackbarOpen} transactionHash={transactionHash}/>
+      <AppSnackbar snackbarOpen={snackbarOpen} transactionHash={transactionHash} />
     </div>
   )
 };

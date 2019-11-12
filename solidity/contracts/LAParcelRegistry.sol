@@ -23,7 +23,7 @@ contract LAParcelRegistry is CSFeatureRegistry {
   //
 
   event LogParcelClaimed(bytes32 indexed csc, bytes15 indexed dggsIndex, bytes32 wkbHash,
-                          string addr, string lbl, uint area, string indexed parcelType);
+                          string addr, string lbl, uint area, string parcelType);
 
   //
   // Functions

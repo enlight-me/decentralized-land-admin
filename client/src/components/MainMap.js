@@ -4,6 +4,12 @@ import Control from "react-leaflet-control";
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import MapIcon from '@material-ui/icons/Map';
+import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 
 import DelaContext from '../context/dela-context';
 import AddFeatureDialog from './AddFeatureDialog';
@@ -32,7 +38,6 @@ export default function MainMap(props) {
     const map = mapRef.current
     if (map != null) {
       setLatLng(e.latlng);
-      console.log(e.latlng);
       context.openAddFeatureDialog();
     }
   }
@@ -47,7 +52,6 @@ export default function MainMap(props) {
         center={position}
         zoom={zoom}
         onClick={(e) => { if (addMode) { handleClick(e) } }}
-        ref="CSCMap"
         // onLocationfound={this.handleLocationFound}
         ref={mapRef}
       >
@@ -56,27 +60,40 @@ export default function MainMap(props) {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {context.parcels.map((parcel, idx) => (
+          <Marker position={parcel.latlng} key={`marker-${idx}`}>
 
-        <Marker position={position}>
+            <Popup  background={"#e0e0e0"} color={"#234c5e"}>
+              <div>
+              <Table size="small" aria-label="simple table">
+                  <TableBody>
+                  <TableRow>
+                      <TableCell component="th" scope="row"> Label </TableCell>
+                      <TableCell align="right">{parcel.lbl}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell component="th" scope="row"> Type </TableCell>
+                      <TableCell align="right">{parcel.parcelType}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell component="th" scope="row"> External Address  </TableCell>
+                      <TableCell align="right">{parcel.addr}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell component="th" scope="row"> Area </TableCell>
+                      <TableCell align="right">{parcel.area}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+                <ExpansionPanelActions>
+                  <Button size="small" variant="contained" color="primary">Update</Button>
+                  <Button size="small" variant="contained" color="secondary">Revoke</Button>
+                </ExpansionPanelActions>
+              </div>
+            </Popup>
 
-          <Popup >
-            <div>
-              {/* style={"width:20%x; height:150px; marginTop:10px"}>
-              <h1 style={"text-align:center; font-size:22px"}>Parcel informations</h1>
-              <table style={"width:100%; text-align:left; font-size:15px;border-collapse:collapse;"}>
-                <tr style="border-bottom: 1px solid #ddd;"><td>Label: </td><td> ${parcelValues[1]}</td></tr>
-                <tr style="border-bottom: 1px solid #ddd;"><td>External address: </td><td>${parcelValues[0]} </td></tr>
-                <tr style="border-bottom: 1px solid #ddd;"><td>Area: </td><td>${parcelValues[2]} </td></tr>
-                <tr style="border-bottom: 1px solid #ddd;"><td>Type: </td><td>${parcelValues[3]} </td></tr>
-              </table>
-            </div>
-            <div style= {"text-align:justify;"}>
-              <a href={"#"} className={"myButton"} >Update</a>
-              <a href={"#"} className={"myButton"} style={"margin-left:10px;"}>Revoke</a> */}
-            </div>
-          </Popup>
-
-        </Marker>
+          </Marker>
+        ))}
 
         <Control>
           <Fab color={addMode ? "secondary" : "primary"}

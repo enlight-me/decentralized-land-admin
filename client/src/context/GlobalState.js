@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Web3 from 'web3'
+import { geoToH3, h3ToGeo } from 'h3-js';
 
 import getWeb3 from "../utils/getWeb3";
 import DelaContext from './dela-context';
@@ -80,7 +82,10 @@ const GlobalState = (props) => {
                 LAParcelRegistry.abi,
                 deployedParcelReg && deployedParcelReg.address,
             );
-            contractParcelReg.events.LogParcelClaimed((err, events) => parcelClaimed(err, events)).on('error', console.error);
+            contractParcelReg.events.LogParcelClaimed({ fromBlock: 0}, (err, events) => {
+                eventParcelClaimed(err, events);
+            }).on('error', console.error);
+            
 
             return [web3, accounts, contractParcelReg];
 
@@ -99,9 +104,52 @@ const GlobalState = (props) => {
      * @param {*} events the events
      */
 
-    const parcelClaimed = (err, events) => {
-        updateFeatures();
+    const eventParcelClaimed = (err, events) => {
+        const res = events.returnValues;
+        
+        // workaround to avoid web3=null error ????
+        const w3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io'));
+        const dggsIndex = w3.utils.hexToUtf8(res.dggsIndex);
+        const latlng = h3ToGeo(dggsIndex);
+
+        const parcelDetails = {csc: res.csc, latlng , dggsIndex: res.dggsIndex, wkbHash: res.wkbHash, 
+                               addr: res.addr, lbl: res.lbl, area: res.area, parcelType: res.parcelType}
+        parcels.push(parcelDetails);
+        // updateFeatures();
     }
+
+    /**
+   * @dev send a claim parcel transaction and handle results
+   */
+
+    const claimParcel = async (lat, lng, wkbHash, parcelArea,
+                                 parcelAddressId, parcelLabel, parcelType) => {
+    
+        const h3Index = geoToH3(lat, lng, 15);  // Resolution (15) should be read from the registry 
+        const h3IndexHex = web3.utils.utf8ToHex(h3Index);
+        const _wkbHash = web3.utils.asciiToHex(wkbHash);
+        const area = Number(parcelArea);
+
+        try {
+            const result = await contractParcelReg.methods.claimParcel(h3IndexHex, _wkbHash,
+                                                                       parcelAddressId, parcelLabel, 
+                                                                       area, parcelType)
+                                                                       .send({ from: accounts[0] });
+
+            return result.events.LogParcelClaimed.transactionHash;
+        }
+        catch (error) {
+            if (error.code === 4001) {
+                // handle the "error" as a rejection
+                alert(`Transaction cancelled by the user.`);
+            } else {
+                // Catch any errors for any of the above operations.
+                alert(`Failed to send Claim transaction for unknown reason, please check the console log.`,
+                );
+            }
+            console.error(error);
+        }
+    };
 
     /**
      * @notice updateFeatures Button on the AppBar
@@ -117,9 +165,8 @@ const GlobalState = (props) => {
                 return res.json();
             }).then(data => {
                 setFeatures(data);
-                updateParcels(data);
+                // updateParcels(data);
             });
-
     };
 
     /**
@@ -152,6 +199,8 @@ const GlobalState = (props) => {
             contractParcelReg,
             features,
             parcels,
+            claimParcel,
+
             updateFeatures,
             updateParcels,
 
