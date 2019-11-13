@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
@@ -8,7 +8,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
 import MainDrawerContainer from './MainDrawerContainer';
+import DelaContext from '../context/dela-context';
 
+/**
+ * @notice Styles
+ */
 const drawerWidth = 340;
 
 const useStyles = makeStyles(theme => ({
@@ -31,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(1),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -84,8 +88,13 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
 
+/**
+ * @dev React functional component 
+ */
+
 export default function MainDrawer(props) {
   const classes = useStyles();
+  const context = useContext(DelaContext);
 
   return (
 
@@ -93,7 +102,7 @@ export default function MainDrawer(props) {
       className={classes.drawer}
       variant="persistent"
       anchor="left"
-      open={props.drawerOpen}
+      open={context.drawerOpen}
       classes={{
         paper: classes.drawerPaper,
       }}
@@ -113,15 +122,13 @@ export default function MainDrawer(props) {
             inputProps={{ 'aria-label': 'search' }}
           />
         </div>
-        <IconButton onClick={props.closeDrawer}>
+        <IconButton onClick={context.toggleDrawer}>
           <CloseIcon />
         </IconButton>
       </div>
       <Divider />
 
-      <MainDrawerContainer features={props.features}
-                           parcels={props.parcels}
-                           />
+      <MainDrawerContainer />
 
     </Drawer>
 

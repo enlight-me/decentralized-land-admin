@@ -1256,10 +1256,40 @@
       "links": {},
       "address": "0x4f7c991E3B0f0F3ABcff5b6700D7F0F1Dd7357E1",
       "transactionHash": "0x1faab1e97e07ab729e4779f76785d4d715cb408261647d77b5dcb9766d7973ec"
+    },
+    "1573411113431": {
+      "events": {},
+      "links": {},
+      "address": "0xB730E688D54c5fa2e27770806F8EfF858D67f24D",
+      "transactionHash": "0xeb58d25aba32ba33fc186c57aee074ee832afbe002d77e29e6657946468694a1"
+    },
+    "1573502217894": {
+      "events": {},
+      "links": {},
+      "address": "0xb663815Ab9ac600a0DF6a2138C743096b79dfD12",
+      "transactionHash": "0x869e33a639365673e1f2f8a3c8516796f58bf87f674a9a582c290a0cf6edb0ad"
+    },
+    "1573580901513": {
+      "events": {},
+      "links": {},
+      "address": "0xCa0C96BBe70C5AFDE18ac7C11A4452D2F0acDd2c",
+      "transactionHash": "0xf6cb9c1a2062849ea58f30de93ee8e00ee03397556f2dc738d45d5a6194014a0"
+    },
+    "1573662828075": {
+      "events": {},
+      "links": {},
+      "address": "0x8E4C9Eb4A7Bf6A5219C7FB42fFC4561787b0d3E8",
+      "transactionHash": "0xef8bc678204c95b403d52475902ae2390cfd83bae2e0a885136f9edbae37c77f"
+    },
+    "1573681839207": {
+      "events": {},
+      "links": {},
+      "address": "0x7Eab5e415a582fFbB301BF5c567887BBeCFA2E95",
+      "transactionHash": "0x31d6d226965de043eae6e04a2a50ca00aba24f2b7c16e69d063560e4cea1535b"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-09T19:38:04.877Z",
+  "updatedAt": "2019-11-13T21:50:51.261Z",
   "devdoc": {
     "methods": {
       "computeCSCIndex(address,bytes15)": {

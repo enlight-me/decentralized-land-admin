@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,6 +13,8 @@ import UpdateIcon from '@material-ui/icons/Update';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 
+import DelaContext from '../context/dela-context';
+
 const useStyles = makeStyles(theme => ({
     toolbar: theme.mixins.toolbar,
     grow: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        color: "default",
+        backgroundColor: theme.palette.background.default,
     },
 
     menuButton: {
@@ -49,11 +51,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function MainAppBar(props) {
     const classes = useStyles();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const context = useContext(DelaContext);
 
     const handleProfileMenuOpen = event => {
         setAnchorEl(event.currentTarget);
@@ -103,12 +108,12 @@ export default function MainAppBar(props) {
             <MenuItem>
                 <IconButton aria-label="Update spatial index"
                     color="inherit"
-                    onClick={props.updateFeatureIndex}>
+                    >
                     <Badge badgeContent={0} color="secondary">
                         <UpdateIcon />
                     </Badge>
                 </IconButton>
-                <p onClick={props.updateFeatureIndex}>Update map</p>
+                <p >Update map</p>
             </MenuItem>
             <MenuItem>
                 <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -142,20 +147,20 @@ export default function MainAppBar(props) {
                         className={classes.menuButton}
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={props.toggleDrawer}
+                        onClick={context.toggleDrawer}
                     >
                         <MenuIcon />
                     </IconButton>
 
                     <Typography className={classes.title} variant="h6" noWrap>
-                            DeLA : Decentralized Crowd Sourcing Land Administration
+                        DeLA : Decentralized Crowd Sourcing Land Administration
                     </Typography>
 
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="Update spatial index"
                             color="inherit"
-                            onClick={props.updateFeatureIndex}>
+                            >
                             <Badge badgeContent={0} color="secondary">
                                 <UpdateIcon />
                             </Badge>

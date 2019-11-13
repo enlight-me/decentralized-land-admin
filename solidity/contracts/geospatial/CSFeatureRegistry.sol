@@ -36,8 +36,8 @@ contract CSFeatureRegistry is Pausable, Ownable {
   //
   // Events - publicize actions to external listeners
   //
-  event LogNewFeatureAdded(string indexed name, bytes32 indexed csc, bytes15 indexed dggsIndex, bytes32 wkbHash, address owner);
-  event LogFeatureRemoved(string indexed name, bytes32 indexed csc, bytes15 indexed dggsIndex, address killer);
+  event LogNewFeatureAdded(string name, bytes32 indexed csc, bytes15 indexed dggsIndex, bytes32 wkbHash, address owner);
+  event LogFeatureRemoved(string name, bytes32 indexed csc, bytes15 indexed dggsIndex, address killer);
 
   //
   // Functions
