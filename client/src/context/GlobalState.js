@@ -13,9 +13,9 @@ const GlobalState = (props) => {
     /**
      * @dev State variables
      */
-    const [web3, setWeb3] = useState(null);
-    const [accounts, setAccounts] = useState(null);
-    const [contractParcelReg, setContractParcelReg] = useState(null);
+    const [web3, setWeb3] = useState({});
+    const [accounts, setAccounts] = useState([]);
+    const [contractParcelReg, setContractParcelReg] = useState({});
     const [features, setFeatures] = useState([]);
     const [parcels, setParcels] = useState([]);
 
@@ -63,9 +63,9 @@ const GlobalState = (props) => {
      */
 
     const initWeb3 = async () => {
-        var web3 = null;
-        var accounts = null;
-        var contractParcelReg = null;
+        var web3 = {};
+        var accounts = [];
+        var contractParcelReg = {};
 
         try {
             // Get network provider and web3 instance.
@@ -105,6 +105,7 @@ const GlobalState = (props) => {
      */
 
     const eventParcelClaimed = (err, events) => {
+        
         const res = events.returnValues;
         
         // workaround to avoid web3=null error ????
@@ -112,10 +113,10 @@ const GlobalState = (props) => {
         const dggsIndex = w3.utils.hexToUtf8(res.dggsIndex);
         const latlng = h3ToGeo(dggsIndex);
 
-        const parcelDetails = {csc: res.csc, latlng , dggsIndex: res.dggsIndex, wkbHash: res.wkbHash, 
-                               addr: res.addr, lbl: res.lbl, area: res.area, parcelType: res.parcelType}
+        const parcelDetails = {csc: res.csc, latlng, addr: res.addr, lbl: res.lbl, 
+                               area: res.area, parcelType: res.parcelType, owner: res.owner}
+
         parcels.push(parcelDetails);
-        // updateFeatures();
     }
 
     /**

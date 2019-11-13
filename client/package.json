@@ -13,6 +13,7 @@
     "react-leaflet": "^2.4.0",
     "react-leaflet-control": "^2.1.1",
     "react-scripts": "^3.2.0",
+    "react-select": "^3.0.8",
     "rimble-ui": "^0.10.0",
     "styled-components": "^4.4.0",
     "typescript": "^3.6.4",

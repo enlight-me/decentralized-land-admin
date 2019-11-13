@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -7,11 +8,22 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 
-
 import DelaContext from '../context/dela-context';
 import AppSnackbar from './AppSnackbar';
+import ParcelTypeAutoList from './ParcelTypeAutoList';
+
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    height: 250,
+  }
+}));
 
 export default function AddFeatureDialog(props) {
+
+  const classes = useStyles();
+
   /**
    * @dev state variables
    */
@@ -25,8 +37,8 @@ export default function AddFeatureDialog(props) {
   const [transactionHash, setTransactionHash] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
-  const context = useContext(DelaContext);
 
+  const context = useContext(DelaContext);
 
   /**
    * @dev Claim Parcel onClick event handler
@@ -40,8 +52,8 @@ export default function AddFeatureDialog(props) {
       const lat = props.latlng.lat;
       const lng = props.latlng.lng;
       const result = await context.claimParcel(lat, lng, "wkbHash",
-                                              parcelArea, parcelAddressId, 
-                                              parcelLabel, parcelType);
+        parcelArea, parcelAddressId,
+        parcelLabel, parcelType.value);
 
       setTransactionHash(result);
       setSnackbarOpen(true);
@@ -53,8 +65,9 @@ export default function AddFeatureDialog(props) {
    * @dev rendering
    */
   return (
-    <div>
+    <div className={classes.root}>
       <Dialog
+        PaperProps={{ style: { overflowY: 'visible' } }}
         open={context.addFeatureDialogOpen}
         onClose={context.closeAddFeatureDialog}
         aria-labelledby="draggable-dialog-title"
@@ -62,12 +75,11 @@ export default function AddFeatureDialog(props) {
         <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
           Claim Parcel
         </DialogTitle>
-        <DialogContent>
+        <DialogContent style={{ overflowY: 'visible' }}>
           <DialogContentText>
             To claim this parcel, please fill-in the following informations.
           </DialogContentText>
           <TextField
-            required
             autoFocus
             error={parcelLabel === "" && !formValid}
             margin="dense"
@@ -76,8 +88,8 @@ export default function AddFeatureDialog(props) {
             fullWidth
             onChange={(evt) => setParcelLabel(evt.target.value)}
           />
+          <ParcelTypeAutoList setParcelType={setParcelType} />
           <TextField
-            required
             autoFocus
             error={parcelAddressId === "" && !formValid}
             margin="dense"
@@ -89,7 +101,6 @@ export default function AddFeatureDialog(props) {
           <TextField
             autoFocus
             error={(parcelArea === "" && !formValid) || Number(parcelArea) < 0}
-            required
             margin="dense"
             id="area"
             type="number"
@@ -98,15 +109,17 @@ export default function AddFeatureDialog(props) {
             onChange={(evt) => setParcelArea(evt.target.value)}
           />
 
-          <TextField
+          {/* <TextField
             autoFocus
             error={parcelType === "" && !formValid}
             margin="dense"
             id="type"
-            label="Type (Building, Agriculture, Industrial, ...)"
+            label="Type"
             fullWidth
             onChange={(evt) => setParcelType(evt.target.value)}
-          />
+          /> */}
+
+
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={context.closeAddFeatureDialog} color="secondary">

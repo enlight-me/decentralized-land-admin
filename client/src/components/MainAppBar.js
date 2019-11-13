@@ -51,6 +51,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function MainAppBar(props) {
     const classes = useStyles();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -107,12 +108,12 @@ export default function MainAppBar(props) {
             <MenuItem>
                 <IconButton aria-label="Update spatial index"
                     color="inherit"
-                    onClick={context.updateFeatures}>
+                    >
                     <Badge badgeContent={0} color="secondary">
                         <UpdateIcon />
                     </Badge>
                 </IconButton>
-                <p onClick={context.updateFeatures}>Update map</p>
+                <p >Update map</p>
             </MenuItem>
             <MenuItem>
                 <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -159,7 +160,7 @@ export default function MainAppBar(props) {
                     <div className={classes.sectionDesktop}>
                         <IconButton aria-label="Update spatial index"
                             color="inherit"
-                            onClick={context.updateFeatures}>
+                            >
                             <Badge badgeContent={0} color="secondary">
                                 <UpdateIcon />
                             </Badge>

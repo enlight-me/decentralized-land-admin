@@ -6,7 +6,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import Button from '@material-ui/core/Button';
 
 import MainDrawerContainer from './MainDrawerContainer';
 import DelaContext from '../context/dela-context';
