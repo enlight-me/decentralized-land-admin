@@ -3,6 +3,46 @@
 The OnChain Land Administration dApp make use of the FOAM protocol
 
 
+## Fail early and fail loud
+use  require(); and assert
+
+
+## Restricting Access
+
+use openZeppelin Ownable/Roles/
+
+
+## Auto Deprecation
+
+contracts that should expire after a certain amount of time ??
+
+## Mortal
+
+contract Mortal is Ownable {
+    
+    function kill()
+    {
+           if(msg.sender == owner()) selfdestruct(address(uint160(owner()))); // cast owner to address payable
+    }
+
+}
+
+## Pull over Push Payments (also known as the Withdrawal Pattern)
+
+## Circuit Breaker
+
+
+## State Machine
+
+In dispute / bid
+
+## Speed Bump
+Speed bumps slow down actions so that if malicious actions occur, there is time to recover.
+
+
+============================================
+
+
 # CSFeatureRegistry
 import '@openzeppelin/contracts/lifecycle/Pausable.sol';
 import '@openzeppelin/contracts/ownership/Ownable.sol';

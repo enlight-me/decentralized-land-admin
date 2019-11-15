@@ -4,11 +4,11 @@ export default React.createContext({
     web3: {},
     accounts: [],
     contractParcelReg: {},
-    features: [],
+
     parcels: [],
     claimParcel: (lat, lng, wkbHash, parcelArea, parcelAddressId, parcelLabel, parcelType) => {},
-    updateFeatures: () => {},
-    updateParcels: () => {},
+    updateParcel: (parcel) => {},
+    revokeParcel: (parcel) => {},
             
     addFeatureDialogOpen: false,
     openAddFeatureDialog : () => {},

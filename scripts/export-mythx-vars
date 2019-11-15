@@ -1,0 +1,7 @@
+#!/bin/bash
+export MYTHX_ETH_ADDRESS="0x88de7E4C2FcBC388D83C1F129804503dded5ADbd"
+export MYTHX_PASSWORD=$(cat .mythx) 
+echo $MYTHX_ETH_ADDRESS
+echo $MYTHX_PASSWORD
+
+rem type "source export-mythx-vars"

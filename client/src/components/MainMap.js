@@ -76,13 +76,13 @@ export default function MainMap(props) {
         />
         {context.parcels.map((parcel, idx) => {
           return parcel.owner === context.accounts[0] ?
-            <Marker position={parcel.latlng} key={`marker-${idx}`}>
+            <Marker position={parcel.latlng} key={`marker-${idx}`} icon={lackingPoint}>
               <Popup>              
                 <ParcelDetails parcel={parcel} owner={true}/>
               </Popup>
             </Marker>
             :            
-            <Marker position={parcel.latlng} key={`marker-${idx}`} icon={lackingPoint} owner={false}>
+            <Marker position={parcel.latlng} key={`marker-${idx}`}  owner={false}>
             <Popup>              
               <ParcelDetails parcel={parcel} />
             </Popup>

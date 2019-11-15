@@ -1286,10 +1286,28 @@
       "links": {},
       "address": "0x7Eab5e415a582fFbB301BF5c567887BBeCFA2E95",
       "transactionHash": "0x31d6d226965de043eae6e04a2a50ca00aba24f2b7c16e69d063560e4cea1535b"
+    },
+    "1573830266308": {
+      "events": {},
+      "links": {},
+      "address": "0xcCfCd99e1380DC7f5D4e2E729b696fCc7170E4E9",
+      "transactionHash": "0x384e0e865f2c0358d3fddc1be3a1d8f58488623f86be388a6da47f0c209a60a1"
+    },
+    "1573852206818": {
+      "events": {},
+      "links": {},
+      "address": "0xea4d5c928a153D7fdA715aF7E54e12af161A0eB3",
+      "transactionHash": "0x9581fa06fda207f3abbe865952e6c03b97722300dcdeb6655144bb697efd1343"
+    },
+    "1573852287334": {
+      "events": {},
+      "links": {},
+      "address": "0xbF619B8a2Fd709f055576eA2C444612125DA3668",
+      "transactionHash": "0xe5a3031e11dcfdd84cbf0dc9b1e1e16cf48c0630e2ce44279eccdb4ae11fa62d"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-13T21:50:51.261Z",
+  "updatedAt": "2019-11-15T23:40:38.791Z",
   "devdoc": {
     "methods": {
       "computeCSCIndex(address,bytes15)": {

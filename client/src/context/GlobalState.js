@@ -16,7 +16,6 @@ const GlobalState = (props) => {
     const [web3, setWeb3] = useState({});
     const [accounts, setAccounts] = useState([]);
     const [contractParcelReg, setContractParcelReg] = useState({});
-    const [features, setFeatures] = useState([]);
     const [parcels, setParcels] = useState([]);
 
     const [addFeatureDialogOpen, setAddFeatureDialogOpen] = useState(false);
@@ -86,7 +85,10 @@ const GlobalState = (props) => {
                 eventParcelClaimed(err, events);
             }).on('error', console.error);
             
-
+            contractParcelReg.events.LogFeatureRemoved({ fromBlock: 0}, (err, events) => {
+                eventParcelRevoked(err, events);
+            }).on('error', console.error);
+ 
             return [web3, accounts, contractParcelReg];
 
         } catch (error) {
@@ -99,9 +101,7 @@ const GlobalState = (props) => {
     }
 
     /**
-     * @dev Handle Smart contract log events 
-     * @param {*} err erroe
-     * @param {*} events the events
+     * @notice Handle Smart contract log events : claimParcel
      */
 
     const eventParcelClaimed = (err, events) => {
@@ -117,6 +117,27 @@ const GlobalState = (props) => {
                                area: res.area, parcelType: res.parcelType, owner: res.owner}
 
         parcels.push(parcelDetails);
+        setParcels(parcels);        
+        }
+
+    
+    /**
+     * @notice Handle Smart contract log events : LogFeatureRemoved
+     */ 
+     
+    const eventParcelRevoked = (err, events) => {
+
+        const csc = events.returnValues.csc;
+
+        console.log(csc);
+
+        for (var i = 0; i < parcels.length; i++) {
+            if (parcels[i].csc === csc) {
+                parcels.splice(i, 1);
+            }
+        }
+
+
     }
 
     /**
@@ -153,6 +174,32 @@ const GlobalState = (props) => {
     };
 
     /**
+     * @dev revokeParcel
+     */
+    const revokeParcel = async (parcel) => {
+        
+        console.log('revoke', parcel.csc);
+
+        try {
+            const result = await contractParcelReg.methods.removeFeature(parcel.csc).send({ from: accounts[0] });
+            return result.events.LogFeatureRemoved.transactionHash;
+        }
+        catch (error) {
+            console.error(error);
+        }
+
+    }
+
+    /**
+     * @dev updateParcel
+     */
+    const updateParcel= (parcel) => {
+        
+        console.log('update');
+
+    }
+
+    /**
      * @notice updateFeatures Button on the AppBar
      * @todo replace it with a button directly on the map
      *        the mainmap should use the features state variable of this Component 'App'
@@ -160,35 +207,34 @@ const GlobalState = (props) => {
      *        This will allow to avoid using OnRef (this.mainMap.)
      */
 
-    const updateFeatures = () => {
-        fetch('http://localhost:4000/collections/features')
-            .then(res => {
-                return res.json();
-            }).then(data => {
-                setFeatures(data);
-                // updateParcels(data);
-            });
-    };
+    // const updateFeatures = () => {
+    //     fetch('http://localhost:4000/collections/features')
+    //         .then(res => {
+    //             return res.json();
+    //         }).then(data => {
+    //             setFeatures(data);
+    //             // updateParcels(data);
+    //         });
+    // };
 
     /**
      * @dev update Parcles state varibale
      * @param {*} data 
      */
-    const updateParcels = (data) => {
+    // const updateParcels = (data) => {
 
-        data.map(async (value) => {
-            const featureAddress = await contractParcelReg.methods.getFeature(value.properties.csc).call();
-            const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
-            const parcelValues = await parcel.methods.fetchParcel().call();
-            console.log(parcelValues);
-            const parcelAttributes = {
-                'csc': parcelValues[0], 'address': parcelValues[1],
-                'label': parcelValues[2], 'area': parcelValues[3], 'parcelType': parcelValues[4]
-            };
-            setParcels(...parcels, parcelAttributes);
-        });
-
-    };
+    //     data.map(async (value) => {
+    //         const featureAddress = await contractParcelReg.methods.getFeature(value.properties.csc).call();
+    //         const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+    //         const parcelValues = await parcel.methods.fetchParcel().call();
+    //         console.log(parcelValues);
+    //         const parcelAttributes = {
+    //             'csc': parcelValues[0], 'address': parcelValues[1],
+    //             'label': parcelValues[2], 'area': parcelValues[3], 'parcelType': parcelValues[4]
+    //         };
+    //         setParcels(...parcels, parcelAttributes);
+    //     });
+    // };
 
     /**
      * Render function
@@ -198,12 +244,11 @@ const GlobalState = (props) => {
             web3,
             accounts,
             contractParcelReg,
-            features,
+
             parcels,
             claimParcel,
-
-            updateFeatures,
-            updateParcels,
+            updateParcel,
+            revokeParcel,
 
             addFeatureDialogOpen,
             openAddFeatureDialog,

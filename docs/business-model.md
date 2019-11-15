@@ -11,9 +11,9 @@ The adpoted business model for the DeLA plateform is a combination of some of th
 ## Summary 
 <!--ts-->
 * [Developement plateform](#developement-plateform)
-* [Blockchain as a service (BaaS)](#blockchain-as-a-service-(BaaS))
+* [Blockchain as a service (BaaS)](#blockchain-as-a-service-BaaS)
 * [Blockchain based Software products](#blockchain-based-software-products)
-* [Token economy (Tokenomiks)](#token-economy-(tokenomiks))
+* [Token economy (Tokenomiks)](#token-economy-tokenomiks)
 * [Professional services](#professional-services)
 <!--te-->
 ## Developement plateform
