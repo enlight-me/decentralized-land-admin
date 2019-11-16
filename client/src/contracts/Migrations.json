@@ -1451,10 +1451,22 @@
       "links": {},
       "address": "0x2F9c8d464f09C916907A1d4995ef89b097E9b16B",
       "transactionHash": "0xd6be391d0ebba4a39ba2e63e01e80b06c0ad1515f0dd9163f4f206814214f87a"
+    },
+    "1573897477301": {
+      "events": {},
+      "links": {},
+      "address": "0x9D151Fc433648752cCB7C87dAb847A0CBFB9ddc6",
+      "transactionHash": "0xec7a98ec96dd89db6d089832e9964bc0511f5d6b10aa46eb945c97b6793ede24"
+    },
+    "1573914052301": {
+      "events": {},
+      "links": {},
+      "address": "0x98aDE84EE0a7136F57D0B1dB8926dfCC26Ded6EE",
+      "transactionHash": "0x747b94dcfe0e5bd311963d9d814f8588ef2b0c09075448acdba00a91ec23657c"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-15T23:40:38.800Z",
+  "updatedAt": "2019-11-16T14:31:21.207Z",
   "devdoc": {
     "methods": {}
   },

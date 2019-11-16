@@ -97,6 +97,25 @@
       "type": "function"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "isAdmin",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "constant": false,
       "inputs": [],
       "name": "kill",
@@ -106,25 +125,25 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"fetchFeature\",\"outputs\":[{\"name\":\"_csc\",\"type\":\"bytes32\"},{\"name\":\"_dggsIndex\",\"type\":\"bytes15\"},{\"name\":\"_wkbHash\",\"type\":\"bytes32\"},{\"name\":\"__owner\",\"type\":\"address\"},{\"name\":\"_h3Resolution\",\"type\":\"uint256\"},{\"name\":\"_geomteryType\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getGeometryType\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_wkbHash\",\"type\":\"bytes32\"}],\"name\":\"setWkbHash\",\"outputs\":[{\"name\":\"_wkbHashValue\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"kill\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFeatureDGGSIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes15\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFeatureCSC\",\"outputs\":[{\"name\":\"_csc\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol\":\"CSFeatureInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol\":{\"keccak256\":\"0xdb54d7307c6c2d9c368baf63a335462769cd64105839aa5864e08b79750140f5\",\"urls\":[\"bzzr://f126fb1382fe604d6f88a00074adad2204cb11592ebc2657b0697c40ed75d50c\"]},\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol\":{\"keccak256\":\"0xbb355bfe7d4dd322b78b0ef29d17641ecd30e3f8880fb743d22351184b56eb47\",\"urls\":[\"bzzr://752f5973ea91e303f7139a85e66a2fe7bc73c3ba6438397055f18639b998fd0c\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"fetchFeature\",\"outputs\":[{\"name\":\"_csc\",\"type\":\"bytes32\"},{\"name\":\"_dggsIndex\",\"type\":\"bytes15\"},{\"name\":\"_wkbHash\",\"type\":\"bytes32\"},{\"name\":\"__owner\",\"type\":\"address\"},{\"name\":\"_h3Resolution\",\"type\":\"uint256\"},{\"name\":\"_geomteryType\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getGeometryType\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"isAdmin\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_wkbHash\",\"type\":\"bytes32\"}],\"name\":\"setWkbHash\",\"outputs\":[{\"name\":\"_wkbHashValue\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"kill\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFeatureDGGSIndex\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes15\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getFeatureCSC\",\"outputs\":[{\"name\":\"_csc\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol\":\"CSFeatureInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol\":{\"keccak256\":\"0xd8e05cca3fb8cecd9beb6149dac1854c04c8b15b229b58bd1da9359aa557e1a4\",\"urls\":[\"bzzr://4718a50f65034ec8af1edb5080290536621fca8b76233bb46927cb889efc71f1\"]},\"/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol\":{\"keccak256\":\"0xbb355bfe7d4dd322b78b0ef29d17641ecd30e3f8880fb743d22351184b56eb47\",\"urls\":[\"bzzr://752f5973ea91e303f7139a85e66a2fe7bc73c3ba6438397055f18639b998fd0c\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "/**\n * @title CryptoSpatialFeature Interface\n * @author BENAHMED DAHO Ali\n * @notice an Interface contract that specify the Spatial Feature\n *\n * @dev GM_Primitive (ISO 19107)\n *\n * TODO :\n *\n*/\n\npragma solidity ^0.5.0;\n\n\nimport './CSGeometryLib.sol';\n\ninterface CSFeatureInterface {\n\n    //\n    // Functions\n    //\n\n  function getGeometryType() external returns (CSGeometryLib.CSGeometryType);\n\n  function getFeatureCSC() external view returns (bytes32 _csc);\n\n  function getFeatureDGGSIndex() external view returns (bytes15);\n\n  function fetchFeature() external view returns (bytes32 _csc,\n                                                bytes15 _dggsIndex,\n                                                bytes32 _wkbHash,\n                                                address __owner,\n                                                uint _h3Resolution,\n                                                CSGeometryLib.CSGeometryType _geomteryType);\n\n  function setWkbHash(bytes32 _wkbHash) external returns (bytes32 _wkbHashValue);\n\n  function kill() external;\n}\n\n/**\n  * from Simple Feature Access - Part 1: Common Architecture\n  * https://www.opengeospatial.org/standards/sfa\n  * may be interesting to use oracles\n  */\n/*\n+ dimension() : Integer\n+ coordinateDimension() : Integer\n+ spatialDimension() : Integer\n+ geometry Ty pe() : String\n+ SRID() : Integer\n+ env elope() : Geometry\n+ asText() : String\n+ asBinary () : Binary\n+ isEmpty () : Boolean\n+ isSimple() : Boolean\n+ is3D() : Boolean\n+ isMeasured()() : Boolean\n+ boundary () : Geometry\nquery\n+ equals(another :Geometry ) : Boolean\n+ disjoint(another :Geometry ) : Boolean\n+ intersects(another :Geometry ) : Boolean\n+ touches(another :Geometry ) : Boolean\n+ crosses(another :Geometry ) : Boolean\n+ within(another :Geometry ) : Boolean\n+ contains(another :Geometry ) : Boolean\n+ ov erlaps(another :Geometry ) : Boolean\n+ relate(another :Geometry , matrix :String) : Boolean\n+ locateAlong(mValue :Double) : Geometry\n+ locateBetween(mStart :Double, mEnd :Double) : Geometry\nanaly sis\n+ distance(another :Geometry ) : Distance\n+ buf f er(distance :Distance) : Geometry\n+ conv exHull() : Geometry\n+ intersection(another :Geometry ) : Geometry\n+ union(another :Geometry ) : Geometry\n+ dif f erence(another :Geometry ) : Geometry\n+ sy mDif f erence(another :Geometry ) : Geometry\n*/\n\n",
+  "source": "/**\n * @title CryptoSpatialFeature Interface\n * @author BENAHMED DAHO Ali\n * @notice an Interface contract that specify the Spatial Feature\n *\n * @dev GM_Primitive (ISO 19107)\n *\n * TODO :\n *\n*/\n\npragma solidity ^0.5.0;\n\n\nimport './CSGeometryLib.sol';\n\ninterface CSFeatureInterface {\n\n    //\n    // Functions\n    //\n\n  function getGeometryType() external returns (CSGeometryLib.CSGeometryType);\n\n  function getFeatureCSC() external view returns (bytes32 _csc);\n\n  function getFeatureDGGSIndex() external view returns (bytes15);\n\n  function fetchFeature() external view returns (bytes32 _csc,\n                                                bytes15 _dggsIndex,\n                                                bytes32 _wkbHash,\n                                                address __owner,\n                                                uint _h3Resolution,\n                                                CSGeometryLib.CSGeometryType _geomteryType);\n\n  function setWkbHash(bytes32 _wkbHash) external returns (bytes32 _wkbHashValue);\n\n  function isAdmin(address _address) external view returns (bool);\n\n  function kill() external;\n}\n\n/**\n  * from Simple Feature Access - Part 1: Common Architecture\n  * https://www.opengeospatial.org/standards/sfa\n  * may be interesting to use oracles\n  */\n/*\n+ dimension() : Integer\n+ coordinateDimension() : Integer\n+ spatialDimension() : Integer\n+ geometry Ty pe() : String\n+ SRID() : Integer\n+ env elope() : Geometry\n+ asText() : String\n+ asBinary () : Binary\n+ isEmpty () : Boolean\n+ isSimple() : Boolean\n+ is3D() : Boolean\n+ isMeasured()() : Boolean\n+ boundary () : Geometry\nquery\n+ equals(another :Geometry ) : Boolean\n+ disjoint(another :Geometry ) : Boolean\n+ intersects(another :Geometry ) : Boolean\n+ touches(another :Geometry ) : Boolean\n+ crosses(another :Geometry ) : Boolean\n+ within(another :Geometry ) : Boolean\n+ contains(another :Geometry ) : Boolean\n+ ov erlaps(another :Geometry ) : Boolean\n+ relate(another :Geometry , matrix :String) : Boolean\n+ locateAlong(mValue :Double) : Geometry\n+ locateBetween(mStart :Double, mEnd :Double) : Geometry\nanaly sis\n+ distance(another :Geometry ) : Distance\n+ buf f er(distance :Distance) : Geometry\n+ conv exHull() : Geometry\n+ intersection(another :Geometry ) : Geometry\n+ union(another :Geometry ) : Geometry\n+ dif f erence(another :Geometry ) : Geometry\n+ sy mDif f erence(another :Geometry ) : Geometry\n*/\n\n",
   "sourcePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol",
   "ast": {
     "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol",
     "exportedSymbols": {
       "CSFeatureInterface": [
-        627
+        654
       ]
     },
-    "id": 628,
+    "id": 655,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 585,
+        "id": 605,
         "literals": [
           "solidity",
           "^",
@@ -137,10 +156,10 @@
       {
         "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol",
         "file": "./CSGeometryLib.sol",
-        "id": 586,
+        "id": 606,
         "nodeType": "ImportDirective",
-        "scope": 628,
-        "sourceUnit": 961,
+        "scope": 655,
+        "sourceUnit": 1025,
         "src": "222:29:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -151,9 +170,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 627,
+        "id": 654,
         "linearizedBaseContracts": [
-          627
+          654
         ],
         "name": "CSFeatureInterface",
         "nodeType": "ContractDefinition",
@@ -161,44 +180,44 @@
           {
             "body": null,
             "documentation": null,
-            "id": 591,
+            "id": 611,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getGeometryType",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 587,
+              "id": 607,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "343:2:5"
             },
             "returnParameters": {
-              "id": 590,
+              "id": 610,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 589,
+                  "id": 609,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 591,
+                  "scope": 611,
                   "src": "364:28:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_CSGeometryType_$924",
+                    "typeIdentifier": "t_enum$_CSGeometryType_$988",
                     "typeString": "enum CSGeometryLib.CSGeometryType"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 588,
+                    "id": 608,
                     "name": "CSGeometryLib.CSGeometryType",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 924,
+                    "referencedDeclaration": 988,
                     "src": "364:28:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_CSGeometryType_$924",
+                      "typeIdentifier": "t_enum$_CSGeometryType_$988",
                       "typeString": "enum CSGeometryLib.CSGeometryType"
                     }
                   },
@@ -208,7 +227,7 @@
               ],
               "src": "363:30:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "319:75:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -217,28 +236,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 596,
+            "id": 616,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeatureCSC",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 592,
+              "id": 612,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "420:2:5"
             },
             "returnParameters": {
-              "id": 595,
+              "id": 615,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 594,
+                  "id": 614,
                   "name": "_csc",
                   "nodeType": "VariableDeclaration",
-                  "scope": 596,
+                  "scope": 616,
                   "src": "446:12:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -247,7 +266,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 593,
+                    "id": 613,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "446:7:5",
@@ -262,7 +281,7 @@
               ],
               "src": "445:14:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "398:62:5",
             "stateMutability": "view",
             "superFunction": null,
@@ -271,28 +290,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 601,
+            "id": 621,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeatureDGGSIndex",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 597,
+              "id": 617,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "492:2:5"
             },
             "returnParameters": {
-              "id": 600,
+              "id": 620,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 599,
+                  "id": 619,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 601,
+                  "scope": 621,
                   "src": "518:7:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -301,7 +320,7 @@
                     "typeString": "bytes15"
                   },
                   "typeName": {
-                    "id": 598,
+                    "id": 618,
                     "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "518:7:5",
@@ -316,7 +335,7 @@
               ],
               "src": "517:9:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "464:63:5",
             "stateMutability": "view",
             "superFunction": null,
@@ -325,28 +344,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 616,
+            "id": 636,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "fetchFeature",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 602,
+              "id": 622,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "552:2:5"
             },
             "returnParameters": {
-              "id": 615,
+              "id": 635,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 604,
+                  "id": 624,
                   "name": "_csc",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "578:12:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -355,7 +374,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 603,
+                    "id": 623,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "578:7:5",
@@ -369,10 +388,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 606,
+                  "id": 626,
                   "name": "_dggsIndex",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "640:18:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -381,7 +400,7 @@
                     "typeString": "bytes15"
                   },
                   "typeName": {
-                    "id": 605,
+                    "id": 625,
                     "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "640:7:5",
@@ -395,10 +414,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 608,
+                  "id": 628,
                   "name": "_wkbHash",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "708:16:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -407,7 +426,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 607,
+                    "id": 627,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "708:7:5",
@@ -421,10 +440,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 610,
+                  "id": 630,
                   "name": "__owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "774:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -433,7 +452,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 609,
+                    "id": 629,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "774:7:5",
@@ -448,10 +467,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 612,
+                  "id": 632,
                   "name": "_h3Resolution",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "839:18:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -460,7 +479,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 611,
+                    "id": 631,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "839:4:5",
@@ -474,26 +493,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 614,
+                  "id": 634,
                   "name": "_geomteryType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "907:42:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_CSGeometryType_$924",
+                    "typeIdentifier": "t_enum$_CSGeometryType_$988",
                     "typeString": "enum CSGeometryLib.CSGeometryType"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 613,
+                    "id": 633,
                     "name": "CSGeometryLib.CSGeometryType",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 924,
+                    "referencedDeclaration": 988,
                     "src": "907:28:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_CSGeometryType_$924",
+                      "typeIdentifier": "t_enum$_CSGeometryType_$988",
                       "typeString": "enum CSGeometryLib.CSGeometryType"
                     }
                   },
@@ -503,7 +522,7 @@
               ],
               "src": "577:373:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "531:420:5",
             "stateMutability": "view",
             "superFunction": null,
@@ -512,22 +531,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 623,
+            "id": 643,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setWkbHash",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 619,
+              "id": 639,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 618,
+                  "id": 638,
                   "name": "_wkbHash",
                   "nodeType": "VariableDeclaration",
-                  "scope": 623,
+                  "scope": 643,
                   "src": "975:16:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -536,7 +555,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 617,
+                    "id": 637,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "975:7:5",
@@ -552,15 +571,15 @@
               "src": "974:18:5"
             },
             "returnParameters": {
-              "id": 622,
+              "id": 642,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 621,
+                  "id": 641,
                   "name": "_wkbHashValue",
                   "nodeType": "VariableDeclaration",
-                  "scope": 623,
+                  "scope": 643,
                   "src": "1011:21:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -569,7 +588,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 620,
+                    "id": 640,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1011:7:5",
@@ -584,7 +603,7 @@
               ],
               "src": "1010:23:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "955:79:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -593,49 +612,131 @@
           {
             "body": null,
             "documentation": null,
-            "id": 626,
+            "id": 650,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isAdmin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 646,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 645,
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 650,
+                  "src": "1055:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 644,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1055:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1054:18:5"
+            },
+            "returnParameters": {
+              "id": 649,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 648,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 650,
+                  "src": "1096:4:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 647,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1096:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1095:6:5"
+            },
+            "scope": 654,
+            "src": "1038:64:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 653,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "kill",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 624,
+              "id": 651,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1051:2:5"
+              "src": "1119:2:5"
             },
             "returnParameters": {
-              "id": 625,
+              "id": 652,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1062:0:5"
+              "src": "1130:0:5"
             },
-            "scope": 627,
-            "src": "1038:25:5",
+            "scope": 654,
+            "src": "1106:25:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 628,
-        "src": "253:812:5"
+        "scope": 655,
+        "src": "253:880:5"
       }
     ],
-    "src": "196:2142:5"
+    "src": "196:2210:5"
   },
   "legacyAST": {
     "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSFeatureInterface.sol",
     "exportedSymbols": {
       "CSFeatureInterface": [
-        627
+        654
       ]
     },
-    "id": 628,
+    "id": 655,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 585,
+        "id": 605,
         "literals": [
           "solidity",
           "^",
@@ -648,10 +749,10 @@
       {
         "absolutePath": "/home/ali/EthProjects/onchain-land-administration/solidity/contracts/geospatial/CSGeometryLib.sol",
         "file": "./CSGeometryLib.sol",
-        "id": 586,
+        "id": 606,
         "nodeType": "ImportDirective",
-        "scope": 628,
-        "sourceUnit": 961,
+        "scope": 655,
+        "sourceUnit": 1025,
         "src": "222:29:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -662,9 +763,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 627,
+        "id": 654,
         "linearizedBaseContracts": [
-          627
+          654
         ],
         "name": "CSFeatureInterface",
         "nodeType": "ContractDefinition",
@@ -672,44 +773,44 @@
           {
             "body": null,
             "documentation": null,
-            "id": 591,
+            "id": 611,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getGeometryType",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 587,
+              "id": 607,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "343:2:5"
             },
             "returnParameters": {
-              "id": 590,
+              "id": 610,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 589,
+                  "id": 609,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 591,
+                  "scope": 611,
                   "src": "364:28:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_CSGeometryType_$924",
+                    "typeIdentifier": "t_enum$_CSGeometryType_$988",
                     "typeString": "enum CSGeometryLib.CSGeometryType"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 588,
+                    "id": 608,
                     "name": "CSGeometryLib.CSGeometryType",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 924,
+                    "referencedDeclaration": 988,
                     "src": "364:28:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_CSGeometryType_$924",
+                      "typeIdentifier": "t_enum$_CSGeometryType_$988",
                       "typeString": "enum CSGeometryLib.CSGeometryType"
                     }
                   },
@@ -719,7 +820,7 @@
               ],
               "src": "363:30:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "319:75:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -728,28 +829,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 596,
+            "id": 616,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeatureCSC",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 592,
+              "id": 612,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "420:2:5"
             },
             "returnParameters": {
-              "id": 595,
+              "id": 615,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 594,
+                  "id": 614,
                   "name": "_csc",
                   "nodeType": "VariableDeclaration",
-                  "scope": 596,
+                  "scope": 616,
                   "src": "446:12:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -758,7 +859,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 593,
+                    "id": 613,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "446:7:5",
@@ -773,7 +874,7 @@
               ],
               "src": "445:14:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "398:62:5",
             "stateMutability": "view",
             "superFunction": null,
@@ -782,28 +883,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 601,
+            "id": 621,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getFeatureDGGSIndex",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 597,
+              "id": 617,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "492:2:5"
             },
             "returnParameters": {
-              "id": 600,
+              "id": 620,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 599,
+                  "id": 619,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 601,
+                  "scope": 621,
                   "src": "518:7:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -812,7 +913,7 @@
                     "typeString": "bytes15"
                   },
                   "typeName": {
-                    "id": 598,
+                    "id": 618,
                     "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "518:7:5",
@@ -827,7 +928,7 @@
               ],
               "src": "517:9:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "464:63:5",
             "stateMutability": "view",
             "superFunction": null,
@@ -836,28 +937,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 616,
+            "id": 636,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "fetchFeature",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 602,
+              "id": 622,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "552:2:5"
             },
             "returnParameters": {
-              "id": 615,
+              "id": 635,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 604,
+                  "id": 624,
                   "name": "_csc",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "578:12:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -866,7 +967,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 603,
+                    "id": 623,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "578:7:5",
@@ -880,10 +981,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 606,
+                  "id": 626,
                   "name": "_dggsIndex",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "640:18:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -892,7 +993,7 @@
                     "typeString": "bytes15"
                   },
                   "typeName": {
-                    "id": 605,
+                    "id": 625,
                     "name": "bytes15",
                     "nodeType": "ElementaryTypeName",
                     "src": "640:7:5",
@@ -906,10 +1007,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 608,
+                  "id": 628,
                   "name": "_wkbHash",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "708:16:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -918,7 +1019,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 607,
+                    "id": 627,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "708:7:5",
@@ -932,10 +1033,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 610,
+                  "id": 630,
                   "name": "__owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "774:15:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -944,7 +1045,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 609,
+                    "id": 629,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "774:7:5",
@@ -959,10 +1060,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 612,
+                  "id": 632,
                   "name": "_h3Resolution",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "839:18:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -971,7 +1072,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 611,
+                    "id": 631,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "839:4:5",
@@ -985,26 +1086,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 614,
+                  "id": 634,
                   "name": "_geomteryType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 616,
+                  "scope": 636,
                   "src": "907:42:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_CSGeometryType_$924",
+                    "typeIdentifier": "t_enum$_CSGeometryType_$988",
                     "typeString": "enum CSGeometryLib.CSGeometryType"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 613,
+                    "id": 633,
                     "name": "CSGeometryLib.CSGeometryType",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 924,
+                    "referencedDeclaration": 988,
                     "src": "907:28:5",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_CSGeometryType_$924",
+                      "typeIdentifier": "t_enum$_CSGeometryType_$988",
                       "typeString": "enum CSGeometryLib.CSGeometryType"
                     }
                   },
@@ -1014,7 +1115,7 @@
               ],
               "src": "577:373:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "531:420:5",
             "stateMutability": "view",
             "superFunction": null,
@@ -1023,22 +1124,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 623,
+            "id": 643,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setWkbHash",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 619,
+              "id": 639,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 618,
+                  "id": 638,
                   "name": "_wkbHash",
                   "nodeType": "VariableDeclaration",
-                  "scope": 623,
+                  "scope": 643,
                   "src": "975:16:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1047,7 +1148,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 617,
+                    "id": 637,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "975:7:5",
@@ -1063,15 +1164,15 @@
               "src": "974:18:5"
             },
             "returnParameters": {
-              "id": 622,
+              "id": 642,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 621,
+                  "id": 641,
                   "name": "_wkbHashValue",
                   "nodeType": "VariableDeclaration",
-                  "scope": 623,
+                  "scope": 643,
                   "src": "1011:21:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1080,7 +1181,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 620,
+                    "id": 640,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1011:7:5",
@@ -1095,7 +1196,7 @@
               ],
               "src": "1010:23:5"
             },
-            "scope": 627,
+            "scope": 654,
             "src": "955:79:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1104,36 +1205,118 @@
           {
             "body": null,
             "documentation": null,
-            "id": 626,
+            "id": 650,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isAdmin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 646,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 645,
+                  "name": "_address",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 650,
+                  "src": "1055:16:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 644,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1055:7:5",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1054:18:5"
+            },
+            "returnParameters": {
+              "id": 649,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 648,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 650,
+                  "src": "1096:4:5",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 647,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1096:4:5",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1095:6:5"
+            },
+            "scope": 654,
+            "src": "1038:64:5",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 653,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "kill",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 624,
+              "id": 651,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1051:2:5"
+              "src": "1119:2:5"
             },
             "returnParameters": {
-              "id": 625,
+              "id": 652,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1062:0:5"
+              "src": "1130:0:5"
             },
-            "scope": 627,
-            "src": "1038:25:5",
+            "scope": 654,
+            "src": "1106:25:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 628,
-        "src": "253:812:5"
+        "scope": 655,
+        "src": "253:880:5"
       }
     ],
-    "src": "196:2142:5"
+    "src": "196:2210:5"
   },
   "compiler": {
     "name": "solc",
@@ -1141,7 +1324,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-09T16:58:12.123Z",
+  "updatedAt": "2019-11-16T14:17:02.828Z",
   "devdoc": {
     "methods": {}
   },

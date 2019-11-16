@@ -10,6 +10,8 @@ import LAParcel from "../contracts/LAParcel.json";
 
 
 const GlobalState = (props) => {
+    var claimEventBlocks = new Set();
+    var revokeEventBlocks = new Set();
     /**
      * @dev State variables
      */
@@ -46,9 +48,14 @@ const GlobalState = (props) => {
         initWeb3()
             .then((res) => {
                 const [_web3, _accounts, _contract] = res;
-                setWeb3(_web3);
-                setAccounts(_accounts);
-                setContractParcelReg(_contract);
+                // Registring events handlers
+                _contract.events.LogParcelClaimed({ fromBlock: 0 }, (err, events) => {
+                    eventParcelClaimed(err, events, _web3, _accounts, _contract);
+                }).on('error', console.error);
+
+                _contract.events.LogFeatureRemoved({ fromBlock: 0 }, (err, events) => {
+                    eventParcelRevoked(err, events, _web3, _accounts, _contract);
+                }).on('error', console.error);
             })
             .catch(e => {
                 console.log(e);
@@ -69,9 +76,11 @@ const GlobalState = (props) => {
         try {
             // Get network provider and web3 instance.
             web3 = await getWeb3();
+            setWeb3(web3);
 
             // Use web3 to get the user's accounts.
             accounts = await web3.eth.getAccounts();
+            setAccounts(accounts);
 
             // Get the contract instance.
             const networkId = await web3.eth.net.getId();
@@ -81,14 +90,8 @@ const GlobalState = (props) => {
                 LAParcelRegistry.abi,
                 deployedParcelReg && deployedParcelReg.address,
             );
-            contractParcelReg.events.LogParcelClaimed({ fromBlock: 0}, (err, events) => {
-                eventParcelClaimed(err, events);
-            }).on('error', console.error);
-            
-            contractParcelReg.events.LogFeatureRemoved({ fromBlock: 0}, (err, events) => {
-                eventParcelRevoked(err, events);
-            }).on('error', console.error);
- 
+            setContractParcelReg(contractParcelReg);
+
             return [web3, accounts, contractParcelReg];
 
         } catch (error) {
@@ -101,52 +104,12 @@ const GlobalState = (props) => {
     }
 
     /**
-     * @notice Handle Smart contract log events : claimParcel
+     * @dev send a claim parcel transaction and handle results
      */
 
-    const eventParcelClaimed = (err, events) => {
-        
-        const res = events.returnValues;
-        
-        // workaround to avoid web3=null error ????
-        const w3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io'));
-        const dggsIndex = w3.utils.hexToUtf8(res.dggsIndex);
-        const latlng = h3ToGeo(dggsIndex);
-
-        const parcelDetails = {csc: res.csc, latlng, addr: res.addr, lbl: res.lbl, 
-                               area: res.area, parcelType: res.parcelType, owner: res.owner}
-
-        parcels.push(parcelDetails);
-        setParcels(parcels);        
-        }
-
-    
-    /**
-     * @notice Handle Smart contract log events : LogFeatureRemoved
-     */ 
-     
-    const eventParcelRevoked = (err, events) => {
-
-        const csc = events.returnValues.csc;
-
-        console.log(csc);
-
-        for (var i = 0; i < parcels.length; i++) {
-            if (parcels[i].csc === csc) {
-                parcels.splice(i, 1);
-            }
-        }
-
-
-    }
-
-    /**
-   * @dev send a claim parcel transaction and handle results
-   */
-
     const claimParcel = async (lat, lng, wkbHash, parcelArea,
-                                 parcelAddressId, parcelLabel, parcelType) => {
-    
+        parcelAddressId, parcelLabel, parcelType) => {
+
         const h3Index = geoToH3(lat, lng, 15);  // Resolution (15) should be read from the registry 
         const h3IndexHex = web3.utils.utf8ToHex(h3Index);
         const _wkbHash = web3.utils.asciiToHex(wkbHash);
@@ -154,9 +117,9 @@ const GlobalState = (props) => {
 
         try {
             const result = await contractParcelReg.methods.claimParcel(h3IndexHex, _wkbHash,
-                                                                       parcelAddressId, parcelLabel, 
-                                                                       area, parcelType)
-                                                                       .send({ from: accounts[0] });
+                parcelAddressId, parcelLabel,
+                area, parcelType)
+                .send({ from: accounts[0] });
 
             return result.events.LogParcelClaimed.transactionHash;
         }
@@ -174,11 +137,42 @@ const GlobalState = (props) => {
     };
 
     /**
+     * @notice Handle Smart contract log events : claimParcel
+     */
+
+    const eventParcelClaimed = async (err, events, web3, accounts, contract) => {
+
+        const res = events.returnValues;
+
+        // Workaround to avoid duplicated event firing 
+        let blockNumber = events.blockNumber;
+        if (claimEventBlocks.has(blockNumber)) return;
+        claimEventBlocks.add(blockNumber);
+
+        // check if the parcel haven't been removed before adding it
+        const featureExist = await contract.methods.dggsIndexExist(res.dggsIndex).call();
+        if (!featureExist) return;
+
+        const parcel = await fetchParcel(res.csc, web3, contract); // get the updated values for the parcel
+
+        const dggsIndex = web3.utils.hexToUtf8(res.dggsIndex); // Be aware of change in dggsIndex
+        const latlng = h3ToGeo(dggsIndex);
+
+        const parcelDetails = {
+            csc: parcel.csc, latlng, addr: parcel.addr, lbl: parcel.lbl,
+            area: parcel.area, parcelType: parcel.parcelType, owner: parcel.owner
+        };
+
+        setParcels(parcels => {
+            const list = [...parcels, parcelDetails];
+            return list;
+        });
+    }
+
+    /**
      * @dev revokeParcel
      */
     const revokeParcel = async (parcel) => {
-        
-        console.log('revoke', parcel.csc);
 
         try {
             const result = await contractParcelReg.methods.removeFeature(parcel.csc).send({ from: accounts[0] });
@@ -191,13 +185,47 @@ const GlobalState = (props) => {
     }
 
     /**
-     * @dev updateParcel
+     * @notice Handle Smart contract log events : LogFeatureRemoved
      */
-    const updateParcel= (parcel) => {
-        
+
+    const eventParcelRevoked = (err, events, _web3, _accounts, _contract) => {
+
+        // Workaround to avoid duplicated event firing 
+        let blockNumber = events.blockNumber;
+        if (revokeEventBlocks.has(blockNumber)) return;
+        revokeEventBlocks.add(blockNumber);
+
+        const csc = events.returnValues.csc;
+        setParcels(parcels => {
+            const list = parcels.filter((parcel) => parcel.csc !== csc);
+            return list;
+        });
+    }
+
+    /**
+     * @dev updateParcel
+     * @TODO  implement updates
+     */
+    const updateParcel = (parcel) => {
+
         console.log('update');
 
     }
+
+    const fetchParcel = async (csc, web3, contractParcelReg) => {
+
+        const featureAddress = await contractParcelReg.methods.getFeature(csc).call();
+        const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+        const res = await parcel.methods.fetchParcel().call();
+        const owner = await parcel.methods.owner().call();
+        
+        return { csc: res[0], addr : res[1], lbl: res[2],
+            area: res[3], parcelType: res[4], owner: owner };
+    };
+
+    ///////////////////////////////////////////////////////////////////////////////
+    ///////////// Mainained for code history
+
 
     /**
      * @notice updateFeatures Button on the AppBar

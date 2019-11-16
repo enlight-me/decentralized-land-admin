@@ -51,9 +51,8 @@ export default function AddFeatureDialog(props) {
     else {
       const lat = props.latlng.lat;
       const lng = props.latlng.lng;
-      const result = await context.claimParcel(lat, lng, "wkbHash",
-        parcelArea, parcelAddressId,
-        parcelLabel, parcelType.value);
+      const result = await context.claimParcel(lat, lng, "wkbHash", parcelArea, 
+                                            parcelAddressId, parcelLabel, parcelType.value);
 
       setTransactionHash(result);
       setSnackbarOpen(true);

@@ -35,6 +35,8 @@ interface CSFeatureInterface {
 
   function setWkbHash(bytes32 _wkbHash) external returns (bytes32 _wkbHashValue);
 
+  function isAdmin(address _address) external view returns (bool);
+
   function kill() external;
 }
 

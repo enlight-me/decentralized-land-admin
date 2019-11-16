@@ -77,6 +77,14 @@ contract CSFeatureRegistry is Pausable, Ownable {
     featuresCount = featuresCount.add(1); // TODO chek for gas overburn
   }
 
+  /**
+   * @dev check if the feature already exist in the registry
+   */
+  modifier featureExist(bytes32 csc) {
+    require (features[csc] != address(0), "Feature does not exist in the registry");
+    _;
+  }
+
  /**
   * @notice getFeatureCount
   * @return the count of the features added to the registry
@@ -90,8 +98,7 @@ contract CSFeatureRegistry is Pausable, Ownable {
   * @param csc the feature CSC
   * @return the address of the feature deployed contract
   */
-  function getFeature(bytes32 csc) public view returns (address){
-    require (features[csc] != address(0), "Feature does not exist in the registry");
+  function getFeature(bytes32 csc) public view featureExist(csc) returns (address){
     return  features[csc];
   }
 
@@ -116,8 +123,12 @@ contract CSFeatureRegistry is Pausable, Ownable {
   /**
    * @dev remove permanently the feature from the registry
    */
-  function removeFeature(bytes32 csc) external onlyOwner() {
+  function removeFeature(bytes32 csc) external featureExist(csc) {
+ 
     CSFeatureInterface feature = CSFeatureInterface(getFeature(csc));
+    // TODO require msg.sender == feature.owner() and remove onlyOwner() modifier
+    require(feature.isAdmin(msg.sender), "Sender not allowed to remove this featre");
+
     bytes15 dggsIndex = feature.getFeatureDGGSIndex();
     addedIndexes[dggsIndex] = false;
     indexOwner[dggsIndex] = address(0);

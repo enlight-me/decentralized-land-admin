@@ -74,7 +74,7 @@ export default function MainMap(props) {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {context.parcels.map((parcel, idx) => {
+        {context.parcels.map((parcel, idx) => { 
           return parcel.owner === context.accounts[0] ?
             <Marker position={parcel.latlng} key={`marker-${idx}`} icon={lackingPoint}>
               <Popup>              
