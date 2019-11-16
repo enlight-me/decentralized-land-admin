@@ -320,7 +320,7 @@ const components = {
 export default function ParcelTypeAutoList(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [single, setSingle] = React.useState(null);
+  const [single, setSingle] = React.useState('Building');
 
   const handleChangeSingle = value => {
     props.setParcelType(value);
@@ -355,6 +355,7 @@ export default function ParcelTypeAutoList(props) {
           options={suggestions}
           components={components}
           value={single}
+          defaultInputValue={props.parcelType}
           onChange={handleChangeSingle}
         />       
       </NoSsr>

@@ -19,20 +19,19 @@ const GlobalState = (props) => {
     const [accounts, setAccounts] = useState([]);
     const [contractParcelReg, setContractParcelReg] = useState({});
     const [parcels, setParcels] = useState([]);
+    const [updateMode, setUpdateMode] = useState(false);
 
-    const [addFeatureDialogOpen, setAddFeatureDialogOpen] = useState(false);
+    const [manageParcelDialogOpen, openManageParcelDialog] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const [parcelToUpdate, setParcelToUpdate] = useState({});
 
     /**
      * UI events handlers
      */
 
-    const openAddFeatureDialog = () => {
-        setAddFeatureDialogOpen(true);
-    };
-
-    const closeAddFeatureDialog = () => {
-        setAddFeatureDialogOpen(false);
+    const closeManageParcelDialog = () => {
+        openManageParcelDialog(false);
     };
 
     const toggleDrawer = (evt) => {
@@ -206,11 +205,51 @@ const GlobalState = (props) => {
      * @dev updateParcel
      * @TODO  implement updates
      */
-    const updateParcel = (parcel) => {
+    const updateParcel = async (parcelArea, parcelAddressId, parcelLabel, parcelType) => {
 
-        console.log('update');
+        try {
+            const featureAddress = await contractParcelReg.methods.getFeature(parcelToUpdate.csc).call();
+            const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+
+            var res = null;
+            if (parcelAddressId !== parcelToUpdate.addr)
+             res = await parcel.methods.setExtAddressId(parcelAddressId).send({ from: accounts[0] });; 
+
+            if (parcelLabel !== parcelToUpdate.lbl)
+             res = await parcel.methods.setLabel(parcelLabel).send({ from: accounts[0] });; 
+
+            if (parcelArea !== parcelToUpdate.area)
+             res = await parcel.methods.setArea(Number(parcelArea)).send({ from: accounts[0] });; 
+
+            if (parcelType !== parcelToUpdate.parcelType)
+             res = await parcel.methods.setParcelType(parcelType).send({ from: accounts[0] });; 
+
+            setParcels(parcels => {
+                const list = parcels.filter((item) => item.csc !== parcelToUpdate.csc);
+                
+                const parcelDetails = {
+                    csc: parcelToUpdate.csc, latlng : parcelToUpdate.latlng, owner: parcelToUpdate.owner,
+                    addr: parcelAddressId, lbl: parcelLabel,
+                    area: parcelArea, parcelType
+                };
+
+                list.push(parcelDetails);
+
+                return list;
+            });
+        
+            if (res) return res.transactionHash;
+            else return "";
+        }
+        catch (error) {
+            console.error(error);
+        }
 
     }
+
+    /**
+     * @dev returns the attributes of the parcel 
+     */
 
     const fetchParcel = async (csc, web3, contractParcelReg) => {
 
@@ -278,9 +317,13 @@ const GlobalState = (props) => {
             updateParcel,
             revokeParcel,
 
-            addFeatureDialogOpen,
-            openAddFeatureDialog,
-            closeAddFeatureDialog,
+            updateMode,
+            setUpdateMode,
+            parcelToUpdate,
+            setParcelToUpdate,
+            manageParcelDialogOpen,
+            openManageParcelDialog,
+            closeManageParcelDialog,
 
             drawerOpen,
             toggleDrawer

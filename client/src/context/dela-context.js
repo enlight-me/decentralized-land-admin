@@ -7,12 +7,16 @@ export default React.createContext({
 
     parcels: [],
     claimParcel: (lat, lng, wkbHash, parcelArea, parcelAddressId, parcelLabel, parcelType) => {},
-    updateParcel: (parcel) => {},
+    updateParcel: (parcelArea, parcelAddressId, parcelLabel, parcelType) => {},
     revokeParcel: (parcel) => {},
-            
-    addFeatureDialogOpen: false,
-    openAddFeatureDialog : () => {},
-    closeAddFeatureDialog : () => {},
+
+    updateMode : false,
+    setUpdateMode : () => {},
+    parcelToUpdate: {} ,
+    setParcelToUpdate: () => {},
+    manageParcelDialogOpen: false,
+    openManageParcelDialog : () => {},
+    closeManageParcelDialog : () => {},
 
     drawerOpen: false,
     toggleDrawer: () => {}
