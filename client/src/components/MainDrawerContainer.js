@@ -21,7 +21,7 @@ export default function MainDrawerContainer(props) {
       {context.parcels.map(parcel => {
         return parcel.owner === context.accounts[0] ?
           <Grid item xs={12} key={parcel.csc}>
-            <ParcelDetails parcel={parcel} owner={true}/>
+            <ParcelDetails parcel={parcel} owner={true} expansion={true}/>
           </Grid>
           :
           null

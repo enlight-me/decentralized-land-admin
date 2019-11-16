@@ -40,14 +40,14 @@ contract TestLAParcelRegistry {
 
     LAParcel parcel1 = LAParcel(meta.getFeature(csc1));
     LAParcel parcel2 = LAParcel(meta.getFeature(csc2));
-    (string memory addr, string memory lbl, uint ar, string memory ptype) = parcel1.fetchParcel();
+    (bytes32 csc, string memory addr, string memory lbl, uint ar, string memory ptype) = parcel1.fetchParcel();
 
     Assert.equal(addr, addr1, "The parcel address should be : 1, first street");
     Assert.equal(lbl, label1, "The parcel label should be : I'm a parcel");
     Assert.equal(ar, area, "The parcel area should be : 20");
     Assert.equal(ptype, parcel1Type, "The parcel tyep should be : Building");
 
-    (addr, lbl, ar, ptype) = parcel2.fetchParcel();
+    (csc, addr, lbl, ar, ptype) = parcel2.fetchParcel();
 
     Assert.equal(addr, addr2, "The parcel address should be : 2, second street");
     Assert.equal(lbl, label2, "The parcel label should be : I'm parcel 2");

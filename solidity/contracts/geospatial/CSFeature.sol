@@ -115,6 +115,13 @@ contract CSFeature is CSFeatureInterface, Ownable {
     wkbHash = _wkbHash;
     return _wkbHash;
   }
+  /**
+   * @dev isAdmin : check if the addres is an admin of this feature
+   *
+   */
+  function isAdmin(address _address) external view returns (bool) {
+    return _admins.has(_address);
+  }
 
   /**
    * @dev remove permanently the feature from the blockchain

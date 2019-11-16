@@ -10,28 +10,28 @@ import LAParcel from "../contracts/LAParcel.json";
 
 
 const GlobalState = (props) => {
+    var claimEventBlocks = new Set();
+    var revokeEventBlocks = new Set();
     /**
      * @dev State variables
      */
     const [web3, setWeb3] = useState({});
     const [accounts, setAccounts] = useState([]);
     const [contractParcelReg, setContractParcelReg] = useState({});
-    const [features, setFeatures] = useState([]);
     const [parcels, setParcels] = useState([]);
+    const [updateMode, setUpdateMode] = useState(false);
 
-    const [addFeatureDialogOpen, setAddFeatureDialogOpen] = useState(false);
+    const [manageParcelDialogOpen, openManageParcelDialog] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const [parcelToUpdate, setParcelToUpdate] = useState({});
 
     /**
      * UI events handlers
      */
 
-    const openAddFeatureDialog = () => {
-        setAddFeatureDialogOpen(true);
-    };
-
-    const closeAddFeatureDialog = () => {
-        setAddFeatureDialogOpen(false);
+    const closeManageParcelDialog = () => {
+        openManageParcelDialog(false);
     };
 
     const toggleDrawer = (evt) => {
@@ -47,9 +47,14 @@ const GlobalState = (props) => {
         initWeb3()
             .then((res) => {
                 const [_web3, _accounts, _contract] = res;
-                setWeb3(_web3);
-                setAccounts(_accounts);
-                setContractParcelReg(_contract);
+                // Registring events handlers
+                _contract.events.LogParcelClaimed({ fromBlock: 0 }, (err, events) => {
+                    eventParcelClaimed(err, events, _web3, _accounts, _contract);
+                }).on('error', console.error);
+
+                _contract.events.LogFeatureRemoved({ fromBlock: 0 }, (err, events) => {
+                    eventParcelRevoked(err, events, _web3, _accounts, _contract);
+                }).on('error', console.error);
             })
             .catch(e => {
                 console.log(e);
@@ -70,9 +75,11 @@ const GlobalState = (props) => {
         try {
             // Get network provider and web3 instance.
             web3 = await getWeb3();
+            setWeb3(web3);
 
             // Use web3 to get the user's accounts.
             accounts = await web3.eth.getAccounts();
+            setAccounts(accounts);
 
             // Get the contract instance.
             const networkId = await web3.eth.net.getId();
@@ -82,10 +89,7 @@ const GlobalState = (props) => {
                 LAParcelRegistry.abi,
                 deployedParcelReg && deployedParcelReg.address,
             );
-            contractParcelReg.events.LogParcelClaimed({ fromBlock: 0}, (err, events) => {
-                eventParcelClaimed(err, events);
-            }).on('error', console.error);
-            
+            setContractParcelReg(contractParcelReg);
 
             return [web3, accounts, contractParcelReg];
 
@@ -99,33 +103,12 @@ const GlobalState = (props) => {
     }
 
     /**
-     * @dev Handle Smart contract log events 
-     * @param {*} err erroe
-     * @param {*} events the events
+     * @dev send a claim parcel transaction and handle results
      */
 
-    const eventParcelClaimed = (err, events) => {
-        
-        const res = events.returnValues;
-        
-        // workaround to avoid web3=null error ????
-        const w3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io'));
-        const dggsIndex = w3.utils.hexToUtf8(res.dggsIndex);
-        const latlng = h3ToGeo(dggsIndex);
-
-        const parcelDetails = {csc: res.csc, latlng, addr: res.addr, lbl: res.lbl, 
-                               area: res.area, parcelType: res.parcelType, owner: res.owner}
-
-        parcels.push(parcelDetails);
-    }
-
-    /**
-   * @dev send a claim parcel transaction and handle results
-   */
-
     const claimParcel = async (lat, lng, wkbHash, parcelArea,
-                                 parcelAddressId, parcelLabel, parcelType) => {
-    
+        parcelAddressId, parcelLabel, parcelType) => {
+
         const h3Index = geoToH3(lat, lng, 15);  // Resolution (15) should be read from the registry 
         const h3IndexHex = web3.utils.utf8ToHex(h3Index);
         const _wkbHash = web3.utils.asciiToHex(wkbHash);
@@ -133,9 +116,9 @@ const GlobalState = (props) => {
 
         try {
             const result = await contractParcelReg.methods.claimParcel(h3IndexHex, _wkbHash,
-                                                                       parcelAddressId, parcelLabel, 
-                                                                       area, parcelType)
-                                                                       .send({ from: accounts[0] });
+                parcelAddressId, parcelLabel,
+                area, parcelType)
+                .send({ from: accounts[0] });
 
             return result.events.LogParcelClaimed.transactionHash;
         }
@@ -153,6 +136,137 @@ const GlobalState = (props) => {
     };
 
     /**
+     * @notice Handle Smart contract log events : claimParcel
+     */
+
+    const eventParcelClaimed = async (err, events, web3, accounts, contract) => {
+
+        const res = events.returnValues;
+
+        // Workaround to avoid duplicated event firing 
+        let blockNumber = events.blockNumber;
+        if (claimEventBlocks.has(blockNumber)) return;
+        claimEventBlocks.add(blockNumber);
+
+        // check if the parcel haven't been removed before adding it
+        const featureExist = await contract.methods.dggsIndexExist(res.dggsIndex).call();
+        if (!featureExist) return;
+
+        const parcel = await fetchParcel(res.csc, web3, contract); // get the updated values for the parcel
+
+        const dggsIndex = web3.utils.hexToUtf8(res.dggsIndex); // Be aware of change in dggsIndex
+        const latlng = h3ToGeo(dggsIndex);
+
+        const parcelDetails = {
+            csc: parcel.csc, latlng, addr: parcel.addr, lbl: parcel.lbl,
+            area: parcel.area, parcelType: parcel.parcelType, owner: parcel.owner
+        };
+
+        setParcels(parcels => {
+            const list = [...parcels, parcelDetails];
+            return list;
+        });
+    }
+
+    /**
+     * @dev revokeParcel
+     */
+    const revokeParcel = async (parcel) => {
+
+        try {
+            const result = await contractParcelReg.methods.removeFeature(parcel.csc).send({ from: accounts[0] });
+            return result.events.LogFeatureRemoved.transactionHash;
+        }
+        catch (error) {
+            console.error(error);
+        }
+
+    }
+
+    /**
+     * @notice Handle Smart contract log events : LogFeatureRemoved
+     */
+
+    const eventParcelRevoked = (err, events, _web3, _accounts, _contract) => {
+
+        // Workaround to avoid duplicated event firing 
+        let blockNumber = events.blockNumber;
+        if (revokeEventBlocks.has(blockNumber)) return;
+        revokeEventBlocks.add(blockNumber);
+
+        const csc = events.returnValues.csc;
+        setParcels(parcels => {
+            const list = parcels.filter((parcel) => parcel.csc !== csc);
+            return list;
+        });
+    }
+
+    /**
+     * @dev updateParcel
+     * @TODO  implement updates
+     */
+    const updateParcel = async (parcelArea, parcelAddressId, parcelLabel, parcelType) => {
+
+        try {
+            const featureAddress = await contractParcelReg.methods.getFeature(parcelToUpdate.csc).call();
+            const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+
+            var res = null;
+            if (parcelAddressId !== parcelToUpdate.addr)
+             res = await parcel.methods.setExtAddressId(parcelAddressId).send({ from: accounts[0] });; 
+
+            if (parcelLabel !== parcelToUpdate.lbl)
+             res = await parcel.methods.setLabel(parcelLabel).send({ from: accounts[0] });; 
+
+            if (parcelArea !== parcelToUpdate.area)
+             res = await parcel.methods.setArea(Number(parcelArea)).send({ from: accounts[0] });; 
+
+            if (parcelType !== parcelToUpdate.parcelType)
+             res = await parcel.methods.setParcelType(parcelType).send({ from: accounts[0] });; 
+
+            setParcels(parcels => {
+                const list = parcels.filter((item) => item.csc !== parcelToUpdate.csc);
+                
+                const parcelDetails = {
+                    csc: parcelToUpdate.csc, latlng : parcelToUpdate.latlng, owner: parcelToUpdate.owner,
+                    addr: parcelAddressId, lbl: parcelLabel,
+                    area: parcelArea, parcelType
+                };
+
+                list.push(parcelDetails);
+
+                return list;
+            });
+        
+            if (res) return res.transactionHash;
+            else return "";
+        }
+        catch (error) {
+            console.error(error);
+        }
+
+    }
+
+    /**
+     * @dev returns the attributes of the parcel 
+     */
+
+    const fetchParcel = async (csc, web3, contractParcelReg) => {
+
+        const featureAddress = await contractParcelReg.methods.getFeature(csc).call();
+        const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+        const res = await parcel.methods.fetchParcel().call();
+        const owner = await parcel.methods.owner().call();
+        
+        return { csc: res[0], addr : res[1], lbl: res[2],
+            area: res[3], parcelType: res[4], owner: owner };
+    };
+
+    ///////////////////////////////////////////////////////////////////////////////
+    ///////////// Mainained for code history
+
+
+    /**
      * @notice updateFeatures Button on the AppBar
      * @todo replace it with a button directly on the map
      *        the mainmap should use the features state variable of this Component 'App'
@@ -160,35 +274,34 @@ const GlobalState = (props) => {
      *        This will allow to avoid using OnRef (this.mainMap.)
      */
 
-    const updateFeatures = () => {
-        fetch('http://localhost:4000/collections/features')
-            .then(res => {
-                return res.json();
-            }).then(data => {
-                setFeatures(data);
-                // updateParcels(data);
-            });
-    };
+    // const updateFeatures = () => {
+    //     fetch('http://localhost:4000/collections/features')
+    //         .then(res => {
+    //             return res.json();
+    //         }).then(data => {
+    //             setFeatures(data);
+    //             // updateParcels(data);
+    //         });
+    // };
 
     /**
      * @dev update Parcles state varibale
      * @param {*} data 
      */
-    const updateParcels = (data) => {
+    // const updateParcels = (data) => {
 
-        data.map(async (value) => {
-            const featureAddress = await contractParcelReg.methods.getFeature(value.properties.csc).call();
-            const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
-            const parcelValues = await parcel.methods.fetchParcel().call();
-            console.log(parcelValues);
-            const parcelAttributes = {
-                'csc': parcelValues[0], 'address': parcelValues[1],
-                'label': parcelValues[2], 'area': parcelValues[3], 'parcelType': parcelValues[4]
-            };
-            setParcels(...parcels, parcelAttributes);
-        });
-
-    };
+    //     data.map(async (value) => {
+    //         const featureAddress = await contractParcelReg.methods.getFeature(value.properties.csc).call();
+    //         const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
+    //         const parcelValues = await parcel.methods.fetchParcel().call();
+    //         console.log(parcelValues);
+    //         const parcelAttributes = {
+    //             'csc': parcelValues[0], 'address': parcelValues[1],
+    //             'label': parcelValues[2], 'area': parcelValues[3], 'parcelType': parcelValues[4]
+    //         };
+    //         setParcels(...parcels, parcelAttributes);
+    //     });
+    // };
 
     /**
      * Render function
@@ -198,16 +311,19 @@ const GlobalState = (props) => {
             web3,
             accounts,
             contractParcelReg,
-            features,
+
             parcels,
             claimParcel,
+            updateParcel,
+            revokeParcel,
 
-            updateFeatures,
-            updateParcels,
-
-            addFeatureDialogOpen,
-            openAddFeatureDialog,
-            closeAddFeatureDialog,
+            updateMode,
+            setUpdateMode,
+            parcelToUpdate,
+            setParcelToUpdate,
+            manageParcelDialogOpen,
+            openManageParcelDialog,
+            closeManageParcelDialog,
 
             drawerOpen,
             toggleDrawer

@@ -9,7 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import L from 'leaflet';
 
 import DelaContext from '../context/dela-context';
-import AddFeatureDialog from './AddFeatureDialog';
+import ManageParcelDialog from './ManageParcelDialog';
 import ParcelDetails from './ParcelDetails';
 
 /**
@@ -51,7 +51,8 @@ export default function MainMap(props) {
     const map = mapRef.current
     if (map != null) {
       setLatLng(e.latlng);
-      context.openAddFeatureDialog();
+      context.setUpdateMode(false);
+      context.openManageParcelDialog(true);
     }
   }
 
@@ -74,17 +75,17 @@ export default function MainMap(props) {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {context.parcels.map((parcel, idx) => {
+        {context.parcels.map((parcel, idx) => { 
           return parcel.owner === context.accounts[0] ?
-            <Marker position={parcel.latlng} key={`marker-${idx}`}>
+            <Marker position={parcel.latlng} key={`marker-${idx}`} icon={lackingPoint}>
               <Popup>              
-                <ParcelDetails parcel={parcel} owner={true}/>
+                <ParcelDetails parcel={parcel} owner={true} expansion={false}/>
               </Popup>
             </Marker>
             :            
-            <Marker position={parcel.latlng} key={`marker-${idx}`} icon={lackingPoint} owner={false}>
+            <Marker position={parcel.latlng} key={`marker-${idx}`}  owner={false}>
             <Popup>              
-              <ParcelDetails parcel={parcel} />
+              <ParcelDetails parcel={parcel} expansion={false}/>
             </Popup>
           </Marker>
         })}
@@ -101,7 +102,7 @@ export default function MainMap(props) {
 
       </Map>
 
-      <AddFeatureDialog latlng={latlng} />
+      <ManageParcelDialog latlng={latlng} />
     </div>
 
   );

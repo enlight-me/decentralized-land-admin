@@ -11,6 +11,19 @@ const getWeb3 = () =>
           // Request account access if needed
           await window.ethereum.enable();
           // Acccounts now exposed
+          
+          window.ethereum.on('accountsChanged', function (accounts) {
+            // Time to reload your interface with accounts[0]!
+            window.location.reload();
+          });
+          // .on('networkChanged', function (network) {
+          //   console.log('Network changed', network);
+          //   // not useful because Metamask reload the page automatically. 
+          //   // This will not be the case in the future. 
+          // });
+
+
+
           resolve(web3);
         } catch (error) {
           reject(error);

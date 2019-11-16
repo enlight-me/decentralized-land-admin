@@ -97,15 +97,15 @@ contract('LAParcelRegistry', function (accounts) {
     var parcel1Values = await parcel1.fetchParcel();
     var parcel2Values = await parcel2.fetchParcel();
 
-    assert.equal(parcel1Values[0], addr1, "The parcel address should be : " + addr1);
-    assert.equal(parcel1Values[1], label1, "The parcel label should be : " + label1);
-    assert.equal(parcel1Values[2], area, "The parcel area should be :" + area);
-    assert.equal(parcel1Values[3], parcel1Type, "The parcel type should be : " + parcel1Type);
+    assert.equal(parcel1Values[1], addr1, "The parcel address should be : " + addr1);
+    assert.equal(parcel1Values[2], label1, "The parcel label should be : " + label1);
+    assert.equal(parcel1Values[3], area, "The parcel area should be :" + area);
+    assert.equal(parcel1Values[4], parcel1Type, "The parcel type should be : " + parcel1Type);
 
-    assert.equal(parcel2Values[0], addr2, "The parcel address should be : " + addr2);
-    assert.equal(parcel2Values[1], label2, "The parcel label should be : " + label2);
-    assert.equal(parcel2Values[2], area, "The parcel area should be :" + area);
-    assert.equal(parcel2Values[3], parcel2Type, "The parcel label should be : " + parcel2Type);
+    assert.equal(parcel2Values[1], addr2, "The parcel address should be : " + addr2);
+    assert.equal(parcel2Values[2], label2, "The parcel label should be : " + label2);
+    assert.equal(parcel2Values[3], area, "The parcel area should be :" + area);
+    assert.equal(parcel2Values[4], parcel2Type, "The parcel label should be : " + parcel2Type);
   });
 
   it("Should returns true if dggsIndex exist in the registry", async () => {
@@ -163,9 +163,9 @@ contract('LAParcelRegistry', function (accounts) {
 
     await truffleAssert.passes(LAParcel.at(featureAddress));
 
-    await truffleAssert.fails(instance.removeFeature(csc, { from: alice }));
+    await truffleAssert.fails(instance.removeFeature(csc, { from: bob }));
 
-    const tx = await instance.removeFeature(csc, { from: owner });
+    const tx = await instance.removeFeature(csc, { from: alice }); // may test for owner too
 
     let eventEmitted = false
     if (tx.logs[0].event == "LogFeatureRemoved") {
