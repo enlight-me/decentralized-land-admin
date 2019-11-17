@@ -67,7 +67,7 @@ module.exports = {
     rinkeby: {
       provider: new HDWalletProvider(mnemonic, infura),
       network_id: "4",
-      gas: 4500000
+      gas: 5500000
     }
  
      // Another network with more advanced options...
