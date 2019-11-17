@@ -21,6 +21,7 @@ jobs:
     - name: npm install, build
       run: |
         cd client
+        npm install
         npm run-script build
       env:
         CI: true
