@@ -23,5 +23,3 @@ jobs:
         cd client
         npm install
         npm run-script build
-      env:
-        CI: true
