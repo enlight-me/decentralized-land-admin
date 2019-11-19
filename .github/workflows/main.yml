@@ -1,7 +1,7 @@
 name: Build and Deploy to GitHub Pages
 on:
-  pull_request:
-       branches:
+  push:
+     branches:
          - master
  
 
@@ -24,7 +24,7 @@ jobs:
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@master
       env:
-        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: docs/dit
+        FOLDER: docs/build
         BUILD_SCRIPT: cd client && npm install && npm run-script build
