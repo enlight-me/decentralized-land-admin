@@ -27,7 +27,7 @@ contract CSFeatureRegistry is Pausable, Ownable {
   uint public h3Resolution; // H3 resolution (H3 is a compliant DGGS library)
   string public name;       // display name of the registry
   string public srs;        // Spatial Reference System
-  uint256 featuresCount = 0; // Counter of the added features
+  uint256 internal featuresCount = 0; // Counter of the added features
 
   mapping(bytes32 => address) internal features;  // Mapping CSC => Features contract address
   mapping(bytes15 => bool) internal addedIndexes; // Mapping to keep trace of added indexes

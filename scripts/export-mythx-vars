@@ -4,4 +4,4 @@ export MYTHX_PASSWORD=$(cat .mythx)
 echo $MYTHX_ETH_ADDRESS
 echo $MYTHX_PASSWORD
 
-rem type "source export-mythx-vars"
+# type "source export-mythx-vars"

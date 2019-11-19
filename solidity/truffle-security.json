@@ -3,6 +3,6 @@
     "mode": "quick",
     "min-severity": "warning",
     "swc-blacklist": [103],
-    "timeout": 100000,
-    "initial-delay": 100000
+    "timeout": 1000000,
+    "initial-delay": 1000000
 }
