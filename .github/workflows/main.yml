@@ -27,4 +27,4 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
         BRANCH: gh-pages
         FOLDER: build
-        BUILD_SCRIPT: cd client && npm install && npm run-script build
+        BUILD_SCRIPT: cd client && npm install && npm run-script build && npm run deploy
