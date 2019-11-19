@@ -1,13 +1,12 @@
-name: Node CI
-
+name: Build and Deploy to GitHub Pages
 on:
-  pull_request:
-    branches:
-    - master
+  push:
+     branches:
+         - master
  
 
 jobs:
-  build:
+  build-and-deploy:
 
     runs-on: ubuntu-latest
 
@@ -21,8 +20,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build
-      run: |
-        cd client
-        npm install
-        npm run-script build
+        
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build
+        BUILD_SCRIPT: cd client && npm install && npm run-script build
