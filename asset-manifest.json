@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/onchain-land-administration/static/css/main.795991f2.chunk.css",
-    "main.js": "/onchain-land-administration/static/js/main.def5145f.chunk.js",
-    "main.js.map": "/onchain-land-administration/static/js/main.def5145f.chunk.js.map",
-    "runtime-main.js": "/onchain-land-administration/static/js/runtime-main.34b2df10.js",
-    "runtime-main.js.map": "/onchain-land-administration/static/js/runtime-main.34b2df10.js.map",
-    "static/js/2.105979d7.chunk.js": "/onchain-land-administration/static/js/2.105979d7.chunk.js",
-    "static/js/2.105979d7.chunk.js.map": "/onchain-land-administration/static/js/2.105979d7.chunk.js.map",
+    "main.js": "/onchain-land-administration/static/js/main.c52abc59.chunk.js",
+    "main.js.map": "/onchain-land-administration/static/js/main.c52abc59.chunk.js.map",
+    "runtime-main.js": "/onchain-land-administration/static/js/runtime-main.e2b8a91b.js",
+    "runtime-main.js.map": "/onchain-land-administration/static/js/runtime-main.e2b8a91b.js.map",
+    "static/js/2.eee446ea.chunk.js": "/onchain-land-administration/static/js/2.eee446ea.chunk.js",
+    "static/js/2.eee446ea.chunk.js.map": "/onchain-land-administration/static/js/2.eee446ea.chunk.js.map",
     "index.html": "/onchain-land-administration/index.html",
-    "precache-manifest.46a77b68408d4250aec0246ede412a39.js": "/onchain-land-administration/precache-manifest.46a77b68408d4250aec0246ede412a39.js",
+    "precache-manifest.ef16cc28c54c6ed936f47f573872a93f.js": "/onchain-land-administration/precache-manifest.ef16cc28c54c6ed936f47f573872a93f.js",
     "service-worker.js": "/onchain-land-administration/service-worker.js",
     "static/css/main.795991f2.chunk.css.map": "/onchain-land-administration/static/css/main.795991f2.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.34b2df10.js",
-    "static/js/2.105979d7.chunk.js",
+    "static/js/runtime-main.e2b8a91b.js",
+    "static/js/2.eee446ea.chunk.js",
     "static/css/main.795991f2.chunk.css",
-    "static/js/main.def5145f.chunk.js"
+    "static/js/main.c52abc59.chunk.js"
   ]
 }

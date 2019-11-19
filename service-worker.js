@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/onchain-land-administration/precache-manifest.46a77b68408d4250aec0246ede412a39.js"
+  "/onchain-land-administration/precache-manifest.ef16cc28c54c6ed936f47f573872a93f.js"
 );
 
 self.addEventListener('message', (event) => {
