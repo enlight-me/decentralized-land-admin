@@ -1,7 +1,8 @@
+
 @startuml deploy-crypto-spatial-lib
 title deploiment : Crypto-Spatial Library and its applications 
-scale 10 width
-scale 2000 height
+scale 100 width
+scale 1000 height
 
 node Ethereum {
     folder Crypto-Spatial-Lib {

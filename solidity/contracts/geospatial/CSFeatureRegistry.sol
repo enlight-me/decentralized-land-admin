@@ -124,7 +124,7 @@ contract CSFeatureRegistry is Pausable, Ownable {
    * @dev remove permanently the feature from the registry
    */
   function removeFeature(bytes32 csc) external featureExist(csc) {
- 
+    require(!paused(), "Contract is paused");
     CSFeatureInterface feature = CSFeatureInterface(getFeature(csc));
     // TODO require msg.sender == feature.owner() and remove onlyOwner() modifier
     require(feature.isAdmin(msg.sender), "Sender not allowed to remove this featre");

@@ -1,121 +1,69 @@
 # Desgin pattern decisions
 
-The OnChain Land Administration dApp make use of the FOAM protocol
+In this document we explain the design patterns applied in the developpment of the solidity smart contracts of this project.
 
+Table of contents
+=================
+<!--ts-->
+   * [Fail early and fail loud](#fail-early-and-fail-loud)
+   * [Restricting Access](#restricting-access)
+   * [Mortal](#mortal)
+   * [Auto Deprecation](#auto-deprecation)
+   * [Circuit Breaker](#circuit-breaker)
+   * [Inheritance and interfaces ](#inheritance-and-interfaces)
+   * [Pull over Push Payments](#pull-over-push-payments)
+   * [State Machine](#state-machine)
+   * [Speed Bump](#speed-bump)
+   * [Other design patterns](#other-design-patterns)
+   
+<!--te-->
 
 ## Fail early and fail loud
-use  require(); and assert
+In the smart contracts of this project we check the condition required for execution (by using  ```require()```) as early as possible in the function body and throws an exception if the condition is not met . Those exeptions are also confirmed by the tests. Examples :
 
+- [CSFeature.sol](../solidity/contracts/geospatial/CSFeature.sol)
+
+- [CSFeatureRegistry.sol](../solidity/contracts/geospatial/CSFeatureRegistry.sol)
 
 ## Restricting Access
+The acces to the smart contract functions that change the states is restricted using the openZeppelin library. In fact :
 
-use openZeppelin Ownable/Roles/
+- [CSFeature.sol](../solidity/contracts/geospatial/CSFeature.sol) inherit from ```Ownable``` and use ```Roles``` to limit acces to setters and the ```kill``` function.
 
+- In [CSFeatureRegistry.sol](../solidity/contracts/geospatial/CSFeatureRegistry.sol) access to ```removeFeature``` function is also limited to admins declared in the constructor. 
+
+- In [LAParcel.sol](../solidity/contracts/LAParcel.sol) access to setters functions is also limited to admins using the ```onlyAdmins``` modifier. 
+
+In addition, the acces to the state variable of the [CSFeature.sol](../solidity/contracts/geospatial/CSFeature.sol) smart contract is restricted to ```internal```.
+
+## Mortal
+The [CSFeature.sol](../solidity/contracts/geospatial/CSFeature.sol) allow autodestruction which remove it definitly from the blockchain using the  ```removeFeature``` function.
 
 ## Auto Deprecation
 
-contracts that should expire after a certain amount of time ??
+The auto deprecation design pattern is not used. We prefere using ```Pausable```. 
 
-## Mortal
-
-contract Mortal is Ownable {
-    
-    function kill()
-    {
-           if(msg.sender == owner()) selfdestruct(address(uint160(owner()))); // cast owner to address payable
-    }
-
-}
-
-## Pull over Push Payments (also known as the Withdrawal Pattern)
 
 ## Circuit Breaker
+The [CSFeatureRegistry.sol](../solidity/contracts/geospatial/CSFeatureRegistry.sol) inherit from the openZeppelin ```Pausable``` contract which allow pausing the smart contract from adding and removing features from the registry.  
 
+# Inheritance and interfaces 
+The geospatial library part of this project, illustrated in the following class diagram, is designed and implemented using inheritance and interfaces to simplify its resusability.
+
+
+![](./diagrams/exports/class-crypto-spatial-lib/class-crypto-spatial-lib.png)    
+
+
+## Pull over Push Payments
+This design pattern is not implemented because our smart contracts don't handle the transfer of value between actors for now.
 
 ## State Machine
+In the v0.2 release of this project, state machine design pattern is not implemented.
 
-In dispute / bid
+However, the state machine design pattern is at the heart of the dispute / bid features introduced in the v0.3 milestone.
 
 ## Speed Bump
-Speed bumps slow down actions so that if malicious actions occur, there is time to recover.
+The Speed bumps (slowing down actions so that if malicious actions occur, there is time to recover) is not implemented in the v0.2 release.
 
-
-============================================
-
-
-# CSFeatureRegistry
-import '@openzeppelin/contracts/lifecycle/Pausable.sol';
-import '@openzeppelin/contracts/ownership/Ownable.sol';
-import '@openzeppelin/contracts/math/SafeMath.sol';
-
-contract CSFeatureRegistry is Pausable, Ownable {
-
-  // Use safe math for featureCount;
-  using SafeMath for uint256;
-
-
--------------------------------
-
-# CSFeature
-
-import '@openzeppelin/contracts/access/Roles.sol';
-import '@openzeppelin/contracts/ownership/Ownable.sol';
-
-contract CSFeature is CSFeatureInterface, Ownable {
-
-    //
-    // State variables
-    //
-
-    bytes32 internal csc;         // Crypto-Spatial Coordinate
-    bytes32 internal wkbHash;     // Well Known Binary Hash
-    bytes15 internal dggsIndex;   // DGGS (Disrcete Global Geodetic System) index
-    uint internal h3Resolution;   // H3 resolution (H3 is a compliant DGGS library)
-    CSGeometryLib.CSGeometryType internal geomteryType; // geometry type
-
-    // adding access control
-    using Roles for Roles.Role;
-
-    Roles.Role private _admins;
-
-  //
-  // Events - publicize actions to external listeners
-  //
-    event LogFeatureCreated(bytes32 indexed csc, bytes15 indexed dggsIndex, bytes32 wkbHash, address indexed owner);
-    event LogFeatureKilled(bytes32 indexed csc, bytes15 indexed dggsIndex, bytes32 wkbHash, address indexed owner);
-
-    //
-    // Modifiers
-    //
-
-    modifier onlyAdmins(address _address) {
-      require(_admins.has(_address),"Caller haven't admins rights on the feature");
-      _;
-    }
-
-
-  private variables 
-  bytes32 internal csc;         // Crypto-Spatial Coordinate
-    bytes32 internal wkbHash;     // Well Known Binary Hash
-    bytes15 internal dggsIndex;   // DGGS (Disrcete Global Geodetic System) index
-    uint internal h3Resolution;   // H3 resolution (H3 is a compliant DGGS library)
-    CSGeometryLib.CSGeometryType internal geomteryType; // geometry type
-
-
-
-  function kill() external onlyAdmins(msg.sender) 
-
-  # CSFeatureinterface
-
-  # Inheritance
-
-Add admin accounts to Registry
-Make state variables private 
-  CircuitBreaker
-dd import "./Roles.sol" to LAParcel
- add CircuitBreaker to LARegistry
- add killer to LAParcel
-
- Design Pattern : inherit CSFeature from Openzeppelin Ownable/Roles
-
-  
+## Other design patterns
+In this projet we are using the blockchain technology as a data layer for geospatial features by using the [FOAM protocol](https://foam.space/publicAssets/FOAM_Whitepaper.pdf).
