@@ -1,5 +1,5 @@
-# Desgin pattern decisions
-
+Desgin pattern decisions
+=================
 In this document we explain the design patterns applied in the developpment of the solidity smart contracts of this project.
 
 Table of contents

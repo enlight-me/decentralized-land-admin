@@ -127,7 +127,7 @@ contract CSFeatureRegistry is Pausable, Ownable {
     require(!paused(), "Contract is paused");
     CSFeatureInterface feature = CSFeatureInterface(getFeature(csc));
     // TODO require msg.sender == feature.owner() and remove onlyOwner() modifier
-    require(feature.isAdmin(msg.sender), "Sender not allowed to remove this featre");
+    require(feature.isAdmin(msg.sender), "Sender not allowed to remove this feature");
 
     bytes15 dggsIndex = feature.getFeatureDGGSIndex();
     addedIndexes[dggsIndex] = false;

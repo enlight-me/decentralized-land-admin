@@ -41,7 +41,7 @@ contract LAParcel is CSSurface {
      * @param _addrId the external address ID
      */
 
-     function setExtAddressId(string calldata _addrId) external onlyAdmins(msg.sender) { 
+     function setExtAddressId(string calldata _addrId) external onlyAdmins(msg.sender) {
          extAddressId = _addrId;
      }
 
@@ -59,7 +59,7 @@ contract LAParcel is CSSurface {
      * @param _area the area of the parcel
      *
      */
-     function setArea(uint _area) external onlyAdmins(msg.sender) { 
+     function setArea(uint _area) external onlyAdmins(msg.sender) {
          area = _area;
      }
 

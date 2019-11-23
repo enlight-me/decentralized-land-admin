@@ -62,8 +62,8 @@ contract CSFeature is CSFeatureInterface, Ownable {
     */
     constructor (bytes15 _dggsIndex, bytes32 _wkbHash, address __owner, uint _h3Resolution) public Ownable() {
       require((_h3Resolution >= 0 && _h3Resolution < 16), "H3 Resolution must be _h3Resolution >=0 && _h3Resolution <16");
-      require(dggsIndex.length != 0, "Empty dggsIndex");
-      require(_wkbHash.length != 0, "Empty wkbHash");
+      require(_dggsIndex[0] != 0, "Empty dggsIndex");
+      require(_wkbHash[0] != 0, "Empty wkbHash");
 
       transferOwnership(__owner);
       _admins.add(__owner);
@@ -111,7 +111,7 @@ contract CSFeature is CSFeatureInterface, Ownable {
               onlyAdmins(msg.sender)
               returns (bytes32 _wkbHashValue) {
 
-    require(_wkbHash.length != 0, "Empty wkbHash");
+    require(_wkbHash[0] != 0, "Empty wkbHash");
     wkbHash = _wkbHash;
     return _wkbHash;
   }
@@ -130,6 +130,7 @@ contract CSFeature is CSFeatureInterface, Ownable {
 
   function kill() external onlyAdmins(msg.sender) {
       selfdestruct(address(uint160(owner()))); // cast owner to address payable
+      // TODO check if state variables values stay accessible after selfdestruct
       emit LogFeatureKilled(csc, dggsIndex, wkbHash, owner());
     }
 

@@ -1,4 +1,5 @@
-# DeLA : Decentralized Land Administration
+DeLA : Decentralized Land Administration
+========================
 [![GitHub license](https://img.shields.io/github/license/allilou/onchain-land-administration)](https://github.com/allilou/onchain-land-administration/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/allilou/onchain-land-administration)](https://github.com/allilou/onchain-land-administration/issues)
 [![GitHub stars](https://img.shields.io/github/stars/allilou/onchain-land-administration)](https://github.com/allilou/onchain-land-administration/stargazers)
