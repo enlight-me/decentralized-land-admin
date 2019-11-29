@@ -78,6 +78,7 @@ Having some trouble using the command line analysis `truffle run verify`, the My
 The full report highlight two low severity issues described bellow. 
 
 Detected Issues
+
 | 0 High | 0 Medium | 2 Low |
 |--------|----------|-------|
 
