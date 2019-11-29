@@ -133,8 +133,8 @@ contract CSFeatureRegistry is Pausable, Ownable {
     addedIndexes[dggsIndex] = false;
     indexOwner[dggsIndex] = address(0);
     featuresCount = featuresCount.sub(1); // TODO chek for gas overburn
-    feature.kill();
     emit LogFeatureRemoved(name, csc, dggsIndex, msg.sender);
+    feature.kill();
   }
 
 

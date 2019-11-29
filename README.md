@@ -28,7 +28,7 @@ Table of contents
       * [User stories](./docs/user_stories.md)
       * [Deployed addresses](./docs/deployed_addresses.txt)
       * [Design pattern decisions](./docs/design_pattern_decisions.md)
-      * [Security](./docs/avoiding_common_attacks.md)
+      * [Avoiding common attacks (security)](./docs/avoiding_common_attacks.md)
       * [Business model](./docs/business-model.md)
    * Miscellanious 
       * [Blockchain for geospatial](./docs/blockchain-for-geospatial.md)

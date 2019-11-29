@@ -57,11 +57,11 @@ contract LAParcelRegistry is CSFeatureRegistry {
 
     LAParcel parcel = new LAParcel(dggsIndex,wkbHash, msg.sender, h3Resolution);
     bytes32 csc = parcel.getFeatureCSC();
+    features[csc] = address(parcel);
     parcel.setExtAddressId(addr);
     parcel.setLabel(lbl);
     parcel.setArea(area);
     parcel.setParcelType(parcelType);
-    features[csc] = address(parcel);
     emit LogParcelClaimed(csc, dggsIndex, wkbHash, addr, lbl, area, parcelType, msg.sender);
     return csc;
   }
