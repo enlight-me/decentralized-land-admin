@@ -1,5 +1,5 @@
-# Business Model
-
+Business Model
+==============
 The developpement of the DeLA project will open a lot of opportunities in the evolving field of blockchain and its applications in the geospatial industry witch count within the most profitable [industry sectors](https://www.bcg.com/documents/file109372.pdf) at present times.
 
 The adpoted business model for the DeLA plateform is a combination of some of the patterns described below.
