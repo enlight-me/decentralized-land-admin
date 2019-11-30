@@ -1,8 +1,6 @@
 User stories
 ============
 
-Creating user stories help the developers understand what this dApp is and how potential users are supposed to interact with it. 
-
 As described in the [Business models](./business-model.md) document, this projects aims to deliver a set of reusable geospatially enabled smart contracts and a fully featured decentralized application (dApp), using the above components and aiming to a solve the  globally harsh recognized Land Administration problem.
 
 # Summary 
@@ -12,8 +10,7 @@ As described in the [Business models](./business-model.md) document, this projec
     * [Crowd sourced land registry](#crowd-sourced-land-registry)
     * [Smart City Data Layer](#smart-city-data-layer)
     * [Doing Business Registering Property index](#doing-business-registering-property-index)
-    * []()
-
+    * [Fight against corruption](#fight-against-land-corruption)
 <!--te-->
 
 # Resusable components for developpers
@@ -87,7 +84,7 @@ Another interesting use case of this ***Decentralized Land Resistry*** is a cros
 
 Also, collecting data on this ***Decentralized Land Resistry*** will allow countries with small or no ressources to build a consistant land administration system and gain places in the Doing Business annual ranking.
 
-## Fight against corruption
+## Fight against land corruption
 
 The land sector is regularly ranked among the sectors where people are most likely to pay bribes for access to services, according to Transparency International’s Global Corruption Barometer. Corrupt government action and the looting of state property are often considered a priority development challenge [*](https://landportal.org/library/resources/lp-oldcor-201910/open-land-data-fight-against-corruption-discussion-report). 
 
