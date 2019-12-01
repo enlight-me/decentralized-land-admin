@@ -38,6 +38,25 @@ contract LAParcel is CSSurface {
 
     /**
      * @notice set extAddressId state variable
+     * @param _extAddr the external address ID
+     * @param _label the label
+     * @param _area the area in meter square
+     * @param _landUseCode the land use code : Argricultural / Industrial /...
+     */
+
+     function setParcelValues(string calldata _extAddr,
+                              string calldata _label,
+                              uint _area,
+                              string calldata _landUseCode) external onlyAdmins(msg.sender) {
+        // TODO Check inputs
+         label = _label;
+         extAddressId = _extAddr;
+         area = _area;
+         parcelType = _landUseCode; // TODO Change the state variable name
+     }
+
+    /**
+     * @notice set extAddressId state variable
      * @param _addrId the external address ID
      */
 
