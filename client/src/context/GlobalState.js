@@ -107,7 +107,7 @@ const GlobalState = (props) => {
      */
 
     const claimParcel = async (lat, lng, wkbHash, parcelArea,
-        parcelAddressId, parcelLabel, parcelType) => {
+        parcelExtAddress, parcelLabel, parcelLandUseCode) => {
 
         const h3Index = geoToH3(lat, lng, 15);  // Resolution (15) should be read from the registry 
         const h3IndexHex = web3.utils.utf8ToHex(h3Index);
@@ -116,8 +116,8 @@ const GlobalState = (props) => {
 
         try {
             const result = await contractParcelReg.methods.claimParcel(h3IndexHex, _wkbHash,
-                parcelAddressId, parcelLabel,
-                area, parcelType)
+                parcelExtAddress, parcelLabel,
+                area, parcelLandUseCode)
                 .send({ from: accounts[0] });
 
             return result.events.LogParcelClaimed.transactionHash;
@@ -159,7 +159,7 @@ const GlobalState = (props) => {
 
         const parcelDetails = {
             csc: parcel.csc, latlng, addr: parcel.addr, lbl: parcel.lbl,
-            area: parcel.area, parcelType: parcel.parcelType, owner: parcel.owner
+            area: parcel.area, parcelLandUseCode: parcel.parcelLandUseCode, owner: parcel.owner
         };
 
         setParcels(parcels => {
@@ -205,15 +205,15 @@ const GlobalState = (props) => {
      * @dev updateParcel
      * @TODO  implement updates
      */
-    const updateParcel = async (parcelArea, parcelAddressId, parcelLabel, parcelType) => {
+    const updateParcel = async (parcelArea, parcelExtAddress, parcelLabel, parcelLandUseCode) => {
 
         try {
             const featureAddress = await contractParcelReg.methods.getFeature(parcelToUpdate.csc).call();
             const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
 
             var res = null;
-            if (parcelAddressId !== parcelToUpdate.addr)
-             res = await parcel.methods.setExtAddressId(parcelAddressId).send({ from: accounts[0] });; 
+            if (parcelExtAddress !== parcelToUpdate.addr)
+             res = await parcel.methods.setExtAddress(parcelExtAddress).send({ from: accounts[0] });; 
 
             if (parcelLabel !== parcelToUpdate.lbl)
              res = await parcel.methods.setLabel(parcelLabel).send({ from: accounts[0] });; 
@@ -221,16 +221,16 @@ const GlobalState = (props) => {
             if (parcelArea !== parcelToUpdate.area)
              res = await parcel.methods.setArea(Number(parcelArea)).send({ from: accounts[0] });; 
 
-            if (parcelType !== parcelToUpdate.parcelType)
-             res = await parcel.methods.setParcelType(parcelType).send({ from: accounts[0] });; 
+            if (parcelLandUseCode !== parcelToUpdate.parcelLandUseCode)
+             res = await parcel.methods.setLandUseCode(parcelLandUseCode).send({ from: accounts[0] });; 
 
             setParcels(parcels => {
                 const list = parcels.filter((item) => item.csc !== parcelToUpdate.csc);
                 
                 const parcelDetails = {
                     csc: parcelToUpdate.csc, latlng : parcelToUpdate.latlng, owner: parcelToUpdate.owner,
-                    addr: parcelAddressId, lbl: parcelLabel,
-                    area: parcelArea, parcelType
+                    addr: parcelExtAddress, lbl: parcelLabel,
+                    area: parcelArea, parcelLandUseCode
                 };
 
                 list.push(parcelDetails);
@@ -258,54 +258,14 @@ const GlobalState = (props) => {
         const res = await parcel.methods.fetchParcel().call();
         const owner = await parcel.methods.owner().call();
         
-        return { csc: res[0], addr : res[1], lbl: res[2],
-            area: res[3], parcelType: res[4], owner: owner };
+        return { csc: res[0], lbl: res[1], addr : res[2],
+                 parcelLandUseCode: res[3], area: res[4], owner: owner };
     };
-
-    ///////////////////////////////////////////////////////////////////////////////
-    ///////////// Mainained for code history
-
-
-    /**
-     * @notice updateFeatures Button on the AppBar
-     * @todo replace it with a button directly on the map
-     *        the mainmap should use the features state variable of this Component 'App'
-     *        like the DrawerList
-     *        This will allow to avoid using OnRef (this.mainMap.)
-     */
-
-    // const updateFeatures = () => {
-    //     fetch('http://localhost:4000/collections/features')
-    //         .then(res => {
-    //             return res.json();
-    //         }).then(data => {
-    //             setFeatures(data);
-    //             // updateParcels(data);
-    //         });
-    // };
-
-    /**
-     * @dev update Parcles state varibale
-     * @param {*} data 
-     */
-    // const updateParcels = (data) => {
-
-    //     data.map(async (value) => {
-    //         const featureAddress = await contractParcelReg.methods.getFeature(value.properties.csc).call();
-    //         const parcel = new web3.eth.Contract(LAParcel.abi, featureAddress);
-    //         const parcelValues = await parcel.methods.fetchParcel().call();
-    //         console.log(parcelValues);
-    //         const parcelAttributes = {
-    //             'csc': parcelValues[0], 'address': parcelValues[1],
-    //             'label': parcelValues[2], 'area': parcelValues[3], 'parcelType': parcelValues[4]
-    //         };
-    //         setParcels(...parcels, parcelAttributes);
-    //     });
-    // };
 
     /**
      * Render function
      */
+
     return (
         <DelaContext.Provider value={{
             web3,

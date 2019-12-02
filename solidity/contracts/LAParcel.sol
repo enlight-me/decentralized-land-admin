@@ -18,10 +18,10 @@ contract LAParcel is CSSurface {
     // State variables
     //
 
-    string internal extAddressId; // Parcel external real world address ID
     string internal label;        // Parcel label
+    string internal extAddress;   // Parcel external real world address
+    string internal landUseCode;   // may be : Building, Agriculture, Industrial, ...
     uint internal area;           // Cadastral area of the parcel
-    string internal parcelType;   // may be : Building, Agriculture, Industrial, ...
 
     //
     // Functions
@@ -37,40 +37,40 @@ contract LAParcel is CSSurface {
     }
 
     /**
-     * @notice set extAddressId state variable
-     * @param _extAddr the external address ID
+     * @notice set extAddress state variable
+     * @param _extAddr the external address
      * @param _label the label
      * @param _area the area in meter square
      * @param _landUseCode the land use code : Argricultural / Industrial /...
      */
 
-     function setParcelValues(string calldata _extAddr,
-                              string calldata _label,
-                              uint _area,
-                              string calldata _landUseCode) external onlyAdmins(msg.sender) {
+     function setParcelValues(string calldata _label,
+                              string calldata _extAddr,
+                              string calldata _landUseCode,
+                              uint _area) external onlyAdmins(msg.sender) {
         // TODO Check inputs
          label = _label;
-         extAddressId = _extAddr;
+         extAddress = _extAddr;
+         landUseCode = _landUseCode;
          area = _area;
-         parcelType = _landUseCode; // TODO Change the state variable name
      }
 
     /**
-     * @notice set extAddressId state variable
-     * @param _addrId the external address ID
+     * @notice set extAddress state variable
+     * @param _extAddr the external address
      */
 
-     function setExtAddressId(string calldata _addrId) external onlyAdmins(msg.sender) {
-         extAddressId = _addrId;
+     function setExtAddress(string calldata _extAddr) external onlyAdmins(msg.sender) {
+         extAddress = _extAddr;
      }
 
      /**
      * @notice set label state variable
-     * @param _lbl the parcel label
+     * @param _label the parcel label
      */
      
-     function setLabel(string calldata _lbl) external onlyAdmins(msg.sender) {
-         label = _lbl;
+     function setLabel(string calldata _label) external onlyAdmins(msg.sender) {
+         label = _label;
      }
 
      /**
@@ -83,22 +83,20 @@ contract LAParcel is CSSurface {
      }
 
     /**
-     * @notice set setParcelType state variable
-     * @param _parcelType the Parcel Type of the parcel
+     * @notice set setlandUseCode state variable
+     * @param _landUseCode the Parcel Type of the parcel
      *
      */
-     function setParcelType(string calldata _parcelType) external onlyAdmins(msg.sender) {
-         parcelType = _parcelType;
+     function setLandUseCode(string calldata _landUseCode) external onlyAdmins(msg.sender) {
+         landUseCode = _landUseCode;
      }
 
      /**
       * @dev returns all the state values of the Parcel
       */
      function fetchParcel() public view
-     returns (bytes32, string memory, string memory, uint, string memory ) {
-         return (csc, extAddressId, label, area, parcelType);
-
+     returns (bytes32, string memory, string memory, string memory, uint) {
+         return (csc, label, extAddress, landUseCode, area);
      }
-
 
 }

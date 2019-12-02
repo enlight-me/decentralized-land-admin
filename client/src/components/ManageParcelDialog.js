@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
 
 import DelaContext from '../context/dela-context';
 import AppSnackbar from './AppSnackbar';
-import ParcelTypeAutoList from './ParcelTypeAutoList';
+import ParcelLandUseCodeAutoList from './ParcelLandUseCodeAutoList';
 
 
 const useStyles = makeStyles(theme => ({
@@ -29,9 +29,9 @@ export default function ManageParcelDialog(props) {
    * @dev state variables
    */
   const [parcelLabel, setParcelLabel] = useState("");
-  const [parcelAddressId, setParcelAddressId] = useState("");
+  const [parcelAddress, setParcelAddress] = useState("");
   const [parcelArea, setParcelArea] = useState("");
-  const [parcelType, setParcelType] = useState("");
+  const [parcelLandUseCode, setParcelLandUseCode] = useState("");
 
   const [formValid, setFormValid] = useState(true)
 
@@ -50,14 +50,14 @@ export default function ManageParcelDialog(props) {
    */
 
   const handleClaimParcel = async () => {
-    if (parcelArea === "" || parcelArea < 0 || parcelLabel === "" || parcelType === "" || parcelAddressId === "") {
+    if (parcelArea === "" || parcelArea < 0 || parcelLabel === "" || parcelLandUseCode === "" || parcelAddress === "") {
       setFormValid(false);
     }
     else {
       const lat = props.latlng.lat;
       const lng = props.latlng.lng;
       const result = await context.claimParcel(lat, lng, "wkbHash", parcelArea, 
-                                            parcelAddressId, parcelLabel, parcelType.value);
+                                            parcelAddress, parcelLabel, parcelLandUseCode.value);
 
       setTransactionHash(result);
       setSnackbarOpen(true);
@@ -73,7 +73,7 @@ export default function ManageParcelDialog(props) {
     const label = ReactDOM.findDOMNode(labelRef.current).querySelector('input').value;
     const address = ReactDOM.findDOMNode(addressRef.current).querySelector('input').value;
     const area = ReactDOM.findDOMNode(areaRef.current).querySelector('input').value;
-    const _type = typeof(parcelType.value) === 'undefined' ? context.parcelToUpdate.parcelType : parcelType.value;
+    const _type = typeof(parcelLandUseCode.value) === 'undefined' ? context.parcelToUpdate.parcelLandUseCode : parcelLandUseCode.value;
     
     if (area.value === "" || area.value < 0 || label.value === "" || address.value === "" || _type === "") {
       setFormValid(false);
@@ -118,18 +118,18 @@ export default function ManageParcelDialog(props) {
             defaultValue={context.updateMode ? context.parcelToUpdate.lbl : ""}
             onChange={(evt) => setParcelLabel(evt.target.value)}
           />
-          <ParcelTypeAutoList setParcelType={setParcelType} 
-                              parcelType={context.updateMode ? context.parcelToUpdate.parcelType : "" }/>
+          <ParcelLandUseCodeAutoList setParcelLandUseCode={setParcelLandUseCode} 
+                              parcelLandUseCode={context.updateMode ? context.parcelToUpdate.parcelLandUseCode : "" }/>
           <TextField
             autoFocus
-            error={parcelAddressId === "" && !formValid}
+            error={parcelAddress === "" && !formValid}
             margin="dense"
             id="parcel-address"
-            label="External Address ID"
+            label="External Address"
             fullWidth
             ref={addressRef}
             defaultValue={context.updateMode ? context.parcelToUpdate.addr : ""}
-            onChange={(evt) => setParcelAddressId(evt.target.value)}
+            onChange={(evt) => setParcelAddress(evt.target.value)}
           />
           <TextField
             autoFocus

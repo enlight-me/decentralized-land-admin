@@ -168,7 +168,7 @@ export default function ParcelDetails(props) {
             </IconButton>
           }          
           title={props.parcel.lbl}
-          subheader={props.parcel.parcelType}
+          subheader={props.parcel.parcelLandUseCode}
         />
         {/* <CardMedia
         className={classes.media}
