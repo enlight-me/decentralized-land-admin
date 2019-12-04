@@ -1,6 +1,5 @@
 import React, { useState, useContext, createRef } from 'react';
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import { makeStyles } from '@material-ui/core/styles';
 import Control from "react-leaflet-control";
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
@@ -100,9 +99,9 @@ export default function MainMap(props) {
           </Fab>
         </Control>
 
+        <ManageParcelDialog latlng={latlng} />
       </Map>
 
-      <ManageParcelDialog latlng={latlng} />
     </div>
 
   );

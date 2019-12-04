@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Web3 from 'web3'
 import { geoToH3, h3ToGeo } from 'h3-js';
 
 import getWeb3 from "../utils/getWeb3";
@@ -107,7 +106,7 @@ const GlobalState = (props) => {
      */
 
     const claimParcel = async (lat, lng, wkbHash, parcelArea,
-        parcelExtAddress, parcelLabel, parcelLandUseCode) => {
+        parcelExtAddress, parcelLabel, parcelLandUseCode, cadastralType) => {
 
         const h3Index = geoToH3(lat, lng, 15);  // Resolution (15) should be read from the registry 
         const h3IndexHex = web3.utils.utf8ToHex(h3Index);
@@ -117,7 +116,7 @@ const GlobalState = (props) => {
         try {
             const result = await contractParcelReg.methods.claimParcel(h3IndexHex, _wkbHash,
                 parcelExtAddress, parcelLabel,
-                area, parcelLandUseCode)
+                area, parcelLandUseCode, cadastralType)
                 .send({ from: accounts[0] });
 
             return result.events.LogParcelClaimed.transactionHash;
@@ -159,7 +158,8 @@ const GlobalState = (props) => {
 
         const parcelDetails = {
             csc: parcel.csc, latlng, addr: parcel.addr, lbl: parcel.lbl,
-            area: parcel.area, parcelLandUseCode: parcel.parcelLandUseCode, owner: parcel.owner
+            area: parcel.area, parcelLandUseCode: parcel.parcelLandUseCode, 
+            owner: parcel.owner, cadastralType : parcel.cadastralType
         };
 
         setParcels(parcels => {
@@ -205,7 +205,7 @@ const GlobalState = (props) => {
      * @dev updateParcel
      * @TODO  implement updates
      */
-    const updateParcel = async (parcelArea, parcelExtAddress, parcelLabel, parcelLandUseCode) => {
+    const updateParcel = async (parcelArea, parcelExtAddress, parcelLabel, parcelLandUseCode, parcelCadastralType) => {
 
         try {
             const featureAddress = await contractParcelReg.methods.getFeature(parcelToUpdate.csc).call();
@@ -213,16 +213,19 @@ const GlobalState = (props) => {
 
             var res = null;
             if (parcelExtAddress !== parcelToUpdate.addr)
-             res = await parcel.methods.setExtAddress(parcelExtAddress).send({ from: accounts[0] });; 
+             res = await parcel.methods.setExtAddress(parcelExtAddress).send({ from: accounts[0] });
 
             if (parcelLabel !== parcelToUpdate.lbl)
-             res = await parcel.methods.setLabel(parcelLabel).send({ from: accounts[0] });; 
+             res = await parcel.methods.setLabel(parcelLabel).send({ from: accounts[0] });
 
             if (parcelArea !== parcelToUpdate.area)
-             res = await parcel.methods.setArea(Number(parcelArea)).send({ from: accounts[0] });; 
+             res = await parcel.methods.setArea(Number(parcelArea)).send({ from: accounts[0] });
 
             if (parcelLandUseCode !== parcelToUpdate.parcelLandUseCode)
-             res = await parcel.methods.setLandUseCode(parcelLandUseCode).send({ from: accounts[0] });; 
+             res = await parcel.methods.setLandUseCode(parcelLandUseCode).send({ from: accounts[0] });
+
+             if (parcelCadastralType !== parcelToUpdate.parcelCadastralType)
+             res = await parcel.methods.setCadastralTypeCode(parcelCadastralType).send({ from: accounts[0] });
 
             setParcels(parcels => {
                 const list = parcels.filter((item) => item.csc !== parcelToUpdate.csc);
@@ -230,7 +233,7 @@ const GlobalState = (props) => {
                 const parcelDetails = {
                     csc: parcelToUpdate.csc, latlng : parcelToUpdate.latlng, owner: parcelToUpdate.owner,
                     addr: parcelExtAddress, lbl: parcelLabel,
-                    area: parcelArea, parcelLandUseCode
+                    area: parcelArea, parcelLandUseCode, cadastralType : parcelCadastralType
                 };
 
                 list.push(parcelDetails);
@@ -259,7 +262,8 @@ const GlobalState = (props) => {
         const owner = await parcel.methods.owner().call();
         
         return { csc: res[0], lbl: res[1], addr : res[2],
-                 parcelLandUseCode: res[3], area: res[4], owner: owner };
+                 parcelLandUseCode: res[3], area: res[4], 
+                 owner: owner, cadastralType : res[5] };
     };
 
     /**

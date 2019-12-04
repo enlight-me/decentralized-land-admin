@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "left",
   },
   content: {
-    paddingTop:0,
+    paddingTop:1,
     "&:last-child": {
       paddingBottom: 3
     }
@@ -156,19 +156,23 @@ export default function ParcelDetails(props) {
           avatar={props.owner ?
             <Avatar aria-label="owner" className={classes.purpleAvatar}>
               O
-          </Avatar>
-            :
+            </Avatar>
+              :
             <Avatar aria-label="laker" className={classes.orangeAvatar}>
-              NO
-          </Avatar>
-          }
+                NO
+            </Avatar>
+            }
           action={
             <IconButton aria-label="settings" onClick={handleManageParcelMenuOpen}>
               <MoreVertIcon />
             </IconButton>
           }          
           title={props.parcel.lbl}
-          subheader={props.parcel.parcelLandUseCode}
+          subheader={props.parcel.cadastralType == 1 ?
+            <span>BUILDING</span>
+            :
+            <span>PARCEL</span>
+          }
         />
         {/* <CardMedia
         className={classes.media}
@@ -176,7 +180,8 @@ export default function ParcelDetails(props) {
         title="Paella dish"
       /> */}
         <CardContent className={classes.content}>
-          <Typography className={classes.typography}> Area : {props.parcel.area} </Typography>
+        <Typography className={classes.typography}> Land Use : {props.parcel.parcelLandUseCode}</Typography>
+        <Typography className={classes.typography}> Area : {props.parcel.area} </Typography>
         </CardContent>
         {props.expansion &&
         <div>
@@ -207,7 +212,7 @@ export default function ParcelDetails(props) {
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent className={classes.content}>
-              <Typography className={classes.typography}> Address : {props.parcel.addr}</Typography>
+            <Typography className={classes.typography}> Address : {props.parcel.addr}</Typography>
             </CardContent>
           </Collapse>
         </div>

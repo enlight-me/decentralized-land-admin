@@ -14,14 +14,17 @@ import './geospatial/CSSurface.sol';
 
 contract LAParcel is CSSurface {
 
+    enum CadastralTypeCode { PARCEL, BUILDING }
+
     //
     // State variables
     //
 
     string internal label;        // Parcel label
     string internal extAddress;   // Parcel external real world address
-    string internal landUseCode;   // may be : Building, Agriculture, Industrial, ...
+    string internal landUseCode;  // may be : Residential, Commercial, Agricultural, Industrial, ...
     uint internal area;           // Cadastral area of the parcel
+    CadastralTypeCode internal cadastralType;
 
     //
     // Functions
@@ -47,12 +50,14 @@ contract LAParcel is CSSurface {
      function setParcelValues(string calldata _label,
                               string calldata _extAddr,
                               string calldata _landUseCode,
-                              uint _area) external onlyAdmins(msg.sender) {
+                              uint _area,
+                              CadastralTypeCode _cadastralType) external onlyAdmins(msg.sender) {
         // TODO Check inputs
          label = _label;
          extAddress = _extAddr;
          landUseCode = _landUseCode;
          area = _area;
+         cadastralType = _cadastralType;
      }
 
     /**
@@ -92,11 +97,20 @@ contract LAParcel is CSSurface {
      }
 
      /**
+      * @notice set setCadastralTypeCode state varibale
+      * @param _cadastralType the parcel cadastral type
+      *
+      */
+     function setCadastralTypeCode(CadastralTypeCode _cadastralType) external onlyAdmins(msg.sender) {
+         cadastralType = _cadastralType;
+     }
+
+     /**
       * @dev returns all the state values of the Parcel
       */
      function fetchParcel() public view
-     returns (bytes32, string memory, string memory, string memory, uint) {
-         return (csc, label, extAddress, landUseCode, area);
+     returns (bytes32, string memory, string memory, string memory, uint, CadastralTypeCode) {
+         return (csc, label, extAddress, landUseCode, area, cadastralType);
      }
 
 }

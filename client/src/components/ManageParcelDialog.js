@@ -1,6 +1,6 @@
 import React, { useState, useContext, createRef } from 'react';
 import ReactDOM from 'react-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -8,11 +8,16 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Switch from '@material-ui/core/Switch';
 
 import DelaContext from '../context/dela-context';
 import AppSnackbar from './AppSnackbar';
 import ParcelLandUseCodeAutoList from './ParcelLandUseCodeAutoList';
 
+
+const CadastralTypeCode = {PARCEL : 0, BUILDING : 1};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +25,40 @@ const useStyles = makeStyles(theme => ({
     height: 250,
   }
 }));
+
+const AntSwitch = withStyles(theme => ({
+  root: {
+    width: 28,
+    height: 16,
+    padding: 0,
+    display: 'flex',
+  },
+  switchBase: {
+      padding: 2,
+      color: theme.palette.grey[500],
+      '&$checked': {
+        transform: 'translateX(12px)',
+        color: theme.palette.common.white,
+      '& + $track': {
+        opacity: 1,
+        backgroundColor: theme.palette.primary.secondary,
+        borderColor: theme.palette.primary.secondary,
+      },
+    },
+  },
+  thumb: {
+    width: 12,
+    height: 12,
+    boxShadow: 'none',
+  },
+  track: {
+    border: `1px solid ${theme.palette.grey[500]}`,
+    borderRadius: 16 / 2,
+    opacity: 1,
+    backgroundColor: theme.palette.common.white,
+  },
+  checked: {},
+}))(Switch);
 
 export default function ManageParcelDialog(props) {
 
@@ -32,6 +71,7 @@ export default function ManageParcelDialog(props) {
   const [parcelAddress, setParcelAddress] = useState("");
   const [parcelArea, setParcelArea] = useState("");
   const [parcelLandUseCode, setParcelLandUseCode] = useState("");
+  const [cadastralType, setCadastralType] = React.useState(false);
 
   const [formValid, setFormValid] = useState(true)
 
@@ -56,8 +96,13 @@ export default function ManageParcelDialog(props) {
     else {
       const lat = props.latlng.lat;
       const lng = props.latlng.lng;
+
+      const parcelCadastralType = cadastralType ? CadastralTypeCode.BUILDING : CadastralTypeCode.PARCEL;
+      
+      // TODO manage wkbash
       const result = await context.claimParcel(lat, lng, "wkbHash", parcelArea, 
-                                            parcelAddress, parcelLabel, parcelLandUseCode.value);
+                                            parcelAddress, parcelLabel, parcelLandUseCode.value,
+                                            parcelCadastralType);
 
       setTransactionHash(result);
       setSnackbarOpen(true);
@@ -79,13 +124,22 @@ export default function ManageParcelDialog(props) {
       setFormValid(false);
     }
     else {
+      const parcelCadastralType = cadastralType ? CadastralTypeCode.BUILDING : CadastralTypeCode.PARCEL;
 
-      const result = await context.updateParcel(area, address, label, _type);
+      const result = await context.updateParcel(area, address, label, _type, parcelCadastralType);
 
       setTransactionHash(result);
       setSnackbarOpen(true);
       context.closeManageParcelDialog();
     }
+  }
+
+  /**
+   * 
+   */
+  const handleCadastralTypeChange = event => {
+    console.log(event.target.checked);
+    setCadastralType(cadastralType => !cadastralType);
   }
 
   /**
@@ -107,6 +161,21 @@ export default function ManageParcelDialog(props) {
           <DialogContentText>
             To {context.updateMode ? <span> update </span> : <span> claim</span> } this parcel, please fill-in the following informations.
           </DialogContentText>
+          
+          <Typography component="div">
+            <Grid component="label" container alignItems="center" spacing={1}>
+              <Grid item>Parcel</Grid>
+              <Grid item>
+                <AntSwitch
+                  checked={cadastralType}
+                  onChange={handleCadastralTypeChange}
+                  // value="checkedC"
+                />
+              </Grid>
+              <Grid item>Building</Grid>
+            </Grid>
+          </Typography>
+
           <TextField
             autoFocus
             error={parcelLabel === "" && !formValid}

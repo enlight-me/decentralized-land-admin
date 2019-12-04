@@ -12,9 +12,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 const suggestions = [
-  { label: 'Building' },
-  { label: 'Urban' },
-  { label: 'Argriculture' },
+  { label: 'Residential' },
+  { label: 'Commercial' },
+  { label: 'Argricultural' },
   { label: 'Industrial' },
   { label: 'Forest' },
   { label: 'Fishery' },
