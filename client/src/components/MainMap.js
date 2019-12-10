@@ -1,4 +1,4 @@
-import React, { useState, useContext, createRef } from 'react';
+import React, { useState, useContext, useEffect, createRef } from 'react';
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import Control from "react-leaflet-control";
 import Fab from '@material-ui/core/Fab';
@@ -10,6 +10,7 @@ import L from 'leaflet';
 import DelaContext from '../context/dela-context';
 import ManageParcelDialog from './ManageParcelDialog';
 import ParcelDetails from './ParcelDetails';
+import FeatureGroupMapToolBar from './FeatureGroupMapToolBar';
 
 /**
  * @dev map icons
@@ -43,16 +44,64 @@ export default function MainMap(props) {
   const zoom = 5;
 
   /**
-   * @dev Events handlers 
+   * @notice onClick event handler 
    */
 
   const handleClick = (e) => {
     const map = mapRef.current
     if (map != null) {
-      setLatLng(e.latlng);
-      context.setUpdateMode(false);
-      context.openManageParcelDialog(true);
+      console.log(e.latlng);
+      // setLatLng(e.latlng);
+      // context.setUpdateMode(false);
+      // context.openManageParcelDialog(true);
     }
+  };
+
+  /**
+   * @notice center the map on the user location 
+   */
+
+  useEffect(() => {
+    const map = mapRef.current
+    if (map != null) {
+      map.leafletElement.locate()
+    }
+  }, []);
+
+  const handleLocationFound = (e) => {
+    const map = mapRef.current;
+    if (map != null) map.leafletElement.locate({ setView: true, maxZoom: zoom });
+  };
+
+  /**
+   * @notice handle feature creation event fired from the leaflet-drax toolbar
+   * @param geojson the GeoJSON of the created feature
+   */
+  const onFeatureCreation = (geojson) => {
+
+    switch (geojson.geometry.type) {
+      case 'Point': {
+        const coords = geojson.geometry.coordinates;
+        setLatLng({ 'lat': coords[1], 'lng': coords[0] });
+        context.setUpdateMode(false);
+        context.openManageParcelDialog(true);
+        break;
+      }
+      case 'Polygon': {
+        const coords = geojson.geometry.coordinates[0][0];
+        setLatLng({ 'lat': coords[1], 'lng': coords[0] });
+        context.setUpdateMode(false);
+        context.openManageParcelDialog(true);
+        break;
+      }
+      default: console.log(geojson.geometry);
+    }
+
+    /*
+    var geometryWKB = wkx.Geometry.parseGeoJSON(geojson.geometry).toWkb();
+    const wkbHash = web3.utils.soliditySha3(geometryWKB);
+    kvdbFeatures.put(wkbHash, geometryWKB);
+     */
   }
 
   /**
@@ -61,11 +110,12 @@ export default function MainMap(props) {
 
   return (
     <div>
+
       <Map
         center={position}
         zoom={zoom}
         onClick={(e) => { if (addMode) { handleClick(e) } }}
-        // onLocationfound={this.handleLocationFound}
+        onLocationfound={handleLocationFound}
         ref={mapRef}
         style={addMode ? { cursor: 'crosshair' } : null}
       >
@@ -74,23 +124,23 @@ export default function MainMap(props) {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {context.parcels.map((parcel, idx) => { 
+        
+        {context.parcels.map((parcel, idx) => {
           return parcel.owner === context.accounts[0] ?
             <Marker position={parcel.latlng} key={`marker-${idx}`} icon={lackingPoint}>
-              <Popup>              
-                <ParcelDetails parcel={parcel} owner={true} expansion={false}/>
+              <Popup>
+                <ParcelDetails parcel={parcel} owner={true} expansion={false} />
               </Popup>
             </Marker>
-            :            
-            <Marker position={parcel.latlng} key={`marker-${idx}`}  owner={false}>
-            <Popup>              
-              <ParcelDetails parcel={parcel} expansion={false}/>
-            </Popup>
-          </Marker>
+            :
+            <Marker position={parcel.latlng} key={`marker-${idx}`} owner={false}>
+              <Popup>
+                <ParcelDetails parcel={parcel} expansion={false} />
+              </Popup>
+            </Marker>
         })}
 
         <Control>
-
           <Fab color={addMode ? "secondary" : "primary"}
             aria-label={addMode ? "Add" : "View"}
             onClick={() => setAddMode(!addMode)}
@@ -98,6 +148,8 @@ export default function MainMap(props) {
             {addMode ? <EditIcon /> : <Tooltip title="Edit" aria-label="edit"><MapIcon /></Tooltip>}
           </Fab>
         </Control>
+
+        {addMode && <FeatureGroupMapToolBar onChange={onFeatureCreation} />}
 
         <ManageParcelDialog latlng={latlng} />
       </Map>

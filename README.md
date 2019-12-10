@@ -156,3 +156,4 @@ Further Reading
 
 - [Open Land Data in the Fight Against Corruption - Discussion Report - landportal.org](https://landportal.org/file/47749/download)
 
+- [CADASTA-ESRI | Fit-for-Purpose Land Administration with LADM](https://www.youtube.com/watch?v=6QjH4vdtlrU) 

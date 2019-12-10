@@ -7463,10 +7463,198 @@
       },
       "address": "0x3277E4A5CcE6DEFCc5a8173A8EE2e3544EdFc792",
       "transactionHash": "0x542bde2950c65ac129dc94c6b887a7b4432e8fe8f52768a42d438eaa26d73d5b"
+    },
+    "1576002719371": {
+      "events": {
+        "0x48df97763084cc6911df6558a5951632c71de0a9d885f5dd98525083918f6c44": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "csc",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "dggsIndex",
+              "type": "bytes15"
+            },
+            {
+              "indexed": false,
+              "name": "wkbHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "addr",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "lbl",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "area",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "parcelType",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "LogParcelClaimed",
+          "type": "event",
+          "signature": "0x48df97763084cc6911df6558a5951632c71de0a9d885f5dd98525083918f6c44"
+        },
+        "0x6025eef7c116bf3ac54c6c1b14f3dc851d6931e5d65aa525cd2bfe9078b28f3d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "indexed": true,
+              "name": "csc",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "dggsIndex",
+              "type": "bytes15"
+            },
+            {
+              "indexed": false,
+              "name": "wkbHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewFeatureAdded",
+          "type": "event",
+          "signature": "0x6025eef7c116bf3ac54c6c1b14f3dc851d6931e5d65aa525cd2bfe9078b28f3d"
+        },
+        "0x9cb70ff2a2081c021be0a9904a5fd42d4bf1e0102e76dec7d2ece79cd0e30b15": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "indexed": true,
+              "name": "csc",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "name": "dggsIndex",
+              "type": "bytes15"
+            },
+            {
+              "indexed": false,
+              "name": "killer",
+              "type": "address"
+            }
+          ],
+          "name": "LogFeatureRemoved",
+          "type": "event",
+          "signature": "0x9cb70ff2a2081c021be0a9904a5fd42d4bf1e0102e76dec7d2ece79cd0e30b15"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        },
+        "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "Paused",
+          "type": "event",
+          "signature": "0x62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a258"
+        },
+        "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "Unpaused",
+          "type": "event",
+          "signature": "0x5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa"
+        },
+        "0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "PauserAdded",
+          "type": "event",
+          "signature": "0x6719d08c1888103bea251a4ed56406bd0c3e69723c8a1686e017e7bbe159b6f8"
+        },
+        "0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "PauserRemoved",
+          "type": "event",
+          "signature": "0xcd265ebaf09df2871cc7bd4133404a235ba12eff2041bb89d9c714a2621c7c7e"
+        }
+      },
+      "links": {
+        "CSGeometryLib": "0x3B7506485C47aDbBAb298D108d45f7d3995B1765"
+      },
+      "address": "0x5af37951680e028CaE8Ae14809DB81D9b8f51D22",
+      "transactionHash": "0xae70d20447eac12a583d5a15d3c9db33f6b8a7ef86e1c092697a68ed0f3ab93c"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-12-04T20:03:26.008Z",
+  "updatedAt": "2019-12-10T18:32:34.808Z",
   "devdoc": {
     "methods": {
       "claimParcel(bytes15,bytes32,string,string,uint256,string,uint8)": {

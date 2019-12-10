@@ -168,7 +168,7 @@ export default function ParcelDetails(props) {
             </IconButton>
           }          
           title={props.parcel.lbl}
-          subheader={props.parcel.cadastralType == 1 ?
+          subheader={props.parcel.cadastralType === 1 ?
             <span>BUILDING</span>
             :
             <span>PARCEL</span>

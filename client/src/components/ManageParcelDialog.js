@@ -105,7 +105,7 @@ export default function ManageParcelDialog(props) {
                                             parcelCadastralType);
 
       setTransactionHash(result);
-      setSnackbarOpen(true);
+      // setSnackbarOpen(true);
       context.closeManageParcelDialog();
     }
   }
@@ -129,7 +129,7 @@ export default function ManageParcelDialog(props) {
       const result = await context.updateParcel(area, address, label, _type, parcelCadastralType);
 
       setTransactionHash(result);
-      setSnackbarOpen(true);
+      // setSnackbarOpen(true);
       context.closeManageParcelDialog();
     }
   }
@@ -138,7 +138,7 @@ export default function ManageParcelDialog(props) {
    * 
    */
   const handleCadastralTypeChange = event => {
-    console.log(event.target.checked);
+    // console.log(event.target.checked);
     setCadastralType(cadastralType => !cadastralType);
   }
 
