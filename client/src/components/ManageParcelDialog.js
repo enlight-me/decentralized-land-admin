@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Switch from '@material-ui/core/Switch';
+import web3 from 'web3';
 
 import DelaContext from '../context/dela-context';
 import AppSnackbar from './AppSnackbar';
@@ -99,13 +100,15 @@ export default function ManageParcelDialog(props) {
 
       const parcelCadastralType = cadastralType ? CadastralTypeCode.BUILDING : CadastralTypeCode.PARCEL;
       
-      // TODO manage wkbash
-      const result = await context.claimParcel(lat, lng, "wkbHash", parcelArea, 
+      const wkbHash = web3.utils.soliditySha3(props.geometryWKB);
+
+      const result = await context.claimParcel(lat, lng, wkbHash, parcelArea, 
                                             parcelAddress, parcelLabel, parcelLandUseCode.value,
                                             parcelCadastralType);
 
+      // TODO add props.geometryWKB to orbitDB
       setTransactionHash(result);
-      // setSnackbarOpen(true);
+      setSnackbarOpen(true);
       context.closeManageParcelDialog();
     }
   }
@@ -129,7 +132,7 @@ export default function ManageParcelDialog(props) {
       const result = await context.updateParcel(area, address, label, _type, parcelCadastralType);
 
       setTransactionHash(result);
-      // setSnackbarOpen(true);
+      setSnackbarOpen(true);
       context.closeManageParcelDialog();
     }
   }

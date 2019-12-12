@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { FeatureGroup } from 'react-leaflet';
 import { EditControl } from 'react-leaflet-draw';
 
 
 export default function FeatureGroupMapToolBar(props) {
 
+    const editFG = createRef();
+
     const _onCreated = (e) => {
+        const fg = editFG.current;
         props.onChange(e.layer.toGeoJSON());
+        if (fg != null) fg.layerContainer.removeLayer(e.layer);
     }
 
     return (
-        <FeatureGroup>
+        <FeatureGroup ref={editFG}>
             <EditControl
-                position='bottomright'
+                position='topright'
                 onCreated={_onCreated}
+                
                 // onEdited={_onEditPath}
                 // onDeleted={_onDeleted}
                 draw={{

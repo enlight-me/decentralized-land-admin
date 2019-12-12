@@ -110,11 +110,10 @@ const GlobalState = (props) => {
 
         const h3Index = geoToH3(lat, lng, 15);  // Resolution (15) should be read from the registry 
         const h3IndexHex = web3.utils.utf8ToHex(h3Index);
-        const _wkbHash = web3.utils.asciiToHex(wkbHash);
         const area = Number(parcelArea);
 
         try {
-            const result = await contractParcelReg.methods.claimParcel(h3IndexHex, _wkbHash,
+            const result = await contractParcelReg.methods.claimParcel(h3IndexHex, wkbHash,
                 parcelExtAddress, parcelLabel,
                 area, parcelLandUseCode, cadastralType)
                 .send({ from: accounts[0] });

@@ -6,6 +6,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import MapIcon from '@material-ui/icons/Map';
 import Tooltip from '@material-ui/core/Tooltip';
 import L from 'leaflet';
+import wkx from 'wkx';
+import gju from 'geojson-utils';
 
 import DelaContext from '../context/dela-context';
 import ManageParcelDialog from './ManageParcelDialog';
@@ -36,6 +38,7 @@ export default function MainMap(props) {
 
   const [addMode, setAddMode] = useState(false);
   const [latlng, setLatLng] = useState({});
+  const [geometryWKB, setGeometryWKB] = useState(null);
 
   const context = useContext(DelaContext);
 
@@ -48,13 +51,12 @@ export default function MainMap(props) {
    */
 
   const handleClick = (e) => {
-    const map = mapRef.current
-    if (map != null) {
-      console.log(e.latlng);
+    // if (map != null) {
+    //   console.log(e.latlng);
       // setLatLng(e.latlng);
       // context.setUpdateMode(false);
       // context.openManageParcelDialog(true);
-    }
+    // }
   };
 
   /**
@@ -79,6 +81,9 @@ export default function MainMap(props) {
    */
   const onFeatureCreation = (geojson) => {
 
+    var geometryWKB = wkx.Geometry.parseGeoJSON(geojson.geometry).toWkb();
+    setGeometryWKB(geometryWKB);
+
     switch (geojson.geometry.type) {
       case 'Point': {
         const coords = geojson.geometry.coordinates;
@@ -88,20 +93,15 @@ export default function MainMap(props) {
         break;
       }
       case 'Polygon': {
-        const coords = geojson.geometry.coordinates[0][0];
+        var center = gju.rectangleCentroid(geojson.geometry);
+        const coords = center.coordinates;
         setLatLng({ 'lat': coords[1], 'lng': coords[0] });
         context.setUpdateMode(false);
         context.openManageParcelDialog(true);
         break;
       }
       default: console.log(geojson.geometry);
-    }
-
-    /*
-    var geometryWKB = wkx.Geometry.parseGeoJSON(geojson.geometry).toWkb();
-    const wkbHash = web3.utils.soliditySha3(geometryWKB);
-    kvdbFeatures.put(wkbHash, geometryWKB);
-     */
+    }    
   }
 
   /**
@@ -151,7 +151,7 @@ export default function MainMap(props) {
 
         {addMode && <FeatureGroupMapToolBar onChange={onFeatureCreation} />}
 
-        <ManageParcelDialog latlng={latlng} />
+        <ManageParcelDialog latlng={latlng} geometryWKB={geometryWKB}/>
       </Map>
 
     </div>
