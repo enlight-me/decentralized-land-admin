@@ -66,6 +66,7 @@ export default function MainMap(props) {
   useEffect(() => {
     const map = mapRef.current
     if (map != null) {
+      context.setMainMapReference(map);
       map.leafletElement.locate()
     }
   }, []);

@@ -25,6 +25,8 @@ import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
+import L from 'leaflet';
+
 import DelaContext from '../context/dela-context';
 import ConfirmRevokeDialog from './ConfirmRevokeDialog';
 
@@ -103,6 +105,27 @@ export default function ParcelDetails(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleZoomInClick =(e) => {
+    context.mainMapReference.leafletElement.setView(props.parcel.latlng, 15);
+  }
+
+  const handleZoomToContentClick =(e) => {
+    var markersBounds = L.latLngBounds();
+    var markersCount = 0;
+    context.mainMapReference.leafletElement.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        markersBounds.extend(layer.getLatLng());
+        markersCount += 1;
+      }
+    });
+
+    if (markersCount > 1)     
+      context.mainMapReference.leafletElement.fitBounds(markersBounds);
+    else
+      context.mainMapReference.leafletElement.setView(props.parcel.latlng, 15);
+
+  }
 
   const menuId = 'primary-manage-parcel-menu';
   const renderMenu = (
@@ -187,13 +210,13 @@ export default function ParcelDetails(props) {
         <div>
           <CardActions disableSpacing>
             <div className={classes.menu}>
-              <Tooltip title="Zoom in">
+              <Tooltip title="Zoom in" onClick={handleZoomInClick}>
                 <IconButton aria-label="zoomin">
                   <ZoomInIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="Zoom to map">
-                <IconButton aria-label="zoommap">
+              <Tooltip title="Zoom to content" >
+                <IconButton aria-label="zoomcontent" onClick={handleZoomToContentClick}>
                   <ZoomOutMapIcon />
                 </IconButton>
               </Tooltip>

@@ -18,12 +18,14 @@ const GlobalState = (props) => {
     const [accounts, setAccounts] = useState([]);
     const [contractParcelReg, setContractParcelReg] = useState({});
     const [parcels, setParcels] = useState([]);
-    const [updateMode, setUpdateMode] = useState(false);
 
+    const [updateMode, setUpdateMode] = useState(false);
     const [manageParcelDialogOpen, openManageParcelDialog] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const [parcelToUpdate, setParcelToUpdate] = useState({});
+
+    const [mainMapReference, setMainMapReference] = useState({});
 
     /**
      * UI events handlers
@@ -274,6 +276,10 @@ const GlobalState = (props) => {
             web3,
             accounts,
             contractParcelReg,
+
+            
+            mainMapReference,
+            setMainMapReference,
 
             parcels,
             claimParcel,
