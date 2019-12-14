@@ -106,7 +106,14 @@ export default function ManageParcelDialog(props) {
                                             parcelAddress, parcelLabel, parcelLandUseCode.value,
                                             parcelCadastralType);
 
-      // TODO add props.geometryWKB to orbitDB
+      // write WKB of the parcel to the OrbitDB/IPFS
+      context.parcelKVDB.put(wkbHash, props.geometryWKB);
+      context.setParcelGeoms(geoms => {
+        const geom = {'wkbHash': wkbHash, 'geom': props.geometryWKB }
+        const list = [...geoms, geom];
+        return list;
+    });
+
       setTransactionHash(result);
       setSnackbarOpen(true);
       context.closeManageParcelDialog();

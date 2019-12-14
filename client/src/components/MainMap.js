@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, createRef } from 'react';
-import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control";
 import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
@@ -18,13 +18,19 @@ import FeatureGroupMapToolBar from './FeatureGroupMapToolBar';
  * @dev map icons
  */
 
- const lackingPoint = new L.Icon({
+const lackingPoint = new L.Icon({
   iconUrl: require('../assets/glyph-marker-icon.png'),
   iconRetinaUrl: require('../assets/glyph-marker-icon.png'),
   iconAnchor: [20, 40],
   popupAnchor: [0, -35],
   iconSize: [23, 40],
-})
+});
+
+var myStyle = {
+  "color": "#ff7800",
+  "weight": 5,
+  "opacity": 0.65
+};
 
 /**
  * @dev React-Leaflet functionnal component
@@ -53,9 +59,9 @@ export default function MainMap(props) {
   const handleClick = (e) => {
     // if (map != null) {
     //   console.log(e.latlng);
-      // setLatLng(e.latlng);
-      // context.setUpdateMode(false);
-      // context.openManageParcelDialog(true);
+    // setLatLng(e.latlng);
+    // context.setUpdateMode(false);
+    // context.openManageParcelDialog(true);
     // }
   };
 
@@ -102,7 +108,7 @@ export default function MainMap(props) {
         break;
       }
       default: console.log(geojson.geometry);
-    }    
+    }
   }
 
   /**
@@ -125,7 +131,7 @@ export default function MainMap(props) {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        
+
         {context.parcels.map((parcel, idx) => {
           return parcel.owner === context.accounts[0] ?
             <Marker position={parcel.latlng} key={`marker-${idx}`} icon={lackingPoint}>
@@ -140,6 +146,32 @@ export default function MainMap(props) {
               </Popup>
             </Marker>
         })}
+        
+        {context.parcels.map((parcel) => {
+          var kvGeom = context.parcelGeoms.filter((geom) => geom.wkbHash === parcel.wkbHash)[0];
+           
+          if (typeof kvGeom !== 'undefined') {
+            var geojson = wkx.Geometry.parse(kvGeom.geom).toGeoJSON();
+            // console.log(geojson);
+            if (geojson.type === 'Polygon')
+              return (
+                <GeoJSON key={parcel.wkbHash}
+                  data={geojson}
+                  // data={context.parcelGeoms[parcel.wkbHash]}
+                  style={myStyle}
+                />
+              )
+          }                    
+        })}
+
+        {/* {context.parcels.map((parcel) => { console.log(parcel.wkbHash, context.parcelGeoms)
+        return (
+            <GeoJSON key={parcel.wkbHash}
+              data={wkx.Geometry.parse(wkb).toGeoJSON()}
+              // data={context.parcelGeoms[parcel.wkbHash]}
+              style={myStyle}
+            />
+          )})} */}
 
         <Control>
           <Fab color={addMode ? "secondary" : "primary"}
@@ -152,7 +184,7 @@ export default function MainMap(props) {
 
         {addMode && <FeatureGroupMapToolBar onChange={onFeatureCreation} />}
 
-        <ManageParcelDialog latlng={latlng} geometryWKB={geometryWKB}/>
+        <ManageParcelDialog latlng={latlng} geometryWKB={geometryWKB} />
       </Map>
 
     </div>

@@ -5,6 +5,10 @@ export default React.createContext({
     accounts: [],
     contractParcelReg: {},
 
+    parcelKVDB : null,
+    parcelGeoms : [],
+    setParcelGeoms: () => {},
+
     mainMapReference: {},
     setMainMapReference: () => { },
 

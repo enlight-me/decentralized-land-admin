@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { geoToH3, h3ToGeo } from 'h3-js';
 
 import getWeb3 from "../utils/getWeb3";
+import getOrbitDB from "../utils/getOrbitDB";
+
 import DelaContext from './dela-context';
 
 import LAParcelRegistry from "../contracts/LAParcelRegistry.json";
@@ -18,6 +20,10 @@ const GlobalState = (props) => {
     const [accounts, setAccounts] = useState([]);
     const [contractParcelReg, setContractParcelReg] = useState({});
     const [parcels, setParcels] = useState([]);
+
+
+    const [parcelKVDB, setParcelKVDB] = useState(null);
+    const [parcelGeoms, setParcelGeoms] = useState([]);
 
     const [updateMode, setUpdateMode] = useState(false);
     const [manageParcelDialogOpen, openManageParcelDialog] = useState(false);
@@ -45,6 +51,11 @@ const GlobalState = (props) => {
      */
 
     useEffect(() => {
+
+        getOrbitDB(false, getParcelGeoms).then((kvDB) => {
+            setParcelKVDB(kvDB);
+        }); //getOrbitDB
+
         initWeb3()
             .then((res) => {
                 const [_web3, _accounts, _contract] = res;
@@ -60,6 +71,7 @@ const GlobalState = (props) => {
             .catch(e => {
                 console.log(e);
             });
+
     }, []);
 
 
@@ -139,6 +151,15 @@ const GlobalState = (props) => {
      * @notice Handle Smart contract log events : claimParcel
      */
 
+    const getParcelGeoms = (address, hash, entry, progress, total) => {
+        // console.log('load----', entry.payload);
+        setParcelGeoms(geoms => {
+            const geom = {'wkbHash': entry.payload.key, 'geom': entry.payload.value }
+            const list = [...geoms, geom];
+            return list;
+        });
+    }
+
     const eventParcelClaimed = async (err, events, web3, accounts, contract) => {
 
         const res = events.returnValues;
@@ -159,8 +180,8 @@ const GlobalState = (props) => {
 
         const parcelDetails = {
             csc: parcel.csc, latlng, addr: parcel.addr, lbl: parcel.lbl,
-            area: parcel.area, parcelLandUseCode: parcel.parcelLandUseCode, 
-            owner: parcel.owner, cadastralType : parcel.cadastralType
+            area: parcel.area, parcelLandUseCode: parcel.parcelLandUseCode,
+            owner: parcel.owner, cadastralType: parcel.cadastralType, wkbHash: res.wkbHash
         };
 
         setParcels(parcels => {
@@ -277,6 +298,9 @@ const GlobalState = (props) => {
             accounts,
             contractParcelReg,
 
+            parcelKVDB,
+            parcelGeoms,
+            setParcelGeoms,
             
             mainMapReference,
             setMainMapReference,
