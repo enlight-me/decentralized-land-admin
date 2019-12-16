@@ -9,9 +9,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import UpdateIcon from '@material-ui/icons/Update';
+import InfoIcon from '@material-ui/icons/Info';
+import Tooltip from '@material-ui/core/Tooltip';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import {
+    Link
+  } from "react-router-dom";
 
 import DelaContext from '../context/dela-context';
 
@@ -23,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: '#3f3d4b',
     },
 
     menuButton: {
@@ -105,16 +109,14 @@ export default function MainAppBar(props) {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton aria-label="Update spatial index"
-                    color="inherit"
-                    >
-                    <Badge badgeContent={0} color="secondary">
-                        <UpdateIcon />
-                    </Badge>
-                </IconButton>
-                <p >Update map</p>
-            </MenuItem>
+            <Link to="/about">
+                <MenuItem>
+                    <IconButton aria-label="About" color="inherit">
+                        <InfoIcon />
+                    </IconButton>
+                    <p >About</p>
+                </MenuItem>
+            </Link>
             <MenuItem>
                 <IconButton aria-label="show 11 new notifications" color="inherit">
                     <Badge badgeContent={11} color="secondary">
@@ -158,13 +160,11 @@ export default function MainAppBar(props) {
 
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="Update spatial index"
-                            color="inherit"
-                            >
-                            <Badge badgeContent={0} color="secondary">
-                                <UpdateIcon />
-                            </Badge>
-                        </IconButton>
+                        <Link to="/about">
+                            <IconButton aria-label="About" color="primary">
+                            <Tooltip title="About" aria-label="edit"><InfoIcon /></Tooltip>
+                            </IconButton>
+                        </Link>
                         <IconButton aria-label="show new notifications" color="inherit">
                             <Badge badgeContent={17} color="secondary">
                                 <NotificationsIcon />

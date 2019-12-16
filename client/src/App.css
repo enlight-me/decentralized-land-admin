@@ -1,57 +1,60 @@
-.App {
-  text-align: center;
+h2,
+h3,
+h4,
+h5 {
+  color: #3f3d4b; 
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.blurb {
+  background-color: #3f3d4b;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.opening-blurb {
+  padding-top: 6rem;
+  padding-left: 4rem;
+}
+
+.landingContainer {
+  height: 100vh;
+  width: 100%;
+  background-image: url("./assets/cadastre-top.jpg");
+  background-size:  cover;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-position: top left;
+}
+
+
+.howitworks {
+  z-index: 2;
+  width: 100%;
+  background-image: url("./assets/cadastre.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top right;
+  transform: translate(0, 10px);
+}
+
+
+.Grid {
+  z-index: 1000;
+  width: 60vw;
+  height: 40vh;
+  margin: auto;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.Grid-item {
+  width: 32%;
+  height: 32%;
+  margin: 0.5%;
+}
+
+footer {
+  background-color: #3f3d4b;
+  transform: translate(0, 20px);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.myButton {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-	background-color:#ededed;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#777777;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-	background-color:#dfdfdf;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
 }

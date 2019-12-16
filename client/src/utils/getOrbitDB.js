@@ -1,8 +1,6 @@
 import IpfsClient from 'ipfs-http-client';
 import IPFS from 'ipfs';
 import OrbitDB from 'orbit-db';
-import wkx from 'wkx';
-import { isContext } from 'vm';
 
 const getOrbitDB = (useHttp, getParcelGeoms) =>
   new Promise((resolve, reject) => {

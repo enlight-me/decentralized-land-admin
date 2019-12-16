@@ -1,11 +1,21 @@
 import React from "react";
+import './App.css';
 import { CssBaseline } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 import GlobalState from './context/GlobalState';
 import MainAppBar from './components/MainAppBar';
 import MainDrawer from './components/MainDrawer';
 import MainMap from './components/MainMap';
+
+import About from './pages/About';
+import Dashboard from './pages/Dashboard';
 
 /**
  * @notice Global App Theme
@@ -14,6 +24,10 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark', // dark : light    
   },
+  typography: {
+    fontFamily: 'Lato, Helvetica, sans-serif',
+    fontWeight: 700
+  }
 });
 
 /**
@@ -34,15 +48,28 @@ export default function App(props) {
     <div className="App">
       <GlobalState>
         <ThemeProvider theme={theme}>
+          <Router>
+            <CssBaseline />
+            
+            <Switch>
 
-          <CssBaseline />
+              <Route path="/about">
+                <About />
+              </Route>
 
-          <MainDrawer />
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
+              
+              <Route path="/">
+                <MainDrawer />
+                <MainAppBar />
+                <MainMap />
+              </Route>
 
-          <MainAppBar/>
+            </Switch>
 
-          <MainMap />
-
+          </Router>
         </ThemeProvider>
       </GlobalState>
     </div>
