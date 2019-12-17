@@ -62,9 +62,9 @@ export default function About() {
           <div className={classes.grow} />
           
           <div>
-            <Link to='/'><Button color="inherit">Map</Button></Link>
             <a href="https://github.com/allilou/onchain-land-administration"><Button color="inherit">Github</Button></a>
-            <Link to='/dashboard'><Button color="inherit" color="primary" variant="contained">Dashboard</Button></Link>
+            <Link to='/dashboard'><Button color="inherit">Dashboard</Button></Link>
+            <Link to='/'><Button color="inherit"color="primary" variant="contained">Map</Button></Link>
           </div>
          
         </Toolbar>

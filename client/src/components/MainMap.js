@@ -176,6 +176,7 @@ export default function MainMap(props) {
         <Control>
           <Fab color={addMode ? "secondary" : "primary"}
             aria-label={addMode ? "Add" : "View"}
+            size={'medium'}
             onClick={() => setAddMode(!addMode)}
           >
             {addMode ? <EditIcon /> : <Tooltip title="Edit" aria-label="edit"><MapIcon /></Tooltip>}

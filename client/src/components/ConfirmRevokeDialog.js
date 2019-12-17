@@ -42,7 +42,7 @@ export default function ConfirmRevokeDialog({open, setOpen, parcel}) {
           <Button onClick={handleRevokeParcel} color="secondary" >
             Revoke
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleClose} color="primary" autoFocus variant="contained">
             Cancel
           </Button>
         </DialogActions>

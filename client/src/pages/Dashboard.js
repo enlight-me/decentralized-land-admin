@@ -58,9 +58,9 @@ export default function About() {
           <div className={classes.grow} />
           
           <div>
-            <Link to='/'><Button color="inherit">Map</Button></Link>
             <a href="https://github.com/allilou/onchain-land-administration"><Button color="inherit">Github</Button></a>
-            <Link to='/dashboard'><Button color="inherit" color="primary" variant="contained">Dashboard</Button></Link>
+            <Link to='/about'><Button color="inherit">About</Button></Link>
+            <Link to='/'><Button color="inherit" color="primary" variant="contained">Map</Button></Link>
           </div>
          
         </Toolbar>
@@ -68,8 +68,8 @@ export default function About() {
 
       <div className="landingContainer">
         <div className={classes.root}>
-          <Grid container spacing={3} alignItems="center">
-            <Grid item xs={12} md={6} alignItems="center">
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
               <div className='opening-blurb'>
                 <Typography variant='h3'> Dashboard </Typography>
                 <hr />
