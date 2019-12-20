@@ -1256,8 +1256,8 @@
     "4": {
       "events": {},
       "links": {},
-      "address": "0xA8E4dE5171e41bcEC54FfCBAEaf81Cb12b65A921",
-      "transactionHash": "0xc8f68d555be52957d934ef1a7d1d49619e665ffad2e63e49e2082dd64d7d72b8"
+      "address": "0x7B9cfF487EE23e263D7BCC983a561e2bE0A9ee49",
+      "transactionHash": "0x6c4d3dc772efc56a75fd459a02ad6a6d6deacb5e89bb6bb2e5596c0633092afa"
     },
     "1573207252104": {
       "events": {},
@@ -1435,7 +1435,7 @@
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-12-20T20:42:33.689Z",
+  "updatedAt": "2019-12-20T20:57:08.677Z",
   "devdoc": {
     "methods": {
       "computeCSCIndex(address,bytes15)": {

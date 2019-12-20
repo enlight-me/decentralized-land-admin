@@ -3839,10 +3839,10 @@
         }
       },
       "links": {
-        "CSGeometryLib": "0xA8E4dE5171e41bcEC54FfCBAEaf81Cb12b65A921"
+        "CSGeometryLib": "0x7B9cfF487EE23e263D7BCC983a561e2bE0A9ee49"
       },
-      "address": "0x409f206ffE428cD98Bf8f1a8E1236039075d49E2",
-      "transactionHash": "0x1ce696613c345849ebcdb1127cec80b806a684bc78cff2d4266c5e0835648a4c"
+      "address": "0x0e41cE849a002fcF59990920f2d0eC7821767c24",
+      "transactionHash": "0xbb2d2d3a189270462ca9d8b787a5ee1dd983890586700b7f5cd00a6e6a4e0bc5"
     },
     "1573207252104": {
       "events": {
@@ -9158,7 +9158,7 @@
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-12-20T20:42:33.669Z",
+  "updatedAt": "2019-12-20T20:57:08.663Z",
   "devdoc": {
     "methods": {
       "claimParcel(bytes15,bytes32,string,string,uint256,string,uint8)": {

@@ -89,6 +89,13 @@ npm install
 npm start
 ```
 
+To deploy to github pages :
+```
+export NODE_OPTIONS=--max_old_space_size=8192
+npm run build
+npm run deploy
+```
+
 Install dependiencies and compile Node.js/Express backend server (deprecated).
 
 ```
