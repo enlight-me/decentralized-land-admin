@@ -1,21 +1,23 @@
 {
   "files": {
-    "main.css": "/onchain-land-administration/static/css/main.795991f2.chunk.css",
-    "main.js": "/onchain-land-administration/static/js/main.c52abc59.chunk.js",
-    "main.js.map": "/onchain-land-administration/static/js/main.c52abc59.chunk.js.map",
-    "runtime-main.js": "/onchain-land-administration/static/js/runtime-main.e2b8a91b.js",
-    "runtime-main.js.map": "/onchain-land-administration/static/js/runtime-main.e2b8a91b.js.map",
-    "static/js/2.eee446ea.chunk.js": "/onchain-land-administration/static/js/2.eee446ea.chunk.js",
-    "static/js/2.eee446ea.chunk.js.map": "/onchain-land-administration/static/js/2.eee446ea.chunk.js.map",
+    "main.css": "/onchain-land-administration/static/css/main.ac1b4d2e.chunk.css",
+    "main.js": "/onchain-land-administration/static/js/main.edf38461.chunk.js",
+    "main.js.map": "/onchain-land-administration/static/js/main.edf38461.chunk.js.map",
+    "runtime-main.js": "/onchain-land-administration/static/js/runtime-main.ceae20f7.js",
+    "runtime-main.js.map": "/onchain-land-administration/static/js/runtime-main.ceae20f7.js.map",
+    "static/js/2.9a691dea.chunk.js": "/onchain-land-administration/static/js/2.9a691dea.chunk.js",
+    "static/js/2.9a691dea.chunk.js.map": "/onchain-land-administration/static/js/2.9a691dea.chunk.js.map",
     "index.html": "/onchain-land-administration/index.html",
-    "precache-manifest.ef16cc28c54c6ed936f47f573872a93f.js": "/onchain-land-administration/precache-manifest.ef16cc28c54c6ed936f47f573872a93f.js",
+    "precache-manifest.e71f600355b37f90026cfb7aa1014884.js": "/onchain-land-administration/precache-manifest.e71f600355b37f90026cfb7aa1014884.js",
     "service-worker.js": "/onchain-land-administration/service-worker.js",
-    "static/css/main.795991f2.chunk.css.map": "/onchain-land-administration/static/css/main.795991f2.chunk.css.map"
+    "static/css/main.ac1b4d2e.chunk.css.map": "/onchain-land-administration/static/css/main.ac1b4d2e.chunk.css.map",
+    "static/js/2.9a691dea.chunk.js.LICENSE": "/onchain-land-administration/static/js/2.9a691dea.chunk.js.LICENSE",
+    "static/media/App.css": "/onchain-land-administration/static/media/cadastre.6c9b9019.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e2b8a91b.js",
-    "static/js/2.eee446ea.chunk.js",
-    "static/css/main.795991f2.chunk.css",
-    "static/js/main.c52abc59.chunk.js"
+    "static/js/runtime-main.ceae20f7.js",
+    "static/js/2.9a691dea.chunk.js",
+    "static/css/main.ac1b4d2e.chunk.css",
+    "static/js/main.edf38461.chunk.js"
   ]
 }
