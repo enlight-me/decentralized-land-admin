@@ -34,7 +34,7 @@ export default function ConfirmRevokeDialog({open, setOpen, parcel}) {
         <DialogContentText id="alert-dialog-description">
 
           Are you sur you want to revoke your ownership of this parcel. <br/>
-           Label : {parcel.lbl} / Address : {parcel.addr} / Land use : {parcel.parcelType}
+           Label : {parcel.lbl} / Address : {parcel.addr} / Land use : {parcel.parcelLandUseCode}
 
         </DialogContentText>
         </DialogContent>
@@ -42,7 +42,7 @@ export default function ConfirmRevokeDialog({open, setOpen, parcel}) {
           <Button onClick={handleRevokeParcel} color="secondary" >
             Revoke
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleClose} color="primary" autoFocus variant="contained">
             Cancel
           </Button>
         </DialogActions>

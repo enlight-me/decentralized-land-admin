@@ -12,9 +12,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 const suggestions = [
-  { label: 'Building' },
-  { label: 'Urban' },
-  { label: 'Argriculture' },
+  { label: 'Residential' },
+  { label: 'Commercial' },
+  { label: 'Argricultural' },
   { label: 'Industrial' },
   { label: 'Forest' },
   { label: 'Fishery' },
@@ -317,13 +317,13 @@ const components = {
   ValueContainer,
 };
 
-export default function ParcelTypeAutoList(props) {
+export default function ParcelLandUseCodeAutoList(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [single, setSingle] = React.useState('Building');
 
   const handleChangeSingle = value => {
-    props.setParcelType(value);
+    props.setParcelLandUseCode(value);
     setSingle(value);
   };
 
@@ -345,17 +345,17 @@ export default function ParcelTypeAutoList(props) {
           styles={selectStyles}
           inputId="react-select-single"
           TextFieldProps={{
-            label: 'Type',
+            label: 'Parcel Land Use Code',
             InputLabelProps: {
               htmlFor: 'react-select-single',
               shrink: true,
             },
           }}
-          placeholder="Search parcel type"
+          placeholder="Search parcel Land Use Code"
           options={suggestions}
           components={components}
           value={single}
-          defaultInputValue={props.parcelType}
+          defaultInputValue={props.parcelLandUseCode}
           onChange={handleChangeSingle}
         />       
       </NoSsr>

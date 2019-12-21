@@ -5,19 +5,26 @@ export default React.createContext({
     accounts: [],
     contractParcelReg: {},
 
-    parcels: [],
-    claimParcel: (lat, lng, wkbHash, parcelArea, parcelAddressId, parcelLabel, parcelType) => {},
-    updateParcel: (parcelArea, parcelAddressId, parcelLabel, parcelType) => {},
-    revokeParcel: (parcel) => {},
+    parcelKVDB : null,
+    parcelGeoms : [],
+    setParcelGeoms: () => {},
 
-    updateMode : false,
-    setUpdateMode : () => {},
-    parcelToUpdate: {} ,
-    setParcelToUpdate: () => {},
+    mainMapReference: {},
+    setMainMapReference: () => { },
+
+    parcels: [],
+    claimParcel: (lat, lng, wkbHash, parcelArea, parcelExtAddress, parcelLabel, parcelLandUseCode, cadastralType) => { },
+    updateParcel: (parcelArea, parcelExtAddress, parcelLabel, parcelLandUseCode, parcelCadastralType) => { },
+    revokeParcel: (parcel) => { },
+
+    updateMode: false,
+    setUpdateMode: () => { },
+    parcelToUpdate: {},
+    setParcelToUpdate: () => { },
     manageParcelDialogOpen: false,
-    openManageParcelDialog : () => {},
-    closeManageParcelDialog : () => {},
+    openManageParcelDialog: () => { },
+    closeManageParcelDialog: () => { },
 
     drawerOpen: false,
-    toggleDrawer: () => {}
+    toggleDrawer: () => { }
 });

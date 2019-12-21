@@ -39,30 +39,30 @@ contract LAParcelRegistry is CSFeatureRegistry {
   * @notice addFeature modifier
   * @param dggsIndex dggsIndex of the feature
   * @param wkbHash Well Known Binary Hash
-  * @param addr External Address ID
-  * @param lbl Parcel label
+  * @param extAddr External Address
+  * @param label Parcel label
   * @param area Parcel Area
+  * @param landUseCode land use code
+  * @param cadastralType cadastral type (parcel / building)
   * @return the Crypto-Spatial Coordinate (CSC) of the feature
   */
   function claimParcel(bytes15 dggsIndex,
                        bytes32 wkbHash,
-                       string memory addr,
-                       string memory lbl,
+                       string memory extAddr,
+                       string memory label,
                        uint area,
-                       string memory parcelType)
-  public addFeature( dggsIndex, wkbHash, msg.sender)
-  returns (bytes32) {
+                       string memory landUseCode,
+                       LAParcel.CadastralTypeCode cadastralType)
+      public addFeature( dggsIndex, wkbHash, msg.sender)
+      returns (bytes32) {
 
     // TODO check inputs
 
     LAParcel parcel = new LAParcel(dggsIndex,wkbHash, msg.sender, h3Resolution);
     bytes32 csc = parcel.getFeatureCSC();
     features[csc] = address(parcel);
-    parcel.setExtAddressId(addr);
-    parcel.setLabel(lbl);
-    parcel.setArea(area);
-    parcel.setParcelType(parcelType);
-    emit LogParcelClaimed(csc, dggsIndex, wkbHash, addr, lbl, area, parcelType, msg.sender);
+    parcel.setParcelValues(label, extAddr, landUseCode, area, cadastralType);
+    emit LogParcelClaimed(csc, dggsIndex, wkbHash, extAddr, label, area, landUseCode, msg.sender);
     return csc;
   }
 }

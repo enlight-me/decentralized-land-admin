@@ -25,6 +25,8 @@ import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
+import L from 'leaflet';
+
 import DelaContext from '../context/dela-context';
 import ConfirmRevokeDialog from './ConfirmRevokeDialog';
 
@@ -63,7 +65,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: "left",
   },
   content: {
-    paddingTop:0,
+    paddingTop:1,
     "&:last-child": {
       paddingBottom: 3
     }
@@ -103,6 +105,27 @@ export default function ParcelDetails(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleZoomInClick =(e) => {
+    context.mainMapReference.leafletElement.setView(props.parcel.latlng, 15);
+  }
+
+  const handleZoomToContentClick =(e) => {
+    var markersBounds = L.latLngBounds();
+    var markersCount = 0;
+    context.mainMapReference.leafletElement.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        markersBounds.extend(layer.getLatLng());
+        markersCount += 1;
+      }
+    });
+
+    if (markersCount > 1)     
+      context.mainMapReference.leafletElement.fitBounds(markersBounds);
+    else
+      context.mainMapReference.leafletElement.setView(props.parcel.latlng, 15);
+
+  }
 
   const menuId = 'primary-manage-parcel-menu';
   const renderMenu = (
@@ -156,19 +179,23 @@ export default function ParcelDetails(props) {
           avatar={props.owner ?
             <Avatar aria-label="owner" className={classes.purpleAvatar}>
               O
-          </Avatar>
-            :
+            </Avatar>
+              :
             <Avatar aria-label="laker" className={classes.orangeAvatar}>
-              NO
-          </Avatar>
-          }
+                NO
+            </Avatar>
+            }
           action={
             <IconButton aria-label="settings" onClick={handleManageParcelMenuOpen}>
               <MoreVertIcon />
             </IconButton>
           }          
           title={props.parcel.lbl}
-          subheader={props.parcel.parcelType}
+          subheader={props.parcel.cadastralType === 1 ?
+            <span>BUILDING</span>
+            :
+            <span>PARCEL</span>
+          }
         />
         {/* <CardMedia
         className={classes.media}
@@ -176,19 +203,20 @@ export default function ParcelDetails(props) {
         title="Paella dish"
       /> */}
         <CardContent className={classes.content}>
-          <Typography className={classes.typography}> Area : {props.parcel.area} </Typography>
+        <Typography className={classes.typography}> Land Use : {props.parcel.parcelLandUseCode}</Typography>
+        <Typography className={classes.typography}> Area : {props.parcel.area} </Typography>
         </CardContent>
         {props.expansion &&
         <div>
           <CardActions disableSpacing>
             <div className={classes.menu}>
-              <Tooltip title="Zoom in">
+              <Tooltip title="Zoom in" onClick={handleZoomInClick}>
                 <IconButton aria-label="zoomin">
                   <ZoomInIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="Zoom to map">
-                <IconButton aria-label="zoommap">
+              <Tooltip title="Zoom to content" >
+                <IconButton aria-label="zoomcontent" onClick={handleZoomToContentClick}>
                   <ZoomOutMapIcon />
                 </IconButton>
               </Tooltip>
@@ -207,7 +235,7 @@ export default function ParcelDetails(props) {
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent className={classes.content}>
-              <Typography className={classes.typography}> Address : {props.parcel.addr}</Typography>
+            <Typography className={classes.typography}> Address : {props.parcel.addr}</Typography>
             </CardContent>
           </Collapse>
         </div>

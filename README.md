@@ -70,14 +70,14 @@ Install smart contracts dependecies (OpenZeppelin libraries) and migrate the sol
 
 ```
 cd solidity 
-npm install
+npm install @truffle/hdwallet-provider @openzeppelin/contracts
 truffle migrate --reset --network develop
 ```
 
-For the rinkeby testnet :
+For the rinkeby testnet (put your seed phrase in a text file on solidity/.secret):
 
 ```
-truffle migrate --network rinkeby
+truffle migrate --network rinkeby 
 ```
 
 Install dependiencies and compile React/Web3 frontend web application.
@@ -89,7 +89,14 @@ npm install
 npm start
 ```
 
-Install dependiencies and compile Node.js/Express backend server (optionnal).
+To deploy to github pages :
+```
+export NODE_OPTIONS=--max_old_space_size=8192
+npm run build
+npm run deploy
+```
+
+Install dependiencies and compile Node.js/Express backend server (deprecated).
 
 ```
 cd server
@@ -156,3 +163,4 @@ Further Reading
 
 - [Open Land Data in the Fight Against Corruption - Discussion Report - landportal.org](https://landportal.org/file/47749/download)
 
+- [CADASTA-ESRI | Fit-for-Purpose Land Administration with LADM](https://www.youtube.com/watch?v=6QjH4vdtlrU) 
