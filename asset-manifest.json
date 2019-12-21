@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/onchain-land-administration/static/css/main.ac1b4d2e.chunk.css",
-    "main.js": "/onchain-land-administration/static/js/main.edf38461.chunk.js",
-    "main.js.map": "/onchain-land-administration/static/js/main.edf38461.chunk.js.map",
+    "main.js": "/onchain-land-administration/static/js/main.e0f2c7de.chunk.js",
+    "main.js.map": "/onchain-land-administration/static/js/main.e0f2c7de.chunk.js.map",
     "runtime-main.js": "/onchain-land-administration/static/js/runtime-main.ceae20f7.js",
     "runtime-main.js.map": "/onchain-land-administration/static/js/runtime-main.ceae20f7.js.map",
-    "static/js/2.9a691dea.chunk.js": "/onchain-land-administration/static/js/2.9a691dea.chunk.js",
-    "static/js/2.9a691dea.chunk.js.map": "/onchain-land-administration/static/js/2.9a691dea.chunk.js.map",
+    "static/js/2.22facb62.chunk.js": "/onchain-land-administration/static/js/2.22facb62.chunk.js",
+    "static/js/2.22facb62.chunk.js.map": "/onchain-land-administration/static/js/2.22facb62.chunk.js.map",
     "index.html": "/onchain-land-administration/index.html",
-    "precache-manifest.e71f600355b37f90026cfb7aa1014884.js": "/onchain-land-administration/precache-manifest.e71f600355b37f90026cfb7aa1014884.js",
+    "precache-manifest.0a4aca6dde54d9f0423bc6e84e6f2c2f.js": "/onchain-land-administration/precache-manifest.0a4aca6dde54d9f0423bc6e84e6f2c2f.js",
     "service-worker.js": "/onchain-land-administration/service-worker.js",
     "static/css/main.ac1b4d2e.chunk.css.map": "/onchain-land-administration/static/css/main.ac1b4d2e.chunk.css.map",
-    "static/js/2.9a691dea.chunk.js.LICENSE": "/onchain-land-administration/static/js/2.9a691dea.chunk.js.LICENSE",
+    "static/js/2.22facb62.chunk.js.LICENSE": "/onchain-land-administration/static/js/2.22facb62.chunk.js.LICENSE",
     "static/media/App.css": "/onchain-land-administration/static/media/cadastre.6c9b9019.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.ceae20f7.js",
-    "static/js/2.9a691dea.chunk.js",
+    "static/js/2.22facb62.chunk.js",
     "static/css/main.ac1b4d2e.chunk.css",
-    "static/js/main.edf38461.chunk.js"
+    "static/js/main.e0f2c7de.chunk.js"
   ]
 }
