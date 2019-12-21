@@ -13,6 +13,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import Tooltip from '@material-ui/core/Tooltip';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Button from '@material-ui/core/Button';
 import {
     Link
   } from "react-router-dom";
@@ -34,6 +35,7 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2),
     },
     title: {
+        marginTop: 4,
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
@@ -161,9 +163,7 @@ export default function MainAppBar(props) {
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
                         <Link to="/about">
-                            <IconButton aria-label="About" color="primary">
-                            <Tooltip title="About" aria-label="edit"><InfoIcon /></Tooltip>
-                            </IconButton>
+                            <Button color="secondary" variant="outlined">About</Button>
                         </Link>
                         <IconButton aria-label="show new notifications" color="inherit">
                             <Badge badgeContent={17} color="secondary">

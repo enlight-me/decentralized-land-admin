@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import PowerIcon from '@material-ui/icons/Power';
+import YouTube from 'react-youtube';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -41,18 +42,31 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     backgroundColor: '#3f3d4b',
-},
+  },
+
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
 }));
 
 export default function About() {
   const classes = useStyles();
 
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: { // https://developers.google.com/youtube/player_parameters
+      autoplay: 1
+    }
+  };
+
   return (
     <Fragment>
-      <AppBar position="static"  className={classes.appBar}>
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <Link to='/'>
-            <img src={Logo} style={{ maxHeight: '100%', height: '60px' }} />
+            <img src={Logo} style={{ maxHeight: '100%', height: '60px' }} alt={""} />
           </Link>
           <Link to='/'>
             <Typography className={classes.title} variant="h4" noWrap>
@@ -60,13 +74,13 @@ export default function About() {
           </Typography>
           </Link>
           <div className={classes.grow} />
-          
+
           <div>
-            <a href="https://github.com/allilou/onchain-land-administration"><Button color="inherit">Github</Button></a>
-            <Link to='/dashboard'><Button color="inherit">Dashboard</Button></Link>
-            <Link to='/'><Button color="inherit"color="primary" variant="contained">Map</Button></Link>
+            <a href="https://github.com/allilou/onchain-land-administration"><Button color="secondary">Github</Button></a>
+            <Link to='/dashboard'><Button color="secondary">Dashboard</Button></Link>
+            <Link to='/'><Button color="secondary" variant="outlined">Map</Button></Link>
           </div>
-         
+
         </Toolbar>
       </AppBar>
 
@@ -83,7 +97,7 @@ export default function About() {
                   - a framework for geospatially enabled blockchain applications, <br />
                   - an extensible platform for value added location based blochchain applications, <br />
                   - an open source project.
-                                </Typography>
+                </Typography>
               </div>
             </Grid>
             <Grid item xs={12} md={6} style={{ textAlign: 'center' }}>
@@ -152,6 +166,17 @@ export default function About() {
           </Grid>
         </Grid>
       </div>
+      <div className='blurb'>
+        <Grid container spacing={3} >
+          <Grid item xs={12} md={12} style={{ textAlign: 'center', padding: '5rem' }}>
+            <YouTube
+                videoId="zqujtNPP8rU"
+                opts={opts}
+              />
+          </Grid>
+        </Grid>
+      </div>
+
       <Footer />
 
     </Fragment>
