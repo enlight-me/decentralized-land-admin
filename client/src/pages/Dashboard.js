@@ -48,7 +48,7 @@ export default function About() {
       <AppBar position="static"  className={classes.appBar}>
         <Toolbar>
           <Link to='/'>
-            <img src={Logo} style={{ maxHeight: '100%', height: '60px' }} />
+            <img src={Logo} style={{ maxHeight: '100%', height: '60px' }}  alt={""}/>
           </Link>
           <Link to='/'>
             <Typography className={classes.title} variant="h4" noWrap>
@@ -58,9 +58,9 @@ export default function About() {
           <div className={classes.grow} />
           
           <div>
-            <a href="https://github.com/allilou/onchain-land-administration"><Button color="inherit">Github</Button></a>
-            <Link to='/about'><Button color="inherit">About</Button></Link>
-            <Link to='/'><Button color="inherit" color="primary" variant="contained">Map</Button></Link>
+            <a href="https://github.com/allilou/onchain-land-administration"><Button color="secondary">Github</Button></a>
+            <Link to='/about'><Button color="secondary">About</Button></Link>
+            <Link to='/'><Button color="secondary" variant="outlined">Map</Button></Link>
           </div>
          
         </Toolbar>
