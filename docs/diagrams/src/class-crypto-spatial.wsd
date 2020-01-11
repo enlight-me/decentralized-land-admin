@@ -1,0 +1,61 @@
+@startuml class-crypto-spatial-lib
+package CryptoSpatial {
+    class CSFeature <<contract>>  {
+        # bytes32 csc
+        # bytes32 wkbHash  
+        # bytes15  dggsIndex
+        # uint  h3Resolution
+        # CSGeometryType geomteryType
+        - Role _admins
+        ===== Events ==
+        LogFeatureCreated()
+        LogFeatureKilled()
+        ===== Modifiers ==
+        onlyAdmins() 
+        ===== Functions ==
+        constructor() 
+        getGeometryType() 
+        getFeatureCSC() 
+        getFeatureDGGSIndex() 
+        fetchFeature() 
+        setWkbHash() 
+        isAdmin() 
+        kill() 
+    }
+
+    class CSSurface <<contract>> 
+    class CSCurve <<contract>> 
+    class CSPoint <<contract>> 
+    class CSFeatureRegistry <<contract>> {       
+        + uint h3Resolution
+        + string name
+        + string srs
+        # uint256 featuresCount 
+        # mapping(bytes32 => address) features
+        # mapping(bytes15 => bool) addedIndexes 
+        # mapping(bytes15 => address) indexOwner
+        ==== Events ==
+        LogNewFeatureAdded()
+        LogFeatureRemoved()
+        ==== Modifiers ==
+        addFeature()
+        featureExist()
+        ==== Functions ==
+        constructor() 
+        getFeatureCount() 
+        getFeature()
+        dggsIndexExist()
+        dggsIndexOwner()
+        removeFeature()
+    }
+
+    CSCurve -up-|> CSFeature 
+    CSPoint -up-|> CSFeature
+    CSSurface -up-|> CSFeature 
+
+    CSCurve -[hidden]> CSSurface 
+    CSCurve -[hidden]> CSPoint     
+
+    CSFeatureRegistry "0" --left-- "*" CSFeature
+}
+@enduml

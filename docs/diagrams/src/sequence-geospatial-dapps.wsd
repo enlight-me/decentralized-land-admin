@@ -1,0 +1,14 @@
+@startuml seq-geospatial-dapps
+
+actor User
+participant Web3App
+database OrbitDB
+database SmartContract
+
+User -> Web3App : Add/Update Feature
+Web3App -> Web3App : Calc wkbHash\n of the spatial feature
+Web3App -> SmartContract : Call addFeature \n / update state variables
+Web3App -> OrbitDB : Storing (wkbHash, WKB)\n as a key-value-pair
+SmartContract -> Web3App : Log event
+Web3App -> User : User Interface Update
+@enduml

@@ -1,0 +1,41 @@
+@startuml class-dela
+
+package geospatial {
+    class CSFeature <<contract>>  {
+       
+    }
+
+    class CSSurface <<contract>> 
+    class CSFeatureRegistry <<contract>> {    
+    }
+
+    CSSurface -up-|> CSFeature 
+
+    CSFeatureRegistry "0" --left-- "*" CSFeature
+}
+
+package DeLA {
+    class LAParcel <<contract>> {
+            # string extAddressId
+            # string label
+            # uint area
+            # string parcelType  
+            ==== Functions ==
+            constructor()
+            setExtAddressId()
+            setLabel()
+            setArea()
+            setParcelType()
+            fetchParcel() 
+    }
+    class LAParcelRegistry <<contract>> {
+        <<event>> LogParcelClaimed()
+        constructor()
+        claimParcel()
+    }
+    LAParcel -up-> CSSurface
+    LAParcelRegistry -up-> CSFeatureRegistry
+    LAParcel -left- "*" LAParcelRegistry
+}
+
+@enduml
