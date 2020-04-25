@@ -70,7 +70,7 @@ Install smart contracts dependecies (OpenZeppelin libraries) and migrate the sol
 
 ```
 cd solidity 
-npm install @truffle/hdwallet-provider @openzeppelin/contracts
+npm install @truffle/hdwallet-provider @openzeppelin/contracts@2.5.0
 truffle migrate --reset --network develop
 ```
 
