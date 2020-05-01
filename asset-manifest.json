@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/onchain-land-administration/static/css/main.ac1b4d2e.chunk.css",
-    "main.js": "/onchain-land-administration/static/js/main.e0f2c7de.chunk.js",
-    "main.js.map": "/onchain-land-administration/static/js/main.e0f2c7de.chunk.js.map",
-    "runtime-main.js": "/onchain-land-administration/static/js/runtime-main.ceae20f7.js",
-    "runtime-main.js.map": "/onchain-land-administration/static/js/runtime-main.ceae20f7.js.map",
-    "static/js/2.22facb62.chunk.js": "/onchain-land-administration/static/js/2.22facb62.chunk.js",
-    "static/js/2.22facb62.chunk.js.map": "/onchain-land-administration/static/js/2.22facb62.chunk.js.map",
-    "index.html": "/onchain-land-administration/index.html",
-    "precache-manifest.0a4aca6dde54d9f0423bc6e84e6f2c2f.js": "/onchain-land-administration/precache-manifest.0a4aca6dde54d9f0423bc6e84e6f2c2f.js",
-    "service-worker.js": "/onchain-land-administration/service-worker.js",
-    "static/css/main.ac1b4d2e.chunk.css.map": "/onchain-land-administration/static/css/main.ac1b4d2e.chunk.css.map",
-    "static/js/2.22facb62.chunk.js.LICENSE": "/onchain-land-administration/static/js/2.22facb62.chunk.js.LICENSE",
-    "static/media/App.css": "/onchain-land-administration/static/media/cadastre.6c9b9019.jpg"
+    "main.css": "/decentralized-land-admin/static/css/main.4edb77ec.chunk.css",
+    "main.js": "/decentralized-land-admin/static/js/main.b7d990cc.chunk.js",
+    "main.js.map": "/decentralized-land-admin/static/js/main.b7d990cc.chunk.js.map",
+    "runtime-main.js": "/decentralized-land-admin/static/js/runtime-main.d5fda583.js",
+    "runtime-main.js.map": "/decentralized-land-admin/static/js/runtime-main.d5fda583.js.map",
+    "static/js/2.125671a2.chunk.js": "/decentralized-land-admin/static/js/2.125671a2.chunk.js",
+    "static/js/2.125671a2.chunk.js.map": "/decentralized-land-admin/static/js/2.125671a2.chunk.js.map",
+    "index.html": "/decentralized-land-admin/index.html",
+    "precache-manifest.9476253bb70b262a3133fb5d6e8adc70.js": "/decentralized-land-admin/precache-manifest.9476253bb70b262a3133fb5d6e8adc70.js",
+    "service-worker.js": "/decentralized-land-admin/service-worker.js",
+    "static/css/main.4edb77ec.chunk.css.map": "/decentralized-land-admin/static/css/main.4edb77ec.chunk.css.map",
+    "static/js/2.125671a2.chunk.js.LICENSE.txt": "/decentralized-land-admin/static/js/2.125671a2.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/decentralized-land-admin/static/media/cadastre.6c9b9019.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ceae20f7.js",
-    "static/js/2.22facb62.chunk.js",
-    "static/css/main.ac1b4d2e.chunk.css",
-    "static/js/main.e0f2c7de.chunk.js"
+    "static/js/runtime-main.d5fda583.js",
+    "static/js/2.125671a2.chunk.js",
+    "static/css/main.4edb77ec.chunk.css",
+    "static/js/main.b7d990cc.chunk.js"
   ]
 }
