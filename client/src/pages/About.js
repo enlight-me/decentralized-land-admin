@@ -61,8 +61,8 @@ export default function About() {
   const classes = useStyles();
 
   const opts = {
-    height: "390",
-    width: "640",
+    height: "100%",
+    width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
