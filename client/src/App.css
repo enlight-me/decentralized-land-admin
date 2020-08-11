@@ -64,6 +64,27 @@ footer {
     padding-left: 4rem;
     width: 20rem;
   }
+
+  iframe {
+    height: 250px;
+  }
+
+  .locationBtn {
+    display: none;
+  }
+
+  ul {
+    display: inline !important;
+    font-size: 1rem !important;
+  }
+
+  li {
+    margin: 0.3rem;
+  }
+
+  h3 {
+    font-size: 2rem !important;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 768px) {

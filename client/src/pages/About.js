@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     display: "flex",
     flexDirection: "column",
+    flexWrap: "wrap",
     justifyContent: "space-around",
     fontSize: "1.3rem",
     listStyleType: "none",
@@ -61,7 +62,7 @@ export default function About() {
   const classes = useStyles();
 
   const opts = {
-    height: "100%",
+    height: "600px",
     width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
@@ -132,15 +133,6 @@ export default function About() {
                   </li>
                 </ul>
               </div>
-            </Grid>
-            <Grid item xs={12} md={6} style={{ textAlign: "center" }}>
-              <Link to="/">
-                <Button>
-                  <AddLocationIcon
-                    style={{ fontSize: 240, padding: "1rem", color: "#3F3D4B" }}
-                  />
-                </Button>
-              </Link>
             </Grid>
           </Grid>
         </div>
