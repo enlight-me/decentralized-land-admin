@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.3/leaflet.draw.css"/>
-  <link rel="stylesheet" href="https://video-react.github.io/assets/video-react.css"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.3/leaflet.draw.css" />
+  <link rel="stylesheet" href="https://video-react.github.io/assets/video-react.css" />
 
   <style>
     body {
@@ -19,9 +19,13 @@
       font-family: sans-serif;
       text-align: center;
     }
-     
+
+    a {
+      text-decoration: none;
+    }
+
     .sr-only {
-    display: none;
+      display: none;
     }
 
     .leaflet-container {
@@ -58,31 +62,34 @@
     }
 
     .leaflet-popup-content {
-    margin: 1px 1px 1px 1px;
+      margin: 1px 1px 1px 1px;
     }
 
     .leaflet-popup-content p {
       margin: 1px 1px;
-      }
+    }
 
-   .leaflet-popup-content-wrapper {
-    background: rgba(255, 255, 255, 0.014); 
-    /* background:#2c3e50; */
-    color:#fff;
-    font-size:16px;
-    line-height:24px;
+    .leaflet-popup-content-wrapper {
+      background: rgba(255, 255, 255, 0.014);
+      /* background:#2c3e50; */
+      color: #fff;
+      font-size: 16px;
+      line-height: 24px;
     }
-  .leaflet-popup-content-wrapper a {
-    color:rgba(255,255,255,0.5);
+
+    .leaflet-popup-content-wrapper a {
+      color: rgba(255, 255, 255, 0.5);
     }
-  .leaflet-popup-tip-container {
-    width:30px;
-    height:15px;
+
+    .leaflet-popup-tip-container {
+      width: 30px;
+      height: 15px;
     }
-  .leaflet-popup-tip {
-    border-left:0px solid transparent;
-    border-right:0px solid transparent;
-    border-top:5px solid #2c3e50;
+
+    .leaflet-popup-tip {
+      border-left: 0px solid transparent;
+      border-right: 0px solid transparent;
+      border-top: 5px solid #2c3e50;
     }
   </style>
   <link rel="shortcut icon" href="%PUBLIC_URL%/parcels-icon.png">

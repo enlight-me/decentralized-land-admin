@@ -2,7 +2,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: #3f3d4b; 
+  color: #3f3d4b;
 }
 
 .blurb {
@@ -12,18 +12,18 @@ h5 {
 .opening-blurb {
   padding-top: 6rem;
   padding-left: 4rem;
+  width: 60rem;
 }
 
 .landingContainer {
   height: 100vh;
   width: 100%;
   background-image: url("./assets/cadastre-top.jpg");
-  background-size:  cover;
+  background-size: cover;
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
   background-position: top left;
 }
-
 
 .howitworks {
   z-index: 2;
@@ -34,7 +34,6 @@ h5 {
   background-position: top right;
   transform: translate(0, 10px);
 }
-
 
 .Grid {
   z-index: 1000;
@@ -57,4 +56,40 @@ footer {
   background-color: #3f3d4b;
   transform: translate(0, 20px);
   color: white;
+}
+
+@media (max-width: 576px) {
+  .opening-blurb {
+    padding-top: 6rem;
+    padding-left: 4rem;
+    width: 20rem;
+  }
+
+  iframe {
+    height: 250px;
+  }
+
+  .locationBtn {
+    display: none;
+  }
+
+  ul {
+    display: inline !important;
+    font-size: 1rem !important;
+  }
+
+  li {
+    margin: 0.3rem;
+  }
+
+  h3 {
+    font-size: 2rem !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .opening-blurb {
+    padding-top: 6rem;
+    padding-left: 4rem;
+  }
 }
