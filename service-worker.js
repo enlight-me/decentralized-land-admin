@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/decentralized-land-admin/precache-manifest.9476253bb70b262a3133fb5d6e8adc70.js"
+  "/decentralized-land-admin/precache-manifest.98fc2278cf28f0461421cde3ad8ee4ac.js"
 );
 
 self.addEventListener('message', (event) => {
