@@ -12,7 +12,7 @@ h5 {
 .opening-blurb {
   padding-top: 6rem;
   padding-left: 4rem;
-  width: 60rem;
+  width: 100%;
 }
 
 .landingContainer {
@@ -61,8 +61,9 @@ footer {
 @media (max-width: 576px) {
   .opening-blurb {
     padding-top: 6rem;
-    padding-left: 4rem;
-    width: 20rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
   }
 
   iframe {
@@ -90,6 +91,7 @@ footer {
 @media (min-width: 576px) and (max-width: 768px) {
   .opening-blurb {
     padding-top: 6rem;
-    padding-left: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
